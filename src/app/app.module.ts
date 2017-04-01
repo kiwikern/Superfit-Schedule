@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NgReduxModule } from '@angular-redux/store';
+import { StoreModule } from './store/store.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { NgReduxModule } from '@angular-redux/store';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgReduxModule
+    NgReduxModule,
+    StoreModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
