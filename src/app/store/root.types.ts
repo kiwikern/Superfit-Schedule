@@ -16,7 +16,8 @@ export interface IFitnessClass {
 }
 
 export enum Day {
-  MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+  MONDAY = 'monday', TUESDAY = 'tuesday', WEDNESDAY = 'wednesday', THURSDAY = 'thursday',
+  FRIDAY = 'friday', SATURDAY = 'saturday', SUNDAY = 'sunday'
 }
 
 export enum Gym {
