@@ -6,6 +6,6 @@ export class SuperfitschedulePage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('sfs-root h1')).getText();
   }
 }

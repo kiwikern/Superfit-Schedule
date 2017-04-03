@@ -4,7 +4,7 @@ import { RootActions } from './store/root.actions';
 import { IAppState } from './store/root.types';
 
 @Component({
-  selector: 'app-root',
+  selector: 'sfs-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
