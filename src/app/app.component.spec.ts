@@ -3,6 +3,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NgRedux } from '@angular-redux/store';
 import { RootActions } from './store/root.actions';
+import { MaterialModule } from '@angular/material';
+import { Directive, Input } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -13,7 +15,10 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, MockMainComponent
+      ],
+      imports: [
+        MaterialModule
       ],
       providers: [
         { provide: NgRedux, useFactory: reduxFactory},
@@ -48,4 +53,12 @@ class MockRedux extends NgRedux<any> {
   }
   dispatch = () => undefined;
   getState = () => this.state;
+}
+
+@Directive({
+  selector: 'sfs-main',
+})
+class MockMainComponent {
+  @Input()
+  fitnessClass: any;
 }

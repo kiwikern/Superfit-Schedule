@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgRedux } from '@angular-redux/store';
+import { NgRedux, select } from '@angular-redux/store';
 import { RootActions } from './store/root.actions';
 import { IAppState } from './store/root.types';
 
@@ -10,6 +10,7 @@ import { IAppState } from './store/root.types';
 })
 export class AppComponent {
   title = 'app works!';
+  @select() readonly schedule$;
 
   constructor(ngRedux: NgRedux<IAppState>,
   action: RootActions) {

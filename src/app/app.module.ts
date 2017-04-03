@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from './store/store.module';
 import { MaterialModule } from '@angular/material';
+import { FitnessClassModule } from './fitness-class/fitness-class.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MaterialModule } from '@angular/material';
     FormsModule,
     HttpModule,
     NgReduxModule,
-    StoreModule
+    StoreModule,
+    FitnessClassModule
 
   ],
   providers: [],

@@ -1,3 +1,9 @@
+<div>
+
 <h1>
   {{title}}
 </h1>
+<p>
+  <sfs-main [fitnessClass]="class" *ngFor="let class of schedule$ | async"></sfs-main>
+</p>
+</div>
