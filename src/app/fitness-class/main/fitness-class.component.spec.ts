@@ -1,17 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainComponent } from './main.component';
+import { FitnessClassComponent } from './fitness-class.component';
 import { MaterialModule } from '@angular/material';
 import { TimePeriodComponent } from '../time-period/time-period.component';
 import { Gym, Day } from '../fitness-class.types';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+describe('FitnessClassComponent', () => {
+  let component: FitnessClassComponent;
+  let fixture: ComponentFixture<FitnessClassComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainComponent, TimePeriodComponent],
+      declarations: [FitnessClassComponent, TimePeriodComponent],
       imports: [
         MaterialModule
       ]
@@ -20,7 +20,7 @@ describe('MainComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(FitnessClassComponent);
     component = fixture.componentInstance;
     component.fitnessClass = {
       startTime: new Date(),

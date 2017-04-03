@@ -56,7 +56,7 @@ class MockRedux extends NgRedux<any> {
 }
 
 @Directive({
-  selector: 'sfs-main',
+  selector: 'sfs-fitness-class',
 })
 class MockMainComponent {
   @Input()

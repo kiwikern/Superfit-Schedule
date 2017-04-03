@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { IFitnessClass } from '../fitness-class.types';
 
 @Component({
-  selector: 'sfs-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'sfs-fitness-class',
+  templateUrl: './fitness-class.component.html',
+  styleUrls: ['./fitness-class.component.css']
 })
-export class MainComponent {
+export class FitnessClassComponent {
 
   @Input()
   fitnessClass: IFitnessClass;

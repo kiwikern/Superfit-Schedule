@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimePeriodComponent } from './time-period/time-period.component';
-import { MainComponent } from './main/main.component';
+import { FitnessClassComponent } from './main/fitness-class.component';
 import { MaterialModule } from '@angular/material';
 
 @NgModule({
@@ -11,10 +11,10 @@ import { MaterialModule } from '@angular/material';
   ],
   declarations: [
     TimePeriodComponent,
-    MainComponent
+    FitnessClassComponent
   ],
   exports: [
-    MainComponent
+    FitnessClassComponent
   ]
 })
 export class FitnessClassModule { }
