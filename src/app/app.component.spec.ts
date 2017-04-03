@@ -1,13 +1,24 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { NgRedux } from '@angular-redux/store';
+import { RootActions } from './store/root.actions';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
+    let reduxFactory = () => {
+      let ngRedux = new MockRedux({});
+      return ngRedux;
+    };
+
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: NgRedux, useFactory: reduxFactory},
+        RootActions
+      ]
     }).compileComponents();
   }));
 
@@ -30,3 +41,11 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
 });
+
+class MockRedux extends NgRedux<any> {
+  constructor(private state: any) {
+    super(null);
+  }
+  dispatch = () => undefined;
+  getState = () => this.state;
+}
