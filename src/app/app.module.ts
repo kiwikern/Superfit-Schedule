@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from './store/store.module';
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   declarations: [
