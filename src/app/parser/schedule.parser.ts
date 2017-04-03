@@ -1,4 +1,5 @@
-import { IFitnessClass, Day } from '../store/root.types';
+import { IFitnessClass } from '../store/root.types';
+import * as moment from 'moment';
 
 export function parse(json: string) {
   let classes: IFitnessClass[] = [];
@@ -37,13 +38,25 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
   const classes: IFitnessClass[] = [];
   for (const course of dayJSON) {
     const fitnessClass: IFitnessClass = {
-      startTime: null, // Date.parse(course.time),
+      startTime: moment(course.time + '', 'HH:mm').toDate(),
       day: day,
-      duration: 60,
+      duration: getClassDuration(course.course),
       workoutName: course.course,
       gym: gym
     };
     classes.push(fitnessClass);
   }
   return classes;
+}
+
+function getClassDuration(className: string) {
+  if (className.includes('yogaxp')) {
+    return 60
+  } else if (className.includes('xp') || className.includes('lmi')) {
+    return 30
+  } else if (className.includes('yoga')) {
+    return 90
+  } else {
+    return 60
+  }
 }

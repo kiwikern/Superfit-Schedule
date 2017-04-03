@@ -41,7 +41,7 @@ export class RootEpics {
         "monday": [
           {
             "time": "09:00",
-            "course": "rpm"
+            "course": "bauchxp"
           }
         ]
       },
