@@ -1,5 +1,5 @@
-import { IFitnessClass } from '../store/root.types';
 import * as moment from 'moment';
+import { IFitnessClass } from '../fitness-class/fitness-class.types';
 
 export function parse(json: string) {
   let classes: IFitnessClass[] = [];

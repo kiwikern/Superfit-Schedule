@@ -1,5 +1,4 @@
 import { parse } from './schedule.parser';
-import { Day } from '../store/root.types';
 describe('ScheduleParser', () => {
 
   it('should parse two classes', () => {

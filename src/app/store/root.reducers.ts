@@ -1,6 +1,7 @@
-import { IAppState, IFitnessClass } from './root.types';
+import { IAppState } from './root.types';
 import { RootActions } from './root.actions';
 import { IPayloadAction } from './payload-action.types';
+import { IFitnessClass } from '../fitness-class/fitness-class.types';
 /**
  * Created by Kim on 02.04.2017.
  */
