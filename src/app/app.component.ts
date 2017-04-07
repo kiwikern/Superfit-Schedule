@@ -9,7 +9,6 @@ import { IAppState } from './store/root.types';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
   @select() readonly schedule$;
 
   constructor(ngRedux: NgRedux<IAppState>,
