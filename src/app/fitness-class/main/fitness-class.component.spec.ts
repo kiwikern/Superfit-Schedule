@@ -24,7 +24,7 @@ describe('FitnessClassComponent', () => {
     component = fixture.componentInstance;
     component.fitnessClass = {
       startTime: new Date(),
-      workoutName: 'TestWorkout',
+      workoutId: 'TestWorkout',
       duration: 20,
       gym: Gym.CHARLOTTENBURG,
       day: Day.MONDAY

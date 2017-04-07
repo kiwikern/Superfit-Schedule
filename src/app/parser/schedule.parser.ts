@@ -41,7 +41,7 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
       startTime: moment(course.time + '', 'HH:mm').toDate(),
       day: day,
       duration: getClassDuration(course.course),
-      workoutName: course.course,
+      workoutId: course.course,
       gym: gym
     };
     classes.push(fitnessClass);

@@ -17,7 +17,7 @@ describe('ScheduleParser', () => {
       }}`;
     const courses = parse(input);
     expect(courses.length).toBe(2);
-    expect(courses[0].workoutName).toBe('cycle');
+    expect(courses[0].workoutId).toBe('cycle');
     expect(courses[0].day).toBe("wednesday");
   });
 
@@ -52,7 +52,7 @@ describe('ScheduleParser', () => {
       }`;
     const courses = parse(input);
     expect(courses.length).toBe(4);
-    expect(courses[3].workoutName).toBe('yoga');
+    expect(courses[3].workoutId).toBe('yoga');
     expect(courses[3].day).toBe("monday");
   });
 
