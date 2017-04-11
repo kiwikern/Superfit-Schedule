@@ -8,6 +8,7 @@ import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from './store/store.module';
 import { MaterialModule } from '@angular/material';
 import { FitnessClassModule } from './fitness-class/fitness-class.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FitnessClassModule } from './fitness-class/fitness-class.module';
     HttpModule,
     NgReduxModule,
     StoreModule,
-    FitnessClassModule
+    FitnessClassModule,
+    FlexLayoutModule
 
   ],
   providers: [],
