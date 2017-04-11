@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
-import { RootActions } from './store/root.actions';
-import { IAppState } from './store/root.types';
 
 @Component({
   selector: 'sfs-root',
@@ -9,10 +6,5 @@ import { IAppState } from './store/root.types';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @select() readonly schedule$;
 
-  constructor(ngRedux: NgRedux<IAppState>,
-  action: RootActions) {
-    ngRedux.dispatch(action.loadSchedule());
-  }
 }

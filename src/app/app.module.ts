@@ -20,8 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpModule,
     NgReduxModule,
     StoreModule,
-    FitnessClassModule,
-    FlexLayoutModule
+    FitnessClassModule
 
   ],
   providers: [],
