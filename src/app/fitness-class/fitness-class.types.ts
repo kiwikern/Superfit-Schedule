@@ -6,9 +6,21 @@ export interface IFitnessClass {
   gym: Gym;
 }
 
-export enum Day { MONDAY, TUESDAY, WEDNESDAY
-  // MONDAY = 'monday', TUESDAY = 'tuesday', WEDNESDAY = 'wednesday', THURSDAY = 'thursday',
-  // FRIDAY = 'friday', SATURDAY = 'saturday', SUNDAY = 'sunday'
+export interface IFilterState {
+  minStartTime?: Date;
+  maxStartTime?: Date;
+  days?: Day[];
+  minDuration?: number;
+  maxDuration?: number;
+  gyms?: Gym[];
+}
+
+export interface IScheduleState {
+
+}
+
+export enum Day {
+  MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
 }
 
 export enum Gym {

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { NgReduxModule, DevToolsExtension, NgRedux } from '@angular-redux/store';
 import { IAppState } from './root.types';
-import { rootReducer, INITIAL_STATE } from './root.reducers';
 import { RootEpics } from './root.epics';
 import { RootActions } from './root.actions';
-import { createEpicMiddleware } from 'redux-observable';
+import { rootReducer } from './root.reducers';
 
 @NgModule({
   imports: [
@@ -20,8 +19,8 @@ export class StoreModule {
     devTools: DevToolsExtension
   ) {
     store.configureStore(rootReducer,
-      INITIAL_STATE,
-      [createEpicMiddleware(rootEpics.createEpics())],
+      {},
+      [...rootEpics.createEpics()],
     devTools.isEnabled() ? [devTools.enhancer()] : []);
   }
 }

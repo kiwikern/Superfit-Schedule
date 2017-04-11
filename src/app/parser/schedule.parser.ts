@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { IFitnessClass } from '../fitness-class/fitness-class.types';
+import { IFitnessClass, Day, Gym } from '../fitness-class/fitness-class.types';
 
 export function parse(json: string) {
   let classes: IFitnessClass[] = [];
@@ -39,10 +39,10 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
   for (const course of dayJSON) {
     const fitnessClass: IFitnessClass = {
       startTime: moment(course.time + '', 'HH:mm').toDate(),
-      day: day,
+      day: DayMapping[day],
       duration: getClassDuration(course.course),
       workoutId: course.course,
-      gym: gym
+      gym: GymMapping[gym]
     };
     classes.push(fitnessClass);
   }
@@ -60,3 +60,25 @@ function getClassDuration(className: string) {
     return 60
   }
 }
+
+const GymMapping = {
+  'berlin-europa-center-cycle': Gym.EUROPACENTER,
+  'berlin-europa-center': Gym.EUROPACENTER,
+  'berlin-steglitz': Gym.STEGLITZ,
+  'berlin-mitte': Gym.MITTE,
+  'berlin-charlottenburg': Gym.CHARLOTTENBURG,
+  'berlin-tegel': Gym.TEGEL,
+  'brandenburg-potsdam': Gym.POTSDAM,
+  'berlin-koepenik': Gym.KOEPENIK,
+  'berlin-friedrichshain': Gym.FRIEDRICHSHAIN
+};
+
+const DayMapping = {
+  'monday': Day.MONDAY,
+  'tuesday': Day.TUESDAY,
+  'wednesday': Day.WEDNESDAY,
+  'thursday': Day.THURSDAY,
+  'friday': Day.FRIDAY,
+  'saturday': Day.SATURDAY,
+  'sunday': Day.SUNDAY
+};

@@ -1,6 +1,6 @@
 <md-card [style.background-color]="getClassColor(fitnessClass.workoutId)" class="fitness-class">
   <md-card-title>{{getClassName(fitnessClass.workoutId)}}</md-card-title>
-  <md-card-subtitle>{{fitnessClass.gym}}</md-card-subtitle>
+  <md-card-subtitle>{{getGymName(fitnessClass.gym)}}</md-card-subtitle>
   <sfs-time-period [startTime]="fitnessClass.startTime" [duration]="fitnessClass.duration">
   </sfs-time-period>
 </md-card>

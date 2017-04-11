@@ -7,7 +7,7 @@ import { IFitnessClass } from '../fitness-class.types';
 export class OrderClassesPipe implements PipeTransform {
 
   transform(classes: IFitnessClass[]): IFitnessClass[] {
-    if (classes) {
+    if (Array.isArray(classes)) {
       return classes.sort(this.compare);
     } else {
       return classes;

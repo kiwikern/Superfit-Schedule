@@ -18,7 +18,7 @@ describe('ScheduleParser', () => {
     const courses = parse(input);
     expect(courses.length).toBe(2);
     expect(courses[0].workoutId).toBe('cycle');
-    expect(courses[0].day).toBe("wednesday");
+    expect(courses[0].day).toBe(2);
   });
 
   it('should parse two days and studios', () => {
@@ -53,7 +53,7 @@ describe('ScheduleParser', () => {
     const courses = parse(input);
     expect(courses.length).toBe(4);
     expect(courses[3].workoutId).toBe('yoga');
-    expect(courses[3].day).toBe("monday");
+    expect(courses[3].day).toBe(0);
   });
 
   it('should parse empty json object', () => {

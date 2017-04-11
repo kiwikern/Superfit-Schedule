@@ -5,6 +5,7 @@ import { NgRedux } from '@angular-redux/store';
 import { RootActions } from '../../store/root.actions';
 import { Input, Directive } from '@angular/core';
 import { OrderClassesPipe } from '../order-classes/order-classes.pipe';
+import { FilterClassesPipe } from '../filter-classes/filter-classes.pipe';
 
 describe('ClassListComponent', () => {
   let component: ClassListComponent;
@@ -20,7 +21,8 @@ describe('ClassListComponent', () => {
       declarations: [
         ClassListComponent,
         MockMainComponent,
-        OrderClassesPipe
+        OrderClassesPipe,
+        FilterClassesPipe
       ],
       imports: [
         // MaterialModule

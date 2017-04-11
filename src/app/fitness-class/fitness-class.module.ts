@@ -6,6 +6,9 @@ import { MaterialModule } from '@angular/material';
 import { ClassListComponent } from './class-list/class-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderClassesPipe } from './order-classes/order-classes.pipe';
+import { FilterClassesPipe } from './filter-classes/filter-classes.pipe';
+import { ScheduleEpics } from './store/schedule.epics';
+import { ScheduleActions } from './store/schedule.actions';
 
 @NgModule({
   imports: [
@@ -17,10 +20,15 @@ import { OrderClassesPipe } from './order-classes/order-classes.pipe';
     TimePeriodComponent,
     FitnessClassComponent,
     ClassListComponent,
-    OrderClassesPipe
+    OrderClassesPipe,
+    FilterClassesPipe
   ],
   exports: [
     ClassListComponent
+  ],
+  providers: [
+    ScheduleEpics,
+    ScheduleActions
   ]
 })
 export class FitnessClassModule {
