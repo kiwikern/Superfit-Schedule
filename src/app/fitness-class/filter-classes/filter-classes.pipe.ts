@@ -18,6 +18,18 @@ export class FilterClassesPipe implements PipeTransform {
     if (filterState.gyms) {
       filteredClasses = filteredClasses.filter(c => filterState.gyms.includes(c.gym));
     }
+    if (filterState.minDuration) {
+      filteredClasses = filteredClasses.filter(c => filterState.minDuration <= c.duration)
+    }
+    if (filterState.maxDuration) {
+      filteredClasses = filteredClasses.filter(c => filterState.maxDuration >= c.duration)
+    }
+    if (filterState.minStartTime) {
+      filteredClasses = filteredClasses.filter(c => filterState.minStartTime <= c.startTime)
+    }
+    if (filterState.maxStartTime) {
+      filteredClasses = filteredClasses.filter(c => filterState.maxStartTime >= c.startTime)
+    }
 
     return filteredClasses;
   }
