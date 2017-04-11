@@ -4,6 +4,7 @@ import { ClassListComponent } from './class-list.component';
 import { NgRedux } from '@angular-redux/store';
 import { RootActions } from '../../store/root.actions';
 import { Input, Directive } from '@angular/core';
+import { OrderClassesPipe } from '../order-classes/order-classes.pipe';
 
 describe('ClassListComponent', () => {
   let component: ClassListComponent;
@@ -18,7 +19,8 @@ describe('ClassListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ClassListComponent,
-        MockMainComponent
+        MockMainComponent,
+        OrderClassesPipe
       ],
       imports: [
         // MaterialModule

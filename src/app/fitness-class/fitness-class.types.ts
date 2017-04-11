@@ -6,7 +6,7 @@ export interface IFitnessClass {
   gym: Gym;
 }
 
-export enum Day { MONDAY
+export enum Day { MONDAY, TUESDAY, WEDNESDAY
   // MONDAY = 'monday', TUESDAY = 'tuesday', WEDNESDAY = 'wednesday', THURSDAY = 'thursday',
   // FRIDAY = 'friday', SATURDAY = 'saturday', SUNDAY = 'sunday'
 }

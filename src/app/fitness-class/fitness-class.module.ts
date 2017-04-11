@@ -5,6 +5,7 @@ import { FitnessClassComponent } from './fitness-class/fitness-class.component';
 import { MaterialModule } from '@angular/material';
 import { ClassListComponent } from './class-list/class-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { OrderClassesPipe } from './order-classes/order-classes.pipe';
 
 @NgModule({
   imports: [
@@ -15,10 +16,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     TimePeriodComponent,
     FitnessClassComponent,
-    ClassListComponent
+    ClassListComponent,
+    OrderClassesPipe
   ],
   exports: [
     ClassListComponent
   ]
 })
-export class FitnessClassModule { }
+export class FitnessClassModule {
+}
