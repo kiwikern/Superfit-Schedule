@@ -65,11 +65,12 @@ const GymMapping = {
   'berlin-europa-center-cycle': Gym.EUROPACENTER,
   'berlin-europa-center': Gym.EUROPACENTER,
   'berlin-steglitz': Gym.STEGLITZ,
+  'berlin-steglitz-women': Gym.STEGLITZ_WOMEN,
   'berlin-mitte': Gym.MITTE,
   'berlin-charlottenburg': Gym.CHARLOTTENBURG,
   'berlin-tegel': Gym.TEGEL,
   'brandenburg-potsdam': Gym.POTSDAM,
-  'berlin-koepenik': Gym.KOEPENIK,
+  'berlin-koepenick': Gym.KOEPENICK,
   'berlin-friedrichshain': Gym.FRIEDRICHSHAIN
 };
 

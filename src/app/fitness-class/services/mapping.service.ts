@@ -8,12 +8,13 @@ export class MappingService {
     switch(gym) {
       case Gym.EUROPACENTER: return 'Europacenter';
       case Gym.FRIEDRICHSHAIN: return 'Friedrichshain';
-      case Gym.KOEPENIK: return 'Köpenik';
+      case Gym.KOEPENICK: return 'Köpenick';
       case Gym.STEGLITZ: return 'Steglitz';
       case Gym.CHARLOTTENBURG: return 'Charlottenburg';
       case Gym.POTSDAM: return 'Potsdam';
       case Gym.TEGEL: return 'Tegel';
       case Gym.MITTE: return 'Mitte';
+      case Gym.STEGLITZ_WOMEN: return 'Steglitz Women';
     }
     return 'Translation missing for gym: ' + gym;
   }
@@ -49,7 +50,7 @@ export class MappingService {
   readonly fitnessClassMapping = {
   'bauchxp': {name: 'Bauch Express', color: 'rgba(255, 42, 28, 0.3)'},
   'bbp': {name: 'Bauch Beine Po', color: 'rgba(255, 42, 28, 0.3)'},
-  'bbp2': {name: 'Bauch Beine Po2', color: 'rgba(255, 42, 28, 0.3)'},
+  'bbp2': {name: 'Bauch Beine Po 2', color: 'rgba(255, 42, 28, 0.3)'},
   'bodyattack': {name: 'BodyAttack', color: 'rgba(255, 196, 20, 0.3)'},
   'bodyattack-e': {name: 'BodyAttack (E)', color: 'rgba(255, 196, 20, 0.3)'},
   'bodyattackxp': {name: 'BodyAttack Express', color: 'rgba(255, 196, 20, 0.3)'},
