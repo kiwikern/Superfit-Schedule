@@ -7,7 +7,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, MockClassListComponent
+        AppComponent, MockClassListComponent, MockFilterComponent
       ],
     }).compileComponents();
   }));
@@ -23,4 +23,10 @@ describe('AppComponent', () => {
   selector: 'sfs-class-list',
 })
 class MockClassListComponent {
+}
+
+@Directive({
+  selector: 'sfs-filter',
+})
+class MockFilterComponent {
 }

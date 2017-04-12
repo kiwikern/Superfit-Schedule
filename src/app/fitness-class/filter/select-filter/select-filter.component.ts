@@ -9,9 +9,9 @@ import { Gym } from '../../fitness-class.types';
 })
 export class SelectFilterComponent {
 
-  @Input() allValues: any[];
+  @Input() allValues: any[] = [];
   @Input() title: string;
-  @Input() selectedValues: any[];
+  @Input() selectedValues: any[] = [];
   @Output() onSelection: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private mappingService: MappingService) { }
