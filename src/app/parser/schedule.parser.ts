@@ -52,7 +52,7 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
 function getClassDuration(className: string) {
   if (className.includes('yogaxp')) {
     return 60
-  } else if (className.includes('xp') || className.includes('lmi')) {
+  } else if (className.includes('xp') || className.includes('lmi') || className.includes('sprint')) {
     return 30
   } else if (className.includes('yoga')) {
     return 90
