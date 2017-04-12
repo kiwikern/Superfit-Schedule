@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fitnessClassMapping } from '../fitness-class.types';
+import { MappingService } from '../services/mapping.service';
 
 @Component({
   selector: 'sfs-filter',
@@ -8,13 +8,16 @@ import { fitnessClassMapping } from '../fitness-class.types';
 })
 export class FilterComponent implements OnInit {
 
-  allClasses = Object.keys(fitnessClassMapping);
-  classMapping = fitnessClassMapping;
+  allClasses = this.mappingService.getAllClasses();
   selectedClasses = [];
   minStartTime = 30;
   maxStartTime = 90;
 
-  constructor() { }
+  constructor(private mappingService: MappingService) { }
+
+  getClassName(fitnessClassId: string): string {
+    return this.mappingService.getClassName(fitnessClassId);
+  }
 
   ngOnInit() {
   }

@@ -3,11 +3,11 @@
   <md-card fxLayout="column" fxLayoutGap="15px">
     <md-card-title>Kurse</md-card-title>
     <md-select fxFlex [(ngModel)]="selectedClasses" placeholder="Kurse" multiple="true">
-      <md-option *ngFor="let class of allClasses" [value]="class">{{ classMapping[class].name }}</md-option>
+      <md-option *ngFor="let class of allClasses" [value]="class">{{ getClassName(class) }}</md-option>
     </md-select>
     <md-chip-list>
       <md-chip *ngFor="let class of selectedClasses">
-        {{classMapping[class].name}}
+        {{ getClassName(class) }}
       </md-chip>
     </md-chip-list>
   </md-card>

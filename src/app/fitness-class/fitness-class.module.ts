@@ -11,6 +11,8 @@ import { ScheduleEpics } from './store/schedule.epics';
 import { ScheduleActions } from './store/schedule.actions';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule } from '@angular/forms';
+import { SelectFilterComponent } from './filter/select-filter/select-filter.component';
+import { MappingService } from './services/mapping.service';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     ClassListComponent,
     OrderClassesPipe,
     FilterClassesPipe,
-    FilterComponent
+    FilterComponent,
+    SelectFilterComponent
   ],
   exports: [
     ClassListComponent,
@@ -33,7 +36,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     ScheduleEpics,
-    ScheduleActions
+    ScheduleActions,
+    MappingService
   ]
 })
 export class FitnessClassModule {

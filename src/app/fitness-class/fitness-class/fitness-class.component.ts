@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IFitnessClass, fitnessClassMapping, Gym } from '../fitness-class.types';
+import { IFitnessClass, Gym } from '../fitness-class.types';
+import { MappingService } from '../services/mapping.service';
 
 @Component({
   selector: 'sfs-fitness-class',
@@ -8,37 +9,22 @@ import { IFitnessClass, fitnessClassMapping, Gym } from '../fitness-class.types'
 })
 export class FitnessClassComponent {
 
+  constructor(private mappingService: MappingService) {
+  }
+
   @Input()
   fitnessClass: IFitnessClass;
 
   getGymName(gym: Gym): string {
-    switch(gym) {
-      case Gym.EUROPACENTER: return 'Europacenter';
-      case Gym.FRIEDRICHSHAIN: return 'Friedrichshain';
-      case Gym.KOEPENIK: return 'Köpenik';
-      case Gym.STEGLITZ: return 'Steglitz';
-      case Gym.CHARLOTTENBURG: return 'Charlottenburg';
-      case Gym.POTSDAM: return 'Potsdam';
-      case Gym.TEGEL: return 'Tegel';
-      case Gym.MITTE: return 'Mitte';
-    }
-    return 'Translation missing for gym: ' + gym;
+    return this.mappingService.getGymName(gym);
   }
 
   getClassName(fitnessClassId) {
-    if (fitnessClassMapping.hasOwnProperty(fitnessClassId)) {
-      return fitnessClassMapping[fitnessClassId].name;
-    } else {
-      return fitnessClassId;
-    }
+    return this.mappingService.getClassName(fitnessClassId);
   }
 
   getClassColor(fitnessClassId) {
-    if (fitnessClassMapping.hasOwnProperty(fitnessClassId)) {
-      return fitnessClassMapping[fitnessClassId].color;
-    } else {
-      return '#FFFFFF';
-    }
+    return this.mappingService.getClassColor(fitnessClassId);
   }
 
 }
