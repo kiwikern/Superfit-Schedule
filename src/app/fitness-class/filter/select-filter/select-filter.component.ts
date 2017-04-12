@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { MappingService } from '../../services/mapping.service';
-import { Gym } from '../../fitness-class.types';
 
 @Component({
   selector: 'sfs-select-filter',
   templateUrl: './select-filter.component.html',
-  styleUrls: ['./select-filter.component.css']
+  styleUrls: ['./select-filter.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectFilterComponent {
 

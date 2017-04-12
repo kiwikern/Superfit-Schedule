@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MappingService } from '../services/mapping.service';
 import { NgRedux } from '@angular-redux/store';
 import { Gym, IFitnessClass } from '../fitness-class.types';
@@ -9,7 +9,8 @@ import { FilterPayload } from '../store/filter.reducers';
 @Component({
   selector: 'sfs-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  styleUrls: ['./filter.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent {
 
