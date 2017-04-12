@@ -13,6 +13,7 @@ export interface IFilterState {
   minDuration?: number;
   maxDuration?: number;
   gyms?: Gym[];
+  workouts?: string[];
 }
 
 export interface IScheduleState {
