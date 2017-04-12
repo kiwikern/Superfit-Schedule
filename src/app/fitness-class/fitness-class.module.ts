@@ -9,22 +9,27 @@ import { OrderClassesPipe } from './order-classes/order-classes.pipe';
 import { FilterClassesPipe } from './filter-classes/filter-classes.pipe';
 import { ScheduleEpics } from './store/schedule.epics';
 import { ScheduleActions } from './store/schedule.actions';
+import { FilterComponent } from './filter/filter.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   declarations: [
     TimePeriodComponent,
     FitnessClassComponent,
     ClassListComponent,
     OrderClassesPipe,
-    FilterClassesPipe
+    FilterClassesPipe,
+    FilterComponent
   ],
   exports: [
-    ClassListComponent
+    ClassListComponent,
+    FilterComponent
   ],
   providers: [
     ScheduleEpics,

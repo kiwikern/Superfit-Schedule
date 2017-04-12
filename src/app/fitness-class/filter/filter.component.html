@@ -1,0 +1,27 @@
+<md-card fxLayout="column" fxLayoutGap="10px">
+  <md-card-title>Filter</md-card-title>
+  <md-card fxLayout="column" fxLayoutGap="15px">
+    <md-card-title>Kurse</md-card-title>
+    <md-select fxFlex [(ngModel)]="selectedClasses" placeholder="Kurse" multiple="true">
+      <md-option *ngFor="let class of allClasses" [value]="class">{{ classMapping[class].name }}</md-option>
+    </md-select>
+    <md-chip-list>
+      <md-chip *ngFor="let class of selectedClasses">
+        {{classMapping[class].name}}
+      </md-chip>
+    </md-chip-list>
+  </md-card>
+  <md-card>
+    <md-card-title>Kursdauer</md-card-title>
+    <div>
+      <label>Mindestens {{minStartTime}} Minuten</label>
+      <md-slider min="30" max="90" step="30" [(ngModel)]="minStartTime" tickInterval="1" thumbLabel>Minimale
+      </md-slider>
+    </div>
+    <div>
+      <label>Höchstens {{maxStartTime}} Minuten</label>
+      <md-slider min="30" max="90" step="30" [(ngModel)]="maxStartTime" tickInterval="1" thumbLabel invert>Minimale
+      </md-slider>
+    </div>
+  </md-card>
+</md-card>

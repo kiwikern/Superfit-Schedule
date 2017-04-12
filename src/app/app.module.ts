@@ -6,9 +6,11 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from './store/store.module';
-import { MaterialModule } from '@angular/material';
 import { FitnessClassModule } from './fitness-class/fitness-class.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import 'hammerjs';
+import { MaterialModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +22,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpModule,
     NgReduxModule,
     StoreModule,
-    FitnessClassModule
-
+    FitnessClassModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
