@@ -38,6 +38,14 @@ export class MappingService {
     return Object.keys(this.fitnessClassMapping)
   }
 
+  getAllGyms() {
+    console.dir(Object.keys(Gym)
+      .filter(key => typeof Gym[key] === 'string'));
+    return Object.keys(Gym)
+      .filter(key => typeof Gym[key] === 'string')
+      .map(key => Number.parseInt(key));
+  }
+
   readonly fitnessClassMapping = {
   'bauchxp': {name: 'Bauch Express', color: 'rgba(255, 42, 28, 0.3)'},
   'bbp': {name: 'Bauch Beine Po', color: 'rgba(255, 42, 28, 0.3)'},
@@ -75,5 +83,4 @@ export class MappingService {
   'yogaxp': {name: 'Yoga Express', color: 'rgba(255, 42, 28, 0.3)'},
   'zumba': {name: 'Zumba', color: 'rgba(199, 255, 46, 0.3)'}
 };
-
 }
