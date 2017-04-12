@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IFitnessClass, Gym } from '../fitness-class.types';
+import { IFitnessClass, Gym, Day } from '../fitness-class.types';
 import { MappingService } from '../services/mapping.service';
 
 @Component({
@@ -25,6 +25,10 @@ export class FitnessClassComponent {
 
   getClassColor(fitnessClassId) {
     return this.mappingService.getClassColor(fitnessClassId);
+  }
+
+  getDayName(day: Day) {
+    return this.mappingService.getDayName(day);
   }
 
 }

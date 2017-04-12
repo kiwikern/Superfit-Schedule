@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gym } from '../fitness-class.types';
+import { Gym, Day } from '../fitness-class.types';
 
 @Injectable()
 export class MappingService {
@@ -32,6 +32,18 @@ export class MappingService {
       return this.fitnessClassMapping[fitnessClassId].color;
     } else {
       return '#FFFFFF';
+    }
+  }
+
+  getDayName(day: Day) {
+    switch (day) {
+      case Day.MONDAY: return 'Montag';
+      case Day.TUESDAY: return 'Dienstag';
+      case Day.WEDNESDAY: return 'Mittwoch';
+      case Day.THURSDAY: return 'Donnerstag';
+      case Day.FRIDAY: return 'Freitag';
+      case Day.SATURDAY: return 'Samstag';
+      case Day.SUNDAY: return 'Sonntag';
     }
   }
 
