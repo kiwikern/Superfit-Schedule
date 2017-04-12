@@ -1,16 +1,9 @@
 <md-card fxLayout="column" fxLayoutGap="10px">
   <md-card-title>Filter</md-card-title>
-  <md-card fxLayout="column" fxLayoutGap="15px">
-    <md-card-title>Kurse</md-card-title>
-    <md-select fxFlex [(ngModel)]="selectedClasses" placeholder="Kurse" multiple="true">
-      <md-option *ngFor="let class of allClasses" [value]="class">{{ getClassName(class) }}</md-option>
-    </md-select>
-    <md-chip-list>
-      <md-chip *ngFor="let class of selectedClasses">
-        {{ getClassName(class) }}
-      </md-chip>
-    </md-chip-list>
-  </md-card>
+  <sfs-select-filter [selectedValues]="selectedClasses" [allValues]="allClasses" (onSelection)="updateClasses($event)"
+                     title="Kurse"></sfs-select-filter>
+  <sfs-select-filter [selectedValues]="selectedGyms" [allValues]="allGyms" (onSelection)="updateGyms($event)"
+                     title="Studios"></sfs-select-filter>
   <md-card>
     <md-card-title>Kursdauer</md-card-title>
     <div>

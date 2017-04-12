@@ -13,6 +13,7 @@ import { FilterComponent } from './filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { SelectFilterComponent } from './filter/select-filter/select-filter.component';
 import { MappingService } from './services/mapping.service';
+import { FilterActions } from './store/filter.actions';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { MappingService } from './services/mapping.service';
   providers: [
     ScheduleEpics,
     ScheduleActions,
+    FilterActions,
     MappingService
   ]
 })
