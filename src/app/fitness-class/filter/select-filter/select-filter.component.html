@@ -1,16 +1,21 @@
 <md-card fxLayout="column" fxLayoutGap="15px">
   <md-card-title>{{title}}</md-card-title>
   <!--<md-input-container>-->
-    <!--<input type="text" [(ngModel)]="selectedValue" mdInput #autoInput [mdAutocomplete]="auto" [placeholder]="title">-->
+  <!--<input type="text" [(ngModel)]="selectedValue" mdInput #autoInput [mdAutocomplete]="auto" [placeholder]="title">-->
   <!--</md-input-container>-->
   <!--<md-autocomplete #auto="mdAutocomplete" (change)="onChange()">-->
-    <!--<md-option *ngFor="let value of filteredValues" [value]="value" (onSelectionChange)="onChange(value)">-->
-      <!--{{ getName(value) }}-->
-    <!--</md-option>-->
+  <!--<md-option *ngFor="let value of filteredValues" [value]="value" (onSelectionChange)="onChange(value)">-->
+  <!--{{ getName(value) }}-->
+  <!--</md-option>-->
   <!--</md-autocomplete>-->
-  <md-select fxFlex [(ngModel)]="selectedValues" [placeholder]="title" multiple="true" (change)="onChange()">
-    <md-option *ngFor="let value of allValues" [value]="value">{{ getName(value) }}</md-option>
-  </md-select>
+  <div fxLayoutGap="10px">
+    <md-select fxFlex [(ngModel)]="selectedValues" [placeholder]="title" multiple="true" (change)="onChange()">
+      <md-option *ngFor="let value of allValues" [value]="value">{{ getName(value) }}</md-option>
+    </md-select>
+    <button md-icon-button [disabled]="selectedValues.length == 0" (click)="delete()">
+      <md-icon>delete</md-icon>
+    </button>
+  </div>
   <md-chip-list>
     <md-chip *ngIf="selectedValues.length == 0">ALLE</md-chip>
     <md-chip *ngFor="let value of selectedValues">

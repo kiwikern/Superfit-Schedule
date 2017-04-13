@@ -17,6 +17,11 @@ export class SelectFilterComponent implements OnChanges, OnInit {
   constructor() {
   }
 
+  delete() {
+    this.selectedValues = [];
+    this.onChange();
+  }
+
   getName(id: any) {
     if (this.nameMapping.hasOwnProperty(id)) {
       return this.nameMapping[id];
