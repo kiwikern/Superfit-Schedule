@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { IFitnessClass, Day, Gym } from '../fitness-class/fitness-class.types';
+import { IFitnessClass, Day, Gym, Language } from '../fitness-class/fitness-class.types';
 
 export function parse(json: string) {
   let classes: IFitnessClass[] = [];
@@ -41,8 +41,9 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
       startTime: moment(course.time + '', 'HH:mm').toDate(),
       day: DayMapping[day],
       duration: getClassDuration(course.course),
-      workoutId: course.course,
-      gym: GymMapping[gym]
+      workoutId: getClassName(course.course),
+      gym: GymMapping[gym],
+      language: getClassLanguage(course.course)
     };
     classes.push(fitnessClass);
   }
@@ -60,6 +61,14 @@ function getAllClassesByDay(classes: IFitnessClass[]) {
   return result;
 }
 
+function getClassLanguage(className: string) {
+  if (className.endsWith('-e')) {
+    return Language.ENGLISH;
+  } else {
+    return Language.GERMAN;
+  }
+}
+
 function getClassDuration(className: string) {
   if (className.includes('yogaxp')) {
     return 60
@@ -69,6 +78,14 @@ function getClassDuration(className: string) {
     return 90
   } else {
     return 60
+  }
+}
+
+function getClassName(className: string) {
+  if (className.endsWith('-e')) {
+    return className.slice(0, -2);
+  } else {
+    return className;
   }
 }
 

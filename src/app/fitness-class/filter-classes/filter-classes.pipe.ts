@@ -24,6 +24,9 @@ export class FilterClassesPipe implements PipeTransform {
     if (filterState.durations) {
       filteredClasses = filteredClasses.filter(c => filterState.durations.includes(c.duration));
     }
+    if (filterState.languages) {
+      filteredClasses = filteredClasses.filter(c => filterState.languages.includes(c.language));
+    }
     if (filterState.minStartTime) {
       filteredClasses = filteredClasses.filter(c => filterState.minStartTime <= c.startTime);
     }

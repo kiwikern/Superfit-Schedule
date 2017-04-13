@@ -62,10 +62,8 @@ export class MappingService {
   'bbp': {name: 'Bauch Beine Po', color: 'rgba(255, 42, 28, 0.3)'},
   'bbp2': {name: 'Bauch Beine Po 2', color: 'rgba(255, 42, 28, 0.3)'},
   'bodyattack': {name: 'BodyAttack', color: 'rgba(255, 196, 20, 0.3)'},
-  'bodyattack-e': {name: 'BodyAttack (E)', color: 'rgba(255, 196, 20, 0.3)'},
   'bodyattackxp': {name: 'BodyAttack Express', color: 'rgba(255, 196, 20, 0.3)'},
   'bodybalance': {name: 'BodyBalance', color: 'rgba(193, 255, 112, 0.3)'},
-  'bodybalance-e': {name: 'BodyBalance (E)', color: 'rgba(193, 255, 112, 0.3)'},
   'bodybalancexp': {name: 'BodyBalance Express', color: 'rgba(193, 255, 112, 0.3)'},
   'bodycombat': {name: 'BodyCombat', color: 'rgba(255, 42, 28, 0.3)'},
   'bodycombatxp': {name: 'BodyCombat Express', color: 'rgba(255, 42, 28, 0.3)'},
@@ -90,7 +88,6 @@ export class MappingService {
   'sprint': {name: 'Sprint', color: 'rgba(1, 108, 152, 0.3)'},
   'strong': {name: 'Strong by Zumba', color: 'rgba(255, 42, 28, 0.3)'},
   'yoga': {name: 'Yoga', color: 'rgba(255, 42, 28, 0.3)'},
-  'yoga-e': {name: 'Yoga English', color: 'rgba(255, 42, 28, 0.3)'},
   'yogaxp': {name: 'Yoga Express', color: 'rgba(255, 42, 28, 0.3)'},
   'zumba': {name: 'Zumba', color: 'rgba(199, 255, 46, 0.3)'}
 };

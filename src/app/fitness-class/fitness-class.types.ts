@@ -4,6 +4,7 @@ export interface IFitnessClass {
   duration: number;
   workoutId: string;
   gym: Gym;
+  language: Language;
 }
 
 export interface IFilterState {
@@ -13,11 +14,13 @@ export interface IFilterState {
   durations?: number[];
   gyms?: Gym[];
   workouts?: string[];
+  languages?: Language[];
 }
 
-export interface IScheduleState {
-
+export enum Language {
+  GERMAN, ENGLISH
 }
+
 
 export enum Day {
   MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
