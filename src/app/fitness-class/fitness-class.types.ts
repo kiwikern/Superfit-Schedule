@@ -17,6 +17,10 @@ export interface IFilterState {
   languages?: Language[];
 }
 
+export interface IScheduleState {
+
+}
+
 export enum Language {
   GERMAN, ENGLISH
 }
