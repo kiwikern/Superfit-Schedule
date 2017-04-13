@@ -49,6 +49,17 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
   return classes;
 }
 
+function getAllClassesByDay(classes: IFitnessClass[]) {
+  const result = {};
+  const days = Object.keys(Day)
+    .filter(key => typeof Day[key] === 'string')
+    .map(key => Number.parseInt(key));
+  for (const day of days) {
+    result[day] = classes.filter(c => c.day === day);
+  }
+  return result;
+}
+
 function getClassDuration(className: string) {
   if (className.includes('yogaxp')) {
     return 60
