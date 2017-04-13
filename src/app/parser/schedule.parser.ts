@@ -18,7 +18,7 @@ export function parse(json: string) {
     const classesPerGym = getClassesPerGym(gymJSON, gym);
     classes = classes.concat(classesPerGym);
   }
-  return classes;
+  return getAllClassesByDay(classes);
 }
 
 function getClassesPerGym(gymJSON: any, gym): IFitnessClass[] {
@@ -51,12 +51,12 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
 }
 
 function getAllClassesByDay(classes: IFitnessClass[]) {
-  const result = {};
+  const result = [];
   const days = Object.keys(Day)
     .filter(key => typeof Day[key] === 'string')
     .map(key => Number.parseInt(key));
   for (const day of days) {
-    result[day] = classes.filter(c => c.day === day);
+    result.push({day: day, classes: classes.filter(c => c.day === day)});
   }
   return result;
 }

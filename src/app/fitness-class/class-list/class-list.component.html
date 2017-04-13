@@ -1,3 +1,9 @@
-<div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
-  <sfs-fitness-class *ngFor="let class of schedule$ | async | filterClasses:filter | orderClasses" [fitnessClass]="class" fxFlex></sfs-fitness-class>
+<div fxLayout.xl="row" fxLayout="column" fxLayoutGap="20px">
+  <div *ngFor="let classesPerDay of schedule$ | async">
+    <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
+      <span>{{ getDayName(classesPerDay.day) }}</span>
+      <sfs-fitness-class *ngFor="let class of classesPerDay.classes | filterClasses:filter | orderClasses"
+                         [fitnessClass]="class" fxFlex></sfs-fitness-class>
+    </div>
+  </div>
 </div>
