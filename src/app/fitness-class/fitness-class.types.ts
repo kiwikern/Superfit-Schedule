@@ -10,8 +10,7 @@ export interface IFilterState {
   minStartTime?: Date;
   maxStartTime?: Date;
   days?: Day[];
-  minDuration?: number;
-  maxDuration?: number;
+  durations?: number[];
   gyms?: Gym[];
   workouts?: string[];
 }

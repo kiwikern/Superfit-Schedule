@@ -1,20 +1,9 @@
 <md-card fxLayout="column" fxLayoutGap="10px">
   <md-card-title>Filter</md-card-title>
-  <sfs-select-filter [selectedValues]="selectedClasses" [allValues]="allClasses" (onSelection)="updateClasses($event)"
+  <sfs-select-filter [selectedValues]="workouts$ | async" [allValues]="allClasses" (onSelection)="updateClasses($event)"
                      title="Kurse"></sfs-select-filter>
-  <sfs-select-filter [selectedValues]="selectedGyms" [allValues]="allGyms" (onSelection)="updateGyms($event)"
+  <sfs-select-filter [selectedValues]="gyms$ | async" [allValues]="allGyms" (onSelection)="updateGyms($event)"
                      title="Studios"></sfs-select-filter>
-  <md-card>
-    <md-card-title>Kursdauer</md-card-title>
-    <div>
-      <label>Mindestens {{minStartTime}} Minuten</label>
-      <md-slider min="30" max="90" step="30" [(ngModel)]="minStartTime" tickInterval="1" thumbLabel>Minimale
-      </md-slider>
-    </div>
-    <div>
-      <label>Höchstens {{maxStartTime}} Minuten</label>
-      <md-slider min="30" max="90" step="30" [(ngModel)]="maxStartTime" tickInterval="1" thumbLabel invert>Minimale
-      </md-slider>
-    </div>
-  </md-card>
+  <sfs-select-filter [selectedValues]="durations$ | async" [allValues]="[30, 60, 90]" title="Kursdauer"
+                     (onSelection)="updateDurations($event)"></sfs-select-filter>
 </md-card>

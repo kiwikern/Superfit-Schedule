@@ -12,11 +12,11 @@ export function filterReducer(state: IFilterState = INITIAL_STATE,
   let newState;
   switch (action.type) {
     case FilterActions.FILTER_ADDED:
-      newState = Object.assign(state);
+      newState = {...state};
       newState[action.payload.filterName] = action.payload.filterValue;
       break;
     case FilterActions.FILTER_REMOVED:
-      newState = Object.assign(state);
+      newState = {...state};
       delete newState[action.payload.filterName];
       break;
     case FilterActions.FILTER_CLEARED:
