@@ -52,8 +52,6 @@ export class MappingService {
   }
 
   getAllGyms() {
-    console.dir(Object.keys(Gym)
-      .filter(key => typeof Gym[key] === 'string'));
     return Object.keys(Gym)
       .filter(key => typeof Gym[key] === 'string')
       .map(key => Number.parseInt(key));
