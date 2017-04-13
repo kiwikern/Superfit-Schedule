@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges } from '@angular/core';
-import { MappingService } from '../../services/mapping.service';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sfs-select-filter',
@@ -7,24 +6,28 @@ import { MappingService } from '../../services/mapping.service';
   styleUrls: ['./select-filter.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SelectFilterComponent implements OnChanges {
+export class SelectFilterComponent implements OnChanges, OnInit {
 
-  @Input() allValues: any[];
   @Input() title: string;
   @Input() selectedValues: any[];
+  @Input() nameMapping;
+  allValues: any[];
   @Output() onSelection: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private mappingService: MappingService) {
+  constructor() {
   }
 
   getName(id: any) {
-    if (typeof id === 'string') {
-      return this.mappingService.getClassName(id);
-    } else if ([30, 60, 90].includes(id)) {
-      return id + ' Minuten';
+    if (this.nameMapping.hasOwnProperty(id)) {
+      return this.nameMapping[id];
     } else {
-      return this.mappingService.getGymName(id);
+      return id;
     }
+  }
+
+  ngOnInit() {
+    this.allValues = Object.keys(this.nameMapping)
+      .map((v: any) => Number.parseInt(v) >= 0 ? Number.parseInt(v) : v);
   }
 
   ngOnChanges() {

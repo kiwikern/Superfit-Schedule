@@ -15,9 +15,15 @@ export class FilterComponent {
 
   @select(['filter', 'workouts']) readonly workouts$;
   allClasses = this.mappingService.getAllClasses();
+  classMapping = this.mappingService.getFitnessClassNameMapping();
   @select(['filter', 'gyms']) readonly gyms$;
   allGyms = this.mappingService.getAllGyms();
+  gymMapping = this.mappingService.getGymMapping();
   @select(['filter', 'durations']) durations$;
+  durationMapping = this.mappingService.getDurationMapping();
+  @select(['filter', 'languages']) languages$;
+  allLanguages = this.mappingService.getAllLanguages();
+  languageMapping = this.mappingService.getLanguageMapping();
 
   constructor(private mappingService: MappingService,
               private ngRedux: NgRedux<IAppState>,
@@ -34,6 +40,10 @@ export class FilterComponent {
 
   updateDurations(durations) {
     this.addFilter('durations', durations);
+  }
+
+  updateLanguages(languages) {
+    this.addFilter('languages', languages);
   }
 
   addFilter(filterName: string, value: any) {

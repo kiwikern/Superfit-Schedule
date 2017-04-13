@@ -1,9 +1,11 @@
 <md-card fxLayout="column" fxLayoutGap="10px">
   <md-card-title>Filter</md-card-title>
-  <sfs-select-filter [selectedValues]="workouts$ | async" [allValues]="allClasses" (onSelection)="updateClasses($event)"
-                     title="Kurse"></sfs-select-filter>
-  <sfs-select-filter [selectedValues]="gyms$ | async" [allValues]="allGyms" (onSelection)="updateGyms($event)"
-                     title="Studios"></sfs-select-filter>
-  <sfs-select-filter [selectedValues]="durations$ | async" [allValues]="[30, 60, 90]" title="Kursdauer"
-                     (onSelection)="updateDurations($event)"></sfs-select-filter>
+  <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
+                     title="Kurse" [nameMapping]="classMapping"></sfs-select-filter>
+  <sfs-select-filter [selectedValues]="gyms$ | async" (onSelection)="updateGyms($event)"
+                     title="Studios" [nameMapping]="gymMapping"></sfs-select-filter>
+  <sfs-select-filter [selectedValues]="durations$ | async" title="Kursdauer"
+                     (onSelection)="updateDurations($event)" [nameMapping]="durationMapping"></sfs-select-filter>
+  <sfs-select-filter [selectedValues]="languages$ | async" title="Sprachen"
+                     (onSelection)="updateLanguages($event)" [nameMapping]="languageMapping"></sfs-select-filter>
 </md-card>
