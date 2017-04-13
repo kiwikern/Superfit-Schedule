@@ -20,7 +20,7 @@ export class StoreModule {
     const LOCAL_STORAGE_KEY = 'sfs.state';
     let persistedState;
     try {
-      persistedState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+      persistedState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
     } catch(e) {
       persistedState = {};
     }

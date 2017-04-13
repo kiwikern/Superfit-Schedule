@@ -4,8 +4,8 @@ import { ClassListComponent } from './class-list.component';
 import { NgRedux } from '@angular-redux/store';
 import { RootActions } from '../../store/root.actions';
 import { Input, Directive } from '@angular/core';
-import { OrderClassesPipe } from '../order-classes/order-classes.pipe';
-import { FilterClassesPipe } from '../filter-classes/filter-classes.pipe';
+import { OrderClassesPipe } from '../pipes/order-classes.pipe';
+import { FilterClassesPipe } from '../pipes/filter-classes.pipe';
 
 describe('ClassListComponent', () => {
   let component: ClassListComponent;
