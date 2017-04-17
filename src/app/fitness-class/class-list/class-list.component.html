@@ -1,4 +1,4 @@
-<div fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="20px" class="scrollable">
+<div fxLayout="row" fxLayoutGap="20px" class="scrollable">
   <div *ngFor="let classesPerDay of schedule$ | async | orderDays">
     <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
       <h2>{{ getDayName(classesPerDay.day) }}</h2>
