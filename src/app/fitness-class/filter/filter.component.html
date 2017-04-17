@@ -4,13 +4,17 @@
   </button>
   <md-card *ngIf="showFilter" fxLayout="column" fxLayoutGap="10px">
     <md-card-title fxFlexAlign="center">Filter</md-card-title>
-    <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
-                       title="Kurse" [nameMapping]="classMapping"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="gyms$ | async" (onSelection)="updateGyms($event)"
-                       title="Studios" [nameMapping]="gymMapping"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="durations$ | async" title="Kursdauer"
-                       (onSelection)="updateDurations($event)" [nameMapping]="durationMapping"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="languages$ | async" title="Sprachen"
-                       (onSelection)="updateLanguages($event)" [nameMapping]="languageMapping"></sfs-select-filter>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
+                         title="Kurse" [nameMapping]="classMapping" fxFlex></sfs-select-filter>
+      <sfs-select-filter [selectedValues]="gyms$ | async" (onSelection)="updateGyms($event)"
+                         title="Studios" [nameMapping]="gymMapping" fxFlex></sfs-select-filter>
+    </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <sfs-select-filter [selectedValues]="durations$ | async" (onSelection)="updateDurations($event)"
+                         title="Kursdauer" [nameMapping]="durationMapping" fxFlex></sfs-select-filter>
+      <sfs-select-filter [selectedValues]="languages$ | async" (onSelection)="updateLanguages($event)"
+                         title="Sprachen" [nameMapping]="languageMapping" fxFlex></sfs-select-filter>
+    </div>
   </md-card>
 </div>
