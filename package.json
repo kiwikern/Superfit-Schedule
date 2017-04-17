@@ -1,7 +1,7 @@
 {
   "name": "superfitschedule",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
