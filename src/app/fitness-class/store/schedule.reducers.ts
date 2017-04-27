@@ -16,7 +16,7 @@ export function scheduleReducer(state: IScheduleState = INITIAL_STATE,
   switch (action.type) {
     case RootActions.LOAD_STARTED:
       return {
-        schedule: [],
+        schedule: state.schedule || [],
         isLoading: true,
         error: null
       };
@@ -28,7 +28,7 @@ export function scheduleReducer(state: IScheduleState = INITIAL_STATE,
       };
     case RootActions.LOAD_FAILED:
       return {
-        schedule: [],
+        schedule: state.schedule || [],
         isLoading: false,
         error: action.error
       };
