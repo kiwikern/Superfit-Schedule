@@ -1,0 +1,21 @@
+{
+    "dir": "ltr",
+    "lang": "de",
+    "name": "Superfitschedule",
+    "scope": "/sfs/",
+    "display": "standalone",
+    "start_url": "./",
+    "short_name": "Superfit",
+    "theme_color": "transparent",
+    "description": "Kursplan für Superfit",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/images/sfs/favicon.ico",
+            "sizes": "16x16 32x32"
+        }
+    ]
+}
