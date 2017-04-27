@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RootActions } from '../../store/root.actions';
 import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
@@ -10,7 +10,7 @@ import { MappingService } from '../services/mapping.service';
   templateUrl: './class-list.component.html',
   styleUrls: ['./class-list.component.css']
 })
-export class ClassListComponent {
+export class ClassListComponent implements OnInit {
   @select(['schedule', 'schedule']) readonly schedule$;
   @select() readonly filter$;
   private filter: IFilterState = {};
@@ -20,6 +20,17 @@ export class ClassListComponent {
 
     ngRedux.dispatch(action.loadSchedule());
     this.filter$.subscribe(f => this.filter = f);
+  }
+
+  ngOnInit() {
+    let scrollbar = document.getElementById('second-scrollbar');
+    let scrollbarContent = document.getElementById('second-scrollbar-content');
+    let classList = document.getElementById('class-list');
+    if (classList && scrollbar && scrollbarContent) {
+      setTimeout( () => scrollbarContent.style.width = classList.scrollWidth+'px', 100);
+      classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;
+      scrollbar.onscroll = () => classList.scrollLeft = scrollbar.scrollLeft;
+    }
   }
 
   getDayName(day) {
