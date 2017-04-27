@@ -9,19 +9,27 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { ScheduleActions } from './schedule.actions';
 import { parse } from '../../parser/schedule.parser';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class ScheduleEpics {
-  constructor(private actions: ScheduleActions) {
+  constructor(private actions: ScheduleActions,
+              private http: Http) {
   }
 
   createEpics() {
     return action$ => action$
       .ofType(ScheduleActions.LOAD_STARTED)
-      .switchMap(action => this.loadSchedule()
-        .map(scheduleJSON => this.actions.loadSucceded(scheduleJSON))
+      .switchMap(action => this.fetchSchedule()
+        .map(scheduleJSON => this.actions.loadSucceded(parse(scheduleJSON.json())))
         .catch(error => of(this.actions.loadFailed(error)))
       );
+  }
+
+  private fetchSchedule() {
+    const url = 'https://kimkern.de/api/sfs/schedule';
+    // const url = 'http://localhost:3000/schedule';
+    return this.http.get(url);
   }
 
   private loadSchedule() {

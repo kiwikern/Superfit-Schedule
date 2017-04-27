@@ -1,15 +1,15 @@
 import * as moment from 'moment';
 import { IFitnessClass, Day, Gym, Language } from '../fitness-class/fitness-class.types';
 
-export function parse(json: string) {
+export function parse(scheduleJSON: Object) {
   let classes: IFitnessClass[] = [];
-  let scheduleJSON;
-  try {
-    scheduleJSON = JSON.parse(json);
-  } catch (error) {
-    console.log(error);
-    scheduleJSON = {};
-  }
+  // let scheduleJSON;
+  // try {
+  //   scheduleJSON = JSON.parse(json);
+  // } catch (error) {
+  //   console.log(error);
+  //   scheduleJSON = {};
+  // }
   for (const gym in scheduleJSON) {
     if (!scheduleJSON.hasOwnProperty(gym)) {
       continue;
