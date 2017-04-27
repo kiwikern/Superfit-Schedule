@@ -18,7 +18,9 @@ export interface IFilterState {
 }
 
 export interface IScheduleState {
-
+  schedule: IFitnessClass[];
+  isLoading: boolean;
+  error?: any;
 }
 
 export enum Language {
