@@ -16,5 +16,8 @@
       <sfs-select-filter [selectedValues]="languages$ | async" (onSelection)="updateLanguages($event)"
                          title="Sprachen" [nameMapping]="languageMapping" fxFlex></sfs-select-filter>
     </div>
+    <div fxLayoutAlign="center">
+      <button md-raised-button (click)="showFilter=false">Schließen</button>
+    </div>
   </md-card>
 </div>
