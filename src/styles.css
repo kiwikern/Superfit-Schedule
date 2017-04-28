@@ -4,3 +4,8 @@ body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   margin: 0px;
 }
+
+a {
+  color: hotpink;
+  text-decoration: none;
+}
