@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IFitnessClass, Gym, Day } from '../fitness-class.types';
 import { MappingService } from '../services/mapping.service';
+import { select } from '@angular-redux/store';
 
 @Component({
   selector: 'sfs-fitness-class',
@@ -9,7 +10,10 @@ import { MappingService } from '../services/mapping.service';
 })
 export class FitnessClassComponent {
 
+  @select(['filter', 'gyms']) gyms$;
+  isOnlyOneGymSelected: boolean = false;
   constructor(private mappingService: MappingService) {
+    this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1)
   }
 
   @Input()

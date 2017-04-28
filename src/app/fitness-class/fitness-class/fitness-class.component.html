@@ -3,7 +3,7 @@
     {{getClassName(fitnessClass.workoutId)}}
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
   </md-card-title>
-  <md-card-subtitle>{{getGymName(fitnessClass.gym)}}</md-card-subtitle>
+  <md-card-subtitle [fxHide]="isOnlyOneGymSelected">{{getGymName(fitnessClass.gym)}}</md-card-subtitle>
   <div fxLayout="row">
     <span>{{getDayName(fitnessClass.day)}},&nbsp;</span>
     <sfs-time-period [startTime]="fitnessClass.startTime" [duration]="fitnessClass.duration">
