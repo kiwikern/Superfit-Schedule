@@ -13,13 +13,15 @@ import { MappingService } from '../services/mapping.service';
 export class ClassListComponent implements OnInit {
   @select(['schedule', 'schedule']) readonly schedule$;
   @select() readonly filter$;
-  private filter: IFilterState = {};
+  filter: IFilterState = {};
+  hasFilter: boolean = false;
   constructor(ngRedux: NgRedux<IAppState>,
               action: RootActions,
               private mappingService: MappingService) {
 
     ngRedux.dispatch(action.loadSchedule());
     this.filter$.subscribe(f => this.filter = f);
+    this.filter$.subscribe(f => this.hasFilter = Object.keys(f).length > 0);
   }
 
   ngOnInit() {

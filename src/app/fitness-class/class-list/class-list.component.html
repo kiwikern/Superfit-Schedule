@@ -1,13 +1,18 @@
-<div id="second-scrollbar">
-  <div id="second-scrollbar-content">
-  </div>
-</div>
-<div fxLayout="row" fxLayoutGap="20px" class="scrollable" id="class-list">
-  <div *ngFor="let classesPerDay of schedule$ | async | orderDays">
-    <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
-      <h2>{{ getDayName(classesPerDay.day) }}</h2>
-      <sfs-fitness-class *ngFor="let class of classesPerDay.classes | filterClasses:filter | orderClasses"
-                         [fitnessClass]="class" fxFlex></sfs-fitness-class>
+<div [fxShow]="hasFilter">
+  <div id="second-scrollbar" fxHide.lt-md="true">
+    <div id="second-scrollbar-content">
     </div>
   </div>
+  <div fxLayout="row" fxLayoutGap="20px" class="scrollable" id="class-list">
+    <div *ngFor="let classesPerDay of schedule$ | async | orderDays">
+      <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
+        <h2>{{ getDayName(classesPerDay.day) }}</h2>
+        <sfs-fitness-class *ngFor="let class of classesPerDay.classes | filterClasses:filter | orderClasses"
+                           [fitnessClass]="class" fxFlex></sfs-fitness-class>
+      </div>
+    </div>
+  </div>
+</div>
+<div [fxShow]="!hasFilter" fxLayout="row" fxLayoutAlign="center center">
+  <p>Füge mindestens einen Filter hinzu.</p>
 </div>
