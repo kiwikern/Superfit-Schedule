@@ -12,6 +12,7 @@ import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 
 const appRoutes: Routes = [
@@ -34,7 +35,9 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    {provide: APP_BASE_HREF, useValue: '/sfs'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
