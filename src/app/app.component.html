@@ -5,6 +5,10 @@
   <span>SuperFit Kursplan</span>
   <div fxFlex></div>
   <div [fxHide.lt-sm]="true">
+    <button md-button routerLink="/">
+      <md-icon>event</md-icon>
+      Kursplan
+    </button>
     <button md-button routerLink="/filter">
       <md-icon>filter_list</md-icon>
       Filter
@@ -22,6 +26,10 @@
 <md-sidenav-container>
   <md-sidenav #sidenav>
     <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <button md-button (click)="sidenav.close()" routerLink="/">
+        <md-icon>event</md-icon>
+        Kursplan
+      </button>
       <button md-button (click)="sidenav.close()" routerLink="/filter">
         <md-icon>filter_list</md-icon>
         Filter
