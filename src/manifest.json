@@ -1,11 +1,11 @@
 {
     "dir": "ltr",
     "lang": "de",
-    "name": "Superfitschedule",
+    "name": "SuperFit Kursplan",
     "scope": "/sfs/",
     "display": "standalone",
     "start_url": "./",
-    "short_name": "Superfit",
+    "short_name": "SuperFit",
     "theme_color": "transparent",
     "description": "Kursplan für Superfit",
     "orientation": "any",
