@@ -1,0 +1,32 @@
+<md-card fxLayout="column" fxLayoutAlign="center center">
+  <md-card-title>Einstellungen</md-card-title>
+  <md-card-content fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
+    <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="20px">
+      <md-card>
+        <h3>Erster Wochentag</h3>
+        <md-radio-group fxLayout="column" [(ngModel)]="showTodayFirst"
+                        (change)="changeSetting('showTodayFirst', showTodayFirst === 'true')">
+          <md-radio-button value="true">Heute</md-radio-button>
+          <md-radio-button value="false">Montag</md-radio-button>
+        </md-radio-group>
+      </md-card>
+      <md-card>
+        <h3>Anzeige der Tage</h3>
+        <md-radio-group fxLayout="column" [(ngModel)]="daysLayout" (change)="changeSetting('daysLayout', daysLayout)">
+          <md-radio-button value="row">nebeneinander</md-radio-button>
+          <md-radio-button value="column">untereinander</md-radio-button>
+        </md-radio-group>
+      </md-card>
+      <md-card fxLayout="column">
+        <h3>Sonstiges</h3>
+        <md-checkbox [(ngModel)]="showSingleStudio" (change)="changeSetting('showSingleStudio', showSingleStudio)">
+          Studio ausblenden, wenn nur eines ausgewählt
+        </md-checkbox>
+        <md-checkbox [(ngModel)]="showDaysInClasses" (change)="changeSetting('showDaysInClasses', showDaysInClasses)">
+          Zeige Tag für jeden einzelnen Kurs an
+        </md-checkbox>
+      </md-card>
+    </div>
+    <button md-raised-button routerLink="/">Schließen</button>
+  </md-card-content>
+</md-card>

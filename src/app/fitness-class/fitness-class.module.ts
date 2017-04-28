@@ -16,10 +16,12 @@ import { MappingService } from './services/mapping.service';
 import { FilterActions } from './store/filter.actions';
 import { OrderDaysPipe } from './pipes/order-days.pipe';
 import { RouterModule, Routes } from '@angular/router';
+import { SettingsComponent } from './settings/settings.component';
+import { SettingsActions } from './store/settings.actions';
 
 const fitnessRoutes: Routes = [
   {path: 'filter', component: FilterComponent},
-  {path: 'settings', component: FilterComponent}
+  {path: 'settings', component: SettingsComponent}
 ]
 
 @NgModule({
@@ -38,7 +40,8 @@ const fitnessRoutes: Routes = [
     FilterClassesPipe,
     FilterComponent,
     SelectFilterComponent,
-    OrderDaysPipe
+    OrderDaysPipe,
+    SettingsComponent
   ],
   exports: [
     ClassListComponent,
@@ -48,6 +51,7 @@ const fitnessRoutes: Routes = [
     ScheduleEpics,
     ScheduleActions,
     FilterActions,
+    SettingsActions,
     MappingService
   ]
 })

@@ -11,6 +11,8 @@ import { select } from '@angular-redux/store';
 export class FitnessClassComponent {
 
   @select(['filter', 'gyms']) gyms$;
+  @select(['settings', 'showSingleStudio']) showSingleStudio$;
+  @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   isOnlyOneGymSelected: boolean = false;
   constructor(private mappingService: MappingService) {
     this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1)

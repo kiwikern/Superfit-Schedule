@@ -13,8 +13,12 @@ import { MappingService } from '../services/mapping.service';
 export class ClassListComponent implements OnInit {
   @select(['schedule', 'schedule']) readonly schedule$;
   @select() readonly filter$;
+  @select(['settings', 'showTodayFirst']) showTodayFirst$;
+  @select(['settings', 'daysLayout']) daysLayout$;
+  showTodayFirst: boolean = false;
   filter: IFilterState = {};
   hasFilter: boolean = false;
+
   constructor(ngRedux: NgRedux<IAppState>,
               action: RootActions,
               private mappingService: MappingService) {
@@ -22,6 +26,7 @@ export class ClassListComponent implements OnInit {
     ngRedux.dispatch(action.loadSchedule());
     this.filter$.subscribe(f => this.filter = f);
     this.filter$.subscribe(f => this.hasFilter = Object.keys(f).length > 0);
+    this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
   }
 
   ngOnInit() {
@@ -29,7 +34,7 @@ export class ClassListComponent implements OnInit {
     let scrollbarContent = document.getElementById('second-scrollbar-content');
     let classList = document.getElementById('class-list');
     if (classList && scrollbar && scrollbarContent) {
-      setTimeout( () => scrollbarContent.style.width = classList.scrollWidth+'px', 100);
+      setTimeout(() => scrollbarContent.style.width = classList.scrollWidth + 'px', 100);
       classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;
       scrollbar.onscroll = () => classList.scrollLeft = scrollbar.scrollLeft;
     }

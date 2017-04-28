@@ -3,8 +3,8 @@
     <div id="second-scrollbar-content">
     </div>
   </div>
-  <div fxLayout="row" fxLayoutGap="20px" class="scrollable" id="class-list">
-    <div *ngFor="let classesPerDay of schedule$ | async | orderDays">
+  <div [fxLayout]="daysLayout$ | async" fxLayoutGap="20px" class="scrollable" id="class-list">
+    <div *ngFor="let classesPerDay of schedule$ | async | orderDays:showTodayFirst">
       <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
         <h2>{{ getDayName(classesPerDay.day) }}</h2>
         <sfs-fitness-class *ngFor="let class of classesPerDay.classes | filterClasses:filter | orderClasses"
