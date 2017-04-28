@@ -13,15 +13,18 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { AboutComponent } from './about/about.component';
 
 
 const appRoutes: Routes = [
-  {path: '', children: []}
+  {path: '', children: []},
+  {path: 'about', component: AboutComponent}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

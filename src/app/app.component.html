@@ -17,7 +17,7 @@
       <md-icon>settings</md-icon>
       Einstellungen
     </button>
-    <button md-button>
+    <button md-button routerLink="/about">
       <md-icon>person</md-icon>
       Über
     </button>
@@ -38,7 +38,7 @@
         <md-icon>settings</md-icon>
         Einstellungen
       </button>
-      <button md-button (click)="sidenav.close()">
+      <button md-button (click)="sidenav.close()" routerLink="/about">
         <md-icon>person</md-icon>
         Über
       </button>
