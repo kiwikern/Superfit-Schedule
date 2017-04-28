@@ -10,7 +10,13 @@ import { FitnessClassModule } from './fitness-class/fitness-class.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule, Routes } from '@angular/router';
 
+
+const appRoutes: Routes = [
+  {path: '', children: []}
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import { MaterialModule } from '@angular/material';
     StoreModule,
     FitnessClassModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

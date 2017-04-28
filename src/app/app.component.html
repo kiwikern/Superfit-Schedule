@@ -1,3 +1,21 @@
-<sfs-filter></sfs-filter>
+<md-toolbar color="primary">
+    <span>SuperFit Kursplan</span>
+    <div fxFlex></div>
+    <button md-button routerLink="/filter">
+      <md-icon>filter_list</md-icon>
+      Filter
+    </button>
+    <button md-button routerLink="/settings">
+      <md-icon>settings</md-icon>
+      Einstellungen
+    </button>
+    <button md-button>
+      <md-icon>person</md-icon>
+      Über
+    </button>
+</md-toolbar>
+<div class="margin">
+<router-outlet></router-outlet>
 <br>
 <sfs-class-list></sfs-class-list>
+</div>

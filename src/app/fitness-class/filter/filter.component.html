@@ -1,8 +1,4 @@
-<div fxLayoutContainer fxLayout="column">
-  <button md-icon-button (click)="showFilter=!showFilter" fxFlexAlign="center" mdTooltip="Filter anzeigen">
-    <md-icon>filter_list</md-icon>
-  </button>
-  <md-card *ngIf="showFilter" fxLayout="column" fxLayoutGap="10px">
+  <md-card *ngIf="showFilter" fxLayout="column" fxLayoutGap="10px" fxFlexAlign="stretch center">
     <md-card-title fxFlexAlign="center">Filter</md-card-title>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
@@ -17,7 +13,6 @@
                          title="Sprachen" [nameMapping]="languageMapping" fxFlex></sfs-select-filter>
     </div>
     <div fxLayoutAlign="center">
-      <button md-raised-button (click)="showFilter=false">Schließen</button>
+      <button md-raised-button routerLink="/">Schließen</button>
     </div>
   </md-card>
-</div>

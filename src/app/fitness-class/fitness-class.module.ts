@@ -15,13 +15,20 @@ import { SelectFilterComponent } from './filter/select-filter/select-filter.comp
 import { MappingService } from './services/mapping.service';
 import { FilterActions } from './store/filter.actions';
 import { OrderDaysPipe } from './pipes/order-days.pipe';
+import { RouterModule, Routes } from '@angular/router';
+
+const fitnessRoutes: Routes = [
+  {path: 'filter', component: FilterComponent},
+  {path: 'settings', component: FilterComponent}
+]
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forChild(fitnessRoutes)
   ],
   declarations: [
     TimePeriodComponent,
