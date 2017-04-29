@@ -1,3 +1,4 @@
+<md-sidenav-container fullscreen>
 <md-toolbar color="primary">
   <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-xs="true">
     <md-icon>menu</md-icon>
@@ -23,7 +24,6 @@
     </button>
   </div>
 </md-toolbar>
-<md-sidenav-container>
   <md-sidenav #sidenav>
     <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
       <button md-button (click)="sidenav.close()" routerLink="/">
