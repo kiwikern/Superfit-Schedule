@@ -1,4 +1,4 @@
-<div [fxShow]="hasFilter">
+<div *ngIf="hasFilter">
   <div id="second-scrollbar" fxHide.lt-md="true">
     <div id="second-scrollbar-content">
     </div>
@@ -14,5 +14,5 @@
   </div>
 </div>
 <div [fxShow]="!hasFilter" fxLayout="row" fxLayoutAlign="center center">
-  <p>Füge mindestens einen Filter hinzu.</p>
+  <p>Füge mindestens einen <a routerLink="/filter">Filter</a> hinzu.</p>
 </div>
