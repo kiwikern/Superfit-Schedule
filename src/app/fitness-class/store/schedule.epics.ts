@@ -27,8 +27,7 @@ export class ScheduleEpics {
   }
 
   private fetchSchedule() {
-    const url = 'https://kimkern.de/api/sfs/schedule';
-    // const url = 'http://localhost:3000/schedule';
+    const url = '/api/sfs/schedule';
     return this.http.get(url);
   }
 
