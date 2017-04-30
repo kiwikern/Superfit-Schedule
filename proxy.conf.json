@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": {
+      "host": "kimkern.de",
+      "protocol": "https:",
+      "port": 443
+    },
+    "secure": false,
+    "changeOrigin": true
+  }
+}
