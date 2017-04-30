@@ -25,7 +25,6 @@ describe('ClassListComponent', () => {
         FilterClassesPipe
       ],
       imports: [
-        // MaterialModule
       ],
       providers: [
         { provide: NgRedux, useFactory: reduxFactory},

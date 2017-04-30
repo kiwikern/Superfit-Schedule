@@ -7,12 +7,11 @@ import { AppComponent } from './app.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from './store/store.module';
 import { FitnessClassModule } from './fitness-class/fitness-class.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { SfsMaterialModule } from './material/sfs-material.module';
 
 
 const appRoutes: Routes = [
@@ -32,8 +31,7 @@ const appRoutes: Routes = [
     NgReduxModule,
     StoreModule,
     FitnessClassModule,
-    BrowserAnimationsModule,
-    MaterialModule,
+    SfsMaterialModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes, {useHash: true})
   ],

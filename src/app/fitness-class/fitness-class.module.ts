@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimePeriodComponent } from './time-period/time-period.component';
 import { FitnessClassComponent } from './fitness-class/fitness-class.component';
-import { MaterialModule } from '@angular/material';
 import { ClassListComponent } from './class-list/class-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderClassesPipe } from './pipes/order-classes.pipe';
@@ -18,6 +17,7 @@ import { OrderDaysPipe } from './pipes/order-days.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsActions } from './store/settings.actions';
+import { SfsMaterialModule } from '../material/sfs-material.module';
 
 const fitnessRoutes: Routes = [
   {path: 'filter', component: FilterComponent},
@@ -27,7 +27,7 @@ const fitnessRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
+    SfsMaterialModule,
     FlexLayoutModule,
     FormsModule,
     RouterModule.forChild(fitnessRoutes)
