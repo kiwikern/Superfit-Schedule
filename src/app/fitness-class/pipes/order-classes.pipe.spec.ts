@@ -1,5 +1,8 @@
 import { OrderClassesPipe } from './order-classes.pipe';
-import { IFitnessClass, Day, Gym } from '../fitness-class.types';
+import { FitnessClass } from '../interfaces/fitness-class';
+import { Day } from '../enums/day.enum';
+import { Gym } from '../enums/gym.enum';
+import { Language } from '../enums/language.enum';
 
 describe('OrderClassesPipe', () => {
   it('create an instance', () => {
@@ -9,11 +12,39 @@ describe('OrderClassesPipe', () => {
 
   it('sorts classes', () => {
     const pipe = new OrderClassesPipe();
-    const testClasses: IFitnessClass[] = [
-      {day: Day.MONDAY, startTime: new Date(), duration: 60, workoutId: '', gym: Gym.CHARLOTTENBURG},
-      {day: Day.MONDAY, startTime: new Date(), duration: 60, workoutId: '', gym: Gym.CHARLOTTENBURG},
-      {day: Day.TUESDAY, startTime: new Date(), duration: 60, workoutId: '', gym: Gym.CHARLOTTENBURG},
-      {day: Day.TUESDAY, startTime: new Date(), duration: 60, workoutId: '', gym: Gym.CHARLOTTENBURG}
+    const testClasses: FitnessClass[] = [
+      {
+        day: Day.MONDAY,
+        startTime: new Date(),
+        duration: 60,
+        workoutId: '',
+        gym: Gym.CHARLOTTENBURG,
+        language: Language.GERMAN
+      },
+      {
+        day: Day.MONDAY,
+        startTime: new Date(),
+        duration: 60,
+        workoutId: '',
+        gym: Gym.CHARLOTTENBURG,
+        language: Language.GERMAN
+      },
+      {
+        day: Day.TUESDAY,
+        startTime: new Date(),
+        duration: 60,
+        workoutId: '',
+        gym: Gym.CHARLOTTENBURG,
+        language: Language.GERMAN
+      },
+      {
+        day: Day.TUESDAY,
+        startTime: new Date(),
+        duration: 60,
+        workoutId: '',
+        gym: Gym.CHARLOTTENBURG,
+        language: Language.GERMAN
+      }
     ];
     expect(pipe.transform(testClasses)).toBe(testClasses);
   })

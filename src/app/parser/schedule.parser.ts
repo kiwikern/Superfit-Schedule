@@ -1,8 +1,11 @@
 import * as moment from 'moment';
-import { IFitnessClass, Day, Gym, Language } from '../fitness-class/fitness-class.types';
+import { FitnessClass } from '../fitness-class/interfaces/fitness-class';
+import { Gym } from '../fitness-class/enums/gym.enum';
+import { Day } from '../fitness-class/enums/day.enum';
+import { Language } from '../fitness-class/enums/language.enum';
 
 export function parse(scheduleJSON: Object) {
-  let classes: IFitnessClass[] = [];
+  let classes: FitnessClass[] = [];
   // let scheduleJSON;
   // try {
   //   scheduleJSON = JSON.parse(json);
@@ -21,8 +24,8 @@ export function parse(scheduleJSON: Object) {
   return getAllClassesByDay(classes);
 }
 
-function getClassesPerGym(gymJSON: any, gym): IFitnessClass[] {
-  let classes: IFitnessClass[] = [];
+function getClassesPerGym(gymJSON: any, gym): FitnessClass[] {
+  let classes: FitnessClass[] = [];
   for (const day in gymJSON) {
     if (!gymJSON.hasOwnProperty(day)) {
       continue;
@@ -34,10 +37,10 @@ function getClassesPerGym(gymJSON: any, gym): IFitnessClass[] {
   return classes;
 }
 
-function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
-  const classes: IFitnessClass[] = [];
+function getClassesPerDay(dayJSON: any, day, gym): FitnessClass[] {
+  const classes: FitnessClass[] = [];
   for (const course of dayJSON) {
-    const fitnessClass: IFitnessClass = {
+    const fitnessClass: FitnessClass = {
       startTime: moment(course.time + '', 'HH:mm').toDate(),
       day: DayMapping[day],
       duration: getClassDuration(course.course),
@@ -50,7 +53,7 @@ function getClassesPerDay(dayJSON: any, day, gym): IFitnessClass[] {
   return classes;
 }
 
-function getAllClassesByDay(classes: IFitnessClass[]) {
+function getAllClassesByDay(classes: FitnessClass[]) {
   const result = [];
   const days = Object.keys(Day)
     .filter(key => typeof Day[key] === 'string')

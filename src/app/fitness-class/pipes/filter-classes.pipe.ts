@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IFitnessClass, IFilterState } from '../fitness-class.types';
+import { FitnessClass } from '../interfaces/fitness-class';
+import { FilterState } from '../interfaces/filter-state';
 
 @Pipe({
   name: 'filterClasses',
@@ -7,7 +8,7 @@ import { IFitnessClass, IFilterState } from '../fitness-class.types';
 })
 export class FilterClassesPipe implements PipeTransform {
 
-  transform(classes: IFitnessClass[], filterState?: IFilterState): IFitnessClass[] {
+  transform(classes: FitnessClass[], filterState?: FilterState): FitnessClass[] {
     if (!filterState) {
       return classes;
     }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RootActions } from '../../store/root.actions';
 import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
-import { IFilterState } from '../fitness-class.types';
 import { MappingService } from '../services/mapping.service';
+import { FilterState } from '../interfaces/filter-state';
 
 @Component({
   selector: 'sfs-class-list',
@@ -16,7 +16,7 @@ export class ClassListComponent implements OnInit {
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
   @select(['settings', 'daysLayout']) daysLayout$;
   showTodayFirst: boolean = false;
-  filter: IFilterState = {};
+  filter: FilterState = {};
   hasFilter: boolean = false;
 
   constructor(ngRedux: NgRedux<IAppState>,

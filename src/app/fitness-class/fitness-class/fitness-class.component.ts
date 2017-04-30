@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { IFitnessClass, Gym, Day } from '../fitness-class.types';
 import { MappingService } from '../services/mapping.service';
 import { select } from '@angular-redux/store';
+import { FitnessClass } from '../interfaces/fitness-class';
+import { Gym } from '../enums/gym.enum';
+import { Day } from '../enums/day.enum';
 
 @Component({
   selector: 'sfs-fitness-class',
@@ -19,7 +21,7 @@ export class FitnessClassComponent {
   }
 
   @Input()
-  fitnessClass: IFitnessClass;
+  fitnessClass: FitnessClass;
 
   getGymName(gym: Gym): string {
     return this.mappingService.getGymName(gym);
