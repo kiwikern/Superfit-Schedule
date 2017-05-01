@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectFilterComponent } from './select-filter.component';
-import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MappingService } from '../../services/mapping.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SfsMaterialModule } from '../../../material/sfs-material.module';
 
 describe('SelectFilterComponent', () => {
   let component: SelectFilterComponent;
@@ -14,9 +14,9 @@ describe('SelectFilterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SelectFilterComponent],
       imports: [
-        MaterialModule,
+        SfsMaterialModule,
         FormsModule,
-        NoopAnimationsModule
+        // NoopAnimationsModule
       ],
       providers: [MappingService
       ]
@@ -27,6 +27,8 @@ describe('SelectFilterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SelectFilterComponent);
     component = fixture.componentInstance;
+    component.nameMapping = {};
+    component.selectedValues = [];
     fixture.detectChanges();
   });
 

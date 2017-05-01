@@ -2,10 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClassListComponent } from './class-list.component';
 import { NgRedux } from '@angular-redux/store';
-import { RootActions } from '../../store/root.actions';
 import { Input, Component } from '@angular/core';
 import { OrderClassesPipe } from '../pipes/order-classes.pipe';
 import { FilterClassesPipe } from '../pipes/filter-classes.pipe';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { OrderDaysPipe } from '../pipes/order-days.pipe';
+import { MappingService } from '../services/mapping.service';
+import { ScheduleActions } from '../store/schedule.actions';
 
 describe('ClassListComponent', () => {
   let component: ClassListComponent;
@@ -22,12 +26,17 @@ describe('ClassListComponent', () => {
         ClassListComponent,
         MockMainComponent,
         OrderClassesPipe,
+        OrderDaysPipe,
         FilterClassesPipe
       ],
-      imports: [],
+      imports: [
+        SfsMaterialModule,
+        FlexLayoutModule
+      ],
       providers: [
         {provide: NgRedux, useFactory: reduxFactory},
-        RootActions
+        MappingService,
+        ScheduleActions
       ]
     })
       .compileComponents();
@@ -56,6 +65,7 @@ class MockRedux extends NgRedux<any> {
 
 @Component({
   selector: 'sfs-fitness-class',
+  template: ''
 })
 class MockMainComponent {
   @Input()

@@ -1,4 +1,5 @@
 import { parse } from './schedule.parser';
+import { Day } from '../fitness-class/enums/day.enum';
 describe('ScheduleParser', () => {
 
   it('should parse two classes', () => {
@@ -17,9 +18,9 @@ describe('ScheduleParser', () => {
       }
     };
     const courses = parse(input);
-    expect(courses.length).toBe(2);
-    expect(courses[0].workoutId).toBe('cycle');
-    expect(courses[0].day).toBe(2);
+    const classesOnWednesday = courses[Day.WEDNESDAY].classes;
+    expect(classesOnWednesday[0].workoutId).toBe('cycle');
+    expect(classesOnWednesday[0].day).toBe(2);
   });
 
   it('should parse two days and studios', () => {
@@ -51,22 +52,30 @@ describe('ScheduleParser', () => {
         ]
       }
     };
-    const courses = parse(input);
-    expect(courses.length).toBe(4);
-    expect(courses[3].workoutId).toBe('yoga');
-    expect(courses[3].day).toBe(0);
+    const coursesPerDay = parse(input);
+    console.dir(coursesPerDay);
+    const coursesOnMonday = coursesPerDay[Day.MONDAY].classes;
+    expect(coursesOnMonday.length).toBe(2);
+    const coursesOnWednesday = coursesPerDay[Day.WEDNESDAY].classes;
+    expect(coursesOnWednesday.length).toBe(2);
+    expect(coursesOnWednesday[1].workoutId).toBe('cycle');
+    expect(coursesOnWednesday[1].day).toBe(Day.WEDNESDAY);
   });
 
   it('should parse empty json object', () => {
     const input = {};
     const courses = parse(input);
-    expect(courses.length).toBe(0);
+    for (let couresPerDay of courses) {
+      expect(couresPerDay.classes.length).toBe(0);
+    }
   });
 
-  it('should parse empty json string', () => {
+  it('should parse null', () => {
     const input = null;
     const courses = parse(input);
-    expect(courses.length).toBe(0);
+    for (let couresPerDay of courses) {
+      expect(couresPerDay.classes.length).toBe(0);
+    }
   });
 
 
