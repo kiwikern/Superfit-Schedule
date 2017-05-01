@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { NgReduxModule, DevToolsExtension, NgRedux } from '@angular-redux/store';
 import { IAppState } from './root.types';
 import { RootEpics } from './root.epics';
-import { RootActions } from './root.actions';
 import { rootReducer } from './root.reducers';
 
 @NgModule({
@@ -10,7 +9,7 @@ import { rootReducer } from './root.reducers';
     NgReduxModule
   ],
   declarations: [],
-  providers: [RootActions, RootEpics]
+  providers: [RootEpics]
 })
 export class StoreModule {
   constructor(public store: NgRedux<IAppState>,

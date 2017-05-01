@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RootActions } from '../../store/root.actions';
 import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
 import { MappingService } from '../services/mapping.service';
