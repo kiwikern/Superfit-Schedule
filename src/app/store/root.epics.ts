@@ -15,6 +15,6 @@ export class RootEpics {
   createEpics() {
     return [
       createEpicMiddleware(this.scheduleEpics.createEpics())
-    ]
+    ];
   }
 }

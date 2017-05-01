@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { Directive } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,13 +19,13 @@ describe('AppComponent', () => {
   }));
 });
 
-@Directive({
+@Component({
   selector: 'sfs-class-list',
 })
 class MockClassListComponent {
 }
 
-@Directive({
+@Component({
   selector: 'sfs-filter',
 })
 class MockFilterComponent {

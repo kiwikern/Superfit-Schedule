@@ -21,7 +21,7 @@ export class StoreModule {
     let persistedState;
     try {
       persistedState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
-    } catch(e) {
+    } catch (e) {
       persistedState = {};
     }
     store.configureStore(rootReducer,
@@ -29,7 +29,7 @@ export class StoreModule {
       [...rootEpics.createEpics()],
       devTools.isEnabled() ? [devTools.enhancer()] : []);
     store.subscribe(() => {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()))
-    })
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()));
+    });
   }
 }

@@ -52,7 +52,7 @@ export class FilterComponent {
     if (value && (!Array.isArray(value) || value.length > 0)) {
       this.ngRedux.dispatch(this.filterActions.addFilter(payload));
     } else {
-      this.ngRedux.dispatch(this.filterActions.removeFilter(payload))
+      this.ngRedux.dispatch(this.filterActions.removeFilter(payload));
     }
   }
 

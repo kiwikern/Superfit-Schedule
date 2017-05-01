@@ -6,6 +6,40 @@ import { Language } from '../enums/language.enum';
 @Injectable()
 export class MappingService {
 
+  readonly fitnessClassColorMapping = {
+    bauchxp: 'rgba(255, 42, 28, 0.3)',
+    bbp: 'rgba(255, 42, 28, 0.3)',
+    bbp2: 'rgba(255, 42, 28, 0.3)',
+    bodyattack: 'rgba(255, 196, 20, 0.3)',
+    bodyattackxp: 'rgba(255, 196, 20, 0.3)',
+    bodybalance: 'rgba(193, 255, 112, 0.3)',
+    bodybalancexp: 'rgba(193, 255, 112, 0.3)',
+    bodycombat: 'rgba(255, 42, 28, 0.3)',
+    bodycombatxp: 'rgba(255, 42, 28, 0.3)',
+    bodyjam: 'rgba(253, 252, 1, 0.3)',
+    bodypump: 'rgba(250, 25, 29, 0.3)',
+    bodypumpxp: 'rgba(250, 25, 29, 0.3)',
+    bodystep: 'rgba(164, 178, 178, 0.3)',
+    bodyvive: 'rgba(183, 172, 255, 0.3)',
+    bodyvivexp: 'rgba(183, 172, 255, 0.3)',
+    cycle: 'rgba(255, 42, 28, 0.3)',
+    fatburner: 'rgba(255, 42, 28, 0.3)',
+    gritplyo: 'rgba(0, 0, 0, 0.3)',
+    jumpingfitness: 'rgba(250, 250, 250, 0.3)',
+    lmistep: 'rgba(247, 0, 0, 0.3)',
+    lmistepxp: 'rgba(247, 0, 0, 0.3)',
+    pilates: 'rgba(255, 42, 28, 0.3)',
+    rpm: 'rgba(1, 108, 152, 0.3)',
+    ruecken: 'rgba(255, 42, 28, 0.3)',
+    salsation: 'rgba(230, 10, 112, 0.3)',
+    shbam: 'rgba(246, 36, 231, 0.3)',
+    sprint: 'rgba(1, 108, 152, 0.3)',
+    strong: 'rgba(255, 42, 28, 0.3)',
+    yoga: 'rgba(255, 42, 28, 0.3)',
+    yogaxp: 'rgba(255, 42, 28, 0.3)',
+    zumba: 'rgba(199, 255, 46, 0.3)'
+  };
+
   getGymName(gym: Gym): string {
     return this.getGymMapping()[gym];
   }
@@ -123,37 +157,4 @@ export class MappingService {
     };
   }
 
-  readonly fitnessClassColorMapping = {
-    bauchxp: 'rgba(255, 42, 28, 0.3)',
-    bbp: 'rgba(255, 42, 28, 0.3)',
-    bbp2: 'rgba(255, 42, 28, 0.3)',
-    bodyattack: 'rgba(255, 196, 20, 0.3)',
-    bodyattackxp: 'rgba(255, 196, 20, 0.3)',
-    bodybalance: 'rgba(193, 255, 112, 0.3)',
-    bodybalancexp: 'rgba(193, 255, 112, 0.3)',
-    bodycombat: 'rgba(255, 42, 28, 0.3)',
-    bodycombatxp: 'rgba(255, 42, 28, 0.3)',
-    bodyjam: 'rgba(253, 252, 1, 0.3)',
-    bodypump: 'rgba(250, 25, 29, 0.3)',
-    bodypumpxp: 'rgba(250, 25, 29, 0.3)',
-    bodystep: 'rgba(164, 178, 178, 0.3)',
-    bodyvive: 'rgba(183, 172, 255, 0.3)',
-    bodyvivexp: 'rgba(183, 172, 255, 0.3)',
-    cycle: 'rgba(255, 42, 28, 0.3)',
-    fatburner: 'rgba(255, 42, 28, 0.3)',
-    gritplyo: 'rgba(0, 0, 0, 0.3)',
-    jumpingfitness: 'rgba(250, 250, 250, 0.3)',
-    lmistep: 'rgba(247, 0, 0, 0.3)',
-    lmistepxp: 'rgba(247, 0, 0, 0.3)',
-    pilates: 'rgba(255, 42, 28, 0.3)',
-    rpm: 'rgba(1, 108, 152, 0.3)',
-    ruecken: 'rgba(255, 42, 28, 0.3)',
-    salsation: 'rgba(230, 10, 112, 0.3)',
-    shbam: 'rgba(246, 36, 231, 0.3)',
-    sprint: 'rgba(1, 108, 152, 0.3)',
-    strong: 'rgba(255, 42, 28, 0.3)',
-    yoga: 'rgba(255, 42, 28, 0.3)',
-    yogaxp: 'rgba(255, 42, 28, 0.3)',
-    zumba: 'rgba(199, 255, 46, 0.3)'
-  };
 }

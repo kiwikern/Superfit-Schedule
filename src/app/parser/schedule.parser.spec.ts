@@ -2,19 +2,20 @@ import { parse } from './schedule.parser';
 describe('ScheduleParser', () => {
 
   it('should parse two classes', () => {
-    let input = `{
-      "berlin-europa-center-cycle": {
-        "wednesday": [
+    const input = {
+      'berlin-europa-center-cycle': {
+        'wednesday': [
           {
-            "time": "11:00",
-            "course": "cycle"
+            'time': '11:00',
+            'course': 'cycle'
           },
           {
-            "time": "17:00",
-            "course": "cycle"
+            'time': '17:00',
+            'course': 'cycle'
           }
         ]
-      }}`;
+      }
+    };
     const courses = parse(input);
     expect(courses.length).toBe(2);
     expect(courses[0].workoutId).toBe('cycle');
@@ -22,34 +23,34 @@ describe('ScheduleParser', () => {
   });
 
   it('should parse two days and studios', () => {
-    let input = `{
-      "berlin-europa-center-cycle": {
-        "wednesday": [
+    const input = {
+      'berlin-europa-center-cycle': {
+        'wednesday': [
           {
-            "time": "11:00",
-            "course": "cycle"
+            'time': '11:00',
+            'course': 'cycle'
           },
           {
-            "time": "17:00",
-            "course": "cycle"
+            'time': '17:00',
+            'course': 'cycle'
           }
         ],
-        "monday": [
+        'monday': [
           {
-            "time": "09:00",
-            "course": "rpm"
+            'time': '09:00',
+            'course': 'rpm'
           }
         ]
       },
-      "berlin-europa-center": {
-        "monday": [
+      'berlin-europa-center': {
+        'monday': [
           {
-            "time": "08:00",
-            "course": "yoga"
+            'time': '08:00',
+            'course': 'yoga'
           }
         ]
       }
-      }`;
+    };
     const courses = parse(input);
     expect(courses.length).toBe(4);
     expect(courses[3].workoutId).toBe('yoga');
@@ -57,17 +58,16 @@ describe('ScheduleParser', () => {
   });
 
   it('should parse empty json object', () => {
-    let input = '{}';
+    const input = {};
     const courses = parse(input);
     expect(courses.length).toBe(0);
   });
 
   it('should parse empty json string', () => {
-    let input = '';
+    const input = null;
     const courses = parse(input);
     expect(courses.length).toBe(0);
   });
-
 
 
 });

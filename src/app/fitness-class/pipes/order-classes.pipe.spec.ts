@@ -47,5 +47,5 @@ describe('OrderClassesPipe', () => {
       }
     ];
     expect(pipe.transform(testClasses)).toBe(testClasses);
-  })
+  });
 });

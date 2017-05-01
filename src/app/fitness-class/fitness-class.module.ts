@@ -22,7 +22,7 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
 const fitnessRoutes: Routes = [
   {path: 'filter', component: FilterComponent},
   {path: 'settings', component: SettingsComponent}
-]
+];
 
 @NgModule({
   imports: [

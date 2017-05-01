@@ -6,7 +6,6 @@ import { SelectFilterComponent } from './select-filter/select-filter.component';
 import { FormsModule } from '@angular/forms';
 import { MappingService } from '../services/mapping.service';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../store/root.types';
 import { FilterActions } from '../store/filter.actions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,8 +14,8 @@ describe('FilterComponent', () => {
   let fixture: ComponentFixture<FilterComponent>;
 
   beforeEach(async(() => {
-    let reduxFactory = () => {
-      let ngRedux = new MockRedux({});
+    const reduxFactory = () => {
+      const ngRedux = new MockRedux({});
       return ngRedux;
     };
 

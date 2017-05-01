@@ -30,9 +30,9 @@ export class ClassListComponent implements OnInit {
   }
 
   ngOnInit() {
-    let scrollbar = document.getElementById('second-scrollbar');
-    let scrollbarContent = document.getElementById('second-scrollbar-content');
-    let classList = document.getElementById('class-list');
+    const scrollbar = document.getElementById('second-scrollbar');
+    const scrollbarContent = document.getElementById('second-scrollbar-content');
+    const classList = document.getElementById('class-list');
     if (classList && scrollbar && scrollbarContent) {
       setTimeout(() => scrollbarContent.style.width = classList.scrollWidth + 'px', 100);
       classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;

@@ -16,12 +16,13 @@ export class FitnessClassComponent {
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   isOnlyOneGymSelected: boolean = false;
-  constructor(private mappingService: MappingService) {
-    this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1)
-  }
 
   @Input()
   fitnessClass: FitnessClass;
+
+  constructor(private mappingService: MappingService) {
+    this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1);
+  }
 
   getGymName(gym: Gym): string {
     return this.mappingService.getGymName(gym);

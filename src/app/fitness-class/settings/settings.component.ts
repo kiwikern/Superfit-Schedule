@@ -19,16 +19,17 @@ export class SettingsComponent {
   showSingleStudio = true;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   showDaysInClasses = true;
+
   constructor(private ngRedux: NgRedux<IAppState>,
               private actions: SettingsActions) {
     this.daysLayout$.subscribe(layout => this.daysLayout = layout);
-    this.showTodayFirst$.subscribe(show => this.showTodayFirst = show+'');
+    this.showTodayFirst$.subscribe(show => this.showTodayFirst = show + '');
     this.showSingleStudio$.subscribe(show => this.showSingleStudio = show);
     this.showDaysInClasses$.subscribe(show => this.showDaysInClasses = show);
   }
 
-  changeSetting(name:string, value: string | boolean) {
-    const payload:SettingsPayload = {name, value};
+  changeSetting(name: string, value: string | boolean) {
+    const payload: SettingsPayload = {name, value};
     this.ngRedux.dispatch(this.actions.changeSetting(payload));
   }
 

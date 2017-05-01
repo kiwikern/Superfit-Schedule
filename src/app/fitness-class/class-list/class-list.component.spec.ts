@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClassListComponent } from './class-list.component';
 import { NgRedux } from '@angular-redux/store';
 import { RootActions } from '../../store/root.actions';
-import { Input, Directive } from '@angular/core';
+import { Input, Component } from '@angular/core';
 import { OrderClassesPipe } from '../pipes/order-classes.pipe';
 import { FilterClassesPipe } from '../pipes/filter-classes.pipe';
 
@@ -12,8 +12,8 @@ describe('ClassListComponent', () => {
   let fixture: ComponentFixture<ClassListComponent>;
 
   beforeEach(async(() => {
-    let reduxFactory = () => {
-      let ngRedux = new MockRedux({});
+    const reduxFactory = () => {
+      const ngRedux = new MockRedux({});
       return ngRedux;
     };
 
@@ -24,14 +24,13 @@ describe('ClassListComponent', () => {
         OrderClassesPipe,
         FilterClassesPipe
       ],
-      imports: [
-      ],
+      imports: [],
       providers: [
-        { provide: NgRedux, useFactory: reduxFactory},
+        {provide: NgRedux, useFactory: reduxFactory},
         RootActions
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -50,11 +49,12 @@ class MockRedux extends NgRedux<any> {
   constructor(private state: any) {
     super(null);
   }
+
   dispatch = () => undefined;
   getState = () => this.state;
 }
 
-@Directive({
+@Component({
   selector: 'sfs-fitness-class',
 })
 class MockMainComponent {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {  } from '@angular/core';
+import {} from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -15,7 +15,7 @@ export class TimePeriodComponent {
   @Input()
   duration: number;
 
-  getStartTime() :string {
+  getStartTime(): string {
     return moment(this.startTime)
       .format(this.TIME_FORMAT);
   }
