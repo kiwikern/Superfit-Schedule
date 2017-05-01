@@ -4,6 +4,7 @@ import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
 import { MappingService } from '../services/mapping.service';
 import { FilterState } from '../interfaces/filter-state';
+import { ScheduleActions } from '../store/schedule.actions';
 
 @Component({
   selector: 'sfs-class-list',
@@ -20,7 +21,7 @@ export class ClassListComponent implements OnInit {
   hasFilter: boolean = false;
 
   constructor(ngRedux: NgRedux<IAppState>,
-              action: RootActions,
+              action: ScheduleActions,
               private mappingService: MappingService) {
 
     ngRedux.dispatch(action.loadSchedule());
