@@ -1,24 +1,26 @@
 dist: trusty
 language: node_js
 node_js:
-  - "7"
-
+- '7'
 addons:
   ssh_known_hosts: $DEPLOY_SSH_HOST
-
 deploy:
   skip_cleanup: true
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST:~/testt
-
 before_install:
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sudo apt-get update
-  - sudo apt-get install -y libappindicator1 fonts-liberation
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
-
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
 before_deploy:
-  - npm build
-  - ssh-add $DEPLOY_SSH_KEY
+- npm build
+- export SSHPASS=$DEPLOY_SSH_PASSWORD
+- sshpass -e ssh $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST mkdir test
+env:
+  global:
+  - secure: qaKjgIDg8Ctx1qo43cKU+Q0nvf130g/op80zaJUShCl96HBpkr0lY5Mh97Jykq7fXf+trc+7l9ujuea5CZxM95Vsa3mw2wxo5JWXJwYXUftSMuzDjx79O7xKlo7bdhf3eNdQrofOaO6XDkw9S0IbxOGP/XvKZbJMVbpGo9RP5po/MDyafoaXh9WYwaWYqhAlQNe45xx3pHPdIK+z53TlqCxbal8SGH1U1+zawG6b/rZyscDAnKYibmSthGnw3oYmz5dLWh7btS23nG80bSl261f7VupioS3l1Rpz05heK8QzjeJrrbE1J0HB1ci9zzWJhsdYhPGf0ZaoqY9rThR8aWdW0T0pMyV6qvidN6U4rHOQXqe1DL8AR5mkGh9wjYha6gw+un9fjn9y1Q69pmRlGAqxRjwj/HYNKL7LQMsu47Ty6fJZkZdMdtj2mh6Bk0ajiedI1N1MXlyWAmThYeGTFrCtCK92OxWWPpUBcTTCcjkLQCzJ29vnZQSxuk4DiT0rz0LEYlWw9CFTt+kE1Rv+x4HuQLN71PaY5oL3pGuyb4rtfzI+kskskW1fz3EFgcakUvWFlkZRQqlwW60S7IYGgClAQpnAS0SiLumxd6MQ9lBF3irNUfnILhQOFdhzOyXyTY0KZ25crqfhWcsNlMT0IYfBD8GeBOXuMJuzIC0Pi7A=
+  - secure: dI1eznwmhcXq13j325tJAb741SX7W1gPqaKpO/DE9EFyVFvAFQR3tN+fet/3rem2siuGKPHi7ZRdq6B9pkIzUZ0w8utZTg8miVwCRhwfqNdvNi5h8goQx7zr10UqDr2gCimF53TreuM/MiPT2rrPWEwu4jpbguuYSZ8qK5B6fhHLlFpV2tBYvBT8JEINkdtm9Eiba6ojw4180RefJGetrPPGbH+hl9MpBRFYP4L1pDZFNuwnddlf5OtNw/zihRnexsl4tnAjYYkEShyXwlHwbeX+m6todORtlG0iOIJLoDIGwqLNUozn2DtHH/ZvXyNe+0oejf6gh840baBLVoaY0kPtBLdlPcwDLaRZ2+UySWIyNyekB0xnuHvz0geJVEWp10iMpFAdDYnnb5AKVdhMmahv5nLm1DhalJTQkRhB6I3KVTcLj1itIiwBJWNwMeudtsvO7HNjcuwk3SLsmGLnPJdjyTYcPNSJG/ltTFmsYZ+y/loLRJJK/gz5OzZKVGQkWOE21wAdKx0H7cuxwAGntg2L7/X9cDgPtpcsMzYmyP4FATIKvFYebk8eSYYY5reTRptuuH/YPDK0bx0vh5Lzz2F1jZaKKhb4tkR2B55u9ujR4vJPhqNZUMNIvOwFENJLDg0ZpwnPkB206ugn91UnZiqVkM/F9Fx4vmwYo85bJzI=
+  - secure: s5zUavMdLyjd9CkxBlcmAqyRLr2oWHpVT5n53eKuVw6yCUAK5urUxDDyy0tDzLrypwQX6jDNufG/XTlYiC68GpTe3DsFpyB3+FnuvXNj9dkeeBmNhWiXvEKuXv/tgk270skljGMbZmp3Y8uhp7cIZhvvGTRXN5yyjBRIsohvdCIbRVCj+RCn8/1bzR8k29eI6rfYwFYj8gIULBW3Pz4bU90i8EgGWeomkEpOSqi1dwwdNEcwVQlZVaDnoA5506FvO01qhia5RR00nK9TDp4LEPQiHn/ouuxwv+O1Q8zMeQi9Aju50L4OTKSoUHvl16Wm8deInjnjz7HSwn/tAezfpmcPqYKG/OYZDLB1zrGMAcAN1/8wj+oC0a1GQ7Bpm6LSpLBUWLLcAM5OxraiFA8/4RcqOlv18VSOudilrmSMW/hE9Y4jXkgIng/Aq50RuWaXRM/dyKTBBYJ/1G+d6vi32jHM2cOwlWoTPQ/zk9bVCdyq5swjExtSQj8EpzyQwCCxZYLK1XxIIWQk27hi27ChWiykGcidteygvWJcT/IpCC6+p815ek2v0XOW2PRtnznV/KTSJ0U+OztkJutngstqX++Q620ipH86fMrNO1DFUmkzCgCUWBMIiuUwfv6z+oLJY4TNFpzC1KZem+r6pxlIXyrhAO2m/WoSqq7SQubtHfE=
