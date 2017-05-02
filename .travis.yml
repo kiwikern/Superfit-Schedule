@@ -4,7 +4,7 @@ node_js:
   - "7"
 
 addons:
-  ssh_known_hosts: antares.uberspace.de
+  ssh_known_hosts: $DEPLOY_SSH_HOST
 
 deploy:
   skip_cleanup: true
@@ -21,6 +21,4 @@ before_install:
 
 before_deploy:
   - npm build
-  - openssl aes-256-cbc -K $DEPLOY_SSH_KEY -out travis_key -d
-  - chmod 0400 travis_key
-  - mv travis_key ~/.ssh/id_rsa
+  - ssh-add $DEPLOY_SSH_KEY
