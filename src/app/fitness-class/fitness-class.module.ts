@@ -18,6 +18,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsActions } from './store/settings.actions';
 import { SfsMaterialModule } from '../material/sfs-material.module';
+import { ScheduleParserService } from './services/schedule-parser.service';
 
 const fitnessRoutes: Routes = [
   {path: 'filter', component: FilterComponent},
@@ -52,7 +53,8 @@ const fitnessRoutes: Routes = [
     ScheduleActions,
     FilterActions,
     SettingsActions,
-    MappingService
+    MappingService,
+    ScheduleParserService
   ]
 })
 export class FitnessClassModule {

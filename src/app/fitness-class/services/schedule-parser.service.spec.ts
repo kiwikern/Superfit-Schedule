@@ -1,8 +1,15 @@
-import { parse } from './schedule.parser';
-import { Day } from '../fitness-class/enums/day.enum';
-describe('ScheduleParser', () => {
+import { Day } from '../enums/day.enum';
+import { inject, TestBed } from '@angular/core/testing';
+import { ScheduleParserService } from './schedule-parser.service';
+describe('ScheduleParserService', () => {
 
-  it('should parse two classes', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [ScheduleParserService]
+    });
+  });
+
+  it('should parse two classes', inject([ScheduleParserService], (service: ScheduleParserService) => {
     const input = {
       'berlin-europa-center-cycle': {
         'wednesday': [
@@ -17,13 +24,13 @@ describe('ScheduleParser', () => {
         ]
       }
     };
-    const courses = parse(input);
+    const courses = service.parse(input);
     const classesOnWednesday = courses[Day.WEDNESDAY].classes;
     expect(classesOnWednesday[0].workoutId).toBe('cycle');
     expect(classesOnWednesday[0].day).toBe(2);
-  });
+  }));
 
-  it('should parse two days and studios', () => {
+  it('should parse two days and studios', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = {
       'berlin-europa-center-cycle': {
         'wednesday': [
@@ -52,7 +59,7 @@ describe('ScheduleParser', () => {
         ]
       }
     };
-    const coursesPerDay = parse(input);
+    const coursesPerDay = service.parse(input);
     console.dir(coursesPerDay);
     const coursesOnMonday = coursesPerDay[Day.MONDAY].classes;
     expect(coursesOnMonday.length).toBe(2);
@@ -60,23 +67,23 @@ describe('ScheduleParser', () => {
     expect(coursesOnWednesday.length).toBe(2);
     expect(coursesOnWednesday[1].workoutId).toBe('cycle');
     expect(coursesOnWednesday[1].day).toBe(Day.WEDNESDAY);
-  });
+  }));
 
-  it('should parse empty json object', () => {
+  it('should parse empty json object', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = {};
-    const courses = parse(input);
+    const courses = service.parse(input);
     for (let couresPerDay of courses) {
       expect(couresPerDay.classes.length).toBe(0);
     }
-  });
+  }));
 
-  it('should parse null', () => {
+  it('should parse null', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = null;
-    const courses = parse(input);
+    const courses = service.parse(input);
     for (let couresPerDay of courses) {
       expect(couresPerDay.classes.length).toBe(0);
     }
-  });
+  }));
 
 
 });
