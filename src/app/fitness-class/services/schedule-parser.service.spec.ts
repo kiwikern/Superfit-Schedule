@@ -72,7 +72,7 @@ describe('ScheduleParserService', () => {
   it('should parse empty json object', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = {};
     const courses = service.parse(input);
-    for (let couresPerDay of courses) {
+    for (const couresPerDay of courses) {
       expect(couresPerDay.classes.length).toBe(0);
     }
   }));
@@ -80,7 +80,7 @@ describe('ScheduleParserService', () => {
   it('should parse null', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = null;
     const courses = service.parse(input);
-    for (let couresPerDay of courses) {
+    for (const couresPerDay of courses) {
       expect(couresPerDay.classes.length).toBe(0);
     }
   }));

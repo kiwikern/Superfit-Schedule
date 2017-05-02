@@ -1,8 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { Component, Directive } from '@angular/core';
+import { Component } from '@angular/core';
 import { SfsMaterialModule } from './material/sfs-material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,11 +12,10 @@ describe('AppComponent', () => {
         AppComponent,
         MockClassListComponent,
         MockFilterComponent,
-        MockRouterOutletComponent,
-        MockRouterLinkDirective,
       ],
       imports: [
-        SfsMaterialModule
+        SfsMaterialModule,
+        RouterTestingModule.withRoutes([{path: '', children: []}])
       ],
     }).compileComponents();
   }));
@@ -39,17 +39,4 @@ class MockClassListComponent {
   template: ''
 })
 class MockFilterComponent {
-}
-
-@Component({
-  selector: 'router-outlet',
-  template: ''
-})
-class MockRouterOutletComponent {
-}
-
-@Directive({
-  selector: '[routerLink], [routerLinkActive]'
-})
-class MockRouterLinkDirective {
 }
