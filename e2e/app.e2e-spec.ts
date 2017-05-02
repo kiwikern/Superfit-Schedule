@@ -7,8 +7,8 @@ describe('superfitschedule App', () => {
     page = new SuperfitschedulePage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display app title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getAppTitle()).toEqual('SuperFit Kursplan');
   });
 });

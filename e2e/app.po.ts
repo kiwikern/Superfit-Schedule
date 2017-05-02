@@ -5,7 +5,15 @@ export class SuperfitschedulePage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('sfs-root h1')).getText();
+  getAppTitle() {
+    return element(by.css('md-toolbar-row > span')).getText();
+  }
+
+  getSideNavDiv() {
+    return element(by.css('sfs-root md-sidenav-container md-sidenav div'));
+  }
+
+  getContent() {
+    return element(by.css('sfs-root md-sidenav-container .mat-sidenav-content md-toolbar'));
   }
 }
