@@ -5,7 +5,7 @@ node_js:
 addons:
   ssh_known_hosts: $DEPLOY_SSH_HOST
 deploy:
-  script: sshpass -p $DEPLOY_SSH_PASSWORD ssh $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST -t "$DEPLOY_SSH_PATH/sfs-deploy.sh"
+  script: sshpass -p $DEPLOY_SSH_PASSWORD ssh $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST -t "cd $DEPLOY_SSH_PATH; ./sfs-deploy.sh"
   on:
     branch: release
 before_install:
