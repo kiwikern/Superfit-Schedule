@@ -3,7 +3,9 @@
     <div id="second-scrollbar-content">
     </div>
   </div>
-  <div [fxLayout]="daysLayout$ | async" fxLayoutGap="20px" class="scrollable" id="class-list">
+  <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
+       [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
+       fxLayoutGap="20px" class="scrollable" id="class-list">
     <div *ngFor="let classesPerDay of schedule$ | async | orderDays:showTodayFirst">
       <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
         <h2>{{ getDayName(classesPerDay.day) }}</h2>

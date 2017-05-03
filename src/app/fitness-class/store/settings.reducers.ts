@@ -8,7 +8,6 @@ export const INITIAL_STATE: ISettingsState = {
   showDaysInClasses: true,
   showSingleStudio: true,
   showTodayFirst: true,
-  daysLayout: 'column'
 };
 
 export function settingsReducer(state: ISettingsState = INITIAL_STATE,
@@ -30,7 +29,7 @@ interface ISettingsState {
   showDaysInClasses: boolean;
   showSingleStudio: boolean;
   showTodayFirst: boolean;
-  daysLayout: string;
+  daysLayout?: string;
 }
 
 export interface SettingsPayload {
