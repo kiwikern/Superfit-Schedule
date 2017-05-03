@@ -8,7 +8,7 @@ export const INITIAL_STATE: ISettingsState = {
   showDaysInClasses: true,
   showSingleStudio: true,
   showTodayFirst: true,
-  daysLayout: 'row'
+  daysLayout: 'column'
 };
 
 export function settingsReducer(state: ISettingsState = INITIAL_STATE,
