@@ -18,8 +18,8 @@ before_install:
 - sudo apt-get install -y sshpass
 before_deploy:
 - npm build
-- export SSHPASS=$DEPLOY_SSH_PASSWORD
-- sshpass -e ssh $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST mkdir test
+- echo $DEPLOY_SSH_HOST
+- sshpass -p $DEPLOY_SSH_PASSWORD ssh $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST mkdir ttest
 env:
   global:
   - secure: qaKjgIDg8Ctx1qo43cKU+Q0nvf130g/op80zaJUShCl96HBpkr0lY5Mh97Jykq7fXf+trc+7l9ujuea5CZxM95Vsa3mw2wxo5JWXJwYXUftSMuzDjx79O7xKlo7bdhf3eNdQrofOaO6XDkw9S0IbxOGP/XvKZbJMVbpGo9RP5po/MDyafoaXh9WYwaWYqhAlQNe45xx3pHPdIK+z53TlqCxbal8SGH1U1+zawG6b/rZyscDAnKYibmSthGnw3oYmz5dLWh7btS23nG80bSl261f7VupioS3l1Rpz05heK8QzjeJrrbE1J0HB1ci9zzWJhsdYhPGf0ZaoqY9rThR8aWdW0T0pMyV6qvidN6U4rHOQXqe1DL8AR5mkGh9wjYha6gw+un9fjn9y1Q69pmRlGAqxRjwj/HYNKL7LQMsu47Ty6fJZkZdMdtj2mh6Bk0ajiedI1N1MXlyWAmThYeGTFrCtCK92OxWWPpUBcTTCcjkLQCzJ29vnZQSxuk4DiT0rz0LEYlWw9CFTt+kE1Rv+x4HuQLN71PaY5oL3pGuyb4rtfzI+kskskW1fz3EFgcakUvWFlkZRQqlwW60S7IYGgClAQpnAS0SiLumxd6MQ9lBF3irNUfnILhQOFdhzOyXyTY0KZ25crqfhWcsNlMT0IYfBD8GeBOXuMJuzIC0Pi7A=
