@@ -13,6 +13,7 @@
     </div>
   </div>
 </div>
-<div [fxShow]="!hasFilter" fxLayout="row" fxLayoutAlign="center center">
-  <p>Füge mindestens einen <a routerLink="/filter">Filter</a> hinzu.</p>
+<div [fxShow]="!hasFilter" fxLayout="column" fxLayoutAlign="center center">
+  <p>Um deinen persönlichen Kursplan anzuzeigen, füge deine Lieblingskurse und/oder -studios zu den Filtern hinzu.</p>
+    <button md-raised-button routerLink="/filter">Filter bearbeiten</button>
 </div>
