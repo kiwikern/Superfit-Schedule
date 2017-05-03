@@ -22,14 +22,17 @@ export class ClassListComponent implements OnInit {
   constructor(ngRedux: NgRedux<IAppState>,
               action: ScheduleActions,
               private mappingService: MappingService) {
-
     ngRedux.dispatch(action.loadSchedule());
+  }
+
+  ngOnInit() {
+    this.createSecondScrollbar();
     this.filter$.subscribe(f => this.filter = f);
     this.filter$.subscribe(f => this.hasFilter = Object.keys(f).length > 0);
     this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
   }
 
-  ngOnInit() {
+  private createSecondScrollbar() {
     const scrollbar = document.getElementById('second-scrollbar');
     const scrollbarContent = document.getElementById('second-scrollbar-content');
     const classList = document.getElementById('class-list');
