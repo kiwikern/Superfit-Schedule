@@ -28,7 +28,7 @@ export class ClassListComponent implements OnInit {
   ngOnInit() {
     setTimeout(this.createSecondScrollbar, 100);
     this.filter$.subscribe(f => this.filter = f);
-    this.filter$.subscribe(f => this.hasFilter = Object.keys(f).length > 0);
+    this.filter$.subscribe(f => this.hasFilter = f.hasOwnProperty('gyms') || f.hasOwnProperty('workouts'));
     this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
   }
 
