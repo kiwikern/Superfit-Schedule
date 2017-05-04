@@ -10,12 +10,15 @@
       <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
         <h2>{{ getDayName(classesPerDay.day) }}</h2>
         <sfs-fitness-class *ngFor="let class of classesPerDay.classes | filterClasses:filter | orderClasses"
-                           [fitnessClass]="class" fxFlex></sfs-fitness-class>
+                           [fitnessClass]="class"
+                           [isOnlyOneGymSelected]="isOnlyOneGymSelected"
+                           [showDaysInClasses]="showDaysInClasses$ | async"
+                           [showSingleStudio]="showSingleStudio$ | async" fxFlex></sfs-fitness-class>
       </div>
     </div>
   </div>
 </div>
 <div [fxShow]="!hasFilter" fxLayout="column" fxLayoutAlign="center center">
   <p>Um deinen persönlichen Kursplan anzuzeigen, füge deine Lieblingskurse und/oder -studios zu den Filtern hinzu.</p>
-    <button md-raised-button routerLink="/filter">Filter bearbeiten</button>
+  <button md-raised-button routerLink="/filter">Filter bearbeiten</button>
 </div>

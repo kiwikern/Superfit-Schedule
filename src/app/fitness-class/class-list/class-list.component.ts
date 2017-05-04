@@ -15,6 +15,10 @@ export class ClassListComponent implements OnInit {
   @select() readonly filter$;
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
   @select(['settings', 'daysLayout']) daysLayout$;
+  @select(['filter', 'gyms']) gyms$;
+  @select(['settings', 'showSingleStudio']) showSingleStudio$;
+  @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
+  isOnlyOneGymSelected: boolean = false;
   showTodayFirst: boolean = false;
   filter: FilterState = {};
   hasFilter: boolean = false;
@@ -30,6 +34,7 @@ export class ClassListComponent implements OnInit {
     this.filter$.subscribe(f => this.filter = f);
     this.filter$.subscribe(f => this.hasFilter = f.hasOwnProperty('gyms') || f.hasOwnProperty('workouts'));
     this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
+    this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1);
   }
 
   private createSecondScrollbar() {

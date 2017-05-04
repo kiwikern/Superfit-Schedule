@@ -12,16 +12,16 @@ import { Day } from '../enums/day.enum';
 })
 export class FitnessClassComponent {
 
-  @select(['filter', 'gyms']) gyms$;
-  @select(['settings', 'showSingleStudio']) showSingleStudio$;
-  @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
+  @Input()
+  showSingleStudio: boolean = true;
+  @Input()
+  showDaysInClasses: boolean = true;
+  @Input()
   isOnlyOneGymSelected: boolean = false;
-
   @Input()
   fitnessClass: FitnessClass;
 
   constructor(private mappingService: MappingService) {
-    this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1);
   }
 
   getGymName(gym: Gym): string {
