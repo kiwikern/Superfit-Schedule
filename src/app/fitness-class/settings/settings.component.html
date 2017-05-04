@@ -13,6 +13,7 @@
       <md-card>
         <h3>Anzeige der Tage</h3>
         <md-radio-group fxLayout="column" [(ngModel)]="daysLayout" (change)="changeSetting('daysLayout', daysLayout)">
+          <md-radio-button value="">automatisch</md-radio-button>
           <md-radio-button value="row">nebeneinander</md-radio-button>
           <md-radio-button value="column">untereinander</md-radio-button>
         </md-radio-group>
