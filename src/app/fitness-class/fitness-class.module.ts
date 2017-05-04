@@ -21,6 +21,7 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
 import { ScheduleParserService } from './services/schedule-parser.service';
 
 const fitnessRoutes: Routes = [
+  {path: 'schedule', component: ClassListComponent},
   {path: 'filter', component: FilterComponent},
   {path: 'settings', component: SettingsComponent}
 ];

@@ -15,7 +15,7 @@ import { SfsMaterialModule } from './material/sfs-material.module';
 
 
 const appRoutes: Routes = [
-  {path: '', children: []},
+  {path: '', redirectTo: 'schedule', pathMatch: 'prefix'},
   {path: 'about', component: AboutComponent}
 ];
 
