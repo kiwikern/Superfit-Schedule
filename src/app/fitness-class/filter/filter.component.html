@@ -1,5 +1,5 @@
   <md-card *ngIf="showFilter" fxLayout="column" fxLayoutGap="10px" fxFlexAlign="stretch center">
-    <md-card-title fxFlexAlign="center">Filter</md-card-title>
+    <md-card-title fxFlexAlign="center">Kurswahl</md-card-title>
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
       <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
                          title="Kurse" [nameMapping]="classMapping" fxFlex></sfs-select-filter>
