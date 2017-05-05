@@ -31,7 +31,6 @@ export class FilterClassesPipe implements PipeTransform {
       const startMinutes = moment(workout.startTime).minutes();
       const duration = workout.duration;
       const endHour = moment(workout.startTime).minutes(startMinutes + duration).hour();
-      console.log(endHour);
       return (maxEndTime > endHour) || (maxEndTime === endHour && startMinutes === 0);
     }
   }

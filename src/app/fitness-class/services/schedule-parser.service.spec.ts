@@ -60,7 +60,6 @@ describe('ScheduleParserService', () => {
       }
     };
     const coursesPerDay = service.parse(input);
-    console.dir(coursesPerDay);
     const coursesOnMonday = coursesPerDay[Day.MONDAY].classes;
     expect(coursesOnMonday.length).toBe(2);
     const coursesOnWednesday = coursesPerDay[Day.WEDNESDAY].classes;
