@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FilterState } from '../interfaces/filter-state';
+import * as moment from 'moment';
 
 @Pipe({
   name: 'filterClasses',
@@ -17,9 +18,21 @@ export class FilterClassesPipe implements PipeTransform {
         (!filterState.workouts || filterState.workouts.includes(c.workoutId)) &&
         (!filterState.durations || filterState.durations.includes(c.duration)) &&
         (!filterState.languages || filterState.languages.includes(c.language)) &&
-        (!filterState.minStartTime || filterState.minStartTime >= c.startTime) &&
-        (!filterState.maxStartTime || filterState.maxStartTime >= c.startTime)
+        (!filterState.minStartTime || filterState.minStartTime <= moment(c.startTime).hour()) &&
+        this.isBeforeMaxEndTime(filterState.maxEndTime, c)
       );
+    }
+  }
+
+  private isBeforeMaxEndTime(maxEndTime: number, workout: FitnessClass): boolean {
+    if (!maxEndTime) {
+      return true;
+    } else {
+      const startMinutes = moment(workout.startTime).minutes();
+      const duration = workout.duration;
+      const endHour = moment(workout.startTime).minutes(startMinutes + duration).hour();
+      console.log(endHour);
+      return (maxEndTime > endHour) || (maxEndTime === endHour && startMinutes === 0);
     }
   }
 
