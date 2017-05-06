@@ -24,7 +24,6 @@ export class FilterComponent {
   @select(['filter', 'languages']) languages$;
   allLanguages = this.mappingService.getAllLanguages();
   languageMapping = this.mappingService.getLanguageMapping();
-  showFilter = true;
 
   constructor(private mappingService: MappingService,
               private ngRedux: NgRedux<IAppState>,
