@@ -12,6 +12,7 @@
     <sfs-select-filter [selectedValues]="languages$ | async" (onSelection)="updateLanguages($event)"
                        title="Sprachen" [nameMapping]="languageMapping" fxFlex></sfs-select-filter>
   </div>
+  <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)" [minStartTime]="minStartTime$ | async" [maxEndTime]="maxEndTime$ | async"></sfs-time-filter>
   <div fxLayoutAlign="center">
     <button md-raised-button routerLink="/">Schließen</button>
   </div>

@@ -24,6 +24,8 @@ export class FilterComponent {
   @select(['filter', 'languages']) languages$;
   allLanguages = this.mappingService.getAllLanguages();
   languageMapping = this.mappingService.getLanguageMapping();
+  @select(['filter', 'minStartTime']) minStartTime$;
+  @select(['filter', 'maxEndTime']) maxEndTime$;
 
   constructor(private mappingService: MappingService,
               private ngRedux: NgRedux<IAppState>,

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdIconModule, MdRadioModule,
-  MdSelectModule, MdSidenavModule, MdToolbarModule
+  MdSelectModule, MdSidenavModule, MdSliderModule, MdToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdChipsModule,
     MdCardModule,
     MdRadioModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdSliderModule
   ],
   exports: [
     CommonModule,
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdChipsModule,
     MdCardModule,
     MdRadioModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdSliderModule
   ]
 })
 export class SfsMaterialModule {
