@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimeFilterComponent } from './time-filter.component';
+import { SfsMaterialModule } from '../../../material/sfs-material.module';
+import { FormsModule } from '@angular/forms';
 
 describe('TimeFilterComponent', () => {
   let component: TimeFilterComponent;
@@ -8,9 +10,10 @@ describe('TimeFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimeFilterComponent ]
+      declarations: [TimeFilterComponent],
+      imports: [SfsMaterialModule, FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,13 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterComponent } from './filter.component';
-import { MaterialModule } from '@angular/material';
 import { SelectFilterComponent } from './select-filter/select-filter.component';
 import { FormsModule } from '@angular/forms';
 import { MappingService } from '../services/mapping.service';
 import { NgRedux } from '@angular-redux/store';
 import { FilterActions } from '../store/filter.actions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TimeFilterComponent } from './time-filter/time-filter.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
@@ -20,9 +21,9 @@ describe('FilterComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ FilterComponent, SelectFilterComponent ],
+      declarations: [ FilterComponent, SelectFilterComponent, TimeFilterComponent ],
       imports: [
-        MaterialModule,
+        SfsMaterialModule,
         FormsModule,
         NoopAnimationsModule
       ],
