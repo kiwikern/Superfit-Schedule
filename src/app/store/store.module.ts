@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgReduxModule, DevToolsExtension, NgRedux } from '@angular-redux/store';
+import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
 import { IAppState } from './root.types';
 import { RootEpics } from './root.epics';
 import { rootReducer } from './root.reducers';

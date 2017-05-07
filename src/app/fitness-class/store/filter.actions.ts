@@ -1,7 +1,7 @@
 /**
  * Created by Kim on 02.04.2017.
  */
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FilterPayload } from './filter.reducers';
 
 @Injectable()

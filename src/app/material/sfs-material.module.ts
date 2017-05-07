@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdIconModule, MdRadioModule,
-  MdSelectModule, MdSidenavModule, MdSliderModule, MdToolbarModule
+  MdButtonModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdChipsModule,
+  MdIconModule,
+  MdRadioModule,
+  MdSelectModule,
+  MdSidenavModule,
+  MdSliderModule,
+  MdToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

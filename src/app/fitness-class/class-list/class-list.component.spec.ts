@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClassListComponent } from './class-list.component';
 import { NgRedux } from '@angular-redux/store';
-import { Input, Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OrderClassesPipe } from '../pipes/order-classes.pipe';
 import { FilterClassesPipe } from '../pipes/filter-classes.pipe';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
