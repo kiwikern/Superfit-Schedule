@@ -4,6 +4,11 @@ node_js:
 - '7'
 addons:
   ssh_known_hosts: $DEPLOY_SSH_HOST
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      -google-chrome-stable
 deploy:
   skip_cleanup: true
   provider: script
@@ -11,11 +16,7 @@ deploy:
   on:
     branch: release
 before_install:
-- export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- sudo apt-get update
-- sudo apt-get install -y libappindicator1 fonts-liberation
-- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-- sudo dpkg -i google-chrome*.deb
-- sudo apt-get install -y sshpass
+script:
+  - npm run ci
