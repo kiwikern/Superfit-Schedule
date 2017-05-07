@@ -11,6 +11,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { NgRedux } from '@angular-redux/store';
 import { FilterActions } from '../store/filter.actions';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FavoriteActions } from '../store/favorite.actions';
 
 describe('FitnessClassComponent', () => {
   let component: FitnessClassComponent;
@@ -25,11 +26,12 @@ describe('FitnessClassComponent', () => {
       declarations: [FitnessClassComponent, TimePeriodComponent],
       imports: [
         SfsMaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
       ],
       providers: [
         {provide: NgRedux, useFactory: reduxFactory},
-        MappingService
+        MappingService,
+        FavoriteActions
       ]
     })
       .compileComponents();
