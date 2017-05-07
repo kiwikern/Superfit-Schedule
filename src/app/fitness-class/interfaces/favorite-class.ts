@@ -10,14 +10,6 @@ export class FavoriteClass {
   workoutId: string;
   gym: Gym;
 
-  constructor(fitnessClass: FitnessClass) {
-    this.day = fitnessClass.day;
-    this.workoutId = fitnessClass.workoutId;
-    this.gym = fitnessClass.gym;
-    this.startHour = moment(fitnessClass.startTime).hours();
-    this.startMinute = moment(fitnessClass.startTime).minutes();
-  }
-
   public static isEqualTo(favorite: FavoriteClass, otherFavorite: FavoriteClass) {
     if (!otherFavorite) {
       return false;
@@ -28,5 +20,13 @@ export class FavoriteClass {
         favorite.gym === otherFavorite.gym &&
         favorite.workoutId === otherFavorite.workoutId;
     }
+  }
+
+  constructor(fitnessClass: FitnessClass) {
+    this.day = fitnessClass.day;
+    this.workoutId = fitnessClass.workoutId;
+    this.gym = fitnessClass.gym;
+    this.startHour = moment(fitnessClass.startTime).hours();
+    this.startMinute = moment(fitnessClass.startTime).minutes();
   }
 }
