@@ -62,5 +62,5 @@ const fitnessRoutes: Routes = [
     FavoriteActions
   ]
 })
-export class FitnessClassModule {
+export class FitnessScheduleModule {
 }

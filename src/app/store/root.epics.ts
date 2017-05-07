@@ -4,7 +4,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { ScheduleEpics } from '../fitness-class/store/schedule.epics';
+import { ScheduleEpics } from '../fitness-schedule/store/schedule.epics';
 import { createEpicMiddleware } from 'redux-observable';
 
 @Injectable()

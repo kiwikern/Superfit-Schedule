@@ -1,5 +1,5 @@
-import { ScheduleState } from '../fitness-class/interfaces/schedule-state';
-import { FilterState } from '../fitness-class/interfaces/filter-state';
+import { ScheduleState } from '../fitness-schedule/interfaces/schedule-state';
+import { FilterState } from '../fitness-schedule/interfaces/filter-state';
 /**
  * Created by Kim on 02.04.2017.
  */

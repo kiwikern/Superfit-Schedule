@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from './store/store.module';
-import { FitnessClassModule } from './fitness-class/fitness-class.module';
+import { FitnessScheduleModule } from './fitness-schedule/fitness-schedule.module';
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgReduxModule,
     StoreModule,
-    FitnessClassModule,
+    FitnessScheduleModule,
     SfsMaterialModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes, {useHash: true})

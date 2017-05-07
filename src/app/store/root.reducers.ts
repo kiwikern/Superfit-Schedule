@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { scheduleReducer } from '../fitness-class/store/schedule.reducers';
-import { filterReducer } from '../fitness-class/store/filter.reducers';
-import { settingsReducer } from '../fitness-class/store/settings.reducers';
-import { favoriteReducer } from '../fitness-class/store/favorite.reducers';
+import { scheduleReducer } from '../fitness-schedule/store/schedule.reducers';
+import { filterReducer } from '../fitness-schedule/store/filter.reducers';
+import { settingsReducer } from '../fitness-schedule/store/settings.reducers';
+import { favoriteReducer } from '../fitness-schedule/store/favorite.reducers';
 /**
  * Created by Kim on 02.04.2017.
  */
