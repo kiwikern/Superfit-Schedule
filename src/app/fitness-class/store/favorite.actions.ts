@@ -2,7 +2,7 @@
  * Created by Kim on 02.04.2017.
  */
 import { Injectable } from '@angular/core';
-import { FilterPayload } from './filter.reducers';
+import { FavoritePayload } from './favorite.reducers';
 
 @Injectable()
 export class FavoriteActions {
@@ -10,26 +10,21 @@ export class FavoriteActions {
   static readonly FAVORITE_REMOVED = 'FAVORITE_REMOVED';
   static readonly FAVORITE_CLEARED = 'FAVORITE_CLEARED';
 
-  addFilter(payload: FilterPayload) {
+  addFavorite(payload: FavoritePayload) {
     return {
       type: FavoriteActions.FAVORITE_ADDED,
-      payload: {
-        filterName: payload.filterName,
-        filterValue: payload.filterValue
-      }
+      payload
     };
   }
 
-  removeFilter(payload: FilterPayload) {
+  removeFavorite(payload: FavoritePayload) {
     return {
       type: FavoriteActions.FAVORITE_REMOVED,
-      payload: {
-        filterName: payload.filterName
-      }
+      payload
     };
   }
 
-  clearFilter() {
+  clearFavorites() {
     return {
       type: FavoriteActions.FAVORITE_CLEARED,
     };

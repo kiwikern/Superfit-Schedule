@@ -20,6 +20,7 @@ import { SettingsActions } from './store/settings.actions';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { ScheduleParserService } from './services/schedule-parser.service';
 import { TimeFilterComponent } from './filter/time-filter/time-filter.component';
+import { FavoriteActions } from './store/favorite.actions';
 
 const fitnessRoutes: Routes = [
   {path: 'schedule', component: ClassListComponent},
@@ -57,7 +58,8 @@ const fitnessRoutes: Routes = [
     FilterActions,
     SettingsActions,
     MappingService,
-    ScheduleParserService
+    ScheduleParserService,
+    FavoriteActions
   ]
 })
 export class FitnessClassModule {

@@ -1,6 +1,10 @@
 <md-card [style.background-color]="getClassColor(fitnessClass.workoutId)" class="fitness-class">
-  <md-card-title>
+  <md-card-title fxLayoutAlign="start center">
     {{getClassName(fitnessClass.workoutId)}}
+    <button md-icon-button (click)="toggleFavorite()">
+      <md-icon [fxHide]="isFavorite">favorite_border</md-icon>
+      <md-icon [fxShow]="isFavorite" color="warn">favorite</md-icon>
+    </button>
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
   </md-card-title>
   <md-card-subtitle [fxHide]="(showSingleStudio$ | async) && isOnlyOneGymSelected">
