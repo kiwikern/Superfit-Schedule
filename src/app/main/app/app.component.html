@@ -1,48 +1,15 @@
 <md-sidenav-container fullscreen>
-<md-toolbar color="primary">
-  <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-xs="true">
-    <md-icon>menu</md-icon>
-  </button>
-  <span>SuperFit Kursplan</span>
-  <div fxFlex></div>
-  <div fxHide.lt-sm="true">
-    <button md-button routerLink="/">
-      <md-icon>event</md-icon>
-      Kursplan
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-xs="true">
+      <md-icon>menu</md-icon>
     </button>
-    <button md-button routerLink="/filter">
-      <md-icon>playlist_add</md-icon>
-      Kurswahl
-    </button>
-    <button md-button routerLink="/settings">
-      <md-icon>settings</md-icon>
-      Einstellungen
-    </button>
-    <button md-button routerLink="/about">
-      <md-icon>person</md-icon>
-      Über
-    </button>
-  </div>
-</md-toolbar>
+    <span>SuperFit Kursplan</span>
+    <div fxFlex></div>
+    <sfs-navigation fxHide.lt-sm="true"></sfs-navigation>
+  </md-toolbar>
   <md-sidenav #sidenav>
-    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
-      <button md-button (click)="sidenav.close()" routerLink="/">
-        <md-icon>event</md-icon>
-        Kursplan
-      </button>
-      <button md-button (click)="sidenav.close()" routerLink="/filter">
-        <md-icon>playlist_add</md-icon>
-        Kurswahl
-      </button>
-      <button md-button (click)="sidenav.close()" routerLink="/settings">
-        <md-icon>settings</md-icon>
-        Einstellungen
-      </button>
-      <button md-button (click)="sidenav.close()" routerLink="/about">
-        <md-icon>person</md-icon>
-        Über
-      </button>
-    </div>
+    <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
+                    [sideNav]="sidenav"></sfs-navigation>
   </md-sidenav>
   <div class="margin">
     <router-outlet></router-outlet>

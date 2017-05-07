@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 const appRoutes: Routes = [
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
