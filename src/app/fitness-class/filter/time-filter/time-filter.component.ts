@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TimeFilterComponent implements OnInit {
 
+  readonly MIN_TIME = 5;
+  readonly MAX_TIME = 22;
   @Input() minStartTime: number;
   @Input() maxEndTime: number;
   @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
@@ -18,7 +20,7 @@ export class TimeFilterComponent implements OnInit {
   }
 
   getTimeText(hour: number): string {
-    if (!hour || hour === 0) {
+    if (!hour || hour === this.MIN_TIME) {
       return 'egal';
     } else if (hour < 10) {
       return `0${hour}:00 Uhr`;
@@ -28,7 +30,7 @@ export class TimeFilterComponent implements OnInit {
   }
 
   onChange(change: any) {
-    if (change.value === 0) {
+    if (change.value === this.MIN_TIME) {
       change.value = null;
     }
     this.onSelect.emit(change);

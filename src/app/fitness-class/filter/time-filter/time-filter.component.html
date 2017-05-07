@@ -2,13 +2,13 @@
   <md-card-title>Uhrzeit</md-card-title>
   <div fxLayout="column">
     <label>Kurs beginnt frühestens um {{getTimeText(minStartTime)}}</label>
-    <md-slider min="0" max="24" step="1" thumbLabel="true"
+    <md-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
                [(ngModel)]="minStartTime" (change)="onChange({filterName: 'minStartTime', value: minStartTime})">
     </md-slider>
   </div>
   <div fxLayout="column">
     <label>Kurs endet spätestens um {{getTimeText(maxEndTime)}}</label>
-    <md-slider min="0" max="24" step="1" thumbLabel="true"
+    <md-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
                [(ngModel)]="maxEndTime" (change)="onChange({filterName: 'maxEndTime', value: maxEndTime})">
     </md-slider>
   </div>
