@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,6 +13,7 @@ describe('AppComponent', () => {
         AppComponent,
         MockClassListComponent,
         MockFilterComponent,
+        NavigationComponent
       ],
       imports: [
         SfsMaterialModule,
