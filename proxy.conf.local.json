@@ -1,0 +1,9 @@
+{
+  "/api/sfs/schedule": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "pathRewrite": {
+      "/api/sfs": ""
+    }
+  }
+}
