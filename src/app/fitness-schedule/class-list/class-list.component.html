@@ -1,4 +1,4 @@
-<div *ngIf="hasFilter">
+<div *ngIf="showSchedule">
   <div id="second-scrollbar" fxHide.lt-md="true">
     <div id="second-scrollbar-content">
     </div>
@@ -6,7 +6,7 @@
   <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
        [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
        fxLayoutGap="20px" class="scrollable" id="class-list">
-    <div *ngFor="let classesPerDay of schedule$ | async | orderDays:showTodayFirst">
+    <div *ngFor="let classesPerDay of schedule | orderDays:showTodayFirst">
       <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center"
            *ngIf="(classesPerDay.classes | filterClasses:filter | orderClasses) as filteredClasses"
            [fxShow]="filteredClasses.length > 0">
@@ -17,7 +17,10 @@
     </div>
   </div>
 </div>
-<div [fxShow]="!hasFilter" fxLayout="column" fxLayoutAlign="center center">
+<div *ngIf="!showSchedule" fxLayout="column" fxLayoutAlign="center center">
   <p>Um deinen persönlichen Kursplan anzuzeigen, wähle deine Lieblingskurse und -studios aus.</p>
-  <button md-raised-button routerLink="/filter"><md-icon>playlist_add</md-icon> Kurse wählen</button>
+  <button md-raised-button routerLink="/filter">
+    <md-icon>playlist_add</md-icon>
+    Kurse wählen
+  </button>
 </div>

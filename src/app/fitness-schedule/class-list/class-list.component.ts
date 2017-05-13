@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
 import { MappingService } from '../services/mapping.service';
@@ -11,13 +11,13 @@ import { ScheduleActions } from '../store/schedule.actions';
   styleUrls: ['./class-list.component.css']
 })
 export class ClassListComponent implements OnInit {
-  @select(['schedule', 'schedule']) readonly schedule$;
-  @select() readonly filter$;
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
   @select(['settings', 'daysLayout']) daysLayout$;
   showTodayFirst: boolean = false;
-  filter: FilterState = {};
-  hasFilter: boolean = false;
+
+  @Input() filter: FilterState = {};
+  @Input() showSchedule: boolean = false;
+  @Input() schedule: any[] = [];
 
   constructor(ngRedux: NgRedux<IAppState>,
               action: ScheduleActions,
@@ -27,8 +27,6 @@ export class ClassListComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(this.createSecondScrollbar, 100);
-    this.filter$.subscribe(f => this.filter = f);
-    this.filter$.subscribe(f => this.hasFilter = f.hasOwnProperty('gyms') || f.hasOwnProperty('workouts'));
     this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
   }
 

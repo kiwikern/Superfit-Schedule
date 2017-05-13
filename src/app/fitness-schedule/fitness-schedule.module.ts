@@ -21,9 +21,11 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
 import { ScheduleParserService } from './services/schedule-parser.service';
 import { TimeFilterComponent } from './filter/time-filter/time-filter.component';
 import { FavoriteActions } from './store/favorite.actions';
+import { FilteredScheduleComponent } from './filtered-schedule/filtered-schedule.component';
 
 const fitnessRoutes: Routes = [
-  {path: 'schedule', component: ClassListComponent},
+  {path: 'schedule', component: FilteredScheduleComponent},
+  {path: 'favorites', component: FilteredScheduleComponent},
   {path: 'filter', component: FilterComponent},
   {path: 'settings', component: SettingsComponent}
 ];
@@ -46,7 +48,8 @@ const fitnessRoutes: Routes = [
     SelectFilterComponent,
     OrderDaysPipe,
     SettingsComponent,
-    TimeFilterComponent
+    TimeFilterComponent,
+    FilteredScheduleComponent
   ],
   exports: [
     ClassListComponent,
