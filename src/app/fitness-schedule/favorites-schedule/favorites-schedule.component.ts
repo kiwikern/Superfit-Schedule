@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { ScheduleParserService } from '../services/schedule-parser.service';
+import { FitnessClass } from '../interfaces/fitness-class';
 
 @Component({
   selector: 'sfs-favorites-schedule',
@@ -10,7 +11,7 @@ import { ScheduleParserService } from '../services/schedule-parser.service';
 })
 export class FavoritesScheduleComponent implements OnInit {
 
-  @select(['favorites', 'workouts']) favorites$;//: Observable<FitnessClass[]>;
+  @select(['favorites', 'workouts']) favorites$: Observable<FitnessClass[]>;
   favoritesPerDay = [];
   hasFavorites: boolean = false;
 
