@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilteredScheduleComponent } from './filtered-schedule.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { Component, Input } from '@angular/core';
 
 describe('FilteredScheduleComponent', () => {
   let component: FilteredScheduleComponent;
@@ -8,9 +11,16 @@ describe('FilteredScheduleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilteredScheduleComponent ]
+      declarations: [
+        FilteredScheduleComponent,
+        MockClassListComponent
+      ],
+      imports: [
+        SfsMaterialModule,
+        FlexLayoutModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,3 +33,16 @@ describe('FilteredScheduleComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+@Component({
+  selector: 'sfs-class-list',
+  template: ''
+})
+class MockClassListComponent {
+
+  @Input() schedule;
+  @Input() filter;
+  @Input() showSchedule;
+
+}
