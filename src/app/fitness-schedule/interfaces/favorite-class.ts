@@ -2,6 +2,7 @@ import { Day } from '../enums/day.enum';
 import { Gym } from '../enums/gym.enum';
 import { FitnessClass } from './fitness-class';
 import * as moment from 'moment';
+import { Language } from '../enums/language.enum';
 
 export class FavoriteClass {
   startHour: number;
@@ -9,6 +10,8 @@ export class FavoriteClass {
   day: Day;
   workoutId: string;
   gym: Gym;
+  language: Language;
+  duration: number;
 
   public static isEqualTo(favorite: FavoriteClass, otherFavorite: FavoriteClass) {
     if (!otherFavorite) {
@@ -18,6 +21,8 @@ export class FavoriteClass {
         favorite.startHour === otherFavorite.startHour &&
         favorite.day === otherFavorite.day &&
         favorite.gym === otherFavorite.gym &&
+        favorite.language === otherFavorite.language &&
+        favorite.duration === otherFavorite.duration &&
         favorite.workoutId === otherFavorite.workoutId;
     }
   }
@@ -27,6 +32,8 @@ export class FavoriteClass {
     this.workoutId = fitnessClass.workoutId;
     this.gym = fitnessClass.gym;
     this.startHour = fitnessClass.startHour;
+    this.language = fitnessClass.language;
     this.startMinute = fitnessClass.startMinute;
+    this.duration = fitnessClass.duration;
   }
 }
