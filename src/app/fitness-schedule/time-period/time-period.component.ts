@@ -13,6 +13,12 @@ export class TimePeriodComponent {
   @Input() startMinute: number;
   @Input() duration: number;
 
+  getStartTime(): string {
+    return moment()
+      .hour(this.startHour)
+      .minutes(this.startMinute)
+      .format(this.TIME_FORMAT);
+  }
 
   getEndTime(): string {
     return moment()

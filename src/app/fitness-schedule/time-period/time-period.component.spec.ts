@@ -27,6 +27,14 @@ describe('TimePeriodComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should display start time', () => {
+    const expectedStartTime = moment()
+      .hour(10)
+      .minute(0)
+      .format('HH:mm');
+    expect(component.getStartTime()).toBe(expectedStartTime);
+  });
+
   it('should display end time', () => {
     const expectedEndTime = moment()
       .hour(11)
