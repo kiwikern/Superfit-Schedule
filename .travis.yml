@@ -16,6 +16,7 @@ deploy:
   on:
     branch: release
 before_install:
+- npm install -g @angular/cli
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 script:
