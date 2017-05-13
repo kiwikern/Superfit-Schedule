@@ -2,29 +2,29 @@
 
 [![Build Status](https://travis-ci.org/kiwikern/Superfit-Schedule.svg?branch=master)](https://travis-ci.org/kiwikern/Superfit-Schedule)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+This is progressive web app showing a schedule for the fitness classes at the [SuperFit](http://www.mysuperfit.com) gym in Berlin.
 
-## Development server
+## Functions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![mobile_sidenav](https://cloud.githubusercontent.com/assets/2671139/26029647/b18b740c-383a-11e7-962b-cc172be4f14d.png)
 
-## Code scaffolding
+### Schedule
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+The PWA shows a schedule either in a column (desktop) or row (mobile) layout.
 
-## Build
+![mobile layout](https://cloud.githubusercontent.com/assets/2671139/26029643/9386f238-383a-11e7-97cf-5314e2a4118d.png)
+![desktop_layout](https://cloud.githubusercontent.com/assets/2671139/26029656/ed7598d0-383a-11e7-9c46-004163f29585.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Favorites
 
-## Running unit tests
+### Filters
+You can select your favorite classes, gyms, durations, languages and time frame. 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![desktop_filters](https://cloud.githubusercontent.com/assets/2671139/26029671/90b0fa26-383b-11e7-8c3b-1f9f5ba347c9.png)
 
-## Running end-to-end tests
+### Settings
+There are several view options to customize the page.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+![mobile_settings](https://cloud.githubusercontent.com/assets/2671139/26029690/26e4d346-383c-11e7-9f41-2903fd3057dd.png)
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
