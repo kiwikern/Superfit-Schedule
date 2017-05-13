@@ -12,7 +12,8 @@
   </md-card-subtitle>
   <div fxLayout="row">
     <span [fxShow]="showDaysInClasses$ | async">{{getDayName(fitnessClass.day)}},&nbsp;</span>
-    <sfs-time-period [startTime]="fitnessClass.startTime" [duration]="fitnessClass.duration">
+    <sfs-time-period [startHour]="fitnessClass.startHour" [startMinute]="fitnessClass.startMinute"
+                     [duration]="fitnessClass.duration">
     </sfs-time-period>
   </div>
 </md-card>

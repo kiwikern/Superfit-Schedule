@@ -25,10 +25,16 @@ export class OrderClassesPipe implements PipeTransform {
     if (dayA > dayB) {
       return 1;
     }
-    if (classA.startTime < classB.startTime) {
+    if (classA.startHour < classB.startHour) {
       return -1;
     }
-    if (classA.startTime > classB.startTime) {
+    if (classA.startHour > classB.startHour) {
+      return 1;
+    }
+    if (classA.startMinute < classB.startMinute) {
+      return -1;
+    }
+    if (classA.startMinute > classB.startMinute) {
       return 1;
     }
     return 0;

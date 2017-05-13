@@ -26,7 +26,7 @@ export class FavoriteClass {
     this.day = fitnessClass.day;
     this.workoutId = fitnessClass.workoutId;
     this.gym = fitnessClass.gym;
-    this.startHour = moment(fitnessClass.startTime).hours();
-    this.startMinute = moment(fitnessClass.startTime).minutes();
+    this.startHour = fitnessClass.startHour;
+    this.startMinute = fitnessClass.startMinute;
   }
 }

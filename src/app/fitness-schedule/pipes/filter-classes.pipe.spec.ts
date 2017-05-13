@@ -10,7 +10,8 @@ describe('FilterClassesPipe', () => {
   const testClasses: FitnessClass[] = [
     {
       day: Day.MONDAY,
-      startTime: moment().hour(8).minutes(0).toDate(),
+      startHour: 8,
+      startMinute: 0,
       duration: 60,
       workoutId: '0',
       gym: Gym.CHARLOTTENBURG,
@@ -18,7 +19,8 @@ describe('FilterClassesPipe', () => {
     },
     {
       day: Day.MONDAY,
-      startTime: moment().hour(10).minutes(0).toDate(),
+      startHour: 10,
+      startMinute: 0,
       duration: 60,
       workoutId: '1',
       gym: Gym.CHARLOTTENBURG,
@@ -26,7 +28,8 @@ describe('FilterClassesPipe', () => {
     },
     {
       day: Day.TUESDAY,
-      startTime: moment().hour(11).minutes(0).toDate(),
+      startHour: 11,
+      startMinute: 0,
       duration: 60,
       workoutId: '2',
       gym: Gym.CHARLOTTENBURG,
@@ -34,7 +37,8 @@ describe('FilterClassesPipe', () => {
     },
     {
       day: Day.TUESDAY,
-      startTime: moment().hour(11).minutes(30).toDate(),
+      startHour: 11,
+      startMinute: 30,
       duration: 60,
       workoutId: '3',
       gym: Gym.CHARLOTTENBURG,
@@ -42,7 +46,8 @@ describe('FilterClassesPipe', () => {
     },
     {
       day: Day.TUESDAY,
-      startTime: moment().hour(14).minutes(0).toDate(),
+      startHour: 14,
+      startMinute: 0,
       duration: 60,
       workoutId: '4',
       gym: Gym.CHARLOTTENBURG,

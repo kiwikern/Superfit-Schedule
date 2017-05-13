@@ -1,0 +1,10 @@
+<sfs-class-list [schedule]="favoritesPerDay" [showSchedule]="hasFavorites"></sfs-class-list>
+<div *ngIf="!hasFavorites" fxLayout="column" fxLayoutAlign="center center">
+  <p>Um deinen persönlichen Favoriten anzuzeigen, klicke im Kursplan bei deinen Lieblingskursen auf das
+    <md-icon>favorite_border</md-icon>
+  </p>
+  <button md-raised-button routerLink="/schedule">
+    <md-icon>favorite</md-icon>
+    Zu Kursplan
+  </button>
+</div>

@@ -63,7 +63,8 @@ export class ScheduleParserService {
     const classes: FitnessClass[] = [];
     for (const course of dayJSON) {
       const fitnessClass: FitnessClass = {
-        startTime: moment(course.time + '', 'HH:mm').toDate(),
+        startHour: moment(course.time + '', 'HH:mm').hour(),
+        startMinute: moment(course.time + '', 'HH:mm').minute(),
         day: this.DayMapping[day],
         duration: this.getClassDuration(course.course),
         workoutId: this.getClassName(course.course),
@@ -76,7 +77,7 @@ export class ScheduleParserService {
   }
 
 
-  private getAllClassesByDay(classes: FitnessClass[]) {
+  public getAllClassesByDay(classes: FitnessClass[]) {
     const result = [];
     const days = Object.keys(Day)
       .filter(key => typeof Day[key] === 'string')

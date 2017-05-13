@@ -15,7 +15,8 @@ describe('OrderClassesPipe', () => {
     const testClasses: FitnessClass[] = [
       {
         day: Day.MONDAY,
-        startTime: new Date(),
+        startHour: 10,
+        startMinute: 0,
         duration: 60,
         workoutId: '',
         gym: Gym.CHARLOTTENBURG,
@@ -23,7 +24,8 @@ describe('OrderClassesPipe', () => {
       },
       {
         day: Day.MONDAY,
-        startTime: new Date(),
+        startHour: 10,
+        startMinute: 0,
         duration: 60,
         workoutId: '',
         gym: Gym.CHARLOTTENBURG,
@@ -31,7 +33,8 @@ describe('OrderClassesPipe', () => {
       },
       {
         day: Day.TUESDAY,
-        startTime: new Date(),
+        startHour: 10,
+        startMinute: 0,
         duration: 60,
         workoutId: '',
         gym: Gym.CHARLOTTENBURG,
@@ -39,7 +42,8 @@ describe('OrderClassesPipe', () => {
       },
       {
         day: Day.TUESDAY,
-        startTime: new Date(),
+        startHour: 10,
+        startMinute: 0,
         duration: 60,
         workoutId: '',
         gym: Gym.CHARLOTTENBURG,

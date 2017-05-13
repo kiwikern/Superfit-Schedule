@@ -17,21 +17,14 @@ describe('TimePeriodComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TimePeriodComponent);
     component = fixture.componentInstance;
-    component.startTime = moment().hour(10).minute(0).toDate();
+    component.startHour = 10;
+    component.startMinute = 0;
     component.duration = 60;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should display start time', () => {
-    const expectedStartTime = moment()
-      .hour(10)
-      .minute(0)
-      .format('HH:mm');
-    expect(component.getStartTime()).toBe(expectedStartTime);
   });
 
   it('should display end time', () => {

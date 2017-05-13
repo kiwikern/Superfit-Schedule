@@ -22,10 +22,11 @@ import { ScheduleParserService } from './services/schedule-parser.service';
 import { TimeFilterComponent } from './filter/time-filter/time-filter.component';
 import { FavoriteActions } from './store/favorite.actions';
 import { FilteredScheduleComponent } from './filtered-schedule/filtered-schedule.component';
+import { FavoritesScheduleComponent } from './favorites-schedule/favorites-schedule.component';
 
 const fitnessRoutes: Routes = [
   {path: 'schedule', component: FilteredScheduleComponent},
-  {path: 'favorites', component: FilteredScheduleComponent},
+  {path: 'favorites', component: FavoritesScheduleComponent},
   {path: 'filter', component: FilterComponent},
   {path: 'settings', component: SettingsComponent}
 ];
@@ -49,7 +50,8 @@ const fitnessRoutes: Routes = [
     OrderDaysPipe,
     SettingsComponent,
     TimeFilterComponent,
-    FilteredScheduleComponent
+    FilteredScheduleComponent,
+    FavoritesScheduleComponent
   ],
   exports: [
     ClassListComponent,
