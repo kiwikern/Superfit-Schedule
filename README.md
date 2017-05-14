@@ -4,9 +4,10 @@
 
 This is progressive web app showing a schedule for the fitness classes at the [SuperFit](http://www.mysuperfit.com) gym in Berlin.
 
-## Functions
+## Features
 
-![mobile_sidenav](https://cloud.githubusercontent.com/assets/2671139/26029647/b18b740c-383a-11e7-962b-cc172be4f14d.png)
+![start-page-mobile](https://cloud.githubusercontent.com/assets/2671139/26037491/f6a375bc-38f3-11e7-914d-a50f832bb50f.png) ![mobile_sidenav](https://cloud.githubusercontent.com/assets/2671139/26029647/b18b740c-383a-11e7-962b-cc172be4f14d.png)
+
 
 ### Schedule
 
