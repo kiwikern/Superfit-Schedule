@@ -7,27 +7,23 @@ import { Day } from '../enums/day.enum';
 import { Gym } from '../enums/gym.enum';
 import { Language } from '../enums/language.enum';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
-import { NgRedux } from '@angular-redux/store';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FavoriteActions } from '../store/favorite.actions';
+import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 
 describe('FitnessClassComponent', () => {
   let component: FitnessClassComponent;
   let fixture: ComponentFixture<FitnessClassComponent>;
 
   beforeEach(async(() => {
-    const reduxFactory = () => {
-      const ngRedux = new MockRedux({});
-      return ngRedux;
-    };
     TestBed.configureTestingModule({
       declarations: [FitnessClassComponent, TimePeriodComponent],
       imports: [
         SfsMaterialModule,
         FlexLayoutModule,
+        NgReduxTestingModule
       ],
       providers: [
-        {provide: NgRedux, useFactory: reduxFactory},
         MappingService,
         FavoriteActions
       ]
@@ -54,12 +50,3 @@ describe('FitnessClassComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-class MockRedux extends NgRedux<any> {
-  constructor(private state: any) {
-    super(null);
-  }
-
-  dispatch = () => undefined;
-  getState = () => this.state;
-}
