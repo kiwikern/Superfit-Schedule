@@ -6,7 +6,7 @@ import { Gym } from '../enums/gym.enum';
 import { Day } from '../enums/day.enum';
 import { IAppState } from '../../store/root.types';
 import { FavoriteActions } from '../store/favorite.actions';
-import { FavoriteClass } from '../interfaces/favorite-class';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'sfs-fitness-class',
@@ -61,10 +61,9 @@ export class FitnessClassComponent implements OnInit {
     }
   }
 
-  private isInFavorites(workouts: FavoriteClass[]): boolean {
+  private isInFavorites(workouts: FitnessClass[]): boolean {
     if (this.fitnessClass) {
-      const favoriteClass = new FavoriteClass(this.fitnessClass);
-      return workouts.findIndex((f) => FavoriteClass.isEqualTo(favoriteClass, f)) !== -1;
+      return workouts.findIndex((f) => _.isEqual(this.fitnessClass, f)) !== -1;
     } else {
       return false;
     }
