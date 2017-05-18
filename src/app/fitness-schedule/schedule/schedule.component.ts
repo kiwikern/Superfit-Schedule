@@ -6,11 +6,11 @@ import { FilterState } from '../interfaces/filter-state';
 import { ScheduleActions } from '../store/schedule.actions';
 
 @Component({
-  selector: 'sfs-class-list',
-  templateUrl: './class-list.component.html',
-  styleUrls: ['./class-list.component.css']
+  selector: 'sfs-schedule',
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.css']
 })
-export class ClassListComponent implements OnInit {
+export class ScheduleComponent implements OnInit {
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
   @select(['settings', 'daysLayout']) daysLayout$;
   showTodayFirst: boolean = false;
@@ -33,7 +33,7 @@ export class ClassListComponent implements OnInit {
   private createSecondScrollbar() {
     const scrollbar = document.getElementById('second-scrollbar');
     const scrollbarContent = document.getElementById('second-scrollbar-content');
-    const classList = document.getElementById('class-list');
+    const classList = document.getElementById('schedule');
     if (classList && scrollbar && scrollbarContent) {
       setTimeout(() => scrollbarContent.style.width = classList.scrollWidth + 'px', 100);
       classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;

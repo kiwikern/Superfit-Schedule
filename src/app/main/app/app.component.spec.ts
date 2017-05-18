@@ -30,7 +30,7 @@ describe('AppComponent', () => {
 });
 
 @Component({
-  selector: 'sfs-class-list',
+  selector: 'sfs-schedule',
   template: ''
 })
 class MockClassListComponent {

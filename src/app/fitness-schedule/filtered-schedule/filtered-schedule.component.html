@@ -1,4 +1,4 @@
-<sfs-class-list [schedulePerDay]="schedulePerDay$ | async" [filter]="filter" [showSchedule]="showSchedule"></sfs-class-list>
+<sfs-schedule [schedulePerDay]="schedulePerDay$ | async" [filter]="filter" [showSchedule]="showSchedule"></sfs-schedule>
 <div *ngIf="!showSchedule" fxLayout="column" fxLayoutAlign="center center">
   <p>Um deinen persönlichen Kursplan anzuzeigen, wähle deine Lieblingskurse und -studios aus.</p>
   <button md-raised-button routerLink="/filter">

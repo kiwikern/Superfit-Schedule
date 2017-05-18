@@ -129,7 +129,7 @@ function getSchedulePerDay(): FitnessClassesPerDay[] {
 }
 
 @Component({
-  selector: 'sfs-class-list',
+  selector: 'sfs-schedule',
   template: ''
 })
 class MockClassListComponent {

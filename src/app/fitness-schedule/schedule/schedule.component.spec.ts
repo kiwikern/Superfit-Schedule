@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClassListComponent } from './class-list.component';
+import { ScheduleComponent } from './schedule.component';
 import { Component, Input } from '@angular/core';
 import { OrderClassesPipe } from '../pipes/order-classes.pipe';
 import { FilterClassesPipe } from '../pipes/filter-classes.pipe';
@@ -11,14 +11,14 @@ import { MappingService } from '../services/mapping.service';
 import { ScheduleActions } from '../store/schedule.actions';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 
-describe('ClassListComponent', () => {
-  let component: ClassListComponent;
-  let fixture: ComponentFixture<ClassListComponent>;
+describe('ScheduleComponent', () => {
+  let component: ScheduleComponent;
+  let fixture: ComponentFixture<ScheduleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ClassListComponent,
+        ScheduleComponent,
         MockMainComponent,
         OrderClassesPipe,
         OrderDaysPipe,
@@ -38,7 +38,7 @@ describe('ClassListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClassListComponent);
+    fixture = TestBed.createComponent(ScheduleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

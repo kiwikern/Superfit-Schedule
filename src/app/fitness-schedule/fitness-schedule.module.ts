@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimePeriodComponent } from './time-period/time-period.component';
 import { FitnessClassComponent } from './fitness-class/fitness-class.component';
-import { ClassListComponent } from './class-list/class-list.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderClassesPipe } from './pipes/order-classes.pipe';
 import { FilterClassesPipe } from './pipes/filter-classes.pipe';
@@ -42,7 +42,7 @@ const fitnessRoutes: Routes = [
   declarations: [
     TimePeriodComponent,
     FitnessClassComponent,
-    ClassListComponent,
+    ScheduleComponent,
     OrderClassesPipe,
     FilterClassesPipe,
     FilterComponent,
@@ -54,7 +54,7 @@ const fitnessRoutes: Routes = [
     FavoritesScheduleComponent
   ],
   exports: [
-    ClassListComponent,
+    ScheduleComponent,
     FilterComponent
   ],
   providers: [
