@@ -8,7 +8,7 @@
     "start:local": "ng serve --proxy-config proxy.conf.local.json",
     "build": "ng build --base-href=/sfs/ --prod",
     "test": "ng test",
-    "test:once": "ng test --watch=false",
+    "test:once": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "ci": "npm run lint && npm run test:once && npm run e2e"
@@ -45,6 +45,7 @@
     "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "codacy-coverage": "^2.0.2",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",

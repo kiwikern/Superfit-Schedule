@@ -21,3 +21,4 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 script:
   - npm run ci
+  - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
