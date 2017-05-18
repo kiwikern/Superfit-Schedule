@@ -67,7 +67,6 @@ describe('FilterClassesPipe', () => {
       maxEndTime: 12
     };
     const result = pipe.transform(testClasses, filter);
-    console.dir(result);
     expect(result.length).toEqual(2);
     expect(result[0].workoutId).toEqual('1');
     expect(result[1].workoutId).toEqual('2');
