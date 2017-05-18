@@ -1,13 +1,11 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { FitnessClass } from '../interfaces/fitness-class';
 
-@Pipe({
-  name: 'orderClasses'
-})
-export class OrderClassesPipe implements PipeTransform {
+@Injectable()
+export class SortClassesService {
 
-  transform(classes: FitnessClass[]): FitnessClass[] {
+  sort(classes: FitnessClass[]): FitnessClass[] {
     if (Array.isArray(classes)) {
       return classes.sort(this.compare);
     } else {

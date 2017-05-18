@@ -1,4 +1,4 @@
-import { FilterClassesPipe } from './filter-classes.pipe';
+import { FilterClassesService } from './filter-classes.service';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { Day } from '../enums/day.enum';
 import { Gym } from '../enums/gym.enum';
@@ -6,7 +6,7 @@ import { Language } from '../enums/language.enum';
 import { FilterState } from '../interfaces/filter-state';
 import * as moment from 'moment';
 
-describe('FilterClassesPipe', () => {
+describe('FilterClassesService', () => {
   const testClasses: FitnessClass[] = [
     {
       day: Day.MONDAY,
@@ -56,17 +56,17 @@ describe('FilterClassesPipe', () => {
   ];
 
   it('should create an instance', () => {
-    const pipe = new FilterClassesPipe();
+    const pipe = new FilterClassesService();
     expect(pipe).toBeTruthy();
   });
 
   it('should filter by time', () => {
-    const pipe = new FilterClassesPipe();
+    const pipe = new FilterClassesService();
     const filter: FilterState = {
       minStartTime: 10,
       maxEndTime: 12
     };
-    const result = pipe.transform(testClasses, filter);
+    const result = pipe.filter(testClasses, filter);
     expect(result.length).toEqual(2);
     expect(result[0].workoutId).toEqual('1');
     expect(result[1].workoutId).toEqual('2');

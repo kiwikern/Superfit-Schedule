@@ -4,8 +4,8 @@ import { TimePeriodComponent } from './time-period/time-period.component';
 import { FitnessClassComponent } from './fitness-class/fitness-class.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { OrderClassesPipe } from './pipes/order-classes.pipe';
-import { FilterClassesPipe } from './pipes/filter-classes.pipe';
+import { SortClassesService } from './services/sort-classes.service';
+import { FilterClassesService } from './services/filter-classes.service';
 import { ScheduleEpics } from './store/schedule.epics';
 import { ScheduleActions } from './store/schedule.actions';
 import { FilterComponent } from './filter/filter.component';
@@ -23,6 +23,7 @@ import { TimeFilterComponent } from './filter/time-filter/time-filter.component'
 import { FavoriteActions } from './store/favorite.actions';
 import { FilteredScheduleComponent } from './filtered-schedule/filtered-schedule.component';
 import { FavoritesScheduleComponent } from './favorites-schedule/favorites-schedule.component';
+import { DayColumnComponent } from './day-column/day-column.component';
 
 const fitnessRoutes: Routes = [
   {path: 'schedule', component: FilteredScheduleComponent},
@@ -43,15 +44,14 @@ const fitnessRoutes: Routes = [
     TimePeriodComponent,
     FitnessClassComponent,
     ScheduleComponent,
-    OrderClassesPipe,
-    FilterClassesPipe,
     FilterComponent,
     SelectFilterComponent,
     OrderDaysPipe,
     SettingsComponent,
     TimeFilterComponent,
     FilteredScheduleComponent,
-    FavoritesScheduleComponent
+    FavoritesScheduleComponent,
+    DayColumnComponent
   ],
   exports: [
     ScheduleComponent,
@@ -64,6 +64,8 @@ const fitnessRoutes: Routes = [
     SettingsActions,
     MappingService,
     ScheduleParserService,
+    FilterClassesService,
+    SortClassesService,
     FavoriteActions
   ]
 })

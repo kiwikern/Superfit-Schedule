@@ -6,14 +6,8 @@
   <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
        [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
        fxLayoutGap="20px" class="scrollable" id="schedule">
-    <div *ngFor="let classesPerDay of schedulePerDay | orderDays:showTodayFirst">
-      <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center"
-           *ngIf="(classesPerDay.classes | filterClasses:filter | orderClasses) as filteredClasses"
-           [fxShow]="filteredClasses.length > 0">
-        <h2>{{ getDayName(classesPerDay.day) }}</h2>
-        <sfs-fitness-class *ngFor="let class of filteredClasses"
-                           [fitnessClass]="class" fxFlex></sfs-fitness-class>
-      </div>
-    </div>
+    <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | orderDays:showTodayFirst"
+                    [classesPerDay]="classesPerDay" [filter]="filter">
+    </sfs-day-column>
   </div>
 </div>

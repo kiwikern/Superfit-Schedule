@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
-import { MappingService } from '../services/mapping.service';
 import { FilterState } from '../interfaces/filter-state';
 import { ScheduleActions } from '../store/schedule.actions';
 
@@ -20,8 +19,7 @@ export class ScheduleComponent implements OnInit {
   @Input() schedulePerDay: any[] = [];
 
   constructor(ngRedux: NgRedux<IAppState>,
-              action: ScheduleActions,
-              private mappingService: MappingService) {
+              action: ScheduleActions) {
     ngRedux.dispatch(action.loadSchedule());
   }
 
@@ -39,10 +37,6 @@ export class ScheduleComponent implements OnInit {
       classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;
       scrollbar.onscroll = () => classList.scrollLeft = scrollbar.scrollLeft;
     }
-  }
-
-  getDayName(day) {
-    return this.mappingService.getDayName(day);
   }
 
 }
