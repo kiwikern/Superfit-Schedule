@@ -41,7 +41,7 @@ describe('FilteredScheduleComponent', () => {
 })
 class MockClassListComponent {
 
-  @Input() schedule;
+  @Input() schedulePerDay;
   @Input() filter;
   @Input() showSchedule;
 

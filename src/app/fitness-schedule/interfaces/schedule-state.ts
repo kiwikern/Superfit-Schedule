@@ -1,6 +1,6 @@
-import { FitnessClass } from './fitness-class';
+import { FitnessClassesPerDay } from './fitness-classes-per-day';
 export interface ScheduleState {
-  schedule: FitnessClass[];
+  schedulePerDay: FitnessClassesPerDay[];
   isLoading: boolean;
   error?: any;
 }

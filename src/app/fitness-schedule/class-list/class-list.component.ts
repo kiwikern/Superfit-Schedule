@@ -17,7 +17,7 @@ export class ClassListComponent implements OnInit {
 
   @Input() filter: FilterState = {};
   @Input() showSchedule: boolean = false;
-  @Input() schedule: any[] = [];
+  @Input() schedulePerDay: any[] = [];
 
   constructor(ngRedux: NgRedux<IAppState>,
               action: ScheduleActions,

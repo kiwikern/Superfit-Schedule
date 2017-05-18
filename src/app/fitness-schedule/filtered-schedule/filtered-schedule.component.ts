@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { FilterState } from '../interfaces/filter-state';
+import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 
 @Component({
   selector: 'sfs-filtered-schedule',
@@ -9,7 +10,7 @@ import { FilterState } from '../interfaces/filter-state';
 })
 export class FilteredScheduleComponent implements OnInit {
 
-  @select(['schedule', 'schedule']) readonly schedule$;
+  @select(['schedule', 'schedulePerDay']) readonly schedulePerDay$: FitnessClassesPerDay[];
   @select() readonly filter$;
 
   filter: FilterState = {};

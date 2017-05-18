@@ -6,7 +6,7 @@
   <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
        [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
        fxLayoutGap="20px" class="scrollable" id="class-list">
-    <div *ngFor="let classesPerDay of schedule | orderDays:showTodayFirst">
+    <div *ngFor="let classesPerDay of schedulePerDay | orderDays:showTodayFirst">
       <div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center"
            *ngIf="(classesPerDay.classes | filterClasses:filter | orderClasses) as filteredClasses"
            [fxShow]="filteredClasses.length > 0">
