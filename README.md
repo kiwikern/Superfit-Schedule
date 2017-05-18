@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/kiwikern/Superfit-Schedule.svg?branch=master)](https://travis-ci.org/kiwikern/Superfit-Schedule)
 ![Dependencies Status](https://david-dm.org/kiwikern/Superfit-Schedule.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/74f37293534a4887bee32925749f7758)](https://www.codacy.com/app/kiwikern/Superfit-Schedule?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kiwikern/Superfit-Schedule&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/74f37293534a4887bee32925749f7758)](https://www.codacy.com/app/kiwikern/Superfit-Schedule?utm_source=github.com&utm_medium=referral&utm_content=kiwikern/Superfit-Schedule&utm_campaign=Badge_Coverage)
 
 This is a progressive web app providing an interactive schedule for the fitness classes at the [SuperFit](http://www.mysuperfit.com) gym in Berlin.
 
