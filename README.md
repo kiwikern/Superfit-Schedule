@@ -1,5 +1,6 @@
 # Superfitschedule
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/74f37293534a4887bee32925749f7758)](https://www.codacy.com/app/kiwikern/Superfit-Schedule?utm_source=github.com&utm_medium=referral&utm_content=kiwikern/Superfit-Schedule&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/kiwikern/Superfit-Schedule.svg?branch=master)](https://travis-ci.org/kiwikern/Superfit-Schedule)
 ![Dependencies Status](https://david-dm.org/kiwikern/Superfit-Schedule.svg)
 
