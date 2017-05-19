@@ -22,8 +22,8 @@ before_install:
 jobs:
   include:
     - stage: test
-    script: npm run lint
+      script: npm run lint
     - script: npm run test:once
     - script: npm run e2e
     - stage: send test coverage report
-    script: cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
+      script: cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
