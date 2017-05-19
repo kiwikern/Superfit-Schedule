@@ -137,6 +137,7 @@ class MockClassListComponent {
   @Input() schedulePerDay;
   @Input() filter;
   @Input() showSchedule;
+  @Input() removedFavorites;
 
 }
 

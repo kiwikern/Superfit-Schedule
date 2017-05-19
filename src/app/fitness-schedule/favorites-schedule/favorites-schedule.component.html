@@ -1,4 +1,5 @@
-<sfs-schedule [schedulePerDay]="favoritesPerDay" [showSchedule]="hasFavorites"></sfs-schedule>
+<sfs-schedule [schedulePerDay]="favoritesPerDay" [showSchedule]="hasFavorites" [removedFavorites]="removedFavorites">
+</sfs-schedule>
 <div *ngIf="!hasFavorites" fxLayout="column" fxLayoutAlign="center center">
   <p>Um deinen persönlichen Favoriten anzuzeigen, klicke im Kursplan bei deinen Lieblingskursen auf das Herzsymbol.
   </p>

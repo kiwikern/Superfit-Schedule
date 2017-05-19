@@ -1,9 +1,14 @@
 <md-card [style.background-color]="getClassColor(fitnessClass.workoutId)" class="fitness-class">
   <md-card-title fxLayoutAlign="start center">
-    {{getClassName(fitnessClass.workoutId)}}
-    <button md-icon-button (click)="toggleFavorite()">
+    <span [class.removed-class]="wasRemoved">
+      {{getClassName(fitnessClass.workoutId)}}
+    </span>
+    <button md-icon-button (click)="toggleFavorite()" *ngIf="!wasRemoved">
       <md-icon [fxHide]="isFavorite">favorite_border</md-icon>
       <md-icon [fxShow]="isFavorite" color="warn">favorite</md-icon>
+    </button>
+    <button md-icon-button (click)="showRemovedSnackBar()" *ngIf="wasRemoved">
+      <md-icon>warning</md-icon>
     </button>
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
   </md-card-title>

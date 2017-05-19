@@ -49,4 +49,5 @@ describe('ScheduleComponent', () => {
 class MockDayColumnComponent {
   @Input() classesPerDay: any;
   @Input() filter: any;
+  @Input() removedFavorites;
 }

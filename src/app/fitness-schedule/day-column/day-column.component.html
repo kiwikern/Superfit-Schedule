@@ -2,5 +2,5 @@
      *ngIf="filteredClasses.length > 0">
   <h2>{{ getDayName(classesPerDay.day) }}</h2>
   <sfs-fitness-class *ngFor="let class of filteredClasses"
-                     [fitnessClass]="class" fxFlex></sfs-fitness-class>
+                     [fitnessClass]="class" [wasRemoved]="wasRemoved(class)" fxFlex></sfs-fitness-class>
 </div>

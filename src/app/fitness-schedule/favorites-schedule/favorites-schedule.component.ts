@@ -6,6 +6,7 @@ import { ScheduleParserService } from '../services/schedule-parser.service';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import * as _ from 'lodash';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'sfs-favorites-schedule',
@@ -20,7 +21,8 @@ export class FavoritesScheduleComponent implements OnInit {
   removedFavorites: FitnessClass[] = [];
   hasFavorites: boolean = false;
 
-  constructor(private parseService: ScheduleParserService) {
+  constructor(private parseService: ScheduleParserService,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit() {
@@ -41,6 +43,14 @@ export class FavoritesScheduleComponent implements OnInit {
         removedFavorites.push(fav);
       }
     });
+    if (removedFavorites.length > 0) {
+      this.showRemovedSnackBar();
+    }
     return removedFavorites;
+  }
+
+  private showRemovedSnackBar() {
+    this.snackBar.open(
+      'Kursplan enthält einen deiner Favoriten nicht mehr', '', {duration: 5000});
   }
 }

@@ -24,8 +24,8 @@ describe('DayColumnComponent', () => {
       ],
       providers: [
         MappingService,
-        {provide: FilterClassesService, useClass: MockPipe},
-        {provide: SortClassesService, useClass: MockPipe}
+        {provide: FilterClassesService, useClass: MockService},
+        {provide: SortClassesService, useClass: MockService}
       ]
     })
       .compileComponents();
@@ -48,15 +48,16 @@ describe('DayColumnComponent', () => {
   template: ''
 })
 class MockFitnessClassComponent {
-  @Input() fitnessClass: any;
+  @Input() fitnessClass;
+  @Input() wasRemoved;
 }
 
-@Pipe({
-    name: ''
+class MockService {
+  filter(obj) {
+    return obj;
   }
-)
-class MockPipe implements PipeTransform {
-  transform(obj: any) {
+
+  sort(obj) {
     return obj;
   }
 }

@@ -1,3 +1,7 @@
 .fitness-class {
   min-width: 230px;
 }
+
+.removed-class {
+  text-decoration: line-through;
+}

@@ -3,6 +3,7 @@ import { IAppState } from '../../store/root.types';
 import { NgRedux, select } from '@angular-redux/store';
 import { FilterState } from '../interfaces/filter-state';
 import { ScheduleActions } from '../store/schedule.actions';
+import { FitnessClass } from '../interfaces/fitness-class';
 
 @Component({
   selector: 'sfs-schedule',
@@ -17,6 +18,7 @@ export class ScheduleComponent implements OnInit {
   @Input() filter: FilterState = {};
   @Input() showSchedule: boolean = false;
   @Input() schedulePerDay: any[] = [];
+  @Input() removedFavorites: FitnessClass[] = [];
 
   constructor(ngRedux: NgRedux<IAppState>,
               action: ScheduleActions) {

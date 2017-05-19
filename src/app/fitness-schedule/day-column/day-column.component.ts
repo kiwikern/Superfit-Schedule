@@ -15,6 +15,7 @@ export class DayColumnComponent implements OnInit {
 
   @Input() classesPerDay: FitnessClassesPerDay = {day: null, classes: []};
   @Input() filter: FilterState = {};
+  @Input() removedFavorites = [];
   filteredClasses: FitnessClass[] = [];
 
   constructor(private mappingService: MappingService,
@@ -30,6 +31,10 @@ export class DayColumnComponent implements OnInit {
 
   getDayName(day) {
     return this.mappingService.getDayName(day);
+  }
+
+  wasRemoved(fitnessClass: FitnessClass) {
+    return this.removedFavorites.includes(fitnessClass);
   }
 
 }

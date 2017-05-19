@@ -7,6 +7,7 @@ import { Day } from '../enums/day.enum';
 import { IAppState } from '../../store/root.types';
 import { FavoriteActions } from '../store/favorite.actions';
 import * as _ from 'lodash';
+import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
 
 @Component({
   selector: 'sfs-fitness-class',
@@ -15,18 +16,18 @@ import * as _ from 'lodash';
 })
 export class FitnessClassComponent implements OnInit {
   @select(['filter', 'gyms']) gyms$;
-
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   @select(['favorites', 'workouts']) favorites$;
   isFavorite = false;
   isOnlyOneGymSelected: boolean = false;
-  @Input()
-  fitnessClass: FitnessClass;
+  @Input() fitnessClass: FitnessClass;
+  @Input() wasRemoved: boolean = false;
 
   constructor(private mappingService: MappingService,
               private ngRedux: NgRedux<IAppState>,
-              private actions: FavoriteActions) {
+              private actions: FavoriteActions,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit() {
@@ -59,6 +60,13 @@ export class FitnessClassComponent implements OnInit {
       const action = this.actions.removeFavorite({workout: this.fitnessClass});
       this.ngRedux.dispatch(action);
     }
+  }
+
+  showRemovedSnackBar() {
+    const snackBar: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open(
+      'Kursplan enthält Favorit nicht mehr', 'Entferne Favorit', {duration: 5000});
+    snackBar.onAction()
+      .subscribe(this.toggleFavorite);
   }
 
   private isInFavorites(workouts: FitnessClass[]): boolean {
