@@ -28,12 +28,19 @@ export class FavoritesScheduleComponent implements OnInit {
   ngOnInit() {
     this.favorites$.subscribe((favs) => this.hasFavorites = favs && favs.length > 0);
     this.favorites$.subscribe((favs) => this.favoritesPerDay = this.parseService.getAllClassesByDay(favs));
-    const combined = Observable.combineLatest(this.favorites$, this.schedulePerDay$,
-      (fav, sched) => this.removedFavorites = this.findFavoritesNotInSchedule(fav, sched));
-    combined.subscribe();
+    this.checkFavoritesAvailability();
   }
 
-  private findFavoritesNotInSchedule(favorites: FitnessClass[], schedulePerDay: any[]): FitnessClass[] {
+  private checkFavoritesAvailability() {
+    const combined = Observable.combineLatest(this.favorites$, this.schedulePerDay$, (fav, sched) => ({fav, sched}))
+      .first();
+    combined.subscribe(params => {
+      this.removedFavorites = this.findFavoritesNotInSchedule(params.fav, params.sched);
+      this.notifyAboutRemovedFavorites();
+    });
+  }
+
+  private findFavoritesNotInSchedule(favorites: FitnessClass[], schedulePerDay: FitnessClassesPerDay[]): FitnessClass[] {
     const removedFavorites = [];
     const schedule = schedulePerDay
       .map(day => day.classes)
@@ -43,10 +50,13 @@ export class FavoritesScheduleComponent implements OnInit {
         removedFavorites.push(fav);
       }
     });
-    if (removedFavorites.length > 0) {
+    return removedFavorites;
+  }
+
+  private notifyAboutRemovedFavorites() {
+    if (this.removedFavorites.length > 0) {
       this.showRemovedSnackBar();
     }
-    return removedFavorites;
   }
 
   private showRemovedSnackBar() {
