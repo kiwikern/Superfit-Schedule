@@ -44,7 +44,7 @@ export class FavoritesScheduleComponent implements OnInit {
     const removedFavorites = [];
     const schedule = schedulePerDay
       .map(day => day.classes)
-      .reduce((prev, curr) => prev.concat(curr));
+      .reduce((prev, curr) => prev.concat(curr), []);
     favorites.forEach(fav => {
       if (schedule.findIndex(workout => _.isEqual(fav, workout)) === -1) {
         removedFavorites.push(fav);
