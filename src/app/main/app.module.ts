@@ -13,6 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { PushNotificationModule } from '../push-notification/push-notification.module';
 
 
 const appRoutes: Routes = [
@@ -35,10 +37,14 @@ const appRoutes: Routes = [
     FitnessScheduleModule,
     SfsMaterialModule,
     FlexLayoutModule,
-    RouterModule.forRoot(appRoutes, {useHash: true})
+    RouterModule.forRoot(appRoutes, {useHash: true}),
+    ServiceWorkerModule,
+    PushNotificationModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

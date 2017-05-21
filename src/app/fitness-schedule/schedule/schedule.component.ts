@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IAppState } from '../../store/root.types';
-import { NgRedux, select } from '@angular-redux/store';
+import { select } from '@angular-redux/store';
 import { FilterState } from '../interfaces/filter-state';
-import { ScheduleActions } from '../store/schedule.actions';
 import { FitnessClass } from '../interfaces/fitness-class';
 
 @Component({
@@ -19,11 +17,6 @@ export class ScheduleComponent implements OnInit {
   @Input() showSchedule: boolean = false;
   @Input() schedulePerDay: any[] = [];
   @Input() removedFavorites: FitnessClass[] = [];
-
-  constructor(ngRedux: NgRedux<IAppState>,
-              action: ScheduleActions) {
-    ngRedux.dispatch(action.loadSchedule());
-  }
 
   ngOnInit() {
     setTimeout(this.createSecondScrollbar, 100);

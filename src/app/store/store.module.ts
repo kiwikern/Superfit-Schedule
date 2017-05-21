@@ -3,6 +3,8 @@ import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store'
 import { IAppState } from './root.types';
 import { RootEpics } from './root.epics';
 import { rootReducer } from './root.reducers';
+import { PushNotificationActions } from '../push-notification/push-notification.actions';
+import { ScheduleActions } from '../fitness-schedule/store/schedule.actions';
 
 @NgModule({
   imports: [
@@ -14,7 +16,9 @@ import { rootReducer } from './root.reducers';
 export class StoreModule {
   constructor(public store: NgRedux<IAppState>,
               rootEpics: RootEpics,
-              devTools: DevToolsExtension) {
+              devTools: DevToolsExtension,
+              pushNotificationActions: PushNotificationActions,
+              scheduleActions: ScheduleActions) {
 
     const LOCAL_STORAGE_KEY = 'sfs.state';
     let persistedState;
@@ -30,5 +34,7 @@ export class StoreModule {
     store.subscribe(() => {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()));
     });
+    store.dispatch(pushNotificationActions.addPushSubscription());
+    store.dispatch(scheduleActions.loadSchedule());
   }
 }
