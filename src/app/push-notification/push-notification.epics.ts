@@ -30,7 +30,7 @@ export class PushNotificationEpics {
   }
 
   private sendSubscriptionToBackend(subscription) {
-    const url = 'api/sfs/subscription';
+    const url = '/api/sfs/subscription';
     return this.http.post(url, subscription);
   }
 
