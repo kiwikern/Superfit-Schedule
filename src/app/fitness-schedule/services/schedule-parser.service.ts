@@ -32,43 +32,20 @@ export class ScheduleParserService {
   };
 
   parse(scheduleJSON: Object) {
-    let classes: FitnessClass[] = [];
-    for (const gym in scheduleJSON) {
-      if (!scheduleJSON.hasOwnProperty(gym)) {
-        continue;
-      }
-      const gymJSON = scheduleJSON[gym];
-      const classesPerGym = this.getClassesPerGym(gymJSON, gym);
-      classes = classes.concat(classesPerGym);
-    }
+    const classes: FitnessClass[] = scheduleJSON ? this.getClassesPerDay(scheduleJSON) : [];
     return this.getAllClassesByDay(classes);
   }
 
-
-  private getClassesPerGym(gymJSON: any, gym): FitnessClass[] {
-    let classes: FitnessClass[] = [];
-    for (const day in gymJSON) {
-      if (!gymJSON.hasOwnProperty(day)) {
-        continue;
-      }
-      const dayJSON = gymJSON[day];
-      const classesPerDay = this.getClassesPerDay(dayJSON, day, gym);
-      classes = classes.concat(classesPerDay);
-    }
-    return classes;
-  }
-
-
-  private getClassesPerDay(dayJSON: any, day, gym): FitnessClass[] {
+  private getClassesPerDay(scheduleJSON: any): FitnessClass[] {
     const classes: FitnessClass[] = [];
-    for (const course of dayJSON) {
+    for (const course of scheduleJSON) {
       const fitnessClass: FitnessClass = {
         startHour: moment(course.time + '', 'HH:mm').hour(),
         startMinute: moment(course.time + '', 'HH:mm').minute(),
-        day: this.DayMapping[day],
+        day: this.DayMapping[course.day],
         duration: this.getClassDuration(course.course),
         workoutId: this.getClassName(course.course),
-        gym: this.GymMapping[gym],
+        gym: this.GymMapping[course.studio],
         language: this.getClassLanguage(course.course)
       };
       classes.push(fitnessClass);
