@@ -10,20 +10,20 @@ describe('ScheduleParserService', () => {
   });
 
   it('should parse two classes', inject([ScheduleParserService], (service: ScheduleParserService) => {
-    const input = {
-      'berlin-europa-center-cycle': {
-        'wednesday': [
+    const input =  [
           {
+            'studio': 'berlin-europa-center-cycle',
+            'day': 'wednesday',
             'time': '11:00',
             'course': 'cycle'
           },
           {
+            'studio': 'berlin-europa-center-cycle',
+            'day': 'wednesday',
             'time': '17:00',
             'course': 'cycle'
           }
-        ]
-      }
-    };
+        ];
     const courses = service.parse(input);
     const classesOnWednesday = courses[Day.WEDNESDAY].classes;
     expect(classesOnWednesday[0].workoutId).toBe('cycle');
@@ -31,34 +31,32 @@ describe('ScheduleParserService', () => {
   }));
 
   it('should parse two days and studios', inject([ScheduleParserService], (service: ScheduleParserService)  => {
-    const input = {
-      'berlin-europa-center-cycle': {
-        'wednesday': [
+    const input = [
           {
+            'studio': 'berlin-europa-center-cycle',
+            'day': 'wednesday',
             'time': '11:00',
             'course': 'cycle'
           },
           {
+            'studio': 'berlin-europa-center-cycle',
+            'day': 'wednesday',
             'time': '17:00',
             'course': 'cycle'
-          }
-        ],
-        'monday': [
+          },
           {
+            'studio': 'berlin-europa-center-cycle',
+            'day': 'monday',
             'time': '09:00',
             'course': 'rpm'
-          }
-        ]
-      },
-      'berlin-europa-center': {
-        'monday': [
+          },
           {
+            'studio': 'berlin-europa-center',
+            'day': 'monday',
             'time': '08:00',
             'course': 'yoga'
           }
-        ]
-      }
-    };
+        ];
     const coursesPerDay = service.parse(input);
     const coursesOnMonday = coursesPerDay[Day.MONDAY].classes;
     expect(coursesOnMonday.length).toBe(2);
