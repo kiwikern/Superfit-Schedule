@@ -16,6 +16,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PushNotificationModule } from '../push-notification/push-notification.module';
 import { AuthenticationModule } from '../authentication/authentication.module';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 const appRoutes: Routes = [
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {useHash: true}),
     ServiceWorkerModule,
     PushNotificationModule,
-    AuthenticationModule
+    AuthenticationModule,
+    RecaptchaModule.forRoot()
   ],
   providers: [
   ],
