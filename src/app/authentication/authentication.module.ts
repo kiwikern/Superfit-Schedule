@@ -5,9 +5,11 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const authenticationRoutes: Routes = [
-  {path: 'registration', component: RegistrationComponent}
+  {path: 'registration', component: RegistrationComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -18,6 +20,6 @@ const authenticationRoutes: Routes = [
     FormsModule,
     RouterModule.forChild(authenticationRoutes)
   ],
-  declarations: [RegistrationComponent]
+  declarations: [RegistrationComponent, LoginComponent]
 })
 export class AuthenticationModule { }

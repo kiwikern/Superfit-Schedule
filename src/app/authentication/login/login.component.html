@@ -1,0 +1,32 @@
+<div fxLayoutAlign="center start">
+  <md-card style="max-width: 500px; width: 100%">
+    <md-card-title>
+      Login
+    </md-card-title>
+    <md-card-content>
+      <form #loginForm="ngForm" (ngsubmit)="onSubmit()">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <md-icon>person</md-icon>
+          <md-input-container fxFlex.lt-sm>
+            <input mdInput placeholder="Benutzername" required type="text" name="userName" pattern="[a-zA-Z0-9]+"
+                   [(ngModel)]="userName">
+            <md-error *ngIf="!userName || userName.length == 0">Der Benutzername ist ein Pflichtfeld.</md-error>
+            <md-error *ngIf="userName?.length > 0">Der Benutzername darf nur Buchstaben und Zahlen enthalten.</md-error>
+          </md-input-container>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <md-icon>lock</md-icon>
+          <md-input-container fxFlex.lt-sm>
+            <input mdInput required placeholder="Passwort" type="password" name="password" minlength="6"
+                   [(ngModel)]="password">
+            <md-error>Das Passwort muss mindestens 6 Zeichen haben.</md-error>
+          </md-input-container>
+        </div>
+      </form>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-raised-button type="submit" [disabled]="loginForm.invalid">Einloggen</button>
+      <button md-button routerLink="/login" >Abbrechen</button>
+    </md-card-actions>
+  </md-card>
+</div>
