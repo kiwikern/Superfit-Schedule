@@ -5,7 +5,7 @@ import {
   MdCardModule,
   MdCheckboxModule,
   MdChipsModule,
-  MdIconModule,
+  MdIconModule, MdInputModule,
   MdRadioModule,
   MdSelectModule,
   MdSidenavModule,
@@ -29,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdRadioModule,
     BrowserAnimationsModule,
     MdSliderModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdInputModule
   ],
   exports: [
     CommonModule,
@@ -44,7 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdRadioModule,
     BrowserAnimationsModule,
     MdSliderModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdInputModule
   ]
 })
 export class SfsMaterialModule {

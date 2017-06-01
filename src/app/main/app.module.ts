@@ -15,6 +15,7 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PushNotificationModule } from '../push-notification/push-notification.module';
+import { AuthenticationModule } from '../authentication/authentication.module';
 
 
 const appRoutes: Routes = [
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
     ServiceWorkerModule,
-    PushNotificationModule
+    PushNotificationModule,
+    AuthenticationModule
   ],
   providers: [
   ],
