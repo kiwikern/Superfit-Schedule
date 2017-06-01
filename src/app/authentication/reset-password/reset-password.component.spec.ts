@@ -20,7 +20,7 @@ describe('ResetPasswordComponent', () => {
         CaptchaMockComponent
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -32,12 +32,13 @@ describe('ResetPasswordComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
-
-  @Component({
-    selector: 're-captcha',
-    template: ''
-  })
-  class CaptchaMockComponent {
-
-  }
 });
+
+@Component({
+  /* tslint:disable-next-line */
+  selector: 're-captcha',
+  template: ''
+})
+class CaptchaMockComponent {
+
+}
