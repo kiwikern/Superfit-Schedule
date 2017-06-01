@@ -1,5 +1,5 @@
 <div fxLayoutAlign="center start">
-  <md-card style="max-width: 500px; width: 100%">
+  <md-card class="full-max-size">
     <md-card-title>
       Login
     </md-card-title>
@@ -22,11 +22,12 @@
             <md-error>Das Passwort muss mindestens 6 Zeichen haben.</md-error>
           </md-input-container>
         </div>
+        <a routerLink="/reset-password" class="password-reset">Passwort vergessen?</a>
       </form>
     </md-card-content>
     <md-card-actions align="end">
       <button md-raised-button type="submit" [disabled]="loginForm.invalid">Einloggen</button>
-      <button md-button routerLink="/login" >Abbrechen</button>
+      <button md-button routerLink="/registration" >Registrieren</button>
     </md-card-actions>
   </md-card>
 </div>

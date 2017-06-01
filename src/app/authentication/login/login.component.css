@@ -1,0 +1,9 @@
+.full-max-size {
+  max-width: 500px;
+  width: 100%;
+}
+
+.password-reset {
+  font-size: x-small;
+  margin-left: 34px;
+}
