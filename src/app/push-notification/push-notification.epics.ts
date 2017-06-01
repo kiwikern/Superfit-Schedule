@@ -3,6 +3,8 @@ import { PushNotificationActions } from './push-notification.actions';
 import { Http } from '@angular/http';
 import { NgServiceWorker } from '@angular/service-worker';
 import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class PushNotificationEpics {
@@ -15,8 +17,8 @@ export class PushNotificationEpics {
   createEpics() {
     return action$ => action$
       .ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED)
-      .switchMap(action => this.register()
-        .map(sub => this.sendSubscriptionToBackend(sub))
+      .flatMap(action => this.register())
+      .switchMap(sub => this.sendSubscriptionToBackend(sub)
         .map(() => this.actions.subscriptionAdded())
         .catch(error => of(this.actions.subscriptionFailed()))
       );
@@ -28,7 +30,7 @@ export class PushNotificationEpics {
   }
 
   private sendSubscriptionToBackend(subscription) {
-    const url = 'api/sfs/subscription';
+    const url = '/api/sfs/subscription';
     return this.http.post(url, subscription);
   }
 

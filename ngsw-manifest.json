@@ -3,13 +3,10 @@
     "index": "/index.html",
     "routes": {
       "/": {
-        "prefix": true
+        "prefix": false
       },
       "/#/schedule": {
         "prefix": false
-      },
-      "/#": {
-        "prefix": true
       },
       "/#/favorites": {
         "prefix": false
