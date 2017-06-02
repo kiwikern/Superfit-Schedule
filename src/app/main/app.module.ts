@@ -16,6 +16,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { PushNotificationModule } from '../push-notification/push-notification.module';
 import { AuthenticationModule } from '../authentication/authentication.module';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { SyncModule } from '../sync/sync.module';
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     ServiceWorkerModule,
     PushNotificationModule,
     AuthenticationModule,
-    RecaptchaModule.forRoot()
+    RecaptchaModule.forRoot(),
+    SyncModule
   ],
   providers: [
   ],

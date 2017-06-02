@@ -6,6 +6,7 @@ import { favoriteReducer } from '../fitness-schedule/store/favorites/favorite.re
 import { pushNotificationReducer } from '../push-notification/push-notification.reducers';
 import { authenticationReducer } from '../authentication/store/authentication.reducers';
 import { routerReducer } from '@angular-redux/router';
+import { syncReducer } from '../sync/sync.reducers';
 /**
  * Created by Kim on 02.04.2017.
  */
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
   favorites: favoriteReducer,
   pushNotifications: pushNotificationReducer,
   authentication: authenticationReducer,
+  sync: syncReducer,
   router: routerReducer
 });
 

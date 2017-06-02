@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import { MdSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
+import { SyncActions } from '../../sync/sync.actions';
 
 @Injectable()
 export class AuthenticationEpics {
@@ -12,7 +13,8 @@ export class AuthenticationEpics {
   constructor(private http: Http,
               private actions: AuthenticationActions,
               private snackBar: MdSnackBar,
-              private routerActions: RouterActions) {
+              private routerActions: RouterActions,
+              private syncActions: SyncActions) {
   }
 
   createEpics() {
@@ -21,7 +23,9 @@ export class AuthenticationEpics {
       .switchMap(credentials => this.requestLogin(credentials)
         .flatMap(response => {
           this.showSnackBar('Login erfolgreich.');
-          return of(this.routerActions.navigateTo('/schedule'), this.actions.loginSuccess(response.json().token));
+          return of(this.routerActions.navigateTo('/schedule'),
+            this.actions.loginSuccess(response.json().token),
+            this.syncActions.activateSync());
         })
         .catch(error => {
           this.showErrorMessage(error);
@@ -30,7 +34,6 @@ export class AuthenticationEpics {
   }
 
   private showErrorMessage(error) {
-    console.log(error);
     if (error.status === 404) {
       this.showSnackBar('Login fehlgeschlagen. Versuche es später erneut.');
     } else if (error.status === 0) {
