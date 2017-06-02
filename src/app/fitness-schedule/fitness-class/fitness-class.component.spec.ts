@@ -8,7 +8,7 @@ import { Gym } from '../enums/gym.enum';
 import { Language } from '../enums/language.enum';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FavoriteActions } from '../store/favorite.actions';
+import { FavoriteActions } from '../store/favorites/favorite.actions';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 
 describe('FitnessClassComponent', () => {

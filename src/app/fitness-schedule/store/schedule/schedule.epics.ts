@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { ScheduleActions } from './schedule.actions';
 import { Http } from '@angular/http';
-import { ScheduleParserService } from '../services/schedule-parser.service';
+import { ScheduleParserService } from '../../services/schedule-parser.service';
 
 @Injectable()
 export class ScheduleEpics {

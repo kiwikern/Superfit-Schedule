@@ -1,7 +1,7 @@
-import { IPayloadAction } from '../../store/payload-action.types';
-import { ScheduleState } from '../interfaces/schedule-state';
+import { IPayloadAction } from '../../../store/payload-action.types';
+import { ScheduleState } from './schedule-state';
 import { ScheduleActions } from './schedule.actions';
-import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
+import { FitnessClassesPerDay } from '../../interfaces/fitness-classes-per-day';
 /**
  * Created by Kim on 02.04.2017.
  */

@@ -1,6 +1,6 @@
-import { IPayloadAction } from '../../store/payload-action.types';
-import { FitnessClass } from '../interfaces/fitness-class';
-import { FavoriteState } from '../interfaces/favorite-state';
+import { IPayloadAction } from '../../../store/payload-action.types';
+import { FitnessClass } from '../../interfaces/fitness-class';
+import { FavoriteState } from './favorite-state';
 import { FavoriteActions } from './favorite.actions';
 import * as _ from 'lodash';
 /**

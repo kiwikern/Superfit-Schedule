@@ -5,7 +5,7 @@ import { FitnessClass } from '../interfaces/fitness-class';
 import { Gym } from '../enums/gym.enum';
 import { Day } from '../enums/day.enum';
 import { IAppState } from '../../store/root.types';
-import { FavoriteActions } from '../store/favorite.actions';
+import { FavoriteActions } from '../store/favorites/favorite.actions';
 import * as _ from 'lodash';
 import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
 

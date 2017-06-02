@@ -4,7 +4,7 @@ import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FilterClassesService } from '../services/filter-classes.service';
 import { SortClassesService } from '../services/sort-classes.service';
-import { FilterState } from '../interfaces/filter-state';
+import { FilterState } from '../store/filter/filter-state';
 
 @Component({
   selector: 'sfs-day-column',

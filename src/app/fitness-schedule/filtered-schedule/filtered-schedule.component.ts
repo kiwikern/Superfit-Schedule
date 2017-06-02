@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { FilterState } from '../interfaces/filter-state';
+import { FilterState } from '../store/filter/filter-state';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 
 @Component({

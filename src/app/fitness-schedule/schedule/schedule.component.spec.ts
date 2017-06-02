@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderDaysPipe } from '../pipes/order-days.pipe';
-import { ScheduleActions } from '../store/schedule.actions';
+import { ScheduleActions } from '../store/schedule/schedule.actions';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 
 describe('ScheduleComponent', () => {

@@ -1,6 +1,6 @@
-import { IPayloadAction } from '../../store/payload-action.types';
+import { IPayloadAction } from '../../../store/payload-action.types';
 import { SettingsActions } from './settings.actions';
-import { SettingsState } from '../interfaces/settings-state';
+import { SettingsState } from './settings-state';
 /**
  * Created by Kim on 02.04.2017.
  */

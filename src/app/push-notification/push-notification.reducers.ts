@@ -1,4 +1,4 @@
-import { PushNotificationState } from '../store/push-notification-state.interface';
+import { PushNotificationState } from './push-notification-state.interface';
 import { IPayloadAction } from '../store/payload-action.types';
 import { PushNotificationActions } from './push-notification.actions';
 /**

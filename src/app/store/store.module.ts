@@ -4,7 +4,7 @@ import { IAppState } from './root.types';
 import { RootEpics } from './root.epics';
 import { rootReducer } from './root.reducers';
 import { PushNotificationActions } from '../push-notification/push-notification.actions';
-import { ScheduleActions } from '../fitness-schedule/store/schedule.actions';
+import { ScheduleActions } from '../fitness-schedule/store/schedule/schedule.actions';
 
 @NgModule({
   imports: [

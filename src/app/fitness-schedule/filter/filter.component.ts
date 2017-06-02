@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MappingService } from '../services/mapping.service';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/root.types';
-import { FilterActions } from '../store/filter.actions';
-import { FilterPayload } from '../store/filter.reducers';
+import { FilterActions } from '../store/filter/filter.actions';
+import { FilterPayload } from '../store/filter/filter.reducers';
 
 @Component({
   selector: 'sfs-filter',
