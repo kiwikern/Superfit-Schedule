@@ -25,7 +25,7 @@ export class AuthenticationEpics {
           .flatMap(response => {
             this.showSnackBar('Login erfolgreich.');
             return of(this.routerActions.navigateTo('/schedule'),
-              this.actions.loginSuccess(response.json().token),
+              this.actions.loginSuccess(credentials.userName, response.json().token),
               this.syncActions.activateSync());
           })
           .catch(error => {

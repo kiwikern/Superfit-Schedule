@@ -17,10 +17,10 @@ export class AuthenticationActions {
     };
   }
 
-  loginSuccess(jwtToken) {
+  loginSuccess(userName, jwt) {
     return {
       type: AuthenticationActions.LOGIN_SUCCESS,
-      payload: jwtToken
+      payload: {userName, jwt}
     };
   }
 

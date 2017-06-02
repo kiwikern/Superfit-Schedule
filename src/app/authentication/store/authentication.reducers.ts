@@ -11,7 +11,7 @@ export const INITIAL_STATE: AuthenticationState = {
 };
 
 export function authenticationReducer(state: AuthenticationState = INITIAL_STATE,
-                                        action: IPayloadAction<any>): AuthenticationState {
+                                      action: IPayloadAction<any>): AuthenticationState {
 
   switch (action.type) {
     case AuthenticationActions.LOGIN_REQUESTED:
@@ -23,7 +23,8 @@ export function authenticationReducer(state: AuthenticationState = INITIAL_STATE
       return {
         isLoggedIn: true,
         isRequesting: false,
-        jwt: action.payload
+        jwt: action.payload.jwt,
+        userName: action.payload.userName
       };
     case AuthenticationActions.LOGIN_FAILED: {
       return {
