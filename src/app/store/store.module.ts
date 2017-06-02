@@ -5,20 +5,27 @@ import { RootEpics } from './root.epics';
 import { rootReducer } from './root.reducers';
 import { PushNotificationActions } from '../push-notification/push-notification.actions';
 import { ScheduleActions } from '../fitness-schedule/store/schedule/schedule.actions';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { RouterActions } from './router.actions';
 
 @NgModule({
   imports: [
-    NgReduxModule
+    NgReduxModule,
+    NgReduxRouterModule
   ],
   declarations: [],
-  providers: [RootEpics]
+  providers: [
+    RootEpics,
+    RouterActions
+  ]
 })
 export class StoreModule {
   constructor(public store: NgRedux<IAppState>,
               rootEpics: RootEpics,
               devTools: DevToolsExtension,
               pushNotificationActions: PushNotificationActions,
-              scheduleActions: ScheduleActions) {
+              scheduleActions: ScheduleActions,
+              ngReduxRouter: NgReduxRouter) {
 
     const LOCAL_STORAGE_KEY = 'sfs.state';
     let persistedState;
@@ -34,6 +41,9 @@ export class StoreModule {
     store.subscribe(() => {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()));
     });
+
+    ngReduxRouter.initialize();
+
     store.dispatch(pushNotificationActions.addPushSubscription());
     store.dispatch(scheduleActions.loadSchedule());
   }

@@ -4,25 +4,29 @@ import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import { MdSnackBar } from '@angular/material';
+import { RouterActions } from '../../store/router.actions';
 
 @Injectable()
 export class AuthenticationEpics {
 
   constructor(private http: Http,
               private actions: AuthenticationActions,
-              private snackBar: MdSnackBar) {
+              private snackBar: MdSnackBar,
+              private routerActions: RouterActions) {
   }
 
   createEpics() {
     return action$ => action$
       .ofType(AuthenticationActions.LOGIN_REQUESTED)
       .switchMap(credentials => this.requestLogin(credentials)
-        .map(response => this.actions.loginSuccess(response.json().token))
+        .flatMap(response => {
+          this.showSnackBar('Login erfolgreich.');
+          return of(this.routerActions.navigateTo('/schedule'), this.actions.loginSuccess(response.json().token));
+        })
         .catch(error => {
-            this.showErrorMessage(error);
-            return of(this.actions.loginFailed());
-          }
-        ));
+          this.showErrorMessage(error);
+          return of(this.actions.loginFailed());
+        }));
   }
 
   private showErrorMessage(error) {
