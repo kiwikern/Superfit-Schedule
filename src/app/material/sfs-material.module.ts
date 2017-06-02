@@ -14,7 +14,6 @@ import {
   MdToolbarModule
 } from '@angular/material';
 import 'hammerjs';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -28,7 +27,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdChipsModule,
     MdCardModule,
     MdRadioModule,
-    BrowserAnimationsModule,
     MdSliderModule,
     MdSnackBarModule,
     MdInputModule
@@ -44,7 +42,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdChipsModule,
     MdCardModule,
     MdRadioModule,
-    BrowserAnimationsModule,
     MdSliderModule,
     MdSnackBarModule,
     MdInputModule

@@ -1,8 +1,8 @@
 import * as moment from 'moment';
-import { FitnessClass } from '../interfaces/fitness-class';
-import { Gym } from '../enums/gym.enum';
-import { Day } from '../enums/day.enum';
-import { Language } from '../enums/language.enum';
+import { FitnessClass } from '../../interfaces/fitness-class';
+import { Gym } from '../../enums/gym.enum';
+import { Day } from '../../enums/day.enum';
+import { Language } from '../../enums/language.enum';
 import { Injectable } from '@angular/core';
 
 @Injectable()
