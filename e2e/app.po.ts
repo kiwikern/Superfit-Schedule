@@ -1,19 +1,8 @@
 import { browser, element, by } from 'protractor';
 
-export class SuperfitschedulePage {
-  navigateTo() {
-    return browser.get('/');
-  }
+export class AppPage {
 
-  getAppTitle() {
-    return element(by.css('md-toolbar-row > span')).getText();
-  }
-
-  getSideNavDiv() {
-    return element(by.css('sfs-root md-sidenav-container md-sidenav div'));
-  }
-
-  getContent() {
-    return element(by.css('sfs-root md-sidenav-container .mat-sidenav-content md-toolbar'));
+  setMobileBrowserSize() {
+    browser.driver.manage().window().setSize(435, 800);
   }
 }
