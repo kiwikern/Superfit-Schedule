@@ -21,6 +21,7 @@ export class AuthenticationEpics {
     return [
       action$ => action$
         .ofType(AuthenticationActions.LOGIN_REQUESTED)
+        .map(action => action.payload)
         .switchMap(credentials => this.requestLogin(credentials)
           .flatMap(response => {
             this.showSnackBar('Login erfolgreich.');

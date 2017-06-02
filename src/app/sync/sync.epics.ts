@@ -16,10 +16,12 @@ export class SyncEpics {
   @select() favorites$: Observable<FavoriteState>;
   @select() settings$: Observable<SettingsState>;
   @select() filter$: Observable<FilterState>;
+  @select(['authentication', 'userName']) userName$: Observable<string>;
 
   favorites: FavoriteState;
   settings: SettingsState;
   filter: FilterState;
+  userName: string;
 
   constructor(private http: Http,
               private actions: SyncActions,
@@ -27,6 +29,7 @@ export class SyncEpics {
     this.favorites$.subscribe(favorites => this.favorites = favorites);
     this.settings$.subscribe(settings => this.settings = settings);
     this.filter$.subscribe(filter => this.filter = filter);
+    this.userName$.subscribe(userName => this.userName = userName);
   }
 
   createEpics() {
@@ -50,7 +53,11 @@ export class SyncEpics {
 
   private syncState() {
     const url = '/api/sfs/sync';
-    return this.http.post(url, {favorites: this.favorites, settings: this.settings, filter: this.filter});
+    const body = {
+      userName: this.userName,
+      state: {favorites: this.favorites, settings: this.settings, filter: this.filter}
+    };
+    return this.http.post(url, body);
   }
 
 }
