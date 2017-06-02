@@ -3,8 +3,8 @@
     <md-card-title>
       Login
     </md-card-title>
-    <md-card-content>
-      <form #loginForm="ngForm" (ngsubmit)="onSubmit()">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <md-card-content>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <md-icon>person</md-icon>
           <md-input-container fxFlex.lt-sm>
@@ -23,11 +23,11 @@
           </md-input-container>
         </div>
         <a routerLink="/reset-password" class="password-reset">Passwort vergessen?</a>
-      </form>
-    </md-card-content>
-    <md-card-actions align="end">
-      <button md-raised-button type="submit" [disabled]="loginForm.invalid">Einloggen</button>
-      <button md-button routerLink="/registration" >Registrieren</button>
-    </md-card-actions>
+      </md-card-content>
+      <md-card-actions align="end">
+        <button md-raised-button type="submit" [disabled]="loginForm.invalid">Einloggen</button>
+        <button md-button routerLink="/registration">Registrieren</button>
+      </md-card-actions>
+    </form>
   </md-card>
 </div>
