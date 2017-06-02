@@ -9,11 +9,13 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { AccountComponent } from './account/account.component';
 
 const authenticationRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'reset-password', component: ResetPasswordComponent}
+  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: '', component: AccountComponent}
 ];
 
 @NgModule({
@@ -29,7 +31,8 @@ const authenticationRoutes: Routes = [
   declarations: [
     RegistrationComponent,
     LoginComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccountComponent
   ],
 })
 export class AuthenticationModule {
