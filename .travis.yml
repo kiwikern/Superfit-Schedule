@@ -23,6 +23,7 @@ jobs:
       script: npm run lint
     - script: npm run e2e
     - stage: deploy
+      script: echo 'Deploying...'
       deploy:
         skip_cleanup: true
         provider: script
