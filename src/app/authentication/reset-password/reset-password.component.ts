@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
 
+  mailAddress: string;
+  captcha: boolean;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    // TODO
   }
 
 }
