@@ -4,7 +4,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { Gym } from '../enums/gym.enum';
 import { Day } from '../enums/day.enum';
-import { IAppState } from '../../store/root.types';
+import { IAppState } from '../../store/root-state.interface';
 import { FavoriteActions } from '../store/favorites/favorite.actions';
 import { isEqual } from 'lodash-es';
 import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { SettingsActions } from '../store/settings/settings.actions';
-import { IAppState } from '../../store/root.types';
+import { IAppState } from '../../store/root-state.interface';
 import { SettingsPayload } from '../store/settings/settings.reducers';
 
 @Component({

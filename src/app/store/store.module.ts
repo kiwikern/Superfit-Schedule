@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
-import { IAppState } from './root.types';
+import { IAppState } from './root-state.interface';
 import { RootEpics } from './root.epics';
 import { rootReducer } from './root.reducers';
 import { PushNotificationActions } from '../push-notification/push-notification.actions';

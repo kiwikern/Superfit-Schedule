@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MappingService } from '../services/mapping.service';
 import { NgRedux, select } from '@angular-redux/store';
-import { IAppState } from '../../store/root.types';
+import { IAppState } from '../../store/root-state.interface';
 import { FilterActions } from '../store/filter/filter.actions';
 import { FilterPayload } from '../store/filter/filter.reducers';
 

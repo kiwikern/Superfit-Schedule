@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../store/root.types';
+import { IAppState } from '../../store/root-state.interface';
 import { AuthenticationActions } from '../store/authentication.actions';
 
 @Component({
