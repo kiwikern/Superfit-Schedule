@@ -12,15 +12,23 @@ import { FilterState } from '../fitness-schedule/store/filter/filter-state';
 import { Subscription } from 'rxjs/Subscription';
 import { IAppState } from '../store/root-state.interface';
 import { isEqual } from 'lodash-es';
+import { StatusComponent } from './status/status.component';
+import { SfsMaterialModule } from '../material/sfs-material.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SfsMaterialModule
   ],
-  declarations: [],
+  declarations: [
+    StatusComponent
+  ],
   providers: [
     SyncActions,
     SyncEpics
+  ],
+  exports: [
+    StatusComponent
   ]
 })
 export class SyncModule {
@@ -32,8 +40,8 @@ export class SyncModule {
 
   stateSubscription: Subscription;
 
-  constructor(private ngRedux: NgRedux<IAppState>
-  , private syncActions: SyncActions) {
+  constructor(private ngRedux: NgRedux<IAppState>,
+              private syncActions: SyncActions) {
     this.isSyncActivated$.subscribe(isActivated => this.watchChanges(isActivated));
   }
 

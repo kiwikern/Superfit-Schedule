@@ -6,7 +6,7 @@ import { IPayloadAction } from '../store/payload-action.types';
  */
 
 export const INITIAL_STATE: SyncState = {
-  isSynced: false,
+  hasError: false,
   isRequesting: false,
   isSyncActivated: false
 };
@@ -17,31 +17,31 @@ export function syncReducer(state: SyncState = INITIAL_STATE,
   switch (action.type) {
     case SyncActions.SYNC_REQUESTED:
       return {
-        isSynced: false,
+        hasError: state.hasError,
         isRequesting: true,
         isSyncActivated: state.isSyncActivated
       };
     case SyncActions.SYNC_SUCCESS:
       return {
-        isSynced: true,
+        hasError: false,
         isRequesting: false,
         isSyncActivated: state.isSyncActivated
       };
     case SyncActions.SYNC_FAILED:
       return {
-        isSynced: false,
+        hasError: true,
         isRequesting: false,
         isSyncActivated: state.isSyncActivated
       };
     case SyncActions.SYNC_ACTIVATED:
       return {
-        isSynced: state.isSynced,
+        hasError: state.hasError,
         isRequesting: state.isRequesting,
         isSyncActivated: true
       };
     case SyncActions.SYNC_DEACTIVATED:
       return {
-        isSynced: state.isSynced,
+        hasError: state.hasError,
         isRequesting: state.isRequesting,
         isSyncActivated: false
       };

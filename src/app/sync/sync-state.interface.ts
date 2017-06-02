@@ -1,5 +1,5 @@
 export interface SyncState {
-  isSynced: boolean;
+  hasError: boolean;
   isRequesting: boolean;
   isSyncActivated: boolean;
 }
