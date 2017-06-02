@@ -18,19 +18,24 @@ export class AuthenticationEpics {
   }
 
   createEpics() {
-    return action$ => action$
-      .ofType(AuthenticationActions.LOGIN_REQUESTED)
-      .switchMap(credentials => this.requestLogin(credentials)
-        .flatMap(response => {
-          this.showSnackBar('Login erfolgreich.');
-          return of(this.routerActions.navigateTo('/schedule'),
-            this.actions.loginSuccess(response.json().token),
-            this.syncActions.activateSync());
-        })
-        .catch(error => {
-          this.showErrorMessage(error);
-          return of(this.actions.loginFailed());
-        }));
+    return [
+      action$ => action$
+        .ofType(AuthenticationActions.LOGIN_REQUESTED)
+        .switchMap(credentials => this.requestLogin(credentials)
+          .flatMap(response => {
+            this.showSnackBar('Login erfolgreich.');
+            return of(this.routerActions.navigateTo('/schedule'),
+              this.actions.loginSuccess(response.json().token),
+              this.syncActions.activateSync());
+          })
+          .catch(error => {
+            this.showErrorMessage(error);
+            return of(this.actions.loginFailed());
+          })),
+      action$ => action$
+        .ofType(AuthenticationActions.LOGOUT)
+        .map(() => this.syncActions.deactivateSync())
+    ];
   }
 
   private showErrorMessage(error) {

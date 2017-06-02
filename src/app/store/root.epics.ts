@@ -22,7 +22,7 @@ export class RootEpics {
     return [
       createEpicMiddleware(this.scheduleEpics.createEpics()),
       createEpicMiddleware(this.pushNotificationEpics.createEpics()),
-      createEpicMiddleware(this.authenticationEpics.createEpics()),
+      ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
       createEpicMiddleware(this.syncEpics.createEpics())
     ];
   }

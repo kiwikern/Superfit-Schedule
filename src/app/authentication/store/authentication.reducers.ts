@@ -31,6 +31,12 @@ export function authenticationReducer(state: AuthenticationState = INITIAL_STATE
         isRequesting: false
       };
     }
+    case AuthenticationActions.LOGOUT: {
+      return {
+        isLoggedIn: false,
+        isRequesting: false
+      };
+    }
   }
 
   return state;
