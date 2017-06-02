@@ -13,6 +13,7 @@ import {
   MdSnackBarModule,
   MdToolbarModule
 } from '@angular/material';
+import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
