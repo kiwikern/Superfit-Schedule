@@ -13,11 +13,11 @@ describe('ResetPasswordComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ResetPasswordComponent,
+        CaptchaMockComponent
       ],
       imports: [
         SfsMaterialModule,
-        FormsModule,
-        CaptchaMockComponent
+        FormsModule
       ]
     })
       .compileComponents();
