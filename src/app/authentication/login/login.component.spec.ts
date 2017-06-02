@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FormsModule } from '@angular/forms';
+import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { AuthenticationActions } from '../store/authentication.actions';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -13,7 +15,11 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       imports: [
         SfsMaterialModule,
-        FormsModule
+        FormsModule,
+        NgReduxTestingModule
+      ],
+      providers: [
+        AuthenticationActions
       ]
     })
     .compileComponents();

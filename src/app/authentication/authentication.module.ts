@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { AuthenticationActions } from './store/authentication.actions';
+import { AuthenticationEpics } from './store/authentication.epics';
 
 const authenticationRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
@@ -26,6 +28,15 @@ const authenticationRoutes: Routes = [
     RecaptchaModule,
     RecaptchaFormsModule
   ],
-  declarations: [RegistrationComponent, LoginComponent, ResetPasswordComponent]
+  declarations: [
+    RegistrationComponent,
+    LoginComponent,
+    ResetPasswordComponent
+  ],
+  providers: [
+    AuthenticationActions,
+    AuthenticationEpics
+  ]
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {
+}

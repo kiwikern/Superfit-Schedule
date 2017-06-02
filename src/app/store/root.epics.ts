@@ -7,17 +7,20 @@ import 'rxjs/add/operator/map';
 import { ScheduleEpics } from '../fitness-schedule/store/schedule/schedule.epics';
 import { createEpicMiddleware } from 'redux-observable';
 import { PushNotificationEpics } from '../push-notification/push-notification.epics';
+import { AuthenticationEpics } from '../authentication/store/authentication.epics';
 
 @Injectable()
 export class RootEpics {
   constructor(private scheduleEpics: ScheduleEpics,
-              private pushNotificationEpics: PushNotificationEpics) {
+              private pushNotificationEpics: PushNotificationEpics,
+              private authenticationEpics: AuthenticationEpics) {
   }
 
   createEpics() {
     return [
       createEpicMiddleware(this.scheduleEpics.createEpics()),
-      createEpicMiddleware(this.pushNotificationEpics.createEpics())
+      createEpicMiddleware(this.pushNotificationEpics.createEpics()),
+      createEpicMiddleware(this.authenticationEpics.createEpics())
     ];
   }
 }

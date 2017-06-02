@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../../store/root.types';
+import { AuthenticationActions } from '../store/authentication.actions';
 
 @Component({
   selector: 'sfs-login',
@@ -10,14 +13,16 @@ export class LoginComponent implements OnInit {
   userName: string;
   password: string;
 
-  constructor() {
+  constructor(private ngRedux: NgRedux<IAppState>,
+              private authActions: AuthenticationActions) {
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    // TODO: login
+    const loginAction = this.authActions.login(this.userName, this.password);
+    this.ngRedux.dispatch(loginAction);
   }
 
 }
