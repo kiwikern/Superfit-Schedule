@@ -1,11 +1,11 @@
 <md-sidenav-container fullscreen>
   <md-toolbar color="primary">
-    <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-xs="true">
+    <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-sm="true">
       <md-icon>menu</md-icon>
     </button>
     <span>SuperFit Kursplan</span>
     <div fxFlex></div>
-    <sfs-navigation fxHide.lt-sm="true"></sfs-navigation>
+    <sfs-navigation fxHide.lt-md="true"></sfs-navigation>
   </md-toolbar>
   <md-sidenav #sidenav>
     <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
