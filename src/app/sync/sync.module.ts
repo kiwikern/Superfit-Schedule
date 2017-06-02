@@ -14,11 +14,13 @@ import { IAppState } from '../store/root-state.interface';
 import { isEqual } from 'lodash-es';
 import { StatusComponent } from './status/status.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    SfsMaterialModule
+    SfsMaterialModule,
+    RouterModule
   ],
   declarations: [
     StatusComponent
