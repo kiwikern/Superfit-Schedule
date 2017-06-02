@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsComponent } from './settings.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FormsModule } from '@angular/forms';
-import { SettingsActions } from '../store/settings.actions';
+import { SettingsActions } from '../store/settings/settings.actions';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 
 describe('SettingsComponent', () => {

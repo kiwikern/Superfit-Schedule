@@ -1,6 +1,6 @@
-import { IPayloadAction } from '../../store/payload-action.types';
+import { IPayloadAction } from '../../../store/payload-action.types';
 import { FilterActions } from './filter.actions';
-import { FilterState } from '../interfaces/filter-state';
+import { FilterState } from './filter-state';
 /**
  * Created by Kim on 02.04.2017.
  */

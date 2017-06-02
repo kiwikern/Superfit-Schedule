@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
-import { SettingsActions } from '../store/settings.actions';
+import { SettingsActions } from '../store/settings/settings.actions';
 import { IAppState } from '../../store/root.types';
-import { SettingsPayload } from '../store/settings.reducers';
+import { SettingsPayload } from '../store/settings/settings.reducers';
 
 @Component({
   selector: 'sfs-settings',

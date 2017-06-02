@@ -1,6 +1,6 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { FitnessClass } from '../interfaces/fitness-class';
-import { FilterState } from '../interfaces/filter-state';
+import { FilterState } from '../store/filter/filter-state';
 import * as moment from 'moment';
 
 @Injectable()

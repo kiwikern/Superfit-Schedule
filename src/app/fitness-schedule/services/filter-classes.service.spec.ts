@@ -3,7 +3,7 @@ import { FitnessClass } from '../interfaces/fitness-class';
 import { Day } from '../enums/day.enum';
 import { Gym } from '../enums/gym.enum';
 import { Language } from '../enums/language.enum';
-import { FilterState } from '../interfaces/filter-state';
+import { FilterState } from '../store/filter/filter-state';
 import * as moment from 'moment';
 
 describe('FilterClassesService', () => {

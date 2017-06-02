@@ -1,8 +1,8 @@
-import { ScheduleState } from '../fitness-schedule/interfaces/schedule-state';
-import { FilterState } from '../fitness-schedule/interfaces/filter-state';
-import { FavoriteState } from '../fitness-schedule/interfaces/favorite-state';
-import { PushNotificationState } from './push-notification-state.interface';
-import { SettingsState } from '../fitness-schedule/interfaces/settings-state';
+import { ScheduleState } from '../fitness-schedule/store/schedule/schedule-state';
+import { FilterState } from '../fitness-schedule/store/filter/filter-state';
+import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
+import { PushNotificationState } from '../push-notification/push-notification-state.interface';
+import { SettingsState } from '../fitness-schedule/store/settings/settings-state';
 /**
  * Created by Kim on 02.04.2017.
  */
