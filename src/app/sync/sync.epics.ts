@@ -50,7 +50,6 @@ export class SyncEpics {
 
   private syncState() {
     const url = '/api/sfs/sync';
-    console.log('test');
     return this.http.post(url, {favorites: this.favorites, settings: this.settings, filter: this.filter});
   }
 

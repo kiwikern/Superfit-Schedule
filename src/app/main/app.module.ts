@@ -13,16 +13,17 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PushNotificationModule } from '../push-notification/push-notification.module';
-import { AuthenticationModule } from '../authentication/authentication.module';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { SyncModule } from '../sync/sync.module';
 import { FitnessScheduleStoreModule } from '../fitness-schedule/store/fitness-schedule-store.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthenticationStoreModule } from 'app/authentication/store/authentication-store.module';
 
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'schedule', pathMatch: 'prefix'},
   {path: 'schedule', loadChildren: '../fitness-schedule/fitness-schedule.module#FitnessScheduleModule' },
+  {path: 'auth', loadChildren: '../authentication/authentication.module#AuthenticationModule' },
   {path: 'about', component: AboutComponent}
 ];
 
@@ -45,9 +46,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {useHash: true}),
     ServiceWorkerModule,
     PushNotificationModule,
-    AuthenticationModule,
+    AuthenticationStoreModule,
     RecaptchaModule.forRoot(),
-    SyncModule
+    SyncModule,
   ],
   providers: [
   ],
