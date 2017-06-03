@@ -8,14 +8,8 @@
         Die Angabe der E-Mail-Adresse ist freiwillig. Das Zurücksetzen des Passworts ist ohne E-Mail-Adresse nicht
         möglich.
         <sfs-user-name-input [(ngModel)]="userName" name="userName" ngDefaultControl></sfs-user-name-input>
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-          <md-icon>email</md-icon>
-          <md-input-container fxFlex.sm fxFlex="false">
-            <input mdInput placeholder="E-Mail" [email]="mailAddress" type="email" name="mailAddress"
-                   [(ngModel)]="mailAddress">
-            <md-error>Die E-Mail-Adresse ist nicht gültig.</md-error>
-          </md-input-container>
-        </div>
+        <sfs-mail-address-input [(ngModel)]="mailAddress" name="mailAddress" ngDefaultControl>
+        </sfs-mail-address-input>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <md-icon>lock</md-icon>
           <md-input-container fxFlex.lt-sm>

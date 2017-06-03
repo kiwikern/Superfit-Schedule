@@ -12,6 +12,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './store/auth-guard/auth.guard';
 import { UserNameInputComponent } from './user-name-input/user-name-input.component';
+import { MailAddressInputComponent } from './mail-address-input/mail-address-input.component';
 
 const authenticationRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
@@ -35,7 +36,8 @@ const authenticationRoutes: Routes = [
     LoginComponent,
     ResetPasswordComponent,
     AccountComponent,
-    UserNameInputComponent
+    UserNameInputComponent,
+    MailAddressInputComponent
   ]
 })
 export class AuthenticationModule {

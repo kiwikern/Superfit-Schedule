@@ -18,14 +18,8 @@
         <br>
         <sfs-user-name-input *ngIf="useUserName === 'true'" [(ngModel)]="userName" name="userName" ngDefaultControl>
         </sfs-user-name-input>
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" *ngIf="useUserName === 'false'">
-          <md-icon>email</md-icon>
-          <md-input-container fxFlex fxFlex="false">
-            <input mdInput placeholder="E-Mail" required email type="email" name="mailAddress"
-                   [(ngModel)]="mailAddress">
-            <md-error>Die E-Mail-Adresse ist nicht gültig.</md-error>
-          </md-input-container>
-        </div>
+        <sfs-mail-address-input *ngIf="useUserName === 'false'" [(ngModel)]="mailAddress" name="mailAddress"
+                                ngDefaultControl isRequired="true"></sfs-mail-address-input>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <md-icon>lock</md-icon>
           <md-input-container fxFlex>
