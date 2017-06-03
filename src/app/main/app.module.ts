@@ -8,7 +8,7 @@ import { NgReduxModule } from '@angular-redux/store';
 import { StoreModule } from '../store/store.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from '../about/about.component';
+import { AboutComponent } from './about/about.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
