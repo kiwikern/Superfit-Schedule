@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SyncActions } from './sync.actions';
-import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import { MdSnackBar } from '@angular/material';
@@ -9,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';
 import { SettingsState } from '../fitness-schedule/store/settings/settings-state';
 import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
+import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
 export class SyncEpics {
@@ -23,7 +23,7 @@ export class SyncEpics {
   filter: FilterState;
   userName: string;
 
-  constructor(private http: Http,
+  constructor(private http: AuthHttp,
               private actions: SyncActions,
               private snackBar: MdSnackBar) {
     this.favorites$.subscribe(favorites => this.favorites = favorites);

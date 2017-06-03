@@ -10,12 +10,13 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AccountComponent } from './account/account.component';
+import { AuthGuard } from './store/auth-guard/auth.guard';
 
 const authenticationRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
-  {path: '', component: AccountComponent}
+  {path: '', component: AccountComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -33,7 +34,7 @@ const authenticationRoutes: Routes = [
     LoginComponent,
     ResetPasswordComponent,
     AccountComponent
-  ],
+  ]
 })
 export class AuthenticationModule {
 }
