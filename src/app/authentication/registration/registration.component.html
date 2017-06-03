@@ -7,15 +7,7 @@
       <md-card-content>
         Die Angabe der E-Mail-Adresse ist freiwillig. Das Zurücksetzen des Passworts ist ohne E-Mail-Adresse nicht
         möglich.
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-          <md-icon>person</md-icon>
-          <md-input-container fxFlex.lt-sm>
-            <input mdInput placeholder="Benutzername" required type="text" name="userName" pattern="[a-zA-Z0-9]+"
-                   [(ngModel)]="userName">
-            <md-error *ngIf="!userName || userName.length == 0">Der Benutzername ist ein Pflichtfeld.</md-error>
-            <md-error *ngIf="userName?.length > 0">Der Benutzername darf nur Buchstaben und Zahlen enthalten.</md-error>
-          </md-input-container>
-        </div>
+        <sfs-user-name-input [(ngModel)]="userName" name="userName" ngDefaultControl></sfs-user-name-input>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <md-icon>email</md-icon>
           <md-input-container fxFlex.sm fxFlex="false">
