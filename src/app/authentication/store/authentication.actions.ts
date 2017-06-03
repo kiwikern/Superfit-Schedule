@@ -10,10 +10,17 @@ export class AuthenticationActions {
   static readonly REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
   static readonly REGISTRATION_FAILED = 'REGISTRATION_FAILED';
 
-  login(userName: string, password: string) {
+  loginWithUserName(userName: string, password: string) {
     return {
       type: AuthenticationActions.LOGIN_REQUESTED,
       payload: {userName, password}
+    };
+  }
+
+  loginWithMailAddress(mailAddress: string, password: string) {
+    return {
+      type: AuthenticationActions.LOGIN_REQUESTED,
+      payload: {mailAddress, password}
     };
   }
 

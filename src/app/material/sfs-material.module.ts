@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MdButtonModule,
+  MdButtonToggleModule,
   MdCardModule,
   MdCheckboxModule,
   MdChipsModule,
-  MdIconModule, MdInputModule,
+  MdIconModule,
+  MdInputModule,
   MdRadioModule,
   MdSelectModule,
   MdSidenavModule,
@@ -29,7 +31,8 @@ import 'hammerjs';
     MdRadioModule,
     MdSliderModule,
     MdSnackBarModule,
-    MdInputModule
+    MdInputModule,
+    MdButtonToggleModule
   ],
   exports: [
     CommonModule,
@@ -44,7 +47,8 @@ import 'hammerjs';
     MdRadioModule,
     MdSliderModule,
     MdSnackBarModule,
-    MdInputModule
+    MdInputModule,
+    MdButtonToggleModule
   ]
 })
 export class SfsMaterialModule {

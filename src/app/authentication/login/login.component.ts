@@ -11,7 +11,9 @@ import { AuthenticationActions } from '../store/authentication.actions';
 export class LoginComponent implements OnInit {
 
   userName: string;
+  mailAddress: string;
   password: string;
+  useUserName: string = 'true';
 
   constructor(private ngRedux: NgRedux<IAppState>,
               private authActions: AuthenticationActions) {
@@ -21,7 +23,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const loginAction = this.authActions.login(this.userName, this.password);
+    let loginAction;
+    console.log(this.useUserName)
+    if (this.useUserName === 'true') {
+      loginAction = this.authActions.loginWithUserName(this.userName, this.password);
+    } else {
+      loginAction = this.authActions.loginWithMailAddress(this.mailAddress, this.password);
+    }
     this.ngRedux.dispatch(loginAction);
   }
 
