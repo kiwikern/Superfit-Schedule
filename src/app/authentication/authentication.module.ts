@@ -13,6 +13,7 @@ import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './store/auth-guard/auth.guard';
 import { UserNameInputComponent } from './user-name-input/user-name-input.component';
 import { MailAddressInputComponent } from './mail-address-input/mail-address-input.component';
+import { PasswordInputComponent } from './password-input/password-input.component';
 
 const authenticationRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
@@ -37,7 +38,8 @@ const authenticationRoutes: Routes = [
     ResetPasswordComponent,
     AccountComponent,
     UserNameInputComponent,
-    MailAddressInputComponent
+    MailAddressInputComponent,
+    PasswordInputComponent
   ]
 })
 export class AuthenticationModule {

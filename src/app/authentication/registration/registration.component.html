@@ -10,14 +10,7 @@
         <sfs-user-name-input [(ngModel)]="userName" name="userName" ngDefaultControl></sfs-user-name-input>
         <sfs-mail-address-input [(ngModel)]="mailAddress" name="mailAddress" ngDefaultControl>
         </sfs-mail-address-input>
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-          <md-icon>lock</md-icon>
-          <md-input-container fxFlex.lt-sm>
-            <input mdInput required placeholder="Passwort" type="password" name="password" minlength="6"
-                   [(ngModel)]="password">
-            <md-error>Das Passwort muss mindestens 6 Zeichen haben.</md-error>
-          </md-input-container>
-        </div>
+        <sfs-password-input [(ngModel)]="password" name="password" ngDefaultControl=""></sfs-password-input>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <md-icon>replay</md-icon>
           <md-input-container fxFlex.lt-sm>
