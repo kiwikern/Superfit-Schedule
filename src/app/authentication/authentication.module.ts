@@ -14,6 +14,7 @@ import { AuthGuard } from './store/auth-guard/auth.guard';
 import { UserNameInputComponent } from './user-name-input/user-name-input.component';
 import { MailAddressInputComponent } from './mail-address-input/mail-address-input.component';
 import { PasswordInputComponent } from './password-input/password-input.component';
+import { PasswordConfirmationInputComponent } from './password-confirmation-input/password-confirmation-input.component';
 
 const authenticationRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
@@ -39,7 +40,8 @@ const authenticationRoutes: Routes = [
     AccountComponent,
     UserNameInputComponent,
     MailAddressInputComponent,
-    PasswordInputComponent
+    PasswordInputComponent,
+    PasswordConfirmationInputComponent
   ]
 })
 export class AuthenticationModule {

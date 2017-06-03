@@ -10,15 +10,9 @@
         <sfs-user-name-input [(ngModel)]="userName" name="userName" ngDefaultControl></sfs-user-name-input>
         <sfs-mail-address-input [(ngModel)]="mailAddress" name="mailAddress" ngDefaultControl>
         </sfs-mail-address-input>
-        <sfs-password-input [(ngModel)]="password" name="password" ngDefaultControl=""></sfs-password-input>
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-          <md-icon>replay</md-icon>
-          <md-input-container fxFlex.lt-sm>
-            <input mdInput required placeholder="Passwort bestätigen" type="password" name="passwordConfirmation"
-                   [(ngModel)]="passwordConfirmation" [pattern]="password">
-            <md-error>Die Passwörter stimmen nicht überein.</md-error>
-          </md-input-container>
-        </div>
+        <sfs-password-input [(ngModel)]="password" name="password" ngDefaultControl></sfs-password-input>
+        <sfs-password-confirmation-input name="passwordConfirmation" [(ngModel)]="passwordConfirmation"
+                                         ngDefaultControl [compareTo]="password"></sfs-password-confirmation-input>
       </md-card-content>
       <md-card-actions align="end">
         <button md-raised-button type="submit" [disabled]="registrationForm.invalid">Registrieren</button>
