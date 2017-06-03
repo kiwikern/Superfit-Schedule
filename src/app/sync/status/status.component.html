@@ -1,14 +1,14 @@
-<div *ngIf="(sync$ | async).isSyncActivated && (sync$ | async).hasError">
+<div *ngIf="(sync$ | async)?.isSyncActivated && (sync$ | async)?.hasError">
   <button md-icon-button
-          *ngIf="(sync$ | async).isRequesting">
+          *ngIf="(sync$ | async)?.isRequesting">
     <md-icon>sync</md-icon>
   </button>
   <button md-icon-button (click)="requestSync()"
-          *ngIf="!(sync$ | async).isRequesting">
+          *ngIf="!(sync$ | async)?.isRequesting">
     <md-icon>sync_problem</md-icon>
   </button>
 </div>
 
-<button md-icon-button routerLink="/auth/login" (click)="showLoginRequired()" *ngIf="!(sync$ | async).isSyncActivated">
+<button md-icon-button routerLink="/auth/login" (click)="showLoginRequired()" *ngIf="!(sync$ | async)?.isSyncActivated">
   <md-icon>sync_disabled</md-icon>
 </button>

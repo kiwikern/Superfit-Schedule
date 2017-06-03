@@ -13,7 +13,8 @@ describe('AppComponent', () => {
         AppComponent,
         MockClassListComponent,
         MockFilterComponent,
-        NavigationComponent
+        NavigationComponent,
+        MockSyncStatusComponent
       ],
       imports: [
         SfsMaterialModule,
@@ -41,4 +42,11 @@ class MockClassListComponent {
   template: ''
 })
 class MockFilterComponent {
+}
+
+@Component({
+  selector: 'sfs-sync-status',
+  template: ''
+})
+class MockSyncStatusComponent {
 }

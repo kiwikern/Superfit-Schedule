@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatusComponent } from './status.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { SyncActions } from '../sync.actions';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('StatusComponent', () => {
   let component: StatusComponent;
@@ -8,7 +12,15 @@ describe('StatusComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatusComponent ]
+      declarations: [ StatusComponent ],
+      imports: [
+        SfsMaterialModule,
+        NgReduxTestingModule,
+        NoopAnimationsModule
+      ],
+      providers: [
+        SyncActions
+      ]
     })
     .compileComponents();
   }));

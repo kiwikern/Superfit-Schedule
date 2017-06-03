@@ -4,6 +4,7 @@ import { ResetPasswordComponent } from './reset-password.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ResetPasswordComponent', () => {
   let component: ResetPasswordComponent;
@@ -17,6 +18,7 @@ describe('ResetPasswordComponent', () => {
       ],
       imports: [
         SfsMaterialModule,
+        NoopAnimationsModule,
         FormsModule
       ]
     })

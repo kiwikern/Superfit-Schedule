@@ -17,7 +17,7 @@ export class StatusComponent implements OnInit {
 
   constructor(private ngRedux: NgRedux<IAppState>,
               private actions: SyncActions,
-  private snackBar: MdSnackBar) {
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit() {
@@ -28,10 +28,10 @@ export class StatusComponent implements OnInit {
     this.ngRedux.dispatch(this.actions.sync());
     const subscription = this.sync$.debounceTime(500)
       .subscribe(sync => {
-      if (sync.hasError && !sync.isRequesting) {
-        this.showSnackBar('Synchronisierung erneut fehlgeschlagen.');
-      }
-    });
+        if (sync.hasError && !sync.isRequesting) {
+          this.showSnackBar('Synchronisierung erneut fehlgeschlagen.');
+        }
+      });
     ref.afterDismissed().subscribe(() => subscription.unsubscribe());
   }
 

@@ -13,6 +13,7 @@ import { Gym } from '../enums/gym.enum';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/lib/testing';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FavoritesScheduleComponent', () => {
   let component: FavoritesScheduleComponent;
@@ -27,7 +28,8 @@ describe('FavoritesScheduleComponent', () => {
       imports: [
         SfsMaterialModule,
         FlexLayoutModule,
-        NgReduxTestingModule
+        NgReduxTestingModule,
+        NoopAnimationsModule
       ],
       providers: [
         ScheduleParserService

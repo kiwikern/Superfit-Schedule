@@ -4,6 +4,7 @@ import { SelectFilterComponent } from './select-filter.component';
 import { FormsModule } from '@angular/forms';
 import { MappingService } from '../../services/mapping.service';
 import { SfsMaterialModule } from '../../../material/sfs-material.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SelectFilterComponent', () => {
   let component: SelectFilterComponent;
@@ -15,7 +16,7 @@ describe('SelectFilterComponent', () => {
       imports: [
         SfsMaterialModule,
         FormsModule,
-        // NoopAnimationsModule
+        NoopAnimationsModule
       ],
       providers: [MappingService
       ]
