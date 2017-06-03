@@ -40,22 +40,23 @@ export class AuthenticationEpics {
   }
 
   private showErrorMessage(error) {
+    let errorInfo: string;
     if (error.status === 404) {
-      this.showSnackBar('Login fehlgeschlagen. Versuche es später erneut.');
+      errorInfo = 'Versuche es später erneut.';
     } else if (error.status === 0) {
-      this.showSnackBar('Login fehlgeschlagen. Keine Internetverbindung?');
+      errorInfo = 'Keine Internetverbindung?';
     } else if (error.status === 401) {
       const cause = error.json();
       if (cause.unknownUsername) {
-        this.showSnackBar('Login fehlgeschlagen. Benutzername unbekannt.');
+        errorInfo = 'Benutzername unbekannt.';
       } else if (cause.invalidPassword) {
-        this.showSnackBar('Login fehlgeschlagen. Passwort inkorrekt.');
-      } else {
-        this.showSnackBar('Login fehlgeschlagen.');
+        errorInfo = 'Passwort inkorrekt.';
+      } else if (cause.unknownMail) {
+        errorInfo = 'E-Mail unbekannt.';
       }
-    } else {
-      this.showSnackBar('Login fehlgeschlagen.');
     }
+    const errorMessage = 'Login fehlgeschlagen.';
+    this.showSnackBar(`${errorMessage}${errorInfo ? ' ' + errorInfo : ''}`);
   }
 
   private showSnackBar(message: string) {
