@@ -5,7 +5,7 @@ import 'rxjs/add/observable/combineLatest';
 import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
-import { isEqual } from 'lodash-es';
+import * as isEqual from 'lodash.isequal';
 import { MdSnackBar } from '@angular/material';
 
 @Component({

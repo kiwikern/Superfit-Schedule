@@ -11,7 +11,7 @@ import { SettingsState } from '../fitness-schedule/store/settings/settings-state
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';
 import { Subscription } from 'rxjs/Subscription';
 import { IAppState } from '../store/root-state.interface';
-import { isEqual } from 'lodash-es';
+import * as isEqual from 'lodash.isequal';
 import { StatusComponent } from './status/status.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { RouterModule } from '@angular/router';

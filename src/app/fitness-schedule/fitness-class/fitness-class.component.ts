@@ -6,7 +6,7 @@ import { Gym } from '../enums/gym.enum';
 import { Day } from '../enums/day.enum';
 import { IAppState } from '../../store/root-state.interface';
 import { FavoriteActions } from '../store/favorites/favorite.actions';
-import { isEqual } from 'lodash-es';
+import * as isEqual from 'lodash.isequal';
 import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
 
 @Component({

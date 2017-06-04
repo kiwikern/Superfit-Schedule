@@ -2,7 +2,7 @@ import { IPayloadAction } from '../../../store/payload-action.types';
 import { FitnessClass } from '../../interfaces/fitness-class';
 import { FavoriteState } from './favorite-state';
 import { FavoriteActions } from './favorite.actions';
-import { isEqual } from 'lodash-es';
+import * as isEqual from 'lodash.isequal';
 /**
  * Created by Kim on 02.04.2017.
  */
