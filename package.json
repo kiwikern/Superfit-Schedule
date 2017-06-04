@@ -48,7 +48,6 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.1.0",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/service-worker": "^1.0.0-beta.14",
     "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "2.5.38",
@@ -65,7 +64,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
-    "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "tslint": "~4.5.0"
   }
 }
