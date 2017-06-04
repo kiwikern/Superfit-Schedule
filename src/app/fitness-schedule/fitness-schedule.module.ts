@@ -4,8 +4,8 @@ import { TimePeriodComponent } from './time-period/time-period.component';
 import { FitnessClassComponent } from './fitness-class/fitness-class.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SortClassesService } from './services/sort-classes.service';
-import { FilterClassesService } from './services/filter-classes.service';
+import { SortClassesPipe } from './pipes/sort-classes.pipe';
+import { FilterClassesPipe } from './pipes/filter-classes.pipe';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { SelectFilterComponent } from './filter/select-filter/select-filter.component';
@@ -43,6 +43,8 @@ const fitnessRoutes: Routes = [
     FilterComponent,
     SelectFilterComponent,
     OrderDaysPipe,
+    FilterClassesPipe,
+    SortClassesPipe,
     SettingsComponent,
     TimeFilterComponent,
     FilteredScheduleComponent,
@@ -55,8 +57,6 @@ const fitnessRoutes: Routes = [
   ],
   providers: [
     ScheduleParserService,
-    FilterClassesService,
-    SortClassesService
   ]
 })
 export class FitnessScheduleModule {

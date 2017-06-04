@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let loginAction;
-    console.log(this.useUserName)
     if (this.useUserName === 'true') {
       loginAction = this.authActions.loginWithUserName(this.userName, this.password);
     } else {

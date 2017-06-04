@@ -6,8 +6,8 @@
   <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
        [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
        fxLayoutGap="20px" class="scrollable" id="schedule">
-    <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | orderDays:showTodayFirst"
-                    [classesPerDay]="classesPerDay" [filter]="filter" [removedFavorites]="removedFavorites">
+    <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | filterClasses:filter | orderDays:showTodayFirst"
+                    [classesPerDay]="classesPerDay" [removedFavorites]="removedFavorites">
     </sfs-day-column>
   </div>
 </div>

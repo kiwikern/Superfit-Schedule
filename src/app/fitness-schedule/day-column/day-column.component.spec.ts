@@ -3,10 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DayColumnComponent } from './day-column.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Component, Input, Pipe, PipeTransform } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MappingService } from '../services/mapping.service';
-import { FilterClassesService } from '../services/filter-classes.service';
-import { SortClassesService } from '../services/sort-classes.service';
+import { SortClassesPipe } from '../pipes/sort-classes.pipe';
 
 describe('DayColumnComponent', () => {
   let component: DayColumnComponent;
@@ -16,16 +15,15 @@ describe('DayColumnComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         DayColumnComponent,
-        MockFitnessClassComponent
+        MockFitnessClassComponent,
+        SortClassesPipe
       ],
       imports: [
         SfsMaterialModule,
         FlexLayoutModule
       ],
       providers: [
-        MappingService,
-        {provide: FilterClassesService, useClass: MockService},
-        {provide: SortClassesService, useClass: MockService}
+        MappingService
       ]
     })
       .compileComponents();

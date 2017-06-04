@@ -1,17 +1,17 @@
-import { SortClassesService } from './sort-classes.service';
+import { SortClassesPipe } from './sort-classes.pipe';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { Day } from '../enums/day.enum';
 import { Gym } from '../enums/gym.enum';
 import { Language } from '../enums/language.enum';
 
-describe('SortClassesService', () => {
+describe('SortClassesPipe', () => {
   it('create an instance', () => {
-    const pipe = new SortClassesService();
+    const pipe = new SortClassesPipe();
     expect(pipe).toBeTruthy();
   });
 
   it('sorts classes', () => {
-    const pipe = new SortClassesService();
+    const pipe = new SortClassesPipe();
     const testClasses: FitnessClass[] = [
       {
         day: Day.MONDAY,
@@ -50,6 +50,6 @@ describe('SortClassesService', () => {
         language: Language.GERMAN
       }
     ];
-    expect(pipe.sort(testClasses)).toBe(testClasses);
+    expect(pipe.transform(testClasses)).toBe(testClasses);
   });
 });
