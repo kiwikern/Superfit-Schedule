@@ -3,7 +3,7 @@
     <md-card-title>
       Login
     </md-card-title>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <md-card-content fxLayout="column">
         <md-button-toggle-group fxFlexAlign="center" [(ngModel)]="useUserName" name="useUserName">
           <md-button-toggle value="true">
