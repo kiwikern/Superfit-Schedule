@@ -1,5 +1,6 @@
 import { browser, element, by } from 'protractor';
-import * as moment from 'moment';
+import * as moment from 'moment-mini';
+import { MappingService } from '../src/app/fitness-schedule/services/mapping.service';
 
 export class SchedulePage {
   navigateTo() {
@@ -27,8 +28,9 @@ export class SchedulePage {
   }
 
   getToday() {
-    moment.locale('de');
-    return moment().format('dddd');
+    const service = new MappingService();
+    const day = (moment().day() + 6) % 7;
+    return service.getDayName(day);
   }
 
   private getFirstDisplayedElement(element) {

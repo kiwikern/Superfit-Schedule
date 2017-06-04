@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TimePeriodComponent } from './time-period.component';
-import moment = require('moment');
-// import * as moment from 'moment';
 
 describe('TimePeriodComponent', () => {
   let component: TimePeriodComponent;
@@ -28,18 +26,12 @@ describe('TimePeriodComponent', () => {
   });
 
   it('should display start time', () => {
-    const expectedStartTime = moment()
-      .hour(10)
-      .minute(0)
-      .format('HH:mm');
+    const expectedStartTime = '10:00';
     expect(component.getStartTime()).toBe(expectedStartTime);
   });
 
   it('should display end time', () => {
-    const expectedEndTime = moment()
-      .hour(11)
-      .minute(0)
-      .format('HH:mm');
+    const expectedEndTime = '11:00';
     expect(component.getEndTime()).toBe(expectedEndTime);
   });
 

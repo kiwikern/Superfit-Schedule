@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FilterState } from '../store/filter/filter-state';
-import * as moment from 'moment';
+import * as moment from 'moment-mini';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 
 @Pipe({
