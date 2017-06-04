@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { AuthenticationActions } from '../store/authentication.actions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { UserNameInputComponent } from '../user-name-input/user-name-input.component';
+import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
+import { PasswordInputComponent } from '../password-input/password-input.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -13,7 +16,12 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [
+        LoginComponent,
+        UserNameInputComponent,
+        MailAddressInputComponent,
+        PasswordInputComponent
+      ],
       imports: [
         SfsMaterialModule,
         FormsModule,

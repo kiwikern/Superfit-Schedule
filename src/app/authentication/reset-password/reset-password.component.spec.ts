@@ -5,6 +5,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
 
 describe('ResetPasswordComponent', () => {
   let component: ResetPasswordComponent;
@@ -14,7 +15,8 @@ describe('ResetPasswordComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ResetPasswordComponent,
-        CaptchaMockComponent
+        CaptchaMockComponent,
+        MailAddressInputComponent
       ],
       imports: [
         SfsMaterialModule,

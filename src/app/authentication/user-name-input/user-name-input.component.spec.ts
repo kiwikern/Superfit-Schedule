@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserNameInputComponent } from './user-name-input.component';
+import { FormsModule } from '@angular/forms';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserNameInputComponent', () => {
   let component: UserNameInputComponent;
@@ -8,7 +11,12 @@ describe('UserNameInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserNameInputComponent ]
+      declarations: [ UserNameInputComponent ],
+      imports: [
+        SfsMaterialModule,
+        FormsModule,
+        NoopAnimationsModule
+      ]
     })
     .compileComponents();
   }));

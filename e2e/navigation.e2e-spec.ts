@@ -11,8 +11,11 @@ describe('Navigation', () => {
     appPage.setMobileBrowserSize();
   });
 
-  it('should display app title', () => {
+  beforeEach(() => {
     page.navigateTo();
+  });
+
+  it('should display app title', () => {
     expect(page.getAppTitle()).toEqual('SuperFit Kursplan');
   });
 
@@ -47,6 +50,27 @@ describe('Navigation', () => {
   it('should navigate to about and show title', () => {
     page.navigateToAbout();
     expect(page.getFirstCardTitle()).toEqual('Über die App');
+  });
+
+  it('should navigate to account, redirect to login and show title', () => {
+    page.navigateToAccount();
+    expect(page.getFirstCardTitle()).toEqual('Login');
+  });
+
+  it('should navigate to register and show title', () => {
+    page.navigateToAccount();
+    page.navigateToRegister();
+    expect(page.getFirstCardTitle()).toEqual('Registrieren');
+    page.navigateToLogin();
+    expect(page.getFirstCardTitle()).toEqual('Login');
+  });
+
+  it('should navigate to reset password and show title', () => {
+    page.navigateToAccount();
+    page.navigateToResetPassword();
+    expect(page.getFirstCardTitle()).toEqual('Passwort zurücksetzen');
+    page.navigateToLogin();
+    expect(page.getFirstCardTitle()).toEqual('Login');
   });
 
 });
