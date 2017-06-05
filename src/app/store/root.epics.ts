@@ -9,13 +9,15 @@ import { createEpicMiddleware } from 'redux-observable';
 import { PushNotificationEpics } from '../push-notification/push-notification.epics';
 import { AuthenticationEpics } from '../authentication/store/authentication.epics';
 import { SyncEpics } from '../sync/sync.epics';
+import { RegistrationEpics } from '../authentication/store/registration-registration.epics';
 
 @Injectable()
 export class RootEpics {
   constructor(private scheduleEpics: ScheduleEpics,
               private pushNotificationEpics: PushNotificationEpics,
               private authenticationEpics: AuthenticationEpics,
-              private syncEpics: SyncEpics) {
+              private syncEpics: SyncEpics,
+              private registrationEpics: RegistrationEpics) {
   }
 
   createEpics() {
@@ -23,7 +25,8 @@ export class RootEpics {
       createEpicMiddleware(this.scheduleEpics.createEpics()),
       createEpicMiddleware(this.pushNotificationEpics.createEpics()),
       ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
-      createEpicMiddleware(this.syncEpics.createEpics())
+      createEpicMiddleware(this.syncEpics.createEpics()),
+      createEpicMiddleware(this.registrationEpics.createEpics())
     ];
   }
 }
