@@ -8,11 +8,12 @@
         Die Angabe der E-Mail-Adresse ist freiwillig. Das Zurücksetzen des Passworts ist ohne E-Mail-Adresse nicht
         möglich.
         <sfs-user-name-input [(ngModel)]="userName" name="userName" ngDefaultControl></sfs-user-name-input>
-        <sfs-mail-address-input [(ngModel)]="mailAddress" name="mailAddress" ngDefaultControl>
-        </sfs-mail-address-input>
+        <sfs-mail-address-input [(ngModel)]="mailAddress" name="mailAddress" ngDefaultControl
+                                [email]="mailAddress?.length > 0"></sfs-mail-address-input>
         <sfs-password-input [(ngModel)]="password" name="password" ngDefaultControl></sfs-password-input>
         <sfs-password-confirmation-input name="passwordConfirmation" [(ngModel)]="passwordConfirmation"
-                                         ngDefaultControl [compareTo]="password"></sfs-password-confirmation-input>
+                                         ngDefaultControl [compareTo]="password" [pattern]="password">
+        </sfs-password-confirmation-input>
       </md-card-content>
       <md-card-actions align="end">
         <button md-raised-button type="submit" [disabled]="registrationForm.invalid">Registrieren</button>
