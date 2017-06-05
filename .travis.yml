@@ -19,9 +19,6 @@ jobs:
     - stage: test
       script: npm run lint
     - script: npm run e2e
-    - script:
-       - npm run test:once
-       - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
     - stage: deploy
       script: echo 'Deploying...'
       deploy:

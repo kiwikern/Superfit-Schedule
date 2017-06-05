@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
-import { ScheduleParserService } from '../services/schedule-parser.service';
+import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
-import * as _ from 'lodash';
+import * as isEqual from 'lodash.isequal';
 import { MdSnackBar } from '@angular/material';
 
 @Component({
@@ -46,7 +46,7 @@ export class FavoritesScheduleComponent implements OnInit {
       .map(day => day.classes)
       .reduce((prev, curr) => prev.concat(curr), []);
     favorites.forEach(fav => {
-      if (schedule.findIndex(workout => _.isEqual(fav, workout)) === -1) {
+      if (schedule.findIndex(workout => isEqual(fav, workout)) === -1) {
         removedFavorites.push(fav);
       }
     });

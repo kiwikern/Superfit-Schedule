@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+import { Pipe, PipeTransform } from '@angular/core';
 import { FitnessClass } from '../interfaces/fitness-class';
 
-@Injectable()
-export class SortClassesService {
+@Pipe({
+  name: 'sortClasses'
+})
+export class SortClassesPipe implements PipeTransform {
 
-  sort(classes: FitnessClass[]): FitnessClass[] {
+  transform(classes: FitnessClass[]): FitnessClass[] {
     if (Array.isArray(classes)) {
       return classes.sort(this.compare);
     } else {
@@ -14,15 +15,6 @@ export class SortClassesService {
   }
 
   private compare(classA: FitnessClass, classB: FitnessClass): number {
-    const currentDay = moment().day() - 1;
-    const dayA = (classA.day - currentDay + 7) % 7;
-    const dayB = (classB.day - currentDay + 7) % 7;
-    if (dayA < dayB) {
-      return -1;
-    }
-    if (dayA > dayB) {
-      return 1;
-    }
     if (classA.startHour < classB.startHour) {
       return -1;
     }

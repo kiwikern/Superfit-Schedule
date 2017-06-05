@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MdButtonModule,
+  MdButtonToggleModule,
   MdCardModule,
   MdCheckboxModule,
   MdChipsModule,
   MdIconModule,
+  MdInputModule,
   MdRadioModule,
   MdSelectModule,
   MdSidenavModule,
@@ -13,7 +15,7 @@ import {
   MdSnackBarModule,
   MdToolbarModule
 } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import 'hammerjs';
 
 @NgModule({
   imports: [
@@ -27,9 +29,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdChipsModule,
     MdCardModule,
     MdRadioModule,
-    BrowserAnimationsModule,
     MdSliderModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdInputModule,
+    MdButtonToggleModule
   ],
   exports: [
     CommonModule,
@@ -42,9 +45,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdChipsModule,
     MdCardModule,
     MdRadioModule,
-    BrowserAnimationsModule,
     MdSliderModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdInputModule,
+    MdButtonToggleModule
   ]
 })
 export class SfsMaterialModule {

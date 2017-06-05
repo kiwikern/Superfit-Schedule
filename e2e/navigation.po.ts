@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { browser, element, by, ElementArrayFinder } from 'protractor';
 
 export class NavigationPage {
   navigateTo(path: string = '/') {
@@ -25,6 +25,22 @@ export class NavigationPage {
     return this.clickOnNavButton('nav_about');
   }
 
+  navigateToAccount() {
+    return this.clickOnNavButton('nav_account');
+  }
+
+  navigateToRegister() {
+    this.clickOnRouterLink('../registration');
+  }
+
+  navigateToResetPassword() {
+    this.clickOnRouterLink('../reset-password');
+  }
+
+  navigateToLogin() {
+    this.clickOnRouterLink('../login');
+  }
+
   getAppTitle() {
     return element(by.css('md-toolbar-row > span')).getText();
   }
@@ -47,10 +63,17 @@ export class NavigationPage {
 
   private clickOnNavButton(buttonName: string) {
     element(by.id('nav_burger-menu')).click();
-    return this.getFirstDisplayedElement(element.all(by.id(buttonName))).click();
+    const navButton = this.getFirstDisplayedElement(element.all(by.id(buttonName)));
+    browser.actions().mouseMove(navButton).perform();
+    return navButton.click();
+  }
+
+  private clickOnRouterLink(path: string) {
+    return this.getFirstDisplayedElement(element.all(by.css(`a[routerLink="${path}"]`))).click();
   }
 
   private getFirstDisplayedElement(element) {
     return element.filter(e => e.isDisplayed()).first();
   }
+
 }

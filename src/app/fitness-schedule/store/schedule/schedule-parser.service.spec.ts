@@ -1,4 +1,4 @@
-import { Day } from '../enums/day.enum';
+import { Day } from '../../enums/day.enum';
 import { inject, TestBed } from '@angular/core/testing';
 import { ScheduleParserService } from './schedule-parser.service';
 describe('ScheduleParserService', () => {

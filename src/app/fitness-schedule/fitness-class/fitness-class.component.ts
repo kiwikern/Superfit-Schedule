@@ -4,9 +4,9 @@ import { NgRedux, select } from '@angular-redux/store';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { Gym } from '../enums/gym.enum';
 import { Day } from '../enums/day.enum';
-import { IAppState } from '../../store/root.types';
+import { IAppState } from '../../store/root-state.interface';
 import { FavoriteActions } from '../store/favorites/favorite.actions';
-import * as _ from 'lodash';
+import * as isEqual from 'lodash.isequal';
 import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
 
 @Component({
@@ -71,7 +71,7 @@ export class FitnessClassComponent implements OnInit {
 
   private isInFavorites(workouts: FitnessClass[]): boolean {
     if (this.fitnessClass) {
-      return workouts.findIndex((f) => _.isEqual(this.fitnessClass, f)) !== -1;
+      return workouts.findIndex((f) => isEqual(this.fitnessClass, f)) !== -1;
     } else {
       return false;
     }

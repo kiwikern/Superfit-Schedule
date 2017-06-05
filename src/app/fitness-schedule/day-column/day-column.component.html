@@ -1,6 +1,5 @@
-<div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center"
-     *ngIf="filteredClasses.length > 0">
+<div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
   <h2>{{ getDayName(classesPerDay.day) }}</h2>
-  <sfs-fitness-class *ngFor="let class of filteredClasses"
+  <sfs-fitness-class *ngFor="let class of classesPerDay.classes | sortClasses"
                      [fitnessClass]="class" [wasRemoved]="wasRemoved(class)" fxFlex></sfs-fitness-class>
 </div>

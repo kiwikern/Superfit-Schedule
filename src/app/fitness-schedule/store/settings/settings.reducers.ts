@@ -20,6 +20,13 @@ export function settingsReducer(state: SettingsState = INITIAL_STATE,
       newState = {...state};
       newState[action.payload.name] = action.payload.value;
       break;
+    case SettingsActions.SETTING_SET:
+      if (action.payload) {
+        newState = action.payload;
+      } else {
+        newState = state;
+      }
+      break;
     default:
       newState = state;
   }

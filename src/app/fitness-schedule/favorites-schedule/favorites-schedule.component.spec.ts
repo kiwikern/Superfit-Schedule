@@ -4,7 +4,7 @@ import { FavoritesScheduleComponent } from './favorites-schedule.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, Injectable, Input } from '@angular/core';
-import { ScheduleParserService } from '../services/schedule-parser.service';
+import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { Day } from '../enums/day.enum';
@@ -13,6 +13,7 @@ import { Gym } from '../enums/gym.enum';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/lib/testing';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FavoritesScheduleComponent', () => {
   let component: FavoritesScheduleComponent;
@@ -27,7 +28,8 @@ describe('FavoritesScheduleComponent', () => {
       imports: [
         SfsMaterialModule,
         FlexLayoutModule,
-        NgReduxTestingModule
+        NgReduxTestingModule,
+        NoopAnimationsModule
       ],
       providers: [
         ScheduleParserService

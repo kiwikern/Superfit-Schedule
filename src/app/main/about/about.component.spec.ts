@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
-import { SfsMaterialModule } from '../material/sfs-material.module';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
