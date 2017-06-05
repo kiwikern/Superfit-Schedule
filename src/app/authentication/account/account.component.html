@@ -1,6 +1,15 @@
-Hallo {{userName$ | async}}
-
-<button md-button (click)="logout()">
-  <md-icon>exit_to_app</md-icon>
-  Logout
-</button>
+<md-card>
+  <md-card-title>Hallo {{userName$ | async}}!</md-card-title>
+  <md-card-content>
+    <p>Herzlichen Glückwunsch, du bist eingeloggt!</p> <p>Momentan können noch keine Änderungen an deinem Account vorgenommen werden, die entsprächende
+    Funktionalität wird allerdings in Kürze folgen.</p>
+    <p>Die Synchronisierung deiner Einstellungen funktioniert aber bereits
+      vollständig.</p>
+  </md-card-content>
+  <md-card-actions align="right">
+    <button md-raised-button (click)="logout()">
+      <md-icon>exit_to_app</md-icon>
+      Logout
+    </button>
+  </md-card-actions>
+</md-card>
