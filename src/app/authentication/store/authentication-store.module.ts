@@ -8,7 +8,17 @@ import { AuthGuard } from './auth-guard/auth.guard';
 import { AuthService } from './auth-service/auth.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig(), http, options);
+  const config = {
+    tokenName: 'token',
+    tokenGetter: (() => {
+      try {
+        return JSON.parse(localStorage.getItem('sfs.state')).authentication.jwt;
+      } catch (error) {
+        return null;
+      }
+    })
+  };
+  return new AuthHttp(new AuthConfig(config), http, options);
 }
 
 @NgModule({
