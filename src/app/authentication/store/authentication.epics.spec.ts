@@ -35,7 +35,7 @@ describe('AuthenticationEpics', () => {
         const expectedOutputActions = [
           {type: UPDATE_LOCATION, payload: '/schedule'},
           {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user'}},
-          {type: SyncActions.SYNC_ACTIVATED}
+          {type: SyncActions.SYNC_ACTIVATE_REQUEST}
         ];
         mockBackendResponse(mockBackend, {token: 'token', userName: 'user'}, 200);
         performAction(epics, action$, expectedOutputActions, done, snack, 'erfolgreich');
@@ -67,7 +67,10 @@ describe('AuthenticationEpics', () => {
     inject([AuthenticationEpics, AuthenticationActions],
       (epics: AuthenticationEpics, actions: AuthenticationActions) => {
         const action$ = ActionsObservable.of(actions.logout());
-        const expectedOutputActions = [{type: SyncActions.SYNC_DEACTIVATED}];
+        const expectedOutputActions = [
+          {type: UPDATE_LOCATION, payload: 'auth/login'},
+          {type: SyncActions.SYNC_DEACTIVATED}
+        ];
         performAction(epics, action$, expectedOutputActions, done);
       })();
   });

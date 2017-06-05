@@ -42,4 +42,24 @@ export class AuthenticationActions {
       type: AuthenticationActions.LOGOUT
     };
   }
+
+  register(payload) {
+    return {
+      type: AuthenticationActions.REGISTRATION_REQUESTED,
+      payload
+    };
+  }
+
+  registerSuccess(userName, jwt) {
+    return {
+      type: AuthenticationActions.REGISTRATION_SUCCESS,
+      payload: {userName, jwt}
+    };
+  }
+
+  registerFailed() {
+    return {
+      type: AuthenticationActions.REGISTRATION_FAILED
+    };
+  }
 }

@@ -30,6 +30,13 @@ export function favoriteReducer(state: FavoriteState = INITIAL_STATE,
     case FavoriteActions.FAVORITE_CLEARED:
       newState = {workouts: {}};
       break;
+    case FavoriteActions.FAVORITE_SET:
+      if (action.payload) {
+        newState = action.payload;
+      } else {
+        newState = state;
+      }
+      break;
     default:
       newState = state;
   }

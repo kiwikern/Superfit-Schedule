@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { SyncActions } from './sync.actions';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
-import { MdSnackBar } from '@angular/material';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';
@@ -11,50 +10,39 @@ import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-stat
 import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
-export class SyncEpics {
+export class SyncRequestedEpics {
 
   @select() favorites$: Observable<FavoriteState>;
   @select() settings$: Observable<SettingsState>;
   @select() filter$: Observable<FilterState>;
-  @select(['authentication', 'userName']) userName$: Observable<string>;
+  @select(['sync', 'lastUpdate']) lastUpdate$: Observable<string>;
 
   favorites: FavoriteState;
   settings: SettingsState;
   filter: FilterState;
-  userName: string;
+  lastUpdate: string;
 
   constructor(private http: AuthHttp,
-              private actions: SyncActions,
-              private snackBar: MdSnackBar) {
+              private actions: SyncActions) {
     this.favorites$.subscribe(favorites => this.favorites = favorites);
     this.settings$.subscribe(settings => this.settings = settings);
     this.filter$.subscribe(filter => this.filter = filter);
-    this.userName$.subscribe(userName => this.userName = userName);
+    this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
   }
 
   createEpics() {
     return action$ => action$
       .ofType(SyncActions.SYNC_REQUESTED)
-      .switchMap(credentials => this.syncState()
-        .map(response => this.actions.syncSuccess())
-        .catch(error => of(this.actions.syncFailed()))
+      .switchMap(credentials => this.postSyncState()
+        .map(response => this.actions.syncSuccess(response.json().lastUpdate))
+        .catch(error => of(this.actions.syncFailed(), this.actions.activateSync()))
       );
   }
 
-  private showErrorMessage(error) {
-    if (error.status === 404) {
-      this.showSnackBar('Login fehlgeschlagen. Versuche es später erneut.');
-    }
-  }
-
-  private showSnackBar(message: string) {
-    this.snackBar.open(message, null, {duration: 5000});
-  }
-
-  private syncState() {
+  private postSyncState() {
     const url = '/api/sfs/sync';
     const body = {
-      userName: this.userName,
+      lastUpdate: this.lastUpdate || 0,
       state: {favorites: this.favorites, settings: this.settings, filter: this.filter}
     };
     return this.http.post(url, body);

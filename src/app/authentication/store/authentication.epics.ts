@@ -35,7 +35,7 @@ export class AuthenticationEpics {
           })),
       action$ => action$
         .ofType(AuthenticationActions.LOGOUT)
-        .map(() => this.syncActions.deactivateSync())
+        .flatMap(() => [this.routerActions.navigateTo('auth/login'), this.syncActions.deactivateSync()])
     ];
   }
 
@@ -64,7 +64,7 @@ export class AuthenticationEpics {
   }
 
   private requestLogin(credentials) {
-    const url = '/api/sfs/auth/login';
+    const url = '/api/sfs/user/session';
     return this.http.post(url, credentials);
   }
 

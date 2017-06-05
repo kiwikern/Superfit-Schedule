@@ -3,20 +3,22 @@
  */
 import { Injectable } from '@angular/core';
 import { FilterPayload } from './filter.reducers';
+import { FilterState } from './filter-state';
 
 @Injectable()
 export class FilterActions {
   static readonly FILTER_ADDED = 'FILTER_ADDED';
   static readonly FILTER_REMOVED = 'FILTER_REMOVED';
   static readonly FILTER_CLEARED = 'FILTER_CLEARED';
+  static readonly FILTER_SET = 'FILTER_SET';
 
   addFilter(payload: FilterPayload) {
     return {
       type: FilterActions.FILTER_ADDED,
-    payload: {
-      filterName: payload.filterName,
-      filterValue: payload.filterValue
-    }
+      payload: {
+        filterName: payload.filterName,
+        filterValue: payload.filterValue
+      }
     };
   }
 
@@ -31,9 +33,15 @@ export class FilterActions {
 
   clearFilter() {
     return {
-      type: FilterActions.FILTER_CLEARED,
+      type: FilterActions.FILTER_CLEARED
     };
   }
 
+  setFilter(payload: FilterState) {
+    return {
+      type: FilterActions.FILTER_SET,
+      payload
+    };
+  }
 
 }

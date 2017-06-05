@@ -8,6 +8,8 @@ import { UserNameInputComponent } from '../user-name-input/user-name-input.compo
 import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
 import { PasswordInputComponent } from '../password-input/password-input.component';
 import { PasswordConfirmationInputComponent } from '../password-confirmation-input/password-confirmation-input.component';
+import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { AuthenticationActions } from '../store/authentication.actions';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -25,7 +27,11 @@ describe('RegistrationComponent', () => {
       imports: [
         SfsMaterialModule,
         FormsModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        NgReduxTestingModule
+      ],
+      providers: [
+        AuthenticationActions
       ]
     })
     .compileComponents();

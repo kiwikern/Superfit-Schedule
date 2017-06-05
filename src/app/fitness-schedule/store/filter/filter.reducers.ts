@@ -22,6 +22,13 @@ export function filterReducer(state: FilterState = INITIAL_STATE,
     case FilterActions.FILTER_CLEARED:
       newState = {};
       break;
+    case FilterActions.FILTER_SET:
+      if (action.payload) {
+        newState = action.payload;
+      } else {
+        newState = state;
+      }
+      break;
     default:
       newState = state;
   }

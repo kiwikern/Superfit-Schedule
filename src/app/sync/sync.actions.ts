@@ -5,7 +5,9 @@ export class SyncActions {
   static readonly SYNC_REQUESTED = 'SYNC_REQUESTED';
   static readonly SYNC_SUCCESS = 'SYNC_SUCCESS';
   static readonly SYNC_FAILED = 'SYNC_FAILED';
-  static readonly SYNC_ACTIVATED = 'SYNC_ACTIVATED';
+  static readonly SYNC_ACTIVATE_REQUEST = 'SYNC_ACTIVATE_REQUEST';
+  static readonly SYNC_ACTIVATE_SUCCESS = 'SYNC_ACTIVATE_SUCCESS';
+  static readonly SYNC_ACTIVATE_FAILED = 'SYNC_ACTIVATE_FAILED';
   static readonly SYNC_DEACTIVATED = 'SYNC_DEACTIVATED';
 
   sync() {
@@ -14,9 +16,10 @@ export class SyncActions {
     };
   }
 
-  syncSuccess() {
+  syncSuccess(lastUpdate) {
     return {
-      type: SyncActions.SYNC_SUCCESS
+      type: SyncActions.SYNC_SUCCESS,
+      payload: {lastUpdate}
     };
   }
 
@@ -28,13 +31,26 @@ export class SyncActions {
 
   activateSync() {
     return {
-      type: SyncActions.SYNC_ACTIVATED
+      type: SyncActions.SYNC_ACTIVATE_REQUEST
+    };
+  }
+
+  activateSyncSuccess(lastUpdate) {
+    return {
+      type: SyncActions.SYNC_ACTIVATE_SUCCESS,
+      payload: {lastUpdate}
     };
   }
 
   deactivateSync() {
     return {
       type: SyncActions.SYNC_DEACTIVATED
+    };
+  }
+
+  activateSyncFailed() {
+    return {
+      type: SyncActions.SYNC_ACTIVATE_FAILED
     };
   }
 }

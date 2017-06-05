@@ -6,6 +6,7 @@ import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { AuthService } from './auth-service/auth.service';
+import { RegistrationEpics } from './registration-registration.epics';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   const config = {
@@ -29,6 +30,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   providers: [
     AuthenticationActions,
     AuthenticationEpics,
+    RegistrationEpics,
     AuthGuard,
     AuthService,
     {

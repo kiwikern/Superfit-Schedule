@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SyncActions } from './sync.actions';
-import { SyncEpics } from './sync.epics';
+import { SyncRequestedEpics } from './sync-requested.epics';
 import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
@@ -15,6 +15,7 @@ import * as isEqual from 'lodash.isequal';
 import { StatusComponent } from './status/status.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { RouterModule } from '@angular/router';
+import { SyncActivatedEpics } from './sync-activated.epics';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     SyncActions,
-    SyncEpics
+    SyncRequestedEpics,
+    SyncActivatedEpics
   ],
   exports: [
     StatusComponent
