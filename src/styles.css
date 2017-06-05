@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
+/*@import 'teal-pink.theme.scss';*/
 body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   margin: 0px;
 }
 
 a {
-  color: hotpink;
+  color: #f48fb1;
   text-decoration: none;
 }

@@ -20,7 +20,8 @@
       "prefix": "sfs",
       "serviceWorker": true,
       "styles": [
-        "styles.css"
+        "styles.css",
+        "teal-pink.theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
