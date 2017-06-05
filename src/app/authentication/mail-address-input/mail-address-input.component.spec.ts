@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MailAddressInputComponent } from './mail-address-input.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('MailAddressInputComponent', () => {
@@ -14,7 +14,7 @@ describe('MailAddressInputComponent', () => {
       declarations: [ MailAddressInputComponent ],
       imports: [
         SfsMaterialModule,
-        FormsModule,
+        ReactiveFormsModule,
         NoopAnimationsModule
       ]
     })

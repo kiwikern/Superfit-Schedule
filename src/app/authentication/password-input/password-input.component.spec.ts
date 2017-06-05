@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordInputComponent } from './password-input.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -14,7 +14,7 @@ describe('PasswordInputComponent', () => {
       declarations: [ PasswordInputComponent ],
       imports: [
         SfsMaterialModule,
-        FormsModule,
+        ReactiveFormsModule,
         NoopAnimationsModule
       ]
     })

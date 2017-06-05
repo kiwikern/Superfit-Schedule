@@ -48,7 +48,7 @@ describe('AuthenticationEpics', () => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [{type: AuthenticationActions.LOGIN_FAILED}];
         const errorBody = {invalidPassword: true, unknownMail: false, unknownUsername: false};
-        mockBackendError(mockBackend, errorBody, 401);
+        mockBackendError(mockBackend, errorBody, 301);
         performAction(epics, action$, expectedOutputActions, done, snack, 'Passwort');
       })();
   });

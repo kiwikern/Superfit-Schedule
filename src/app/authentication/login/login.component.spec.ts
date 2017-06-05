@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { AuthenticationActions } from '../store/authentication.actions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +25,7 @@ describe('LoginComponent', () => {
       imports: [
         SfsMaterialModule,
         FormsModule,
+        ReactiveFormsModule,
         NgReduxTestingModule,
         NoopAnimationsModule
       ],

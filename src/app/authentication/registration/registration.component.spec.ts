@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistrationComponent } from './registration.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { UserNameInputComponent } from '../user-name-input/user-name-input.component';
 import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
@@ -27,6 +27,7 @@ describe('RegistrationComponent', () => {
       imports: [
         SfsMaterialModule,
         FormsModule,
+        ReactiveFormsModule,
         NoopAnimationsModule,
         NgReduxTestingModule
       ],
