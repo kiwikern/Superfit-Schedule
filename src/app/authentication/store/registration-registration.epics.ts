@@ -44,7 +44,7 @@ export class RegistrationEpics {
       const cause = error.json();
       if (cause.key === 'username_exists') {
         errorInfo = 'Benutzername bereits vergeben.';
-      } else if (cause.key = 'mailaddress_exists') {
+      } else if (cause.key === 'mailaddress_exists') {
         errorInfo = 'E-Mail bereits registriert.';
       }
     }
