@@ -7,8 +7,8 @@ import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Va
   styleUrls: ['./user-name-input.component.css'],
   providers: [
     {provide: NG_VALUE_ACCESSOR, useExisting: UserNameInputComponent, multi: true},
-    {provide: NG_VALIDATORS, useValue: Validators.required, multi: true},
-    {provide: NG_VALIDATORS, useValue: pattern, multi: true}
+    {provide: NG_VALIDATORS, useFactory: pattern, multi: true},
+    {provide: NG_VALIDATORS, useValue: Validators.required, multi: true}
   ]
 })
 export class UserNameInputComponent implements ControlValueAccessor {
@@ -31,5 +31,5 @@ export class UserNameInputComponent implements ControlValueAccessor {
 }
 
 export function pattern () {
-  return Validators.pattern('[a-zA-Z0-9]+');
+  return Validators.pattern('[\\w\\d]+');
 }

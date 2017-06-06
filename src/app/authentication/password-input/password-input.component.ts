@@ -8,7 +8,7 @@ import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Va
   providers: [
     {provide: NG_VALUE_ACCESSOR, useExisting: PasswordInputComponent, multi: true},
     {provide: NG_VALIDATORS, useValue: Validators.required, multi: true},
-    {provide: NG_VALIDATORS, useValue: minLength, multi: true}
+    {provide: NG_VALIDATORS, useFactory: minLength, multi: true}
   ]
 })
 export class PasswordInputComponent implements ControlValueAccessor {
