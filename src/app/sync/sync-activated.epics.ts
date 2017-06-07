@@ -12,6 +12,8 @@ import { AuthHttp } from 'angular2-jwt';
 import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.actions';
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
+import { AuthenticationActions } from '../authentication/store/authentication.actions';
+import { ActionsObservable } from 'redux-observable';
 
 @Injectable()
 export class SyncActivatedEpics {
@@ -23,7 +25,9 @@ export class SyncActivatedEpics {
               private syncActions: SyncActions,
               private favoriteActions: FavoriteActions,
               private filterActions: FilterActions,
-              private settingsActions: SettingsActions) {
+              private settingsActions: SettingsActions,
+              private authActions: AuthenticationActions,
+              private snackBar: MdSnackBar) {
     this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
   }
 
@@ -44,18 +48,34 @@ export class SyncActivatedEpics {
             ];
           }
           if (lastUpdate === this.lastUpdate) {
-            return  [successAction];
+            return [successAction];
           } else {
             return [successAction, ...setActions];
           }
         })
-        .catch(error => of(this.syncActions.activateSyncFailed()))
+        .catch(error => this.handleErrors(error))
       );
   }
 
   private getSyncState() {
     const url = '/api/sfs/sync';
     return this.http.get(url);
+  }
+
+  private handleErrors(error: Error | Response): Observable<any> {
+    if (error instanceof Error) {
+      if (error.name.includes('JWT')) {
+        return this.getLogoutActions();
+      }
+    } else if (error.status === 401) {
+      return this.getLogoutActions();
+    }
+    return of(this.syncActions.activateSyncFailed());
+  }
+
+  private getLogoutActions(): Observable<any> {
+    this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.');
+    return of(this.syncActions.activateSyncFailed(), this.authActions.logout());
   }
 
 }

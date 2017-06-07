@@ -40,7 +40,7 @@ export function syncReducer(state: SyncState = INITIAL_STATE,
     case SyncActions.SYNC_ACTIVATE_REQUEST:
       return {
         hasError: state.hasError,
-        isRequesting: state.isRequesting,
+        isRequesting: true,
         isSyncActivated: state.isSyncActivated,
         lastUpdate: state.lastUpdate
       };
@@ -60,8 +60,8 @@ export function syncReducer(state: SyncState = INITIAL_STATE,
       };
     case SyncActions.SYNC_DEACTIVATED:
       return {
-        hasError: state.hasError,
-        isRequesting: state.isRequesting,
+        hasError: false,
+        isRequesting: false,
         isSyncActivated: false,
         lastUpdate: state.lastUpdate
       };

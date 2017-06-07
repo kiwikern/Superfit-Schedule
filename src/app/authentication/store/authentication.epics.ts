@@ -35,7 +35,7 @@ export class AuthenticationEpics {
           })),
       action$ => action$
         .ofType(AuthenticationActions.LOGOUT)
-        .flatMap(() => [this.routerActions.navigateTo('auth/login'), this.syncActions.deactivateSync()])
+        .map(() => this.syncActions.deactivateSync())
     ];
   }
 

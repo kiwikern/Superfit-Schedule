@@ -11,6 +11,8 @@ import { settings } from 'cluster';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { MockNgRedux } from '@angular-redux/store/lib/testing';
+import { MdSnackBar } from '@angular/material';
+import { AuthenticationActions } from '../authentication/store/authentication.actions';
 describe('SyncActivatedEpics', () => {
 
   beforeEach(() => {
@@ -25,6 +27,8 @@ describe('SyncActivatedEpics', () => {
         FavoriteActions,
         SettingsActions,
         FilterActions,
+        AuthenticationActions,
+        {provide: MdSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend},
         {provide: AuthHttp, useExisting: Http}
       ]
@@ -116,6 +120,14 @@ describe('SyncActivatedEpics', () => {
   class MockError extends Response implements Error {
     name: any;
     message: any;
+  }
+
+  class SnackBarMock {
+    message: string;
+
+    open(message, action, options) {
+      this.message = message;
+    }
   }
 
 });

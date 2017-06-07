@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { select } from '@angular-redux/store';
 
 @Component({
   selector: 'sfs-navigation',
@@ -8,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class NavigationComponent {
 
   @Input() sideNav;
+  @select(['authentication', 'jwt']) jwt$;
 
   closeSidenav() {
     if (this.sideNav) {

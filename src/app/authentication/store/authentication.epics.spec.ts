@@ -68,7 +68,6 @@ describe('AuthenticationEpics', () => {
       (epics: AuthenticationEpics, actions: AuthenticationActions) => {
         const action$ = ActionsObservable.of(actions.logout());
         const expectedOutputActions = [
-          {type: UPDATE_LOCATION, payload: 'auth/login'},
           {type: SyncActions.SYNC_DEACTIVATED}
         ];
         performAction(epics, action$, expectedOutputActions, done);
