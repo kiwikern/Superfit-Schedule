@@ -12,7 +12,7 @@
 </button>
 <button md-button (click)="closeSidenav()" routerLink="/auth" id="nav_account">
   <md-icon>person</md-icon>
-  {{(jwt$ | async) ? 'Account' : 'Einloggen'}}
+  {{(jwt$ | async) ? 'Account' : 'Login'}}
 </button>
 <button md-button (click)="closeSidenav()" routerLink="/schedule/settings" id="nav_settings">
   <md-icon>settings</md-icon>
