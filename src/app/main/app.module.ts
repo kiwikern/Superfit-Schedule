@@ -43,7 +43,7 @@ const appRoutes: Routes = [
     FitnessScheduleStoreModule,
     SfsMaterialModule,
     FlexLayoutModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
+    RouterModule.forRoot(appRoutes),
     ServiceWorkerModule,
     PushNotificationModule,
     AuthenticationStoreModule,

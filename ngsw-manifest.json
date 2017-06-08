@@ -5,10 +5,13 @@
       "/": {
         "prefix": false
       },
-      "/#/schedule": {
+      "/schedule": {
+        "prefix": true
+      },
+      "/auth": {
         "prefix": false
       },
-      "/#/favorites": {
+      "/about": {
         "prefix": false
       }
     }
