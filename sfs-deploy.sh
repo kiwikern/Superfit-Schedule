@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # variables
 PATH="/package/host/localhost/nodejs-7/bin:$PATH"
 deploy=~/bin/sfs-deploy
@@ -11,7 +12,6 @@ log() {
 
 # script
 log "started deploying"
-exit 0
 
 # remove old repo files and clone release branch
 cd $deploy
