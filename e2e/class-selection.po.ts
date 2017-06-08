@@ -2,7 +2,7 @@ import { browser, element, by, protractor } from 'protractor';
 
 export class ClassSelectionPage {
   navigateTo() {
-    return browser.get('/#/schedule/filter');
+    return browser.get('/schedule/filter');
   }
 
   removeAllFilter() {

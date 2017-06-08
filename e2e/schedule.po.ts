@@ -4,7 +4,7 @@ import { MappingService } from '../src/app/fitness-schedule/services/mapping.ser
 
 export class SchedulePage {
   navigateTo() {
-    return browser.get('/#/schedule');
+    return browser.get('/schedule');
   }
 
   getFirstClassTitle() {
