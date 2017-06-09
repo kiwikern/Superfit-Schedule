@@ -7,7 +7,7 @@
     "serve": "ng serve --host 0.0.0.0 --disable-host-check",
     "start": "npm run serve -- --proxy-config proxy.conf.json",
     "start:local": "npm run serve -- --proxy-config proxy.conf.local.json",
-    "start:prod": "npm run serve -- --proxy-config proxy.conf.local.json --prod -sm --watch=false --live-reload false",
+    "start:prod": "npm run start:local -- --prod -sm --watch=false --live-reload false",
     "build": "ng build --prod",
     "test": "ng test",
     "build-sm": "npm run build -- --vendor-chunk=false -sm --output-hashing=none",
