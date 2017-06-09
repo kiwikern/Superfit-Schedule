@@ -64,7 +64,7 @@ export class SyncActivatedEpics {
 
   private handleErrors(error: Error | Response): Observable<any> {
     if (error instanceof Error) {
-      if (error.name.includes('JWT')) {
+      if (error.message.includes('JWT')) {
         return this.getLogoutActions();
       }
     } else if (error.status === 401) {
@@ -74,7 +74,7 @@ export class SyncActivatedEpics {
   }
 
   private getLogoutActions(): Observable<any> {
-    this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.');
+    this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.', '', {duration: 5000});
     return of(this.syncActions.activateSyncFailed(), this.authActions.logout());
   }
 
