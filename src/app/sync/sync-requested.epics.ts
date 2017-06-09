@@ -8,6 +8,8 @@ import { FilterState } from '../fitness-schedule/store/filter/filter-state';
 import { SettingsState } from '../fitness-schedule/store/settings/settings-state';
 import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
 import { AuthHttp } from 'angular2-jwt';
+import { AuthenticationActions } from '../authentication/store/authentication.actions';
+import { MdSnackBar } from '@angular/material';
 
 @Injectable()
 export class SyncRequestedEpics {
@@ -23,7 +25,9 @@ export class SyncRequestedEpics {
   lastUpdate: string;
 
   constructor(private http: AuthHttp,
-              private actions: SyncActions) {
+              private actions: SyncActions,
+              private authActions: AuthenticationActions,
+              private snackBar: MdSnackBar) {
     this.favorites$.subscribe(favorites => this.favorites = favorites);
     this.settings$.subscribe(settings => this.settings = settings);
     this.filter$.subscribe(filter => this.filter = filter);
@@ -34,18 +38,34 @@ export class SyncRequestedEpics {
     return action$ => action$
       .ofType(SyncActions.SYNC_REQUESTED)
       .switchMap(credentials => this.postSyncState()
-        .map(response => this.actions.syncSuccess(response.json().lastUpdate))
-        .catch(error => of(this.actions.syncFailed(), this.actions.activateSync()))
+        .map(response => this.actions.syncSuccess())
+        .catch(error => this.handleError(error))
       );
   }
 
-  private postSyncState() {
+  private postSyncState(): Observable<any> {
     const url = '/api/sfs/sync';
     const body = {
       lastUpdate: this.lastUpdate || 0,
       state: {favorites: this.favorites, settings: this.settings, filter: this.filter}
     };
     return this.http.post(url, body);
+  }
+
+  private handleError(error: Response | Error): Observable<any> {
+    if (error instanceof Error) {
+      if (error.name.includes('JWT')) {
+        return this.getAuthFailedActions();
+      }
+    } else if (error.status === 401) {
+      return this.getAuthFailedActions();
+    }
+    return of(this.actions.syncFailed(), this.actions.activateSync());
+  }
+
+  private getAuthFailedActions(): Observable<any> {
+    this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.');
+    return of(this.actions.syncFailed(), this.authActions.logout());
   }
 
 }

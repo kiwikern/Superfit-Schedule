@@ -16,10 +16,9 @@ export class SyncActions {
     };
   }
 
-  syncSuccess(lastUpdate) {
+  syncSuccess() {
     return {
-      type: SyncActions.SYNC_SUCCESS,
-      payload: {lastUpdate}
+      type: SyncActions.SYNC_SUCCESS
     };
   }
 
