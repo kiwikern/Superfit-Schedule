@@ -15,57 +15,43 @@ export const INITIAL_STATE: SyncState = {
 export function syncReducer(state: SyncState = INITIAL_STATE,
                             action: IPayloadAction<any>): SyncState {
 
+  let newState: SyncState;
   switch (action.type) {
     case SyncActions.SYNC_REQUESTED:
-      return {
-        hasError: state.hasError,
-        isRequesting: true,
-        isSyncActivated: state.isSyncActivated,
-        lastUpdate: state.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      newState.isRequesting = false;
+      break;
     case SyncActions.SYNC_SUCCESS:
-      return {
-        hasError: false,
-        isRequesting: false,
-        isSyncActivated: state.isSyncActivated,
-        lastUpdate: action.payload.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      newState.hasError = false;
+      newState.isRequesting = false;
+      break;
     case SyncActions.SYNC_FAILED:
-      return {
-        hasError: true,
-        isRequesting: false,
-        isSyncActivated: state.isSyncActivated,
-        lastUpdate: state.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      newState.hasError = true;
+      newState.isRequesting = false;
+      break;
     case SyncActions.SYNC_ACTIVATE_REQUEST:
-      return {
-        hasError: state.hasError,
-        isRequesting: true,
-        isSyncActivated: state.isSyncActivated,
-        lastUpdate: state.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      break;
     case SyncActions.SYNC_ACTIVATE_SUCCESS:
-      return {
-        hasError: state.hasError,
-        isRequesting: state.isRequesting,
-        isSyncActivated: true,
-        lastUpdate: action.payload.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      newState.isSyncActivated = true;
+      newState.lastUpdate = action.payload;
+      break;
     case SyncActions.SYNC_ACTIVATE_FAILED:
-      return {
-        hasError: true,
-        isRequesting: state.isRequesting,
-        isSyncActivated: state.isSyncActivated,
-        lastUpdate: state.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      newState.hasError = true;
+      break;
     case SyncActions.SYNC_DEACTIVATED:
-      return {
-        hasError: false,
-        isRequesting: false,
-        isSyncActivated: false,
-        lastUpdate: state.lastUpdate
-      };
+      newState = Object.assign({}, state);
+      newState.hasError = false;
+      newState.isRequesting = false;
+      newState.isSyncActivated = false;
+      break;
+    default:
+      newState = state;
   }
 
-  return state;
+  return newState;
 }
