@@ -5,15 +5,11 @@ import 'rxjs/add/operator/switchMap';
 import { MdSnackBar } from '@angular/material';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { FilterState } from '../fitness-schedule/store/filter/filter-state';
-import { SettingsState } from '../fitness-schedule/store/settings/settings-state';
-import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
 import { AuthHttp } from 'angular2-jwt';
 import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.actions';
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
-import { ActionsObservable } from 'redux-observable';
 
 @Injectable()
 export class SyncActivatedEpics {
