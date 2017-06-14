@@ -47,8 +47,8 @@ describe('AuthenticationEpics', () => {
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [{type: AuthenticationActions.LOGIN_FAILED}];
-        const errorBody = {invalidPassword: true, unknownMail: false, unknownUsername: false};
-        mockBackendError(mockBackend, errorBody, 301);
+        const errorBody = {key: 'wrong_password'};
+        mockBackendError(mockBackend, errorBody, 401);
         performAction(epics, action$, expectedOutputActions, done, snack, 'Passwort');
       })();
   });
@@ -93,6 +93,7 @@ describe('AuthenticationEpics', () => {
   }
 
   function mockBackendError(mockBackend: MockBackend, body: Object, status: number) {
+    body = JSON.stringify(body);
     mockBackend.connections.subscribe((connection: MockConnection) => {
       connection.mockError(new MockError(new ResponseOptions({body, status})));
     });

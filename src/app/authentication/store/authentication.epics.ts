@@ -45,10 +45,12 @@ export class AuthenticationEpics {
       errorInfo = 'Versuche es später erneut.';
     } else if (error.status === 0) {
       errorInfo = 'Keine Internetverbindung?';
-    } else if (error.status === 301) {
-      errorInfo = 'Passwort inkorrekt.';
-    } else if (error.status === 404) {
-      errorInfo = 'Benutzer unbekannt.';
+    } else if (error.status === 401) {
+      if (error.json().key === 'wrong_password') {
+        errorInfo = 'Passwort inkorrekt.';
+      } else {
+        errorInfo = 'Benutzer unbekannt.';
+      }
     }
     const errorMessage = 'Login fehlgeschlagen.';
     this.showSnackBar(`${errorMessage}${errorInfo ? ' ' + errorInfo : ''}`);
