@@ -25,6 +25,7 @@ export function syncReducer(state: SyncState = INITIAL_STATE,
       newState = Object.assign({}, state);
       newState.hasError = false;
       newState.isRequesting = false;
+      newState.lastUpdate = action.payload.lastUpdate;
       break;
     case SyncActions.SYNC_FAILED:
       newState = Object.assign({}, state);
@@ -37,6 +38,7 @@ export function syncReducer(state: SyncState = INITIAL_STATE,
     case SyncActions.SYNC_ACTIVATE_SUCCESS:
       newState = Object.assign({}, state);
       newState.isSyncActivated = true;
+      newState.hasError = false;
       newState.lastUpdate = action.payload.lastUpdate;
       break;
     case SyncActions.SYNC_ACTIVATE_FAILED:

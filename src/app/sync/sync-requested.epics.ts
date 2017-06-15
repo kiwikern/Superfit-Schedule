@@ -38,7 +38,7 @@ export class SyncRequestedEpics {
     return action$ => action$
       .ofType(SyncActions.SYNC_REQUESTED)
       .switchMap(credentials => this.postSyncState()
-        .map(response => this.actions.syncSuccess())
+        .map(response => this.actions.syncSuccess(response.json().lastUpdate))
         .catch(error => this.handleError(error))
       );
   }
