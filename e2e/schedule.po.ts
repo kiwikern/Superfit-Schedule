@@ -8,11 +8,11 @@ export class SchedulePage {
   }
 
   getFirstClassTitle() {
-    return this.getFirstDisplayedElement(element.all(by.css('md-card-title'))).getText();
+    return this.getFirstDisplayedElement(element.all(by.css('.class-headline > span'))).getText();
   }
 
   getFirstClassStudio() {
-    return this.getFirstDisplayedElement(element.all(by.css('md-card-title'))).getText();
+    return this.getFirstDisplayedElement(element.all(by.css('md-card-subtitle > span'))).getText();
   }
 
   getFirstClassDay() {

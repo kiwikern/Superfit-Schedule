@@ -1,24 +1,24 @@
-<button md-button (click)="closeSidenav()" routerLink="/schedule" id="nav_schedule">
+<button md-button (click)="closeSidenav()" routerLink="/schedule">
   <md-icon>event</md-icon>
   Kursplan
 </button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/favorites" id="nav_favorites">
+<button md-button (click)="closeSidenav()" routerLink="/schedule/favorites">
   <md-icon>favorite</md-icon>
   Favoriten
 </button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/filter" id="nav_filter">
+<button md-button (click)="closeSidenav()" routerLink="/schedule/filter">
   <md-icon>playlist_add</md-icon>
   Kurswahl
 </button>
-<button md-button (click)="closeSidenav()" routerLink="/auth" id="nav_account">
+<button md-button (click)="closeSidenav()" routerLink="/auth">
   <md-icon>person</md-icon>
   {{(jwt$ | async) ? 'Account' : 'Login'}}
 </button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/settings" id="nav_settings">
+<button md-button (click)="closeSidenav()" routerLink="/schedule/settings">
   <md-icon>settings</md-icon>
   Einstellungen
 </button>
-<button md-button (click)="closeSidenav()" routerLink="/about" id="nav_about">
+<button md-button (click)="closeSidenav()" routerLink="/about">
   <md-icon>import_contacts</md-icon>
   Über
 </button>

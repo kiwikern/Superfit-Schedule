@@ -1,4 +1,4 @@
-import { browser, element, by, ElementArrayFinder } from 'protractor';
+import { browser, element, by } from 'protractor';
 
 export class NavigationPage {
   navigateTo(path: string = '/') {
@@ -6,27 +6,27 @@ export class NavigationPage {
   }
 
   navigateToSchedule() {
-    return this.clickOnNavButton('nav_schedule');
+    return this.clickOnRouterButton('/schedule');
   }
 
   navigateToFavorites() {
-    return this.clickOnNavButton('nav_favorites');
+    return this.clickOnRouterButton('/schedule/favorites');
   }
 
   navigateToClassSelection() {
-    return this.clickOnNavButton('nav_filter');
+    return this.clickOnRouterButton('/schedule/filter');
   }
 
   navigateToSettings() {
-    return this.clickOnNavButton('nav_settings');
+    return this.clickOnRouterButton('/schedule/settings');
   }
 
   navigateToAbout() {
-    return this.clickOnNavButton('nav_about');
+    return this.clickOnRouterButton('/about');
   }
 
   navigateToAccount() {
-    return this.clickOnNavButton('nav_account');
+    return this.clickOnRouterButton('/auth');
   }
 
   navigateToRegister() {
@@ -61,11 +61,9 @@ export class NavigationPage {
     return browser.getCurrentUrl();
   }
 
-  private clickOnNavButton(buttonName: string) {
+  private clickOnRouterButton(path: string) {
     element(by.id('nav_burger-menu')).click();
-    const navButton = this.getFirstDisplayedElement(element.all(by.id(buttonName)));
-    browser.actions().mouseMove(navButton).perform();
-    return navButton.click();
+    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="${path}"]`))).click();
   }
 
   private clickOnRouterLink(path: string) {
