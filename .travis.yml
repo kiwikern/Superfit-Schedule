@@ -17,7 +17,7 @@ before_install:
 jobs:
   include:
     - stage: test
-      script: npm run lint
+      script: npm run lint && npm run test:once
     - script: npm run e2e
     - stage: deploy
       script: echo 'Deploying...'
