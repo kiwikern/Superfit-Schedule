@@ -26,4 +26,4 @@ jobs:
         provider: script
         script: sshpass -p $DEPLOY_SSH_PASSWORD ssh -o StrictHostKeyChecking=no $DEPLOY_SSH_USER@$DEPLOY_SSH_HOST -t "$DEPLOY_SSH_PATH/sfs-deploy.sh"
         on:
-          branch: release
+          tags: true
