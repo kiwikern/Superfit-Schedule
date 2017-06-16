@@ -13,10 +13,10 @@ log() {
 # script
 log "started deploying"
 
-# remove old repo files and clone release branch
+# remove old repo files and clone master branch
 cd $deploy
 rm -rf $deploy/Superfit-Schedule
-git clone https://github.com/kiwikern/Superfit-Schedule.git -b release
+git clone https://github.com/kiwikern/Superfit-Schedule.git
 cd $deploy/Superfit-Schedule
 
 # install and build
