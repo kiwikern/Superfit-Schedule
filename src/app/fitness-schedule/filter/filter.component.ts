@@ -14,15 +14,14 @@ import { FilterPayload } from '../store/filter/filter.reducers';
 export class FilterComponent {
 
   @select(['filter', 'workouts']) readonly workouts$;
-  allClasses = this.mappingService.getAllClasses();
   classMapping = this.mappingService.getFitnessClassNameMapping();
+  @select(['filter', 'teamTrainings']) readonly teamTrainings$;
+  teamTrainingMapping = this.mappingService.getTeamTrainingNameMapping();
   @select(['filter', 'gyms']) readonly gyms$;
-  allGyms = this.mappingService.getAllGyms();
   gymMapping = this.mappingService.getGymMapping();
   @select(['filter', 'durations']) durations$;
   durationMapping = this.mappingService.getDurationMapping();
   @select(['filter', 'languages']) languages$;
-  allLanguages = this.mappingService.getAllLanguages();
   languageMapping = this.mappingService.getLanguageMapping();
   @select(['filter', 'minStartTime']) minStartTime$;
   @select(['filter', 'maxEndTime']) maxEndTime$;
@@ -34,6 +33,10 @@ export class FilterComponent {
 
   updateClasses(selectedClasses) {
     this.addFilter('workouts', selectedClasses);
+  }
+
+  updateTeamtrainings(selectedTeamTrainings) {
+    this.addFilter('teamTrainings', selectedTeamTrainings);
   }
 
   updateGyms(selectedGyms) {

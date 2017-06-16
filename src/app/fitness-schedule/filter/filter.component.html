@@ -2,18 +2,23 @@
   <md-card-title fxFlexAlign="center">Kurswahl</md-card-title>
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
     <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
-                       title="Kurse" [nameMapping]="classMapping" fxFlex></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="gyms$ | async" (onSelection)="updateGyms($event)"
-                       title="Studios" [nameMapping]="gymMapping" fxFlex></sfs-select-filter>
+                       title="Kurse" [nameMapping]="classMapping" fxFlex="50"></sfs-select-filter>
+    <sfs-select-filter [selectedValues]="teamTrainings$ | async" (onSelection)="updateTeamtrainings($event)"
+                       title="Teamtrainings" [nameMapping]="teamTrainingMapping" fxFlex="50"></sfs-select-filter>
   </div>
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <sfs-select-filter [selectedValues]="gyms$ | async" (onSelection)="updateGyms($event)"
+                       title="Studios" [nameMapping]="gymMapping" fxFlex="50"></sfs-select-filter>
     <sfs-select-filter [selectedValues]="durations$ | async" (onSelection)="updateDurations($event)"
-                       title="Kursdauer" [nameMapping]="durationMapping" fxFlex></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="languages$ | async" (onSelection)="updateLanguages($event)"
-                       title="Sprachen" [nameMapping]="languageMapping" fxFlex></sfs-select-filter>
+                       title="Kursdauer" [nameMapping]="durationMapping" fxFlex="50"></sfs-select-filter>
   </div>
-  <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)" [minStartTime]="minStartTime$ | async"
-                   [maxEndTime]="maxEndTime$ | async"  [style.gt-sm]="{'width': '50.2%'}"></sfs-time-filter>
+
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <sfs-select-filter [selectedValues]="languages$ | async" (onSelection)="updateLanguages($event)"
+                       title="Sprachen" [nameMapping]="languageMapping" fxFlex="50"></sfs-select-filter>
+    <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)" [minStartTime]="minStartTime$ | async"
+                     [maxEndTime]="maxEndTime$ | async" fxFlex="50"></sfs-time-filter>
+  </div>
   <div fxLayoutAlign="center">
     <button md-raised-button routerLink="/">Schließen</button>
   </div>

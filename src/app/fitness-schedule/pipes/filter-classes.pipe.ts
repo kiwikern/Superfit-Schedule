@@ -23,10 +23,13 @@ export class FilterClassesPipe implements PipeTransform {
   }
 
   private filterClasses(classes: FitnessClass[], filterState: FilterState): FitnessClass[] {
+    const workouts = filterState.workouts || [];
+    const teamTrainings = filterState.teamTrainings || [];
+    const allWorkouts = workouts.concat(teamTrainings);
     return classes.filter(c =>
       (!filterState.days || filterState.days.includes(c.day)) &&
       (!filterState.gyms || filterState.gyms.includes(c.gym)) &&
-      (!filterState.workouts || filterState.workouts.includes(c.workoutId)) &&
+      (allWorkouts.length === 0 || allWorkouts.includes(c.workoutId)) &&
       (!filterState.durations || filterState.durations.includes(c.duration)) &&
       (!filterState.languages || filterState.languages.includes(c.language)) &&
       (!filterState.minStartTime || filterState.minStartTime <= c.startHour) &&

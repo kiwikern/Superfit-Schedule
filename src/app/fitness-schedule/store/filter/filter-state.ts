@@ -8,5 +8,6 @@ export interface FilterState {
   durations?: number[];
   gyms?: Gym[];
   workouts?: string[];
+  teamTrainings?: string[];
   languages?: Language[];
 }
