@@ -70,20 +70,24 @@ describe('FavoritesScheduleComponent', () => {
 function getFavorites(): FitnessClass[] {
   return [
     {
+      id: '',
       day: Day.MONDAY,
       startHour: 10,
       startMinute: 0,
       duration: 60,
       workoutId: '',
+      type: 'class',
       gym: Gym.CHARLOTTENBURG,
       language: Language.GERMAN
     },
     {
+      id: '',
       day: Day.MONDAY,
       startHour: 13,
       startMinute: 0,
       duration: 60,
       workoutId: '',
+      type: 'class',
       gym: Gym.EUROPACENTER,
       language: Language.GERMAN
     }
@@ -94,20 +98,24 @@ function getSchedulePerDay(): FitnessClassesPerDay[] {
     {
       day: Day.MONDAY, classes: [
       {
+        id: '',
         day: Day.MONDAY,
         startHour: 10,
         startMinute: 0,
         duration: 60,
         workoutId: '',
+        type: 'class',
         gym: Gym.CHARLOTTENBURG,
         language: Language.GERMAN
       },
       {
+        id: '',
         day: Day.MONDAY,
         startHour: 11,
         startMinute: 0,
         duration: 60,
         workoutId: '',
+        type: 'class',
         gym: Gym.EUROPACENTER,
         language: Language.GERMAN
       }
@@ -117,11 +125,13 @@ function getSchedulePerDay(): FitnessClassesPerDay[] {
       day: Day.WEDNESDAY,
       classes: [
         {
+          id: '',
           day: Day.WEDNESDAY,
           startHour: 10,
           startMinute: 0,
           duration: 60,
           workoutId: '',
+          type: 'class',
           gym: Gym.CHARLOTTENBURG,
           language: Language.GERMAN
         }

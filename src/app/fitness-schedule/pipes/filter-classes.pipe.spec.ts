@@ -12,20 +12,24 @@ describe('FilterClassesPipe', () => {
       day: Day.MONDAY,
       classes: [
         {
+          id: '',
           day: Day.MONDAY,
           startHour: 8,
           startMinute: 0,
           duration: 60,
           workoutId: '0',
+          type: 'class',
           gym: Gym.CHARLOTTENBURG,
           language: Language.GERMAN
         },
         {
+          id: '',
           day: Day.MONDAY,
           startHour: 10,
           startMinute: 0,
           duration: 60,
           workoutId: '1',
+          type: 'class',
           gym: Gym.CHARLOTTENBURG,
           language: Language.GERMAN
         }]
@@ -34,29 +38,35 @@ describe('FilterClassesPipe', () => {
       day: Day.TUESDAY,
       classes: [
         {
+          id: '',
           day: Day.TUESDAY,
           startHour: 11,
           startMinute: 0,
           duration: 60,
           workoutId: '2',
+          type: 'class',
           gym: Gym.CHARLOTTENBURG,
           language: Language.GERMAN
         },
         {
+          id: '',
           day: Day.TUESDAY,
           startHour: 11,
           startMinute: 30,
           duration: 60,
           workoutId: '3',
+          type: 'class',
           gym: Gym.CHARLOTTENBURG,
           language: Language.GERMAN
         },
         {
+          id: '',
           day: Day.TUESDAY,
           startHour: 14,
           startMinute: 0,
           duration: 60,
           workoutId: '4',
+          type: 'class',
           gym: Gym.CHARLOTTENBURG,
           language: Language.GERMAN
         }]

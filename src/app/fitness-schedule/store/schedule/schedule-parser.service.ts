@@ -40,11 +40,13 @@ export class ScheduleParserService {
     const classes: FitnessClass[] = [];
     for (const course of scheduleJSON) {
       const fitnessClass: FitnessClass = {
+        id: course._id,
         startHour: moment(course.time + '', 'HH:mm').hour(),
         startMinute: moment(course.time + '', 'HH:mm').minute(),
         day: this.DayMapping[course.day],
-        duration: this.getClassDuration(course.course),
-        workoutId: this.getClassName(course.course),
+        duration: this.getClassDuration(course.course, course.type),
+        workoutId: this.getClassName(course.course, course.type),
+        type: course.type,
         gym: this.GymMapping[course.studio],
         language: this.getClassLanguage(course.course)
       };
@@ -75,7 +77,20 @@ export class ScheduleParserService {
   }
 
 
-  private getClassDuration(className: string) {
+  private getClassDuration(className: string, type: string) {
+    if (type === 'teamtraining') {
+      if (className.includes('stretch')) {
+        return 10;
+      } else if (className.includes('circuit')) {
+        return 15;
+      } else if (className.includes('qx') || className.includes('skilletic')) {
+        return 25;
+      } else if (className.includes('functional') || className === 'trx') {
+        return 30;
+      } else {
+        return 20;
+      }
+    }
     if (className.includes('yogaxp')) {
       return 60;
     } else if (className.includes('xp') || className.includes('lmi') || className.includes('sprint')) {
@@ -88,7 +103,10 @@ export class ScheduleParserService {
   }
 
 
-  private getClassName(className: string) {
+  private getClassName(className: string, type: string) {
+    if (className === 'ruecken' && type === 'teamtraining') {
+      return 'tsw';
+    }
     if (className.endsWith('-e')) {
       return className.slice(0, -2);
     } else {

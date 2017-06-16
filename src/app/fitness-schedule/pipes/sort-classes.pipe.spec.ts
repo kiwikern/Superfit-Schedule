@@ -14,38 +14,46 @@ describe('SortClassesPipe', () => {
     const pipe = new SortClassesPipe();
     const testClasses: FitnessClass[] = [
       {
+        id: '',
         day: Day.MONDAY,
         startHour: 10,
         startMinute: 0,
         duration: 60,
         workoutId: '',
+        type: 'class',
         gym: Gym.CHARLOTTENBURG,
         language: Language.GERMAN
       },
       {
+        id: '',
         day: Day.MONDAY,
         startHour: 10,
         startMinute: 0,
         duration: 60,
         workoutId: '',
+        type: 'class',
         gym: Gym.CHARLOTTENBURG,
         language: Language.GERMAN
       },
       {
+        id: '',
         day: Day.TUESDAY,
         startHour: 10,
         startMinute: 0,
         duration: 60,
         workoutId: '',
+        type: 'class',
         gym: Gym.CHARLOTTENBURG,
         language: Language.GERMAN
       },
       {
+        id: '',
         day: Day.TUESDAY,
         startHour: 10,
         startMinute: 0,
         duration: 60,
         workoutId: '',
+        type: 'class',
         gym: Gym.CHARLOTTENBURG,
         language: Language.GERMAN
       }

@@ -35,9 +35,11 @@ describe('FitnessClassComponent', () => {
     fixture = TestBed.createComponent(FitnessClassComponent);
     component = fixture.componentInstance;
     component.fitnessClass = {
+      id: '',
       startHour: 10,
       startMinute: 30,
       workoutId: 'TestWorkout',
+      type: 'class',
       duration: 20,
       gym: Gym.CHARLOTTENBURG,
       day: Day.MONDAY,
