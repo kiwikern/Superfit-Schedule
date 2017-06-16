@@ -18,6 +18,8 @@ export class FitnessClassComponent implements OnInit {
   @select(['filter', 'gyms']) gyms$;
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
+  @select(['settings', 'useCompactLayout']) useCompactLayout$;
+  @select(['settings', 'showWorkoutType']) showWorkoutType$;
   @select(['favorites', 'workouts']) favorites$;
   isFavorite = false;
   isOnlyOneGymSelected: boolean = false;
@@ -35,20 +37,24 @@ export class FitnessClassComponent implements OnInit {
     this.favorites$.subscribe(workouts => this.isFavorite = this.isInFavorites(workouts));
   }
 
-  getGymName(gym: Gym): string {
-    return this.mappingService.getGymName(gym);
+  getGymName(): string {
+    return this.mappingService.getGymName(this.fitnessClass.gym);
   }
 
-  getClassName(fitnessClassId) {
-    return this.mappingService.getClassName(fitnessClassId);
+  getClassName() {
+    return this.mappingService.getClassName(this.fitnessClass.workoutId);
   }
 
-  getClassColor(fitnessClassId) {
-    return this.mappingService.getClassColor(fitnessClassId);
+  getClassColor() {
+    return this.mappingService.getClassColor(this.fitnessClass.workoutId);
   }
 
-  getDayName(day: Day) {
-    return this.mappingService.getDayName(day);
+  getDayName() {
+    return this.mappingService.getDayName(this.fitnessClass.day);
+  }
+
+  getWorkoutType() {
+    return this.mappingService.getWorkoutType(this.fitnessClass.type);
   }
 
   toggleFavorite() {

@@ -1,7 +1,7 @@
-<md-card [style.background-color]="getClassColor(fitnessClass.workoutId)" class="fitness-class">
-  <md-card-title fxLayoutAlign="start center">
+<md-card [style.background-color]="getClassColor()" class="fitness-class" [class.compact]="useCompactLayout$ | async">
+  <div fxLayoutAlign="start center" class="class-headline">
     <span [class.removed-class]="wasRemoved">
-      {{getClassName(fitnessClass.workoutId)}}
+      {{getClassName()}}
     </span>
     <button md-icon-button (click)="toggleFavorite()" *ngIf="!wasRemoved">
       <md-icon [fxHide]="isFavorite">favorite_border</md-icon>
@@ -11,12 +11,17 @@
       <md-icon>warning</md-icon>
     </button>
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
-  </md-card-title>
-  <md-card-subtitle [fxHide]="(showSingleStudio$ | async) && isOnlyOneGymSelected">
-    {{getGymName(fitnessClass.gym)}}
+  </div>
+  <md-card-subtitle>
+    <span [fxShow]="showWorkoutType$ | async">
+        {{getWorkoutType()}}
+    </span>
+      <span [fxHide]="(showSingleStudio$ | async) && isOnlyOneGymSelected">
+      {{getGymName()}}
+    </span>
   </md-card-subtitle>
   <div fxLayout="row">
-    <span [fxShow]="showDaysInClasses$ | async">{{getDayName(fitnessClass.day)}},&nbsp;</span>
+    <span [fxShow]="showDaysInClasses$ | async">{{getDayName()}},&nbsp;</span>
     <sfs-time-period [startHour]="fitnessClass.startHour" [startMinute]="fitnessClass.startMinute"
                      [duration]="fitnessClass.duration">
     </sfs-time-period>

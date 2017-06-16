@@ -1,5 +1,18 @@
 .fitness-class {
-  min-width: 230px;
+  width: 200px;
+}
+
+.fitness-class.compact {
+  padding: 8px;
+}
+
+.class-headline {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.compact md-card-subtitle{
+  margin-bottom: 5px;
 }
 
 .removed-class {

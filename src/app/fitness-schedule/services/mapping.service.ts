@@ -45,8 +45,8 @@ export class MappingService {
   }
 
   getClassName(fitnessClassId) {
-    if (this.getFitnessClassNameMapping().hasOwnProperty(fitnessClassId)) {
-      return this.getFitnessClassNameMapping()[fitnessClassId];
+    if (this.getWorkoutsNameMapping().hasOwnProperty(fitnessClassId)) {
+      return this.getWorkoutsNameMapping()[fitnessClassId];
     } else {
       return fitnessClassId;
     }
@@ -62,22 +62,6 @@ export class MappingService {
 
   getDayName(day: Day) {
     return this.getDayMapping()[day];
-  }
-
-  getAllClasses() {
-    return Object.keys(this.getFitnessClassNameMapping());
-  }
-
-  getAllGyms() {
-    return Object.keys(Gym)
-      .filter(key => typeof Gym[key] === 'string')
-      .map(key => Number.parseInt(key));
-  }
-
-  getAllLanguages() {
-    return Object.keys(Language)
-      .filter(key => typeof Language[key] === 'string')
-      .map(key => Number.parseInt(key));
   }
 
   getGymMapping() {
@@ -121,6 +105,10 @@ export class MappingService {
     };
   }
 
+  getWorkoutsNameMapping() {
+  return Object.assign({}, this.getFitnessClassNameMapping(), this.getTeamTrainingNameMapping());
+}
+
   getFitnessClassNameMapping() {
     return {
       bauchxp: 'Bauch Express',
@@ -155,6 +143,36 @@ export class MappingService {
       yogaxp: 'Yoga Express',
       zumba: 'Zumba',
     };
+  }
+
+  getTeamTrainingNameMapping() {
+      return {
+      circuit: 'Circuit',
+      po: 'Po',
+      qxstrong: 'Queenax Strong',
+      trx: 'TRX',
+      stretch: 'Stretch',
+      tt_skilletic: 'Skilletic',
+      qxburn: 'Queenax Burn',
+      bauch: 'Bauch',
+      qxcardio: 'Queenax Cardio',
+      faszientraining: 'Faszientraining',
+      fullbodyworkout: 'Full Body Workout',
+      trxbauch: 'TRX Bauch',
+      tsm: 'Trainingsstart',
+      hiit: 'HIIT',
+      functional: 'Functional',
+      cellulitekiller: 'Cellulite-Killer',
+      tsw: 'Rücken'
+    };
+  }
+
+  getWorkoutType(type: string) {
+    if (type === 'class') {
+      return 'Kurs';
+    } else {
+      return 'Teamtraining';
+    }
   }
 
 }
