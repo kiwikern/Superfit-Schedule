@@ -9,6 +9,8 @@ export const INITIAL_STATE: SettingsState = {
   showDaysInClasses: true,
   showSingleStudio: true,
   showTodayFirst: true,
+  useCompactLayout: false,
+  showWorkoutType: false,
   daysLayout: ''
 };
 

@@ -4,27 +4,33 @@
     <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="20px">
       <md-card>
         <h3>Erster Wochentag</h3>
-        <md-radio-group fxLayout="column" [(ngModel)]="showTodayFirst"
-                        (change)="changeSetting('showTodayFirst', showTodayFirst === 'true')">
+        <md-radio-group fxLayout="column" [ngModel]="(showTodayFirst$ | async) + ''"
+                        (change)="changeSetting('showTodayFirst', $event.value === 'true')">
           <md-radio-button value="true">Heute</md-radio-button>
           <md-radio-button value="false">Montag</md-radio-button>
         </md-radio-group>
       </md-card>
       <md-card>
         <h3>Anzeige der Tage</h3>
-        <md-radio-group fxLayout="column" [(ngModel)]="daysLayout" (change)="changeSetting('daysLayout', daysLayout)">
+        <md-radio-group fxLayout="column" [ngModel]="daysLayout$ | async" (change)="changeSetting('daysLayout', $event.value)">
           <md-radio-button value="">automatisch</md-radio-button>
           <md-radio-button value="row">nebeneinander</md-radio-button>
           <md-radio-button value="column">untereinander</md-radio-button>
         </md-radio-group>
       </md-card>
       <md-card fxLayout="column">
-        <h3>Sonstiges</h3>
-        <md-checkbox [(ngModel)]="showSingleStudio" (change)="changeSetting('showSingleStudio', showSingleStudio)">
+        <h3>Kurslayout</h3>
+        <md-checkbox [ngModel]="showSingleStudio$ | async" (change)="changeSetting('showSingleStudio', $event.checked)">
           Studio ausblenden, wenn nur eines ausgewählt
         </md-checkbox>
-        <md-checkbox [(ngModel)]="showDaysInClasses" (change)="changeSetting('showDaysInClasses', showDaysInClasses)">
-          Zeige Tag für jeden einzelnen Kurs an
+        <md-checkbox [ngModel]="showDaysInClasses$ | async" (change)="changeSetting('showDaysInClasses', $event.checked)">
+          Wochentag anzeigen
+        </md-checkbox>
+        <md-checkbox [ngModel]="useCompactLayout$ | async" (change)="changeSetting('useCompactLayout', $event.checked)">
+          Kurse kompakt anzeigen
+        </md-checkbox>
+        <md-checkbox [ngModel]="showWorkoutType$ | async" (change)="changeSetting('showWorkoutType', $event.checked)">
+          Kursart anzeigen
         </md-checkbox>
       </md-card>
     </div>

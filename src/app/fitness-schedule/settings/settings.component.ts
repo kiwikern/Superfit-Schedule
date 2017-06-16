@@ -12,20 +12,14 @@ import { SettingsPayload } from '../store/settings/settings.reducers';
 export class SettingsComponent {
 
   @select(['settings', 'daysLayout']) daysLayout$;
-  daysLayout = 'row';
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
-  showTodayFirst = 'true';
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
-  showSingleStudio = true;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
-  showDaysInClasses = true;
+  @select(['settings', 'useCompactLayout']) useCompactLayout$;
+  @select(['settings', 'showWorkoutType']) showWorkoutType$;
 
   constructor(private ngRedux: NgRedux<IAppState>,
               private actions: SettingsActions) {
-    this.daysLayout$.subscribe(layout => this.daysLayout = layout);
-    this.showTodayFirst$.subscribe(show => this.showTodayFirst = show + '');
-    this.showSingleStudio$.subscribe(show => this.showSingleStudio = show);
-    this.showDaysInClasses$.subscribe(show => this.showDaysInClasses = show);
   }
 
   changeSetting(name: string, value: string | boolean) {
