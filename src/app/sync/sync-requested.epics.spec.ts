@@ -39,9 +39,9 @@ describe('SyncRequestedEpics', () => {
     inject([SyncRequestedEpics, XHRBackend],
       (epics: SyncActivatedEpics, mockBackend: MockBackend) => {
         const expectedOutputActions = [
-          {type: SyncActions.SYNC_SUCCESS},
+          {type: SyncActions.SYNC_SUCCESS, payload: {lastUpdate: 1}},
         ];
-        mockBackendResponse(mockBackend, {});
+        mockBackendResponse(mockBackend, {lastUpdate: 1});
         performAction(epics, expectedOutputActions, done);
       })();
   });
