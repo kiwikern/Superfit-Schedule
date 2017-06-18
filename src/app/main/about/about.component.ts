@@ -1,3 +1,6 @@
+import { select } from '@angular-redux/store';
+declare function require(moduleName: string): any;
+const { version: appVersion } = require('../../../../package.json');
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  @select(['authentication', 'userName']) userName;
   mailAddress = 'sfs@kimkern.de';
   showLegal = false;
-  constructor() { }
+  appVersion: string;
+  constructor() {
+    this.appVersion = appVersion;
+  }
 
   ngOnInit() {
   }

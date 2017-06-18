@@ -1,6 +1,7 @@
 <md-card fxLayout="column" fxLayoutGap="0">
   <md-card-title>Über die App</md-card-title>
-  <p>Hallo, mein Name ist <a href="https://www.kimkern.de" target="_blank">Kim</a>. Ich arbeite als Fullstack-Entwickler
+  <md-card-subtitle>Version: {{appVersion}}</md-card-subtitle>
+  <p>Hallo <span *ngIf="(userName | async)">{{' ' + (userName | async)}}</span>, mein Name ist <a href="https://www.kimkern.de" target="_blank">Kim</a>. Ich arbeite als Fullstack-Entwickler
     in Berlin und bin leidenschaftliches <a href="http://mysuperfit.de" target="_blank">SuperFit</a>-Mitglied.
   </p>
   <p>Wenn dir die App gefällt, freue ich mich natürlich, wenn du mir z.B. über <a
