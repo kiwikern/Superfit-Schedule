@@ -1,11 +1,9 @@
 import { IPayloadAction } from '../../../store/payload-action.types';
 import { FilterActions } from './filter.actions';
 import { FilterState } from './filter-state';
-/**
- * Created by Kim on 02.04.2017.
- */
+import { FilterPayload } from './filter-payload';
 
-export const INITIAL_STATE: FilterState = {};
+const INITIAL_STATE: FilterState = {};
 
 export function filterReducer(state: FilterState = INITIAL_STATE,
                               action: IPayloadAction<FilterPayload>): FilterState {
@@ -34,9 +32,4 @@ export function filterReducer(state: FilterState = INITIAL_STATE,
   }
 
   return newState;
-}
-
-export interface FilterPayload {
-  filterName: string;
-  filterValue?: any;
 }

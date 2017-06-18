@@ -1,23 +1,23 @@
 <md-card fxLayout="column" fxLayoutGap="10px" fxFlexAlign="stretch center">
   <md-card-title fxFlexAlign="center">Kurswahl</md-card-title>
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-    <sfs-select-filter [selectedValues]="workouts$ | async" (onSelection)="updateClasses($event)"
+    <sfs-select-filter [selectedValues]="(filter$ | async).workouts" (onSelection)="addFilter('workouts', $event)"
                        title="Kurse" [nameMapping]="classMapping" fxFlex="50"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="teamTrainings$ | async" (onSelection)="updateTeamtrainings($event)"
+    <sfs-select-filter [selectedValues]="(filter$ | async).teamTrainings" (onSelection)="addFilter('teamTrainings', $event)"
                        title="Teamtrainings" [nameMapping]="teamTrainingMapping" fxFlex="50"></sfs-select-filter>
   </div>
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-    <sfs-select-filter [selectedValues]="gyms$ | async" (onSelection)="updateGyms($event)"
+    <sfs-select-filter [selectedValues]="(filter$ | async).gyms" (onSelection)="addFilter('gyms', $event)"
                        title="Studios" [nameMapping]="gymMapping" fxFlex="50"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="durations$ | async" (onSelection)="updateDurations($event)"
+    <sfs-select-filter [selectedValues]="(filter$ | async).durations" (onSelection)="addFilter('durations', $event)"
                        title="Kursdauer" [nameMapping]="durationMapping" fxFlex="50"></sfs-select-filter>
   </div>
 
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-    <sfs-select-filter [selectedValues]="languages$ | async" (onSelection)="updateLanguages($event)"
+    <sfs-select-filter [selectedValues]="(filter$ | async).languages" (onSelection)="addFilter('languages', $event)"
                        title="Sprachen" [nameMapping]="languageMapping" fxFlex="50"></sfs-select-filter>
-    <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)" [minStartTime]="minStartTime$ | async"
-                     [maxEndTime]="maxEndTime$ | async" fxFlex="50"></sfs-time-filter>
+    <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)" [minStartTime]="(filter$ | async).minStartTime"
+                     [maxEndTime]="(filter$ | async).maxEndTime" fxFlex="50"></sfs-time-filter>
   </div>
   <div fxLayoutAlign="center">
     <button md-raised-button routerLink="/">Schließen</button>

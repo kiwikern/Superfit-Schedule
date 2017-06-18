@@ -1,9 +1,7 @@
-/**
- * Created by Kim on 02.04.2017.
- */
 import { Injectable } from '@angular/core';
-import { FilterPayload } from './filter.reducers';
 import { FilterState } from './filter-state';
+import { FilterPayload } from './filter-payload';
+import { dispatch } from '@angular-redux/store';
 
 @Injectable()
 export class FilterActions {
@@ -12,6 +10,7 @@ export class FilterActions {
   static readonly FILTER_CLEARED = 'FILTER_CLEARED';
   static readonly FILTER_SET = 'FILTER_SET';
 
+  @dispatch()
   addFilter(payload: FilterPayload) {
     return {
       type: FilterActions.FILTER_ADDED,
@@ -22,6 +21,7 @@ export class FilterActions {
     };
   }
 
+  @dispatch()
   removeFilter(payload: FilterPayload) {
     return {
       type: FilterActions.FILTER_REMOVED,
