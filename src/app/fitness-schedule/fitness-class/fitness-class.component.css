@@ -1,8 +1,5 @@
-.fitness-class {
+md-card {
   width: 200px;
-}
-
-.fitness-class.compact {
   padding: 8px;
 }
 
@@ -11,7 +8,7 @@
   font-weight: 400;
 }
 
-.compact md-card-subtitle{
+md-card-subtitle{
   margin-bottom: 5px;
 }
 

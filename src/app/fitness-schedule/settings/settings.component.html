@@ -26,9 +26,6 @@
         <md-checkbox [ngModel]="showDaysInClasses$ | async" (change)="changeSetting('showDaysInClasses', $event.checked)">
           Wochentag anzeigen
         </md-checkbox>
-        <md-checkbox [ngModel]="useCompactLayout$ | async" (change)="changeSetting('useCompactLayout', $event.checked)">
-          Kurse kompakt anzeigen
-        </md-checkbox>
         <md-checkbox [ngModel]="showWorkoutType$ | async" (change)="changeSetting('showWorkoutType', $event.checked)">
           Kursart anzeigen
         </md-checkbox>

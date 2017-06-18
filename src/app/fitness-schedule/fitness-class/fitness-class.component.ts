@@ -18,7 +18,6 @@ export class FitnessClassComponent implements OnInit {
   @select(['filter', 'gyms']) gyms$;
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
-  @select(['settings', 'useCompactLayout']) useCompactLayout$;
   @select(['settings', 'showWorkoutType']) showWorkoutType$;
   @select(['favorites', 'workouts']) favorites$;
   isFavorite = false;

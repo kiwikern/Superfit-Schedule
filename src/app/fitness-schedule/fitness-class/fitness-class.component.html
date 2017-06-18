@@ -1,4 +1,4 @@
-<md-card [style.background-color]="getClassColor()" class="fitness-class" [class.compact]="useCompactLayout$ | async">
+<md-card [style.background-color]="getClassColor()">
   <div fxLayoutAlign="start center" class="class-headline">
     <span [class.removed-class]="wasRemoved">
       {{getClassName()}}
@@ -13,7 +13,7 @@
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
   </div>
   <md-card-subtitle>
-    <span [fxShow]="showWorkoutType$ | async">
+    <span [fxHide]="!(showWorkoutType$ | async)">
         {{getWorkoutType()}}
     </span>
       <span [fxHide]="(showSingleStudio$ | async) && isOnlyOneGymSelected">

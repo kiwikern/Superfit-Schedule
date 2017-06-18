@@ -1,15 +1,15 @@
 import { IPayloadAction } from '../../../store/payload-action.types';
 import { SettingsActions } from './settings.actions';
 import { SettingsState } from './settings-state';
+import { SettingsPayload } from './settings-payload';
 /**
  * Created by Kim on 02.04.2017.
  */
 
-export const INITIAL_STATE: SettingsState = {
+const INITIAL_STATE: SettingsState = {
   showDaysInClasses: true,
   showSingleStudio: true,
   showTodayFirst: true,
-  useCompactLayout: false,
   showWorkoutType: false,
   daysLayout: ''
 };
@@ -34,10 +34,4 @@ export function settingsReducer(state: SettingsState = INITIAL_STATE,
   }
 
   return newState;
-}
-
-
-export interface SettingsPayload {
-  name: string;
-  value: any;
 }

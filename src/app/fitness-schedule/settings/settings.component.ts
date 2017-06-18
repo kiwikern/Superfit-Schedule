@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
+import { select } from '@angular-redux/store';
 import { SettingsActions } from '../store/settings/settings.actions';
-import { IAppState } from '../../store/root-state.interface';
-import { SettingsPayload } from '../store/settings/settings.reducers';
+import { SettingsPayload } from '../store/settings/settings-payload';
 
 @Component({
   selector: 'sfs-settings',
@@ -15,16 +14,14 @@ export class SettingsComponent {
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
-  @select(['settings', 'useCompactLayout']) useCompactLayout$;
   @select(['settings', 'showWorkoutType']) showWorkoutType$;
 
-  constructor(private ngRedux: NgRedux<IAppState>,
-              private actions: SettingsActions) {
+  constructor(private actions: SettingsActions) {
   }
 
   changeSetting(name: string, value: string | boolean) {
     const payload: SettingsPayload = {name, value};
-    this.ngRedux.dispatch(this.actions.changeSetting(payload));
+    this.actions.changeSetting(payload);
   }
 
 }
