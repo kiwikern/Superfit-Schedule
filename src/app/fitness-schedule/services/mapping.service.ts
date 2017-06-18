@@ -1,44 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Gym } from '../enums/gym.enum';
 import { Day } from '../enums/day.enum';
-import { Language } from '../enums/language.enum';
 
 @Injectable()
 export class MappingService {
 
   readonly fitnessClassColorMapping = {
-    bauchxp: 'rgba(255, 42, 28, 0.3)',
-    bbp: 'rgba(255, 42, 28, 0.3)',
-    bbp2: 'rgba(255, 42, 28, 0.3)',
     bodyattack: 'rgba(255, 196, 20, 0.3)',
     bodyattackxp: 'rgba(255, 196, 20, 0.3)',
     bodybalance: 'rgba(193, 255, 112, 0.3)',
     bodybalancexp: 'rgba(193, 255, 112, 0.3)',
-    bodycombat: 'rgba(255, 42, 28, 0.3)',
-    bodycombatxp: 'rgba(255, 42, 28, 0.3)',
     bodyjam: 'rgba(253, 252, 1, 0.3)',
     bodypump: 'rgba(250, 25, 29, 0.3)',
     bodypumpxp: 'rgba(250, 25, 29, 0.3)',
     bodystep: 'rgba(164, 178, 178, 0.3)',
     bodyvive: 'rgba(183, 172, 255, 0.3)',
     bodyvivexp: 'rgba(183, 172, 255, 0.3)',
-    cycle: 'rgba(255, 42, 28, 0.3)',
-    fatburner: 'rgba(255, 42, 28, 0.3)',
     gritplyo: 'rgba(0, 0, 0, 0.3)',
     jumpingfitness: 'rgba(250, 250, 250, 0.3)',
     lmistep: 'rgba(247, 0, 0, 0.3)',
     lmistepxp: 'rgba(247, 0, 0, 0.3)',
-    pilates: 'rgba(255, 42, 28, 0.3)',
     rpm: 'rgba(1, 108, 152, 0.3)',
-    ruecken: 'rgba(255, 42, 28, 0.3)',
     salsation: 'rgba(230, 10, 112, 0.3)',
     shbam: 'rgba(246, 36, 231, 0.3)',
     sprint: 'rgba(1, 108, 152, 0.3)',
-    strong: 'rgba(255, 42, 28, 0.3)',
-    yoga: 'rgba(255, 42, 28, 0.3)',
-    yogaxp: 'rgba(255, 42, 28, 0.3)',
     zumba: 'rgba(199, 255, 46, 0.3)'
   };
+
+  colorCounter = 0;
+  colors: string[] = ['rgba(116,196,147,1)',
+    'rgba(228,191,128,1)', 'rgba(233,215,142,1)',
+    'rgba(226,151,93,1)', 'rgba(241,150,112,1)', 'rgba(225,101,82,1)',
+    'rgba(201,74,83,1)', 'rgba(190,81,104,1)', 'rgba(163,73,116,1)',
+    'rgba(153,55,103,1)', 'rgba(68,124,105,1)',
+    'rgba(145,99,182,1)', 'rgba(226,121,163,1)', 'rgba(224,89,139,1)',
+    'rgba(124,159,176,1)', 'rgba(86,152,196,1)', 'rgba(154,191,136,1)'];
+  dynamicColorMapping = {};
 
   getGymName(gym: Gym): string {
     return this.getGymMapping()[gym];
@@ -55,9 +52,19 @@ export class MappingService {
   getClassColor(fitnessClassId) {
     if (this.fitnessClassColorMapping.hasOwnProperty(fitnessClassId)) {
       return this.fitnessClassColorMapping[fitnessClassId];
+    } else if (this.dynamicColorMapping.hasOwnProperty(fitnessClassId)) {
+      return this.dynamicColorMapping[fitnessClassId];
     } else {
-      return '#FFFFFF';
+      const randomColor = this.getRandomColor();
+      this.dynamicColorMapping[fitnessClassId] = randomColor;
+      return randomColor;
     }
+  }
+
+  private getRandomColor() {
+    const index = this.colorCounter % this.colors.length;
+    this.colorCounter++;
+    return this.colors[index];
   }
 
   getDayName(day: Day) {
@@ -106,8 +113,8 @@ export class MappingService {
   }
 
   getWorkoutsNameMapping() {
-  return Object.assign({}, this.getFitnessClassNameMapping(), this.getTeamTrainingNameMapping());
-}
+    return Object.assign({}, this.getFitnessClassNameMapping(), this.getTeamTrainingNameMapping());
+  }
 
   getFitnessClassNameMapping() {
     return {
