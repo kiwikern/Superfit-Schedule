@@ -70,7 +70,7 @@ describe('FavoritesScheduleComponent', () => {
 function getFavorites(): FitnessClass[] {
   return [
     {
-      id: '',
+      id: '1',
       day: Day.MONDAY,
       startHour: 10,
       startMinute: 0,
@@ -81,7 +81,7 @@ function getFavorites(): FitnessClass[] {
       language: Language.GERMAN
     },
     {
-      id: '',
+      id: '2',
       day: Day.MONDAY,
       startHour: 13,
       startMinute: 0,
@@ -98,7 +98,7 @@ function getSchedulePerDay(): FitnessClassesPerDay[] {
     {
       day: Day.MONDAY, classes: [
       {
-        id: '',
+        id: '1',
         day: Day.MONDAY,
         startHour: 10,
         startMinute: 0,
@@ -109,7 +109,7 @@ function getSchedulePerDay(): FitnessClassesPerDay[] {
         language: Language.GERMAN
       },
       {
-        id: '',
+        id: '3',
         day: Day.MONDAY,
         startHour: 11,
         startMinute: 0,
@@ -125,7 +125,7 @@ function getSchedulePerDay(): FitnessClassesPerDay[] {
       day: Day.WEDNESDAY,
       classes: [
         {
-          id: '',
+          id: '4',
           day: Day.WEDNESDAY,
           startHour: 10,
           startMinute: 0,
