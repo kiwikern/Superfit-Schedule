@@ -1,7 +1,7 @@
 <md-card fxLayout="column" fxLayoutAlign="start center">
   <md-card-title>Änderungen des Kursplans</md-card-title>
   <md-card-subtitle>
-    Es werden maximal die drei letzten Tage angezeigt, an denen Änderungen im Kursplan stattgefunnden haben.
+    Es werden maximal die drei letzten Tage angezeigt, an denen Änderungen im Kursplan stattgefunden haben.
     Neue Kurse sind mit einem blauen Punkt markiert, gelöschte durchgestrichen.
   </md-card-subtitle>
   <md-checkbox [(ngModel)]="filterClasses">Berücksichtige Kurswahl</md-checkbox>
@@ -15,6 +15,7 @@
                     [filter]="filterClasses ? (filter$ | async) : []"
                     [showFavoriteButton]="index === 0"
                     [newClasses]="change.added"></sfs-schedule>
+      <br>
     </md-tab>
   </md-tab-group>
   </md-card-content>
