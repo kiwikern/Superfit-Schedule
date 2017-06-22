@@ -18,6 +18,7 @@ import { SyncModule } from '../sync/sync.module';
 import { FitnessScheduleStoreModule } from '../fitness-schedule/store/fitness-schedule-store.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationStoreModule } from 'app/authentication/store/authentication-store.module';
+import { SwUpdatesModule } from '../sw-updates/sw-updates.module';
 
 
 const appRoutes: Routes = [
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     AuthenticationStoreModule,
     RecaptchaModule.forRoot(),
     SyncModule,
+    SwUpdatesModule
   ],
   providers: [
   ],
