@@ -29,6 +29,12 @@
       }
     ]
   },
+  "static.ignore": [
+    ".htaccess"
+  ],
+  "static.versioned": [
+    "\\.[0-9a-z]{20}\\."
+  ],
   "push": {
     "showNotifications": true,
     "backgroundOnly": false
