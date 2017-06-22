@@ -1,10 +1,11 @@
 import { async, TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { SwUpdateNotificationsService } from '../../sw-updates/sw-update-notifications.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,6 +21,9 @@ describe('AppComponent', () => {
         SfsMaterialModule,
         RouterTestingModule.withRoutes([{path: '', children: []}])
       ],
+      providers: [
+        {provide: SwUpdateNotificationsService, useClass: MockService}
+      ]
     }).compileComponents();
   }));
 
@@ -49,4 +53,8 @@ class MockFilterComponent {
   template: ''
 })
 class MockSyncStatusComponent {
+}
+
+@Injectable()
+class MockService {
 }

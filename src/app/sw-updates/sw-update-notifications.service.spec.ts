@@ -10,8 +10,8 @@ import { SwUpdatesService } from './sw-updates.service';
 
 
 describe('SwUpdateNotificationsService', () => {
-  const UPDATE_AVAILABLE_MESSAGE = 'New update for angular.io is available.';
-  const UPDATE_FAILED_MESSAGE = 'Update activation failed :(';
+  const UPDATE_AVAILABLE_MESSAGE = 'Neues Update verfügbar';
+  const UPDATE_FAILED_MESSAGE = 'Update fehlgeschlagen :(';
   let injector: ReflectiveInjector;
   let service: SwUpdateNotificationsService;
   let swUpdates: MockSwUpdatesService;
@@ -67,7 +67,7 @@ describe('SwUpdateNotificationsService', () => {
       swUpdates.$$isUpdateAvailableSubj.next(true);
 
       expect(snackBar.$$lastRef.$$message).toBe(UPDATE_AVAILABLE_MESSAGE);
-      expect(snackBar.$$lastRef.$$action).toBe('Update now');
+      expect(snackBar.$$lastRef.$$action).toBe('Aktualisiere jetzt');
       expect(snackBar.$$lastRef.$$config.duration).toBeUndefined();
     });
 
@@ -99,7 +99,7 @@ describe('SwUpdateNotificationsService', () => {
       activateUpdate(false);
 
       expect(snackBar.$$lastRef.$$message).toBe(UPDATE_FAILED_MESSAGE);
-      expect(snackBar.$$lastRef.$$action).toBe('Dismiss');
+      expect(snackBar.$$lastRef.$$action).toBe('OK');
       expect(snackBar.$$lastRef.$$config.duration).toBeGreaterThan(0);
     }));
 
