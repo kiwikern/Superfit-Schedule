@@ -5,7 +5,7 @@
     Neue Kurse sind mit einem blauen Punkt markiert, gelöschte durchgestrichen.
   </md-card-subtitle>
   <md-checkbox [(ngModel)]="filterClasses">Berücksichtige Kurswahl</md-checkbox>
-  <md-card-content style="max-width: 95vw">
+  <md-card-content style="width: 95vw">
   <md-tab-group>
     <md-tab *ngFor="let change of changes; let index = index"
             [label]="change.timestamp | date:'d. MMMM yy'">
