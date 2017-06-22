@@ -10,6 +10,10 @@
   <md-icon>playlist_add</md-icon>
   Kurswahl
 </button>
+<button md-button (click)="closeSidenav()" routerLink="/schedule/changes">
+  <md-icon>swap_horiz</md-icon>
+  Änderungen
+</button>
 <button md-button (click)="closeSidenav()" routerLink="/auth" aria-label="Login/Account">
   <md-icon>person</md-icon>
   {{(jwt$ | async) ? 'Account' : 'Login'}}

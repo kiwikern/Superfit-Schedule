@@ -5,9 +5,17 @@
   </div>
   <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
        [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
-       fxLayoutGap="20px" class="scrollable" id="schedule" fxLayoutAlign.gt-lg="center">
+       fxLayoutGap="20px" class="scrollable" id="schedule" fxLayoutAlign.gt-lg="center" #schedule>
     <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | filterClasses:filter | orderDays:showTodayFirst"
-                    [classesPerDay]="classesPerDay" [removedFavorites]="removedFavorites">
+                    [classesPerDay]="classesPerDay" [removedFavorites]="removedFavorites"
+                    [showFavoriteButton]="showFavoriteButton" [newClasses]="newClasses">
     </sfs-day-column>
+  </div>
+  <div *ngIf="schedule.children.length == 0" fxLayoutAlign="center center" fxLayout="column">
+    <p>Es gibt keine Kurse, die den Filtern deiner Kurswahl entsprechen.</p>
+    <button md-raised-button routerLink="/filter">
+      <md-icon>playlist_add</md-icon>
+      Kurswahl
+    </button>
   </div>
 </div>

@@ -52,4 +52,6 @@ class MockDayColumnComponent {
   @Input() classesPerDay: any;
   @Input() filter: any;
   @Input() removedFavorites;
+  @Input() showFavoriteButton;
+  @Input() newClasses;
 }

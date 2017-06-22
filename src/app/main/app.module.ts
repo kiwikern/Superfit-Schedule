@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -53,6 +53,7 @@ const appRoutes: Routes = [
     SwUpdatesModule
   ],
   providers: [
+    {provide: LOCALE_ID, useValue: 'de-DE'}
   ],
   bootstrap: [AppComponent]
 })

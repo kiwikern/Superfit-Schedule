@@ -1,27 +1,30 @@
 <md-card [style.background-color]="getClassColor()">
+  <svg height="30" width="30" class="new" *ngIf="isNew">
+    <circle cx="15" cy="18" r="5" stroke="rgba(124,157,255,0.1)" stroke-width="0.5px" fill="rgba(124,157,255,0.5)" />
+  </svg>
   <div fxLayoutAlign="start center" class="class-headline">
     <span [class.removed-class]="wasRemoved">
       {{getClassName()}}
     </span>
-    <button md-icon-button (click)="toggleFavorite()" *ngIf="!wasRemoved">
+    <button md-icon-button (click)="toggleFavorite()" *ngIf="!wasRemoved && showFavoriteButton">
       <md-icon [fxHide]="isFavorite">favorite_border</md-icon>
       <md-icon [fxShow]="isFavorite" color="warn">favorite</md-icon>
     </button>
-    <button md-icon-button (click)="showRemovedSnackBar()" *ngIf="wasRemoved">
+    <button md-icon-button (click)="showRemovedSnackBar()" *ngIf="wasRemoved && isFavorite">
       <md-icon>warning</md-icon>
     </button>
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
   </div>
   <md-card-subtitle>
-    <span [fxHide]="!(showWorkoutType$ | async)">
+    <span [fxHide]="!showWorkoutType">
         {{getWorkoutType()}}
     </span>
-      <span [fxHide]="(showSingleStudio$ | async) && isOnlyOneGymSelected">
+      <span [fxHide]="showSingleStudio && isOnlyOneGymSelected">
       {{getGymName()}}
     </span>
   </md-card-subtitle>
   <div fxLayout="row">
-    <span [fxShow]="showDaysInClasses$ | async">{{getDayName()}},&nbsp;</span>
+    <span [fxShow]="showDaysInClasses">{{getDayName()}},&nbsp;</span>
     <sfs-time-period [startHour]="fitnessClass.startHour" [startMinute]="fitnessClass.startMinute"
                      [duration]="fitnessClass.duration">
     </sfs-time-period>

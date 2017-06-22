@@ -48,6 +48,13 @@ describe('DayColumnComponent', () => {
 class MockFitnessClassComponent {
   @Input() fitnessClass;
   @Input() wasRemoved;
+  @Input() showDaysInClasses;
+  @Input() gyms;
+  @Input() showFavoriteButton;
+  @Input() showWorkoutType;
+  @Input() showSingleStudio;
+  @Input() isFavorite;
+  @Input() isNew;
 }
 
 class MockService {

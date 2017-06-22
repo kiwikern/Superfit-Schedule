@@ -24,7 +24,7 @@ describe('ScheduleParserService', () => {
             'course': 'cycle'
           }
         ];
-    const courses = service.parse(input);
+    const courses = service.getAllClassesByDay(service.parse(input));
     const classesOnWednesday = courses[Day.WEDNESDAY].classes;
     expect(classesOnWednesday[0].workoutId).toBe('cycle');
     expect(classesOnWednesday[0].day).toBe(2);
@@ -57,7 +57,7 @@ describe('ScheduleParserService', () => {
             'course': 'yoga'
           }
         ];
-    const coursesPerDay = service.parse(input);
+    const coursesPerDay = service.getAllClassesByDay(service.parse(input));
     const coursesOnMonday = coursesPerDay[Day.MONDAY].classes;
     expect(coursesOnMonday.length).toBe(2);
     const coursesOnWednesday = coursesPerDay[Day.WEDNESDAY].classes;
@@ -68,7 +68,7 @@ describe('ScheduleParserService', () => {
 
   it('should parse empty json object', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = {};
-    const courses = service.parse(input);
+    const courses = service.getAllClassesByDay(service.parse(input));
     for (const couresPerDay of courses) {
       expect(couresPerDay.classes.length).toBe(0);
     }
@@ -76,7 +76,7 @@ describe('ScheduleParserService', () => {
 
   it('should parse null', inject([ScheduleParserService], (service: ScheduleParserService)  => {
     const input = null;
-    const courses = service.parse(input);
+    const courses = service.getAllClassesByDay(service.parse(input));
     for (const couresPerDay of courses) {
       expect(couresPerDay.classes.length).toBe(0);
     }

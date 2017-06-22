@@ -11,6 +11,7 @@ import { AuthenticationEpics } from '../authentication/store/authentication.epic
 import { SyncRequestedEpics } from '../sync/sync-requested.epics';
 import { SyncActivatedEpics } from '../sync/sync-activated.epics';
 import { RegistrationEpics } from '../authentication/store/registration-registration.epics';
+import { ChangesEpics } from '../fitness-schedule/store/changes/changes.epics';
 
 @Injectable()
 export class RootEpics {
@@ -19,7 +20,8 @@ export class RootEpics {
               private authenticationEpics: AuthenticationEpics,
               private syncRequestedEpics: SyncRequestedEpics,
               private syncActivatedEpics: SyncActivatedEpics,
-              private registrationEpics: RegistrationEpics) {
+              private registrationEpics: RegistrationEpics,
+              private changeEpics: ChangesEpics) {
   }
 
   createEpics() {
@@ -29,7 +31,8 @@ export class RootEpics {
       ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
       createEpicMiddleware(this.syncRequestedEpics.createEpics()),
       createEpicMiddleware(this.syncActivatedEpics.createEpics()),
-      createEpicMiddleware(this.registrationEpics.createEpics())
+      createEpicMiddleware(this.registrationEpics.createEpics()),
+      createEpicMiddleware(this.changeEpics.createEpics())
     ];
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
@@ -6,28 +6,35 @@ import { ScheduleParserService } from '../store/schedule/schedule-parser.service
 import { FitnessClass } from '../interfaces/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { MdSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'sfs-favorites-schedule',
   templateUrl: './favorites-schedule.component.html',
   styleUrls: ['./favorites-schedule.component.css']
 })
-export class FavoritesScheduleComponent implements OnInit {
+export class FavoritesScheduleComponent implements OnInit, OnDestroy {
 
   @select(['favorites', 'workouts']) favorites$: Observable<FitnessClass[]>;
   @select(['schedule', 'schedulePerDay']) schedulePerDay$: Observable<FitnessClassesPerDay[]>;
   favoritesPerDay = [];
   removedFavorites: FitnessClass[] = [];
   hasFavorites: boolean = false;
+  subscriptions: Subscription[] = [];
 
   constructor(private parseService: ScheduleParserService,
               private snackBar: MdSnackBar) {
   }
 
   ngOnInit() {
-    this.favorites$.subscribe((favs) => this.hasFavorites = favs && favs.length > 0);
-    this.favorites$.subscribe((favs) => this.favoritesPerDay = this.parseService.getAllClassesByDay(favs));
+    const sub1 = this.favorites$.subscribe((favs) => this.hasFavorites = favs && favs.length > 0);
+    const sub2 = this.favorites$.subscribe((favs) => this.favoritesPerDay = this.parseService.getAllClassesByDay(favs));
     this.checkFavoritesAvailability();
+    this.subscriptions.concat([sub1, sub2]);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   private checkFavoritesAvailability() {

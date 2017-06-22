@@ -19,9 +19,9 @@ export class ScheduleEpics {
 
   createEpics() {
     return action$ => action$
-      .ofType(ScheduleActions.LOAD_STARTED)
+      .ofType(ScheduleActions.SCHEDULE_LOAD_STARTED)
       .switchMap(action => this.fetchSchedule()
-        .map(scheduleJSON => this.actions.loadSucceded(this.parseService.parse(scheduleJSON.json())))
+        .map(scheduleJSON => this.actions.loadSucceded(this.parseService.getAllClassesByDay(this.parseService.parse(scheduleJSON.json()))))
         .catch(error => of(this.actions.loadFailed(error)))
       );
   }

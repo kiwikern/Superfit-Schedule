@@ -7,6 +7,8 @@ import { SettingsActions } from './settings/settings.actions';
 import { MappingService } from '../services/mapping.service';
 import { FavoriteActions } from './favorites/favorite.actions';
 import { ScheduleParserService } from './schedule/schedule-parser.service';
+import { ChangesActions } from './changes/changes.actions';
+import { ChangesEpics } from './changes/changes.epics';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { ScheduleParserService } from './schedule/schedule-parser.service';
     SettingsActions,
     MappingService,
     FavoriteActions,
-    ScheduleParserService
+    ScheduleParserService,
+    ChangesActions,
+    ChangesEpics
   ]
 
 })

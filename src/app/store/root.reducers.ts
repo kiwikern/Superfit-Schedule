@@ -7,12 +7,14 @@ import { pushNotificationReducer } from '../push-notification/push-notification.
 import { authenticationReducer } from '../authentication/store/authentication.reducers';
 import { routerReducer } from '@angular-redux/router';
 import { syncReducer } from '../sync/sync.reducers';
+import { changesReducer } from '../fitness-schedule/store/changes/changes.reducers';
 /**
  * Created by Kim on 02.04.2017.
  */
 
 export const rootReducer = combineReducers({
   schedule: scheduleReducer,
+  changes: changesReducer,
   filter: filterReducer,
   settings: settingsReducer,
   favorites: favoriteReducer,

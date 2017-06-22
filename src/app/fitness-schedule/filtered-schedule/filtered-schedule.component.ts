@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { FilterState } from '../store/filter/filter-state';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
@@ -10,8 +10,11 @@ import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 })
 export class FilteredScheduleComponent implements OnInit {
 
+  @Input() showFavoriteButton = true;
+
   @select(['schedule', 'schedulePerDay']) readonly schedulePerDay$: FitnessClassesPerDay[];
   @select() readonly filter$;
+  @select(['changes', 'changes']) changes$;
 
   filter: FilterState = {};
   showSchedule: boolean = false;

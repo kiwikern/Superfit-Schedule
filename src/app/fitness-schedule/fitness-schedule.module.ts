@@ -19,12 +19,14 @@ import { FilteredScheduleComponent } from './filtered-schedule/filtered-schedule
 import { FavoritesScheduleComponent } from './favorites-schedule/favorites-schedule.component';
 import { DayColumnComponent } from './day-column/day-column.component';
 import { FitnessScheduleStoreModule } from './store/fitness-schedule-store.module';
+import { ChangesComponent } from './changes/changes.component';
 
 const fitnessRoutes: Routes = [
   {path: '', component: FilteredScheduleComponent},
   {path: 'favorites', component: FavoritesScheduleComponent},
   {path: 'filter', component: FilterComponent},
-  {path: 'settings', component: SettingsComponent}
+  {path: 'settings', component: SettingsComponent},
+  {path: 'changes', component: ChangesComponent}
 ];
 
 @NgModule({
@@ -49,7 +51,8 @@ const fitnessRoutes: Routes = [
     TimeFilterComponent,
     FilteredScheduleComponent,
     FavoritesScheduleComponent,
-    DayColumnComponent
+    DayColumnComponent,
+    ChangesComponent
   ],
   exports: [
     ScheduleComponent,

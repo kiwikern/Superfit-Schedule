@@ -14,10 +14,11 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   @select(['settings', 'daysLayout']) daysLayout$;
   showTodayFirst: boolean = false;
   @Input() filter: FilterState = {};
-
+  @Input() showFavoriteButton = true;
   @Input() showSchedule: boolean = false;
   @Input() schedulePerDay: any[] = [];
   @Input() removedFavorites: FitnessClass[] = [];
+  @Input() newClasses = [];
 
   private subscriptions: Subscription[] = [];
 

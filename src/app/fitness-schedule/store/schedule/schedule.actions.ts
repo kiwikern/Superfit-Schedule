@@ -5,26 +5,26 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ScheduleActions {
-  static readonly LOAD_STARTED = 'LOAD_STARTED';
-  static readonly LOAD_SUCCEDED = 'LOAD_SUCCEDED';
-  static readonly LOAD_FAILED= 'LOAD_FAILED';
+  static readonly SCHEDULE_LOAD_STARTED = 'SCHEDULE_LOAD_STARTED';
+  static readonly SCHEDULE_LOAD_SUCCEDED = 'SCHEDULE_LOAD_SUCCEDED';
+  static readonly SCHEDULE_LOAD_FAILED= 'SCHEDULE_LOAD_FAILED';
 
   loadSchedule() {
     return {
-      type: ScheduleActions.LOAD_STARTED
+      type: ScheduleActions.SCHEDULE_LOAD_STARTED
     };
   }
 
   loadSucceded(payload) {
     return {
-      type: ScheduleActions.LOAD_SUCCEDED,
+      type: ScheduleActions.SCHEDULE_LOAD_SUCCEDED,
       payload
     };
   }
 
   loadFailed(error) {
     return {
-      type: ScheduleActions.LOAD_FAILED,
+      type: ScheduleActions.SCHEDULE_LOAD_FAILED,
       error
     };
   }

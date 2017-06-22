@@ -13,7 +13,8 @@ import {
   MdSidenavModule,
   MdSliderModule,
   MdSnackBarModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdTabsModule
 } from '@angular/material';
 import 'hammerjs';
 
@@ -32,7 +33,8 @@ import 'hammerjs';
     MdSliderModule,
     MdSnackBarModule,
     MdInputModule,
-    MdButtonToggleModule
+    MdButtonToggleModule,
+    MdTabsModule
   ],
   exports: [
     CommonModule,
@@ -48,7 +50,8 @@ import 'hammerjs';
     MdSliderModule,
     MdSnackBarModule,
     MdInputModule,
-    MdButtonToggleModule
+    MdButtonToggleModule,
+    MdTabsModule
   ]
 })
 export class SfsMaterialModule {

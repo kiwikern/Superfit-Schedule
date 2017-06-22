@@ -3,6 +3,12 @@ md-card {
   padding: 8px;
 }
 
+.new {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .class-headline {
   font-size: 22px;
   font-weight: 400;

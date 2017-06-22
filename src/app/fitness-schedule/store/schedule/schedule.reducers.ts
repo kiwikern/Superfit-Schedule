@@ -15,19 +15,19 @@ export const INITIAL_STATE: ScheduleState = {
 export function scheduleReducer(state: ScheduleState = INITIAL_STATE,
                             action: IPayloadAction<FitnessClassesPerDay[]>): ScheduleState {
   switch (action.type) {
-    case ScheduleActions.LOAD_STARTED:
+    case ScheduleActions.SCHEDULE_LOAD_STARTED:
       return {
         schedulePerDay: state.schedulePerDay || [],
         isLoading: true,
         error: null
       };
-    case ScheduleActions.LOAD_SUCCEDED:
+    case ScheduleActions.SCHEDULE_LOAD_SUCCEDED:
       return {
         schedulePerDay: action.payload,
         isLoading: false,
         error: null
       };
-    case ScheduleActions.LOAD_FAILED:
+    case ScheduleActions.SCHEDULE_LOAD_FAILED:
       return {
         schedulePerDay: state.schedulePerDay || [],
         isLoading: false,

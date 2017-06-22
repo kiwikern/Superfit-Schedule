@@ -1,35 +1,39 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilteredScheduleComponent } from './filtered-schedule.component';
+import { ChangesComponent } from './changes.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, Input } from '@angular/core';
+import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
+import { FormsModule } from '@angular/forms';
 
-describe('FilteredScheduleComponent', () => {
-  let component: FilteredScheduleComponent;
-  let fixture: ComponentFixture<FilteredScheduleComponent>;
+describe('ChangesComponent', () => {
+  let component: ChangesComponent;
+  let fixture: ComponentFixture<ChangesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        FilteredScheduleComponent,
+        ChangesComponent,
         MockClassListComponent
       ],
       imports: [
         SfsMaterialModule,
-        FlexLayoutModule
+        FormsModule
+      ],
+      providers: [
+        {provide: ScheduleParserService, useClass: MockClassListComponent}
       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilteredScheduleComponent);
+    fixture = TestBed.createComponent(ChangesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });
@@ -44,6 +48,7 @@ class MockClassListComponent {
   @Input() schedulePerDay;
   @Input() filter;
   @Input() showSchedule;
+  @Input() removedFavorites;
   @Input() showFavoriteButton;
   @Input() newClasses;
 

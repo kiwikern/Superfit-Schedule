@@ -32,8 +32,7 @@ export class ScheduleParserService {
   };
 
   parse(scheduleJSON: Object) {
-    const classes: FitnessClass[] = scheduleJSON ? this.getClassesPerDay(scheduleJSON) : [];
-    return this.getAllClassesByDay(classes);
+    return scheduleJSON ? this.getClassesPerDay(scheduleJSON) : [];
   }
 
   private getClassesPerDay(scheduleJSON: any): FitnessClass[] {

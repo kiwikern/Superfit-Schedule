@@ -1,26 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MappingService } from '../services/mapping.service';
-import { NgRedux, select } from '@angular-redux/store';
+import { NgRedux } from '@angular-redux/store';
 import { FitnessClass } from '../interfaces/fitness-class';
 import { IAppState } from '../../store/root-state.interface';
 import { FavoriteActions } from '../store/favorites/favorite.actions';
 import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'sfs-fitness-class',
   templateUrl: './fitness-class.component.html',
-  styleUrls: ['./fitness-class.component.css']
+  styleUrls: ['./fitness-class.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FitnessClassComponent implements OnInit {
-  @select(['filter', 'gyms']) gyms$;
-  @select(['settings', 'showSingleStudio']) showSingleStudio$;
-  @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
-  @select(['settings', 'showWorkoutType']) showWorkoutType$;
-  @select(['favorites', 'workouts']) favorites$;
-  isFavorite = false;
-  isOnlyOneGymSelected: boolean = false;
+export class FitnessClassComponent implements OnInit, OnDestroy {
+  @Input() gyms = [];
+  @Input() showSingleStudio = false;
+  @Input() showDaysInClasses = true;
+  @Input() showWorkoutType = false;
   @Input() fitnessClass: FitnessClass;
   @Input() wasRemoved: boolean = false;
+  @Input() isFavorite = false;
+  @Input() showFavoriteButton = true;
+  @Input() isNew = false;
+  isOnlyOneGymSelected: boolean = false;
+  subscriptions: Subscription[] = [];
 
   constructor(private mappingService: MappingService,
               private ngRedux: NgRedux<IAppState>,
@@ -29,8 +33,11 @@ export class FitnessClassComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gyms$.subscribe(gyms => this.isOnlyOneGymSelected = gyms && gyms.length === 1);
-    this.favorites$.subscribe(workouts => this.isFavorite = this.isInFavorites(workouts));
+    this.isOnlyOneGymSelected = this.gyms && this.gyms.length === 1;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   getGymName(): string {
@@ -54,8 +61,7 @@ export class FitnessClassComponent implements OnInit {
   }
 
   toggleFavorite() {
-    this.isFavorite = !this.isFavorite;
-    if (this.isFavorite) {
+    if (!this.isFavorite) {
       const action = this.actions.addFavorite({workout: this.fitnessClass});
       this.ngRedux.dispatch(action);
     } else {
@@ -67,16 +73,9 @@ export class FitnessClassComponent implements OnInit {
   showRemovedSnackBar() {
     const snackBar: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open(
       'Kursplan enthält Favorit nicht mehr', 'Entferne Favorit', {duration: 5000});
-    snackBar.onAction()
-      .subscribe(this.toggleFavorite);
-  }
-
-  private isInFavorites(workouts: FitnessClass[]): boolean {
-    if (this.fitnessClass) {
-      return workouts.findIndex(f => this.fitnessClass.id === f.id) !== -1;
-    } else {
-      return false;
-    }
+    const sub = snackBar.onAction()
+      .subscribe(() => this.toggleFavorite());
+    this.subscriptions.push(sub);
   }
 
 }

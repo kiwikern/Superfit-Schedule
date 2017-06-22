@@ -67,7 +67,6 @@ export class SwUpdatesService implements OnDestroy {
   }
 
   private checkForUpdate() {
-    console.log('checking for update');
     this.sw.checkForUpdate()
         // Temp workaround for https://github.com/angular/mobile-toolkit/pull/137.
         // TODO: Remove once #137 is fixed.
