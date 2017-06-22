@@ -150,6 +150,7 @@ class MockClassListComponent {
   @Input() filter;
   @Input() showSchedule;
   @Input() removedFavorites;
+  @Input() hideSingleStudio;
 
 }
 

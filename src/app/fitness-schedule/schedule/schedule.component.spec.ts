@@ -54,4 +54,5 @@ class MockDayColumnComponent {
   @Input() removedFavorites;
   @Input() showFavoriteButton;
   @Input() newClasses;
+  @Input() hideSingleStudio;
 }

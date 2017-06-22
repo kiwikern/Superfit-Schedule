@@ -3,7 +3,7 @@
   <sfs-fitness-class *ngFor="let class of classesPerDay.classes | sortClasses"
                      [showDaysInClasses]="showDaysInClasses$ | async"
                      [showWorkoutType]="showWorkoutType$ | async"
-                     [showSingleStudio]="showSingleStudio$ | async"
+                     [showSingleStudio]="hideSingleStudio$ | async"
                      [isFavorite]="favoriteIds.indexOf(class.id) !== -1"
                      [fitnessClass]="class"
                      [showFavoriteButton]="showFavoriteButton"
