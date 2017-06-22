@@ -46,7 +46,7 @@ export class ScheduleParserService {
         duration: this.getClassDuration(course.course, course.type),
         workoutId: this.getClassName(course.course, course.type),
         type: course.type,
-        gym: this.GymMapping[course.studio],
+        gym: this.GymMapping[course.studio] || course.studio,
         language: this.getClassLanguage(course.course)
       };
       classes.push(fitnessClass);

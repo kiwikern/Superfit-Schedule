@@ -38,7 +38,11 @@ export class MappingService {
   dynamicColorMapping = {};
 
   getGymName(gym: Gym): string {
-    return this.getGymMapping()[gym];
+    if (this.getGymMapping().hasOwnProperty(gym)) {
+      return this.getGymMapping()[gym];
+    } else {
+      return gym + '';
+    }
   }
 
   getClassName(fitnessClassId) {
