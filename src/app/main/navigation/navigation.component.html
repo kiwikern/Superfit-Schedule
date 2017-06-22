@@ -10,7 +10,7 @@
   <md-icon>playlist_add</md-icon>
   Kurswahl
 </button>
-<button md-button (click)="closeSidenav()" routerLink="/auth">
+<button md-button (click)="closeSidenav()" routerLink="/auth" aria-label="Login/Account">
   <md-icon>person</md-icon>
   {{(jwt$ | async) ? 'Account' : 'Login'}}
 </button>
