@@ -3,6 +3,7 @@ import { FitnessClass } from '../interfaces/fitness-class';
 import { FilterState } from '../store/filter/filter-state';
 import * as moment from 'moment-mini';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
+import { Day } from '../enums/day.enum';
 
 @Pipe({
   name: 'filterClasses'
@@ -32,13 +33,19 @@ export class FilterClassesPipe implements PipeTransform {
       (allWorkouts.length === 0 || allWorkouts.includes(c.workoutId)) &&
       (!filterState.durations || filterState.durations.includes(c.duration)) &&
       (!filterState.languages || filterState.languages.includes(c.language)) &&
-      (!filterState.minStartTime || filterState.minStartTime <= c.startHour) &&
-      this.isBeforeMaxEndTime(filterState.maxEndTime, c)
+      this.isAfterMinStartTime(filterState, c) && this.isBeforeMaxEndTime(filterState, c)
     );
   }
 
-  private isBeforeMaxEndTime(maxEndTime: number, workout: FitnessClass): boolean {
-    if (!maxEndTime) {
+  private isAfterMinStartTime(filterState: FilterState, workout: FitnessClass) {
+    const minStartTime = filterState.minStartTime;
+    const ignoreFilter = !minStartTime || filterState.filterTimeOnlyOnWorkdays && this.isWeekend(workout.day);
+    return ignoreFilter || minStartTime <= workout.startHour;
+  }
+
+  private isBeforeMaxEndTime(filterState: FilterState, workout: FitnessClass): boolean {
+    const maxEndTime = filterState.maxEndTime;
+    if (!maxEndTime || (filterState.filterTimeOnlyOnWorkdays && this.isWeekend(workout.day))) {
       return true;
     } else {
       const startMinutes = workout.startMinute;
@@ -46,6 +53,10 @@ export class FilterClassesPipe implements PipeTransform {
       const endHour = moment().hour(workout.startHour).minutes(startMinutes + duration).hour();
       return (maxEndTime > endHour) || (maxEndTime === endHour && (startMinutes + duration) % 60 === 0);
     }
+  }
+
+  private isWeekend(day: Day): boolean {
+    return day === Day.SATURDAY || day === Day.SUNDAY;
   }
 
 }

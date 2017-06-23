@@ -12,4 +12,8 @@
                [(ngModel)]="maxEndTime" (change)="onChange({filterName: 'maxEndTime', value: maxEndTime})">
     </md-slider>
   </div>
+  <md-checkbox [(ngModel)]="filterOnlyWorkdays"
+               (change)="onChange({filterName: 'filterTimeOnlyOnWorkdays', value: filterOnlyWorkdays})">
+    Zeiteinschränkung nur werktags
+  </md-checkbox>
 </md-card>
