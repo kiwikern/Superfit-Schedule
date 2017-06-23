@@ -4,7 +4,7 @@
     </div>
   </div>
   <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
-       [fxLayout.gt-md]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
+       [fxLayout.gt-xs]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
        fxLayoutGap="20px" class="scrollable" id="schedule" fxLayoutAlign.gt-lg="center" #schedule>
     <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | filterClasses:filter | orderDays:showTodayFirst"
                     [classesPerDay]="classesPerDay"
