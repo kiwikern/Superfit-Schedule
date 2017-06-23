@@ -4,6 +4,7 @@ import { Gym } from '../../enums/gym.enum';
 import { Day } from '../../enums/day.enum';
 import { Language } from '../../enums/language.enum';
 import { Injectable } from '@angular/core';
+import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class ScheduleParserService {
@@ -46,7 +47,7 @@ export class ScheduleParserService {
         duration: this.getClassDuration(course.course, course.type),
         workoutId: this.getClassName(course.course, course.type),
         type: course.type,
-        gym: this.GymMapping[course.studio] || course.studio,
+        gym: !isNullOrUndefined(this.GymMapping[course.studio]) ? this.GymMapping[course.studio]  : course.studio,
         language: this.getClassLanguage(course.course)
       };
       classes.push(fitnessClass);
