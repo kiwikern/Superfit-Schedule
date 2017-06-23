@@ -4,6 +4,7 @@ import { Language } from '../../enums/language.enum';
 export interface FilterState {
   minStartTime?: number;
   maxEndTime?: number;
+  filterTimeOnlyOnWorkdays?: boolean;
   days?: Day[];
   durations?: number[];
   gyms?: Gym[];

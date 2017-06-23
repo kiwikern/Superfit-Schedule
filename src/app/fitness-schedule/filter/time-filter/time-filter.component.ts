@@ -11,6 +11,7 @@ export class TimeFilterComponent implements OnInit {
   readonly MAX_TIME = 22;
   @Input() minStartTime: number;
   @Input() maxEndTime: number;
+  @Input() filterOnlyWorkdays: boolean = false;
   @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
