@@ -4,7 +4,7 @@ import {ExternalContentCache} from '@angular/service-worker/plugins/external';
 import {RouteRedirection} from '@angular/service-worker/plugins/routes';
 import {StaticContentCache} from '@angular/service-worker/plugins/static';
 import {Push} from '@angular/service-worker/plugins/push';
-import {CustomListeners} from './custom-listeners';
+import {CustomListeners} from './plugins/custom-listeners';
 
 bootstrapServiceWorker({
   manifestUrl: 'ngsw-manifest.json',

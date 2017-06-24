@@ -3,7 +3,7 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const commonJs = require('rollup-plugin-commonjs');
 
 rollup.rollup({
-  entry: './src/sw-plugin/worker-basic.js',
+  entry: './src/service-worker/worker-basic.js',
   plugins: [
     nodeResolve({jsnext: true, main: true}),
     commonJs({

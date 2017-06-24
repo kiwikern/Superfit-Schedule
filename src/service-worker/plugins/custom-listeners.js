@@ -12,14 +12,23 @@ export class CustomListenersImpl {
       console.log('On notification click: ', event);
       event.notification.close();
 
-      if (event.action === 'opentweet') {
-        console.log('Performing action opentweet');
+      if (event.action === 'openpage') {
+        console.log('Performing action show-changes');
 
-        event.waitUntil(
-          clients.openWindow(event.notification.data).then(function (windowClient) {
-            // do something with the windowClient.
-          })
-        );
+        event.waitUntil(clients.matchAll({
+          includeUncontrolled: true,
+          type: 'window'
+        }).then(function (clientList) {
+          for (var i = 0; i < clientList.length; i++) {
+            const client = clientList[i];
+            if (client.url === event.notification.data && 'focus' in client) {
+              return client.focus();
+            }
+          }
+          if (clients.openWindow) {
+            return clients.openWindow(event.notification.data);
+          }
+        }))
       } else {
         console.log('Performing default click action');
 
@@ -31,7 +40,7 @@ export class CustomListenersImpl {
         }).then(function (clientList) {
           for (var i = 0; i < clientList.length; i++) {
             const client = clientList[i];
-            if (client.url === '/' && 'focus' in client) {
+            if ('focus' in client) {
               return client.focus();
             }
           }
