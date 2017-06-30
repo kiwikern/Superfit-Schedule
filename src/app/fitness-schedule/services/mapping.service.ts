@@ -18,8 +18,6 @@ export class MappingService {
     bodyvivexp: 'rgba(183, 172, 255, 0.3)',
     gritplyo: 'rgba(0, 0, 0, 0.3)',
     jumpingfitness: 'rgba(250, 250, 250, 0.3)',
-    lmistep: 'rgba(247, 0, 0, 0.3)',
-    lmistepxp: 'rgba(247, 0, 0, 0.3)',
     rpm: 'rgba(1, 108, 152, 0.3)',
     salsation: 'rgba(230, 10, 112, 0.3)',
     shbam: 'rgba(246, 36, 231, 0.3)',
@@ -124,7 +122,6 @@ export class MappingService {
     return {
       bauchxp: 'Bauch Express',
       bbp: 'Bauch Beine Po',
-      bbp2: 'Bauch Beine Po 2',
       bodyattack: 'BodyAttack',
       bodyattackxp: 'BodyAttack Express',
       bodybalance: 'BodyBalance',
@@ -173,8 +170,7 @@ export class MappingService {
       tsm: 'Trainingsstart',
       hiit: 'HIIT',
       functional: 'Functional',
-      cellulitekiller: 'Cellulite-Killer',
-      tsw: 'Rücken'
+      cellulitekiller: 'Cellulite-Killer'
     };
   }
 
