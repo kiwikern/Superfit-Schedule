@@ -17,7 +17,9 @@ before_install:
 jobs:
   include:
     - stage: test
-      script: npm run lint && npm run test:once
+      script:
+       - npm run lint && npm run test:once
+       - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
     - script: npm run e2e
     - stage: deploy
       script: echo 'Deploying...'
