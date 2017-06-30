@@ -9,6 +9,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "noStrictGenericChecks": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"

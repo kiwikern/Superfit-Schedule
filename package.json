@@ -12,7 +12,7 @@
     "start:liteserver": "lite-server -c liteserver_config.js",
     "build": "ng build --prod && node src/service-worker/rollup.js",
     "test": "ng test",
-    "build-sm": "npm run build -- --vendor-chunk=false -sm --output-hashing=none",
+    "build-sm": "ng build --prod --vendor-chunk=false -sm --output-hashing=none",
     "explore-sm": "npm run build-sm && source-map-explorer dist/main.bundle.js",
     "test:once": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
