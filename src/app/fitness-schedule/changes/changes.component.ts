@@ -18,7 +18,7 @@ export class ChangesComponent implements OnInit, OnDestroy {
   @select(['changes', 'changes']) changes$: Observable<ScheduleChange[]>;
   @select() filter$: Observable<FilterState>;
   selectedTab = 0;
-  filterClasses = false;
+  filterClasses = true;
   changes = [];
   subscription: Subscription;
 
