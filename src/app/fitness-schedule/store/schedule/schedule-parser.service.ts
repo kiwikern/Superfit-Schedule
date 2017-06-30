@@ -44,7 +44,7 @@ export class ScheduleParserService {
         startHour: moment(course.time + '', 'HH:mm').hour(),
         startMinute: moment(course.time + '', 'HH:mm').minute(),
         day: this.DayMapping[course.day],
-        duration: this.getClassDuration(course.course, course.type),
+        duration: course.duration || this.getClassDuration(course.course, course.type),
         workoutId: this.getClassName(course.course, course.type),
         type: course.type,
         gym: !isNullOrUndefined(this.GymMapping[course.studio]) ? this.GymMapping[course.studio]  : course.studio,
