@@ -105,7 +105,7 @@ export class ScheduleParserService {
 
   private getClassName(className: string, type: string) {
     if (className === 'ruecken' && type === 'teamtraining') {
-      return 'tsw';
+      return 'team_ruecken';
     }
     if (className.endsWith('-e')) {
       return className.slice(0, -2);

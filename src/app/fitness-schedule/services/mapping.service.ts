@@ -155,22 +155,23 @@ export class MappingService {
 
   getTeamTrainingNameMapping() {
       return {
-      circuit: 'Circuit',
-      po: 'Po',
-      qxstrong: 'Queenax Strong',
-      trx: 'TRX',
-      stretch: 'Stretch',
-      tt_skilletic: 'Skilletic',
-      qxburn: 'Queenax Burn',
-      bauch: 'Bauch',
-      qxcardio: 'Queenax Cardio',
-      faszientraining: 'Faszientraining',
-      fullbodyworkout: 'Full Body Workout',
-      trxbauch: 'TRX Bauch',
-      tsm: 'Trainingsstart',
-      hiit: 'HIIT',
-      functional: 'Functional',
-      cellulitekiller: 'Cellulite-Killer'
+        circuit: 'Circuit',
+        po: 'Po',
+        qxstrong: 'Queenax Strong',
+        trx: 'TRX',
+        stretch: 'Stretch',
+        tt_skilletic: 'Skilletic',
+        qxburn: 'Queenax Burn',
+        bauch: 'Bauch',
+        qxcardio: 'Queenax Cardio',
+        faszientraining: 'Faszientraining',
+        fullbodyworkout: 'Full Body Workout',
+        trxbauch: 'TRX Bauch',
+        tsm: 'Trainingsstart',
+        hiit: 'HIIT',
+        functional: 'Functional',
+        cellulitekiller: 'Cellulite-Killer',
+        team_ruecken: 'Rücken'
     };
   }
 
