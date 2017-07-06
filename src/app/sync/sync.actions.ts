@@ -35,10 +35,10 @@ export class SyncActions {
     };
   }
 
-  activateSyncSuccess(lastUpdate) {
+  activateSyncSuccess(lastUpdate, userId) {
     return {
       type: SyncActions.SYNC_ACTIVATE_SUCCESS,
-      payload: {lastUpdate}
+      payload: {lastUpdate, userId}
     };
   }
 

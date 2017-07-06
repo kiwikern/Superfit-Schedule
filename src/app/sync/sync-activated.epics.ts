@@ -34,7 +34,8 @@ export class SyncActivatedEpics {
         .flatMap(response => {
           const body = response.json();
           const lastUpdate: number = body.lastUpdate || 0;
-          const successAction = this.syncActions.activateSyncSuccess(lastUpdate);
+          const userId: string = body.userid || null;
+          const successAction = this.syncActions.activateSyncSuccess(lastUpdate, userId);
           let setActions = [];
           if (body.state) {
             setActions = [

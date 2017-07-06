@@ -47,13 +47,14 @@ describe('SyncActivatedEpics', () => {
       (epics: SyncActivatedEpics, actions: SyncActions, mockBackend: MockBackend) => {
         const action$ = ActionsObservable.of(actions.activateSync());
         const expectedOutputActions = [
-          {type: SyncActions.SYNC_ACTIVATE_SUCCESS, payload: {lastUpdate: 2}},
+          {type: SyncActions.SYNC_ACTIVATE_SUCCESS, payload: {lastUpdate: 2, userId: 'id'}},
           {type: FilterActions.FILTER_SET, payload: 'filter'},
           {type: FavoriteActions.FAVORITE_SET, payload: 'favorites'},
           {type: SettingsActions.SETTING_SET, payload: 'settings'}
         ];
         mockBackendResponse(mockBackend, {
           lastUpdate: 2,
+          userid: 'id',
           state: {
             filter: 'filter',
             favorites: 'favorites',
@@ -69,10 +70,11 @@ describe('SyncActivatedEpics', () => {
       (epics: SyncActivatedEpics, actions: SyncActions, mockBackend: MockBackend) => {
         const action$ = ActionsObservable.of(actions.activateSync());
         const expectedOutputActions = [
-          {type: SyncActions.SYNC_ACTIVATE_SUCCESS, payload: {lastUpdate: 1}}
+          {type: SyncActions.SYNC_ACTIVATE_SUCCESS, payload: {lastUpdate: 1, userId: 'id'}}
         ];
         mockBackendResponse(mockBackend, {
           lastUpdate: 1,
+          userid: 'id',
           state: {
             filter: 'filter',
             favorites: 'favorites',

@@ -3,4 +3,5 @@ export interface SyncState {
   isRequesting: boolean;
   isSyncActivated: boolean;
   lastUpdate: number;
+  userId: string;
 }

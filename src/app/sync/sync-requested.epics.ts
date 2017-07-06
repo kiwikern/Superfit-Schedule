@@ -18,11 +18,13 @@ export class SyncRequestedEpics {
   @select() settings$: Observable<SettingsState>;
   @select() filter$: Observable<FilterState>;
   @select(['sync', 'lastUpdate']) lastUpdate$: Observable<string>;
+  @select(['sync', 'userId']) userId$: Observable<string>;
 
   favorites: FavoriteState;
   settings: SettingsState;
   filter: FilterState;
   lastUpdate: string;
+  userId: string;
 
   constructor(private http: AuthHttp,
               private actions: SyncActions,
@@ -32,6 +34,7 @@ export class SyncRequestedEpics {
     this.settings$.subscribe(settings => this.settings = settings);
     this.filter$.subscribe(filter => this.filter = filter);
     this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
+    this.userId$.subscribe(userId => this.userId = userId);
   }
 
   createEpics() {
@@ -47,6 +50,7 @@ export class SyncRequestedEpics {
     const url = '/api/sfs/sync';
     const body = {
       lastUpdate: this.lastUpdate || 0,
+      userId: this.userId || null,
       state: {favorites: this.favorites, settings: this.settings, filter: this.filter}
     };
     return this.http.post(url, body);

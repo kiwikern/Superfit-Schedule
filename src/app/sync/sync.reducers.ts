@@ -9,6 +9,7 @@ export const INITIAL_STATE: SyncState = {
   hasError: false,
   isRequesting: false,
   isSyncActivated: false,
+  userId: null,
   lastUpdate: 0
 };
 
@@ -40,6 +41,7 @@ export function syncReducer(state: SyncState = INITIAL_STATE,
       newState.isSyncActivated = true;
       newState.hasError = false;
       newState.lastUpdate = action.payload.lastUpdate;
+      newState.userId = action.payload.userId;
       break;
     case SyncActions.SYNC_ACTIVATE_FAILED:
       newState = Object.assign({}, state);
