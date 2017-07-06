@@ -12,7 +12,7 @@ import { changesReducer } from '../fitness-schedule/store/changes/changes.reduce
  * Created by Kim on 02.04.2017.
  */
 
-export const rootReducer = combineReducers({
+export const rootReducer = combineReducers(<any>{
   schedule: scheduleReducer,
   changes: changesReducer,
   filter: filterReducer,

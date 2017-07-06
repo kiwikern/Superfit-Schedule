@@ -28,7 +28,9 @@ export class RootEpics {
     return [
       createEpicMiddleware(this.scheduleEpics.createEpics()),
       createEpicMiddleware(this.pushNotificationEpics.createEpics()),
-      ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
+      createEpicMiddleware(this.authenticationEpics[0].createEpics()),
+      createEpicMiddleware(this.authenticationEpics[1].createEpics()),
+      // ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
       createEpicMiddleware(this.syncRequestedEpics.createEpics()),
       createEpicMiddleware(this.syncActivatedEpics.createEpics()),
       createEpicMiddleware(this.registrationEpics.createEpics()),
