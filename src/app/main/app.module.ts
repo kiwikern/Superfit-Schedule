@@ -17,7 +17,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { SyncModule } from '../sync/sync.module';
 import { FitnessScheduleStoreModule } from '../fitness-schedule/store/fitness-schedule-store.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthenticationStoreModule } from 'app/authentication/store/authentication-store.module';
+import { AuthenticationStoreModule } from '../authentication/store/authentication-store.module';
 import { SwUpdatesModule } from '../sw-updates/sw-updates.module';
 
 

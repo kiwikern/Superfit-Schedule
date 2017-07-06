@@ -18,6 +18,8 @@ export class FilteredScheduleComponent implements OnInit {
 
   filter: FilterState = {};
   showSchedule: boolean = false;
+  // TODO: remove after codelyzer fix
+  private async: any;
 
   ngOnInit() {
     this.filter$.subscribe(f => this.filter = f);
