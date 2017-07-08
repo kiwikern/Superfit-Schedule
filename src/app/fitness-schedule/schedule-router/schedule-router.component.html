@@ -1,0 +1,17 @@
+<md-toolbar fxLayoutAlign="center" fxHide.gt-md="true" class="toolbar">
+  <div fxLayoutGap="20px">
+    <button md-icon-button routerLink="/">
+      <md-icon [color]="getColor('/schedule')">event</md-icon>
+    </button>
+    <button md-icon-button routerLink="/favorites">
+      <md-icon [color]="getColor('/schedule/favorites')">favorite</md-icon>
+    </button>
+    <button md-icon-button routerLink="/filter">
+      <md-icon [color]="getColor('/schedule/filter')">playlist_add</md-icon>
+    </button>
+    <button md-icon-button routerLink="/schedule/settings">
+      <md-icon [color]="getColor('/schedule/settings')">settings</md-icon>
+    </button>
+  </div>
+</md-toolbar>
+<router-outlet></router-outlet>

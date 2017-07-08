@@ -20,12 +20,17 @@ import { FavoritesScheduleComponent } from './favorites-schedule/favorites-sched
 import { DayColumnComponent } from './day-column/day-column.component';
 import { FitnessScheduleStoreModule } from './store/fitness-schedule-store.module';
 import { ChangesComponent } from './changes/changes.component';
+import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
 
 const fitnessRoutes: Routes = [
-  {path: '', component: FilteredScheduleComponent},
-  {path: 'favorites', component: FavoritesScheduleComponent},
-  {path: 'filter', component: FilterComponent},
-  {path: 'settings', component: SettingsComponent},
+  {
+    path: '', component: ScheduleRouterComponent, children: [
+    {path: '', component: FilteredScheduleComponent},
+    {path: 'favorites', component: FavoritesScheduleComponent},
+    {path: 'filter', component: FilterComponent},
+    {path: 'settings', component: SettingsComponent},
+  ],
+  },
   {path: 'changes', component: ChangesComponent}
 ];
 
@@ -52,7 +57,8 @@ const fitnessRoutes: Routes = [
     FilteredScheduleComponent,
     FavoritesScheduleComponent,
     DayColumnComponent,
-    ChangesComponent
+    ChangesComponent,
+    ScheduleRouterComponent
   ],
   exports: [
     ScheduleComponent,
