@@ -1,5 +1,6 @@
 import { NavigationPage } from './navigation.po';
 import { AppPage } from './app.po';
+import { browser } from 'protractor';
 
 describe('Navigation', () => {
   let page: NavigationPage;
@@ -59,16 +60,20 @@ describe('Navigation', () => {
 
   it('should navigate to register and show title', () => {
     page.navigateToAccount();
+    browser.waitForAngular();
     page.navigateToRegister();
     expect(page.getFirstCardTitle()).toEqual('Registrieren');
+    browser.waitForAngular();
     page.navigateToLogin();
     expect(page.getFirstCardTitle()).toEqual('Login');
   });
 
   it('should navigate to reset password and show title', () => {
     page.navigateToAccount();
+    browser.waitForAngular();
     page.navigateToResetPassword();
     expect(page.getFirstCardTitle()).toEqual('Passwort zurücksetzen');
+    browser.waitForAngular();
     page.navigateToLogin();
     expect(page.getFirstCardTitle()).toEqual('Login');
   });
