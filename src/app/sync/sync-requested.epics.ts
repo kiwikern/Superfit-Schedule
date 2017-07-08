@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SyncActions } from './sync.actions';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';

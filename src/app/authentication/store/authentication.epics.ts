@@ -3,6 +3,7 @@ import { AuthenticationActions } from './authentication.actions';
 import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
 import { MdSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
