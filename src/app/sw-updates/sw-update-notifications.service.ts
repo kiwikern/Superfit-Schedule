@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { MdSnackBar, MdSnackBarConfig, MdSnackBarRef } from '@angular/material';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeUntil';
 
 import { Global } from './global.value';
 import { SwUpdatesService } from './sw-updates.service';
