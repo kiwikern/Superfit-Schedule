@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import * as moment from 'moment-mini';
 
 @Component({
   selector: 'sfs-time-period',
   templateUrl: './time-period.component.html',
-  styleUrls: ['./time-period.component.css']
+  styleUrls: ['./time-period.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimePeriodComponent {
 
