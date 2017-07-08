@@ -22,6 +22,8 @@ jobs:
        - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
     - script: npm run e2e
     - stage: deploy
+      before_install: echo 'Skip...'
+      install: echo 'Skip...'
       script: echo 'Deploying...'
       deploy:
         skip_cleanup: true
