@@ -3,13 +3,11 @@ language: node_js
 node_js:
 - '7'
 addons:
-  ssh_known_hosts: $DEPLOY_SSH_HOST
   apt:
     sources:
       - google-chrome
     packages:
       - google-chrome-stable
-      - sshpass
 before_install:
 - npm install -g @angular/cli
 - export DISPLAY=:99.0
@@ -22,6 +20,12 @@ jobs:
        - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
     - script: npm run e2e
     - stage: deploy
+      addons:
+        ssh_known_hosts: $DEPLOY_SSH_HOST
+        apt:
+          packages:
+            - google-chrome-stable
+            - sshpass
       before_install: echo 'Skip...'
       install: echo 'Skip...'
       script: echo 'Deploying...'
