@@ -8,13 +8,13 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 jobs:
   include:
-    addons:
-      apt:
-        sources:
-          - google-chrome
-        packages:
-          - google-chrome-stable
     - stage: test
+      addons:
+        apt:
+          sources:
+            - google-chrome
+          packages:
+            - google-chrome-stable
       script:
        - npm run lint && npm run test:once
        - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token $CODACY_PROJECT_TOKEN
