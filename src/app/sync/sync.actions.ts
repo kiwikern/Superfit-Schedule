@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class SyncActions {
@@ -9,6 +10,9 @@ export class SyncActions {
   static readonly SYNC_ACTIVATE_SUCCESS = 'SYNC_ACTIVATE_SUCCESS';
   static readonly SYNC_ACTIVATE_FAILED = 'SYNC_ACTIVATE_FAILED';
   static readonly SYNC_DEACTIVATED = 'SYNC_DEACTIVATED';
+
+  constructor(private angulartics: Angulartics2) {
+  }
 
   sync() {
     return {
@@ -24,6 +28,7 @@ export class SyncActions {
   }
 
   syncFailed() {
+    this.angulartics.eventTrack.next({action: 'syncFailed'});
     return {
       type: SyncActions.SYNC_FAILED
     };
@@ -49,6 +54,7 @@ export class SyncActions {
   }
 
   activateSyncFailed() {
+    this.angulartics.eventTrack.next({action: 'activateSyncFailed'});
     return {
       type: SyncActions.SYNC_ACTIVATE_FAILED
     };

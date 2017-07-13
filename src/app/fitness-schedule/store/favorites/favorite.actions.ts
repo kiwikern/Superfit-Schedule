@@ -4,6 +4,7 @@
 import { Injectable } from '@angular/core';
 import { FavoritePayload } from './favorite.reducers';
 import { FavoriteState } from './favorite-state';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class FavoriteActions {
@@ -12,7 +13,11 @@ export class FavoriteActions {
   static readonly FAVORITE_CLEARED = 'FAVORITE_CLEARED';
   static readonly FAVORITE_SET = 'FAVORITE_SET';
 
+  constructor(private angulartics: Angulartics2) {
+  }
+
   addFavorite(payload: FavoritePayload) {
+    this.angulartics.eventTrack.next({action: 'addFavorite', properties: {category: payload.workout.id}});
     return {
       type: FavoriteActions.FAVORITE_ADDED,
       payload
@@ -20,6 +25,7 @@ export class FavoriteActions {
   }
 
   removeFavorite(payload: FavoritePayload) {
+    this.angulartics.eventTrack.next({action: 'removeFavorite', properties: {category: payload.workout.id}});
     return {
       type: FavoriteActions.FAVORITE_REMOVED,
       payload
