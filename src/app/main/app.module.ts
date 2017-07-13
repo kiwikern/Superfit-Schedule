@@ -19,7 +19,7 @@ import { FitnessScheduleStoreModule } from '../fitness-schedule/store/fitness-sc
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationStoreModule } from '../authentication/store/authentication-store.module';
 import { SwUpdatesModule } from '../sw-updates/sw-updates.module';
-import { Angulartics2Module, Angulartics2Piwik } from 'angulartics2';
+import { Angulartics2GoogleAnalytics, Angulartics2Module, Angulartics2Piwik } from 'angulartics2';
 
 
 const appRoutes: Routes = [
@@ -52,7 +52,7 @@ const appRoutes: Routes = [
     RecaptchaModule.forRoot(),
     SyncModule,
     SwUpdatesModule,
-    Angulartics2Module.forRoot([Angulartics2Piwik])
+    Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics])
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'}

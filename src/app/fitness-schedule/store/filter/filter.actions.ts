@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FilterState } from './filter-state';
 import { FilterPayload } from './filter-payload';
 import { dispatch } from '@angular-redux/store';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class FilterActions {
@@ -10,8 +11,12 @@ export class FilterActions {
   static readonly FILTER_CLEARED = 'FILTER_CLEARED';
   static readonly FILTER_SET = 'FILTER_SET';
 
+  constructor(private angulartics: Angulartics2) {
+  }
+
   @dispatch()
   addFilter(payload: FilterPayload) {
+    this.angulartics.eventTrack.next({action: 'addFilter', properties: {category: payload.filterName}});
     return {
       type: FilterActions.FILTER_ADDED,
       payload: {
@@ -23,6 +28,7 @@ export class FilterActions {
 
   @dispatch()
   removeFilter(payload: FilterPayload) {
+    this.angulartics.eventTrack.next({action: 'removeFilter', properties: {category: payload.filterName}});
     return {
       type: FilterActions.FILTER_REMOVED,
       payload: {

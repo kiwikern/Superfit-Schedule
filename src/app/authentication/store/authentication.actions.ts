@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Angulartics2 } from 'angulartics2';
 
 @Injectable()
 export class AuthenticationActions {
@@ -10,7 +11,11 @@ export class AuthenticationActions {
   static readonly REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
   static readonly REGISTRATION_FAILED = 'REGISTRATION_FAILED';
 
+  constructor(private angulartics: Angulartics2) {
+  }
+
   loginWithUserName(userName: string, password: string) {
+    this.angulartics.eventTrack.next({action: 'loginWithUserName', properties: {category: userName}});
     return {
       type: AuthenticationActions.LOGIN_REQUESTED,
       payload: {userName, password}
@@ -18,6 +23,7 @@ export class AuthenticationActions {
   }
 
   loginWithMailAddress(mailAddress: string, password: string) {
+    this.angulartics.eventTrack.next({action: 'loginWithMailAddress', properties: {category: mailAddress}});
     return {
       type: AuthenticationActions.LOGIN_REQUESTED,
       payload: {mailAddress, password}
@@ -44,6 +50,7 @@ export class AuthenticationActions {
   }
 
   register(payload) {
+    this.angulartics.eventTrack.next({action: 'register', properties: {category: payload.userName}});
     return {
       type: AuthenticationActions.REGISTRATION_REQUESTED,
       payload
@@ -58,6 +65,7 @@ export class AuthenticationActions {
   }
 
   registerFailed() {
+    this.angulartics.eventTrack.next({action: 'registerFailed'});
     return {
       type: AuthenticationActions.REGISTRATION_FAILED
     };
