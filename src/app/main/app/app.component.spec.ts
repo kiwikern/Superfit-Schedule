@@ -6,6 +6,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { SwUpdateNotificationsService } from '../../sw-updates/sw-update-notifications.service';
+import { Angulartics2 } from 'angulartics2';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -22,7 +23,8 @@ describe('AppComponent', () => {
         RouterTestingModule.withRoutes([{path: '', children: []}])
       ],
       providers: [
-        {provide: SwUpdateNotificationsService, useClass: MockService}
+        {provide: SwUpdateNotificationsService, useClass: MockService},
+        Angulartics2
       ]
     }).compileComponents();
   }));
