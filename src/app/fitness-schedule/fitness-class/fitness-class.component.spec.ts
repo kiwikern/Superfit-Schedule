@@ -25,7 +25,7 @@ describe('FitnessClassComponent', () => {
       ],
       providers: [
         MappingService,
-        FavoriteActions
+        {provide: FavoriteActions, useClass: MockActions}
       ]
     })
       .compileComponents();
@@ -52,3 +52,6 @@ describe('FitnessClassComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockActions {
+}

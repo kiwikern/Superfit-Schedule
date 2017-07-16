@@ -19,7 +19,7 @@ describe('StatusComponent', () => {
         NoopAnimationsModule
       ],
       providers: [
-        SyncActions
+        {provide: SyncActions, useClass: MockActions}
       ]
     })
     .compileComponents();
@@ -35,3 +35,6 @@ describe('StatusComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockActions {
+}

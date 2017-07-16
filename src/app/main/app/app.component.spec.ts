@@ -6,10 +6,12 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { SwUpdateNotificationsService } from '../../sw-updates/sw-update-notifications.service';
-import { Angulartics2 } from 'angulartics2';
+import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
+    const mockAngulartics = jasmine.createSpyObj<Angulartics2>('angulartics2', ['eventTrack']);
+    mockAngulartics.eventTrack = jasmine.createSpyObj('angulartics2', ['next']);
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -24,7 +26,9 @@ describe('AppComponent', () => {
       ],
       providers: [
         {provide: SwUpdateNotificationsService, useClass: MockService},
-        Angulartics2
+        {provide: Angulartics2, useValue: mockAngulartics},
+        {provide: Angulartics2GoogleAnalytics, useValue: mockAngulartics},
+        {provide: Angulartics2Piwik, useValue: mockAngulartics},
       ]
     }).compileComponents();
   }));

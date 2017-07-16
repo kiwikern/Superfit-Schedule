@@ -32,7 +32,7 @@ describe('RegistrationComponent', () => {
         NgReduxTestingModule
       ],
       providers: [
-        AuthenticationActions
+        {provide: AuthenticationActions, useClass: MockAuthActions}
       ]
     })
     .compileComponents();
@@ -48,3 +48,8 @@ describe('RegistrationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockAuthActions {
+  logout() {
+  }
+}

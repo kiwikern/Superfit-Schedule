@@ -19,7 +19,7 @@ describe('SettingsComponent', () => {
         NgReduxTestingModule
       ],
       providers: [
-        SettingsActions
+        {provide: SettingsActions, useClass: MockActions}
       ]
     })
       .compileComponents();
@@ -35,3 +35,6 @@ describe('SettingsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockActions {
+}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Angulartics2 } from 'angulartics2';
+import { dispatch } from '@angular-redux/store';
 
 @Injectable()
 export class AuthenticationActions {
@@ -10,6 +11,12 @@ export class AuthenticationActions {
   static readonly REGISTRATION_REQUESTED = 'REGISTRATION_REQUESTED';
   static readonly REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
   static readonly REGISTRATION_FAILED = 'REGISTRATION_FAILED';
+  static readonly RESET_PASSWORD_REQUESTED = 'RESET_PASSWORD_REQUESTED';
+  static readonly RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+  static readonly RESET_PASSWORD_FAILED = 'RESET_PASSWORD_FAILED';
+  static readonly CHANGE_PASSWORD_REQUESTED = 'CHANGE_PASSWORD_REQUESTED';
+  static readonly CHANGE_PASSWORD_FAILED = 'CHANGE_PASSWORD_FAILED';
+  static readonly CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS';
 
   constructor(private angulartics: Angulartics2) {
   }
@@ -65,9 +72,53 @@ export class AuthenticationActions {
   }
 
   registerFailed() {
-    this.angulartics.eventTrack.next({action: 'registerFailed'});
+    this.angulartics.eventTrack.next({action: 'registerFailed', properties: {}});
     return {
       type: AuthenticationActions.REGISTRATION_FAILED
+    };
+  }
+
+  @dispatch()
+  requestResetPassword(mailAddress, captcha) {
+    return {
+      type: AuthenticationActions.RESET_PASSWORD_REQUESTED,
+      payload: {mailAddress, captcha}
+    };
+  }
+
+  resetPasswordSuccess() {
+    return {
+      type: AuthenticationActions.RESET_PASSWORD_SUCCESS
+    };
+  }
+
+  resetPasswordFailed(error) {
+    this.angulartics.exceptionTrack.next({description: JSON.stringify(error)});
+    return {
+      type: AuthenticationActions.RESET_PASSWORD_FAILED,
+      payload: error
+    };
+  }
+
+  @dispatch()
+  changePassword(password: string, token: string) {
+    this.angulartics.eventTrack.next({action: 'changePassword', properties: {}});
+    return {
+      type: AuthenticationActions.CHANGE_PASSWORD_REQUESTED,
+      payload: {password, token}
+    };
+  }
+
+  changePasswordSuccess() {
+    return {
+      type: AuthenticationActions.CHANGE_PASSWORD_SUCCESS
+    };
+  }
+
+  changePasswordFailed(error) {
+    return {
+      type: AuthenticationActions.CHANGE_PASSWORD_FAILED,
+      payload: error
     };
   }
 }

@@ -1,43 +1,41 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
-import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
-import { AuthenticationActions } from '../store/authentication.actions';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { UserNameInputComponent } from '../user-name-input/user-name-input.component';
-import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
-import { PasswordInputComponent } from '../password-input/password-input.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+import { ChangePasswordComponent } from './change-password.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { AuthenticationActions } from '../store/authentication.actions';
+import { PasswordInputComponent } from '../password-input/password-input.component';
+import { PasswordConfirmationInputComponent } from '../password-confirmation-input/password-confirmation-input.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+describe('ChangePasswordComponent', () => {
+  let component: ChangePasswordComponent;
+  let fixture: ComponentFixture<ChangePasswordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        LoginComponent,
-        UserNameInputComponent,
-        MailAddressInputComponent,
-        PasswordInputComponent
+        ChangePasswordComponent,
+        PasswordInputComponent,
+        PasswordConfirmationInputComponent
       ],
       imports: [
+        RouterTestingModule,
         SfsMaterialModule,
-        FormsModule,
         ReactiveFormsModule,
-        NgReduxTestingModule,
+        FormsModule,
         NoopAnimationsModule
       ],
       providers: [
         {provide: AuthenticationActions, useClass: MockAuthActions}
       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(ChangePasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

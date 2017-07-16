@@ -24,19 +24,22 @@ export class AuthenticationEpics {
         .ofType(AuthenticationActions.LOGIN_REQUESTED)
         .map(action => action.payload)
         .switchMap(credentials => this.requestLogin(credentials)
-          .flatMap(response => {
-            this.showSnackBar('Login erfolgreich.');
-            return of(this.routerActions.navigateTo('/schedule'),
-              this.actions.loginSuccess(response.json().userName, response.json().token),
-              this.syncActions.activateSync());
-          })
+          .map(response => this.actions.loginSuccess(response.json().userName, response.json().token))
           .catch(error => {
             this.showErrorMessage(error);
             return of(this.actions.loginFailed());
           })),
       action$ => action$
         .ofType(AuthenticationActions.LOGOUT)
-        .map(() => this.syncActions.deactivateSync())
+        .map(() => this.syncActions.deactivateSync()),
+      action$ => action$
+        .ofType(AuthenticationActions.LOGIN_SUCCESS)
+        .flatMap(() => {
+          this.showSnackBar('Login erfolgreich.');
+          return of(this.routerActions.navigateTo('/schedule'),
+            this.syncActions.activateSync()
+          );
+        })
     ];
   }
 

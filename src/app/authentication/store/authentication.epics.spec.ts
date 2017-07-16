@@ -1,6 +1,6 @@
 import { AuthenticationEpics } from './authentication.epics';
 import { inject, TestBed } from '@angular/core/testing';
-import { HttpModule, XHRBackend, Response, ResponseOptions } from '@angular/http';
+import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthenticationActions } from './authentication.actions';
 import { MdSnackBar } from '@angular/material';
@@ -10,9 +10,12 @@ import { ActionsObservable } from 'redux-observable';
 import 'rxjs/add/operator/toArray';
 import { Observable } from 'rxjs/Observable';
 import { UPDATE_LOCATION } from '@angular-redux/router';
+import { Angulartics2 } from 'angulartics2';
 describe('AuthenticationEpics', () => {
 
   beforeEach(() => {
+    const mockAngulartics = jasmine.createSpyObj<Angulartics2>('angulartics2', ['eventTrack']);
+    mockAngulartics.eventTrack = jasmine.createSpyObj('angulartics2', ['next']);
     TestBed.configureTestingModule({
       imports: [
         HttpModule
@@ -22,6 +25,7 @@ describe('AuthenticationEpics', () => {
         AuthenticationActions,
         RouterActions,
         SyncActions,
+        {provide: Angulartics2, useValue: mockAngulartics},
         {provide: MdSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend}
       ]
@@ -33,8 +37,19 @@ describe('AuthenticationEpics', () => {
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [
+          {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user'}}
+        ];
+        mockBackendResponse(mockBackend, {token: 'token', userName: 'user'}, 200);
+        performAction(epics, action$, expectedOutputActions, done);
+      })();
+  });
+
+  it('should actvivate sync and navigate to schedule after successful login', (done) => {
+    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MdSnackBar],
+      (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
+        const action$ = ActionsObservable.of(actions.loginSuccess('', ''));
+        const expectedOutputActions = [
           {type: UPDATE_LOCATION, payload: '/schedule'},
-          {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user'}},
           {type: SyncActions.SYNC_ACTIVATE_REQUEST}
         ];
         mockBackendResponse(mockBackend, {token: 'token', userName: 'user'}, 200);

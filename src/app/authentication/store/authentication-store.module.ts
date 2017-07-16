@@ -7,6 +7,8 @@ import { Http, RequestOptions } from '@angular/http';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { AuthService } from './auth-service/auth.service';
 import { RegistrationEpics } from './registration-registration.epics';
+import { ResetPasswordEpics } from './reset-password.epics';
+import { ChangePasswordEpics } from './change-password.epics';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   const config = {
@@ -31,6 +33,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AuthenticationActions,
     AuthenticationEpics,
     RegistrationEpics,
+    ResetPasswordEpics,
+    ChangePasswordEpics,
     AuthGuard,
     AuthService,
     {

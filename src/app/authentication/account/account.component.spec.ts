@@ -11,16 +11,16 @@ describe('AccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountComponent ],
+      declarations: [AccountComponent],
       imports: [
         SfsMaterialModule,
         NgReduxTestingModule
       ],
       providers: [
-        AuthenticationActions
+        {provide: AuthenticationActions, useClass: MockAuthActions}
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -33,3 +33,8 @@ describe('AccountComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockAuthActions {
+  logout() {
+  }
+}

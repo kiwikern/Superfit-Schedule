@@ -1,5 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
-import { HttpModule, XHRBackend, Response, ResponseOptions, Http } from '@angular/http';
+import { Http, HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { ActionsObservable } from 'redux-observable';
 import 'rxjs/add/operator/toArray';
@@ -9,9 +9,12 @@ import { SyncActions } from './sync.actions';
 import { MdSnackBar } from '@angular/material';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { SyncRequestedEpics } from './sync-requested.epics';
+import { Angulartics2 } from 'angulartics2';
 describe('SyncRequestedEpics', () => {
 
   beforeEach(() => {
+    const mockAngulartics = jasmine.createSpyObj<Angulartics2>('angulartics2', ['eventTrack']);
+    mockAngulartics.eventTrack = jasmine.createSpyObj('angulartics2', ['next']);
     TestBed.configureTestingModule({
       imports: [
         HttpModule,
@@ -21,6 +24,7 @@ describe('SyncRequestedEpics', () => {
         SyncRequestedEpics,
         SyncActions,
         AuthenticationActions,
+        {provide: Angulartics2, useValue: mockAngulartics},
         {provide: MdSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend},
         {provide: AuthHttp, useExisting: Http}

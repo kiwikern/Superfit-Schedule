@@ -26,7 +26,7 @@ describe('FilterComponent', () => {
       ],
       providers: [
         MappingService,
-        FilterActions,
+        {provide: FilterActions, useClass: MockActions}
       ]
     })
     .compileComponents();
@@ -42,3 +42,6 @@ describe('FilterComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockActions {
+}

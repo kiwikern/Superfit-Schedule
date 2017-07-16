@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
+import { AuthenticationActions } from '../store/authentication.actions';
 
 describe('ResetPasswordComponent', () => {
   let component: ResetPasswordComponent;
@@ -23,6 +24,9 @@ describe('ResetPasswordComponent', () => {
         NoopAnimationsModule,
         ReactiveFormsModule,
         FormsModule
+      ],
+      providers: [
+        {provide: AuthenticationActions, useClass: MockAuthActions}
       ]
     })
       .compileComponents();
@@ -46,4 +50,9 @@ describe('ResetPasswordComponent', () => {
 })
 class CaptchaMockComponent {
 
+}
+
+class MockAuthActions {
+  logout() {
+  }
 }

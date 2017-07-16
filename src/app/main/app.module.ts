@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app/app.component';
 import { NgReduxModule } from '@angular-redux/store';
@@ -24,8 +25,8 @@ import { Angulartics2GoogleAnalytics, Angulartics2Module, Angulartics2Piwik } fr
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'schedule', pathMatch: 'prefix'},
-  {path: 'schedule', loadChildren: '../fitness-schedule/fitness-schedule.module#FitnessScheduleModule' },
-  {path: 'auth', loadChildren: '../authentication/authentication.module#AuthenticationModule' },
+  {path: 'schedule', loadChildren: '../fitness-schedule/fitness-schedule.module#FitnessScheduleModule'},
+  {path: 'auth', loadChildren: '../authentication/authentication.module#AuthenticationModule'},
   {path: 'about', component: AboutComponent}
 ];
 
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     NgReduxModule,
     StoreModule,
     FitnessScheduleStoreModule,
