@@ -4,7 +4,7 @@ import { AuthenticationActions } from './authentication.actions';
 import { AuthenticationEpics } from './authentication.epics';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { Http, RequestOptions } from '@angular/http';
-import { AuthGuard } from './auth-guard/auth.guard';
+import { AccountAuthGuard } from './auth-guards/account-auth.guard';
 import { AuthService } from './auth-service/auth.service';
 import { RegistrationEpics } from './registration-registration.epics';
 import { ResetPasswordEpics } from './reset-password.epics';
@@ -35,7 +35,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RegistrationEpics,
     ResetPasswordEpics,
     ChangePasswordEpics,
-    AuthGuard,
     AuthService,
     {
       provide: AuthHttp,

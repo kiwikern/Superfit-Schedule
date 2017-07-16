@@ -10,19 +10,20 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AccountComponent } from './account/account.component';
-import { AuthGuard } from './store/auth-guard/auth.guard';
+import { AccountAuthGuard } from './store/auth-guards/account-auth.guard';
 import { UserNameInputComponent } from './user-name-input/user-name-input.component';
 import { MailAddressInputComponent } from './mail-address-input/mail-address-input.component';
 import { PasswordInputComponent } from './password-input/password-input.component';
 import { PasswordConfirmationInputComponent } from './password-confirmation-input/password-confirmation-input.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { LoginAuthGuard } from './store/auth-guards/login-auth.guard';
 
 const authenticationRoutes: Routes = [
-  {path: 'registration', component: RegistrationComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'registration', component: RegistrationComponent, canActivate: [LoginAuthGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [LoginAuthGuard]},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'change-password', component: ChangePasswordComponent},
-  {path: '', component: AccountComponent, canActivate: [AuthGuard]}
+  {path: '', component: AccountComponent, canActivate: [AccountAuthGuard]}
 ];
 
 @NgModule({
@@ -46,6 +47,10 @@ const authenticationRoutes: Routes = [
     PasswordInputComponent,
     PasswordConfirmationInputComponent,
     ChangePasswordComponent
+  ],
+  providers: [
+    AccountAuthGuard,
+    LoginAuthGuard
   ]
 })
 export class AuthenticationModule {

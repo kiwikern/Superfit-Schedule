@@ -1,11 +1,12 @@
 <md-card>
   <md-card-title>Hallo {{userName$ | async}}!</md-card-title>
   <md-card-content>
-    <p>Herzlichen Glückwunsch, du bist eingeloggt!</p>
-    <p>Momentan können noch keine Änderungen an deinem Account vorgenommen werden, die entsprächende
-      Funktionalität wird allerdings in Kürze folgen.</p>
-    <p>Die Synchronisierung deiner Einstellungen funktioniert aber bereits
-      vollständig.</p>
+    <p>Herzlichen Glückwunsch, du bist eingeloggt!
+    Deine Einstellungen werden synchroniert.</p>
+    <button md-raised-button routerLink="change-password">
+      <md-icon>lock</md-icon>
+      Passwort ändern
+    </button>
   </md-card-content>
   <md-card-actions align="right">
     <button md-raised-button (click)="logout()" routerLink="login">
