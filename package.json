@@ -1,6 +1,6 @@
 {
   "name": "superfitschedule",
-  "version": "2.10.0",
+  "version": "2.10.1",
   "license": "UNLICENSED",
   "scripts": {
     "ng": "ng",
