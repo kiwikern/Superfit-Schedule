@@ -2,7 +2,7 @@
  [newClasses]="(changes$ | async)?.length > 0 ? (changes$ | async)[0].added : []" [hideSingleStudio]="true">
 </sfs-schedule>
 <div *ngIf="!showSchedule" fxLayout="column" fxLayoutAlign="center center">
-  <p>Um deinen persönlichen Kursplan anzuzeigen, wähle deine Lieblingskurse und -studios aus.</p>
+  <p>Um deinen persönlichen Kursplan anzuzeigen, wähle deine Lieblingskurse oder -studios aus.</p>
   <button md-raised-button routerLink="/filter">
     <md-icon>playlist_add</md-icon>
     Kurse wählen

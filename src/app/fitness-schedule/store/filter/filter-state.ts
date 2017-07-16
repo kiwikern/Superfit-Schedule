@@ -6,7 +6,8 @@ export interface FilterState {
   maxEndTime?: number;
   filterTimeOnlyOnWorkdays?: boolean;
   days?: Day[];
-  durations?: number[];
+  minDuration?: number;
+  maxDuration?: number;
   gyms?: Gym[];
   workouts?: string[];
   teamTrainings?: string[];

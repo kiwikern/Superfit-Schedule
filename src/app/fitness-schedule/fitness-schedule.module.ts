@@ -21,6 +21,7 @@ import { DayColumnComponent } from './day-column/day-column.component';
 import { FitnessScheduleStoreModule } from './store/fitness-schedule-store.module';
 import { ChangesComponent } from './changes/changes.component';
 import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
+import { DurationFilterComponent } from './filter/duration-filter/duration-filter.component';
 
 const fitnessRoutes: Routes = [
   {
@@ -58,7 +59,8 @@ const fitnessRoutes: Routes = [
     FavoritesScheduleComponent,
     DayColumnComponent,
     ChangesComponent,
-    ScheduleRouterComponent
+    ScheduleRouterComponent,
+    DurationFilterComponent
   ],
   exports: [
     ScheduleComponent,

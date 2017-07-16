@@ -31,7 +31,8 @@ export class FilterClassesPipe implements PipeTransform {
       (!filterState.days || filterState.days.includes(c.day)) &&
       (!filterState.gyms || filterState.gyms.includes(c.gym)) &&
       (allWorkouts.length === 0 || allWorkouts.includes(c.workoutId)) &&
-      (!filterState.durations || filterState.durations.includes(c.duration)) &&
+      (!filterState.minDuration || filterState.minDuration <= c.duration) &&
+      (!filterState.maxDuration || filterState.maxDuration >= c.duration) &&
       (!filterState.languages || filterState.languages.includes(c.language)) &&
       this.isAfterMinStartTime(filterState, c) && this.isBeforeMaxEndTime(filterState, c)
     );
