@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthenticationActions } from '../store/authentication.actions';
 
 @Component({
@@ -10,11 +10,10 @@ import { AuthenticationActions } from '../store/authentication.actions';
 export class ChangePasswordComponent implements OnInit {
 
   private token: string;
-  private password: string;
-  private passwordConfirmation: string;
+  password: string;
+  passwordConfirmation: string;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private authActions: AuthenticationActions) {
   }
 
