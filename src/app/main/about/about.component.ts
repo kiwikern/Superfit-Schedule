@@ -1,9 +1,6 @@
 import { select } from '@angular-redux/store';
-declare function require(moduleName: string): any;
-const {version: appVersion} = require('../../../../package.json');
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
-import { ReleasenotesComponent } from '../../releasenotes/releasenotes/releasenotes.component';
+import { ReleasenotesActions } from '../../releasenotes/store/releasenotes.actions';
 
 @Component({
   selector: 'sfs-about',
@@ -12,20 +9,19 @@ import { ReleasenotesComponent } from '../../releasenotes/releasenotes/releaseno
 })
 export class AboutComponent implements OnInit {
 
+  @select(['releasenotes', 'version']) version$;
   @select(['authentication', 'userName']) userName;
   mailAddress = 'sfs@kimkern.de';
   showLegal = false;
-  appVersion: string;
 
-  constructor(private dialog: MdDialog) {
-    this.appVersion = appVersion;
+  constructor(private actions: ReleasenotesActions) {
   }
 
   ngOnInit() {
   }
 
   openReleasenotes() {
-    this.dialog.open(ReleasenotesComponent);
+    this.actions.showReleasenotes();
   }
 
 }

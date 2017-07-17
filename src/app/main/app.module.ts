@@ -22,6 +22,7 @@ import { AuthenticationStoreModule } from '../authentication/store/authenticatio
 import { SwUpdatesModule } from '../sw-updates/sw-updates.module';
 import { Angulartics2GoogleAnalytics, Angulartics2Module, Angulartics2Piwik } from 'angulartics2';
 import { ReleasenotesModule } from '../releasenotes/releasenotes.module';
+import { ReleasenotesStoreModule } from '../releasenotes/store/releasenotes-store.module';
 
 
 const appRoutes: Routes = [
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     SyncModule,
     SwUpdatesModule,
     Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics]),
-    ReleasenotesModule
+    ReleasenotesModule,
+    ReleasenotesStoreModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'}

@@ -8,6 +8,7 @@ import { authenticationReducer } from '../authentication/store/authentication.re
 import { routerReducer } from '@angular-redux/router';
 import { syncReducer } from '../sync/sync.reducers';
 import { changesReducer } from '../fitness-schedule/store/changes/changes.reducers';
+import { releasenotesReducer } from '../releasenotes/store/releasenotes.reducers';
 /**
  * Created by Kim on 02.04.2017.
  */
@@ -21,6 +22,7 @@ export const rootReducer = combineReducers(<any>{
   pushNotifications: pushNotificationReducer,
   authentication: authenticationReducer,
   sync: syncReducer,
-  router: routerReducer
+  router: routerReducer,
+  releasenotes: releasenotesReducer
 });
 

@@ -8,6 +8,7 @@ import { ScheduleActions } from '../fitness-schedule/store/schedule/schedule.act
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { RouterActions } from './router.actions';
 import { ChangesActions } from '../fitness-schedule/store/changes/changes.actions';
+import { ReleasenotesActions } from '../releasenotes/store/releasenotes.actions';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ export class StoreModule {
               pushNotificationActions: PushNotificationActions,
               scheduleActions: ScheduleActions,
               changesActions: ChangesActions,
+              releasenotesActions: ReleasenotesActions,
               ngReduxRouter: NgReduxRouter) {
 
     const LOCAL_STORAGE_KEY = 'sfs.state';
@@ -49,5 +51,6 @@ export class StoreModule {
     store.dispatch(pushNotificationActions.addPushSubscription());
     store.dispatch(scheduleActions.loadSchedule());
     store.dispatch(changesActions.loadChanges());
+    store.dispatch(releasenotesActions.checkVersion());
   }
 }

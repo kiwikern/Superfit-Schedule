@@ -1,6 +1,6 @@
 <md-card fxLayout="column" fxLayoutGap="0">
   <md-card-title>Über die App</md-card-title>
-  <md-card-subtitle>Version: <a (click)="openReleasenotes()">{{appVersion}}</a></md-card-subtitle>
+  <md-card-subtitle>Version: <a (click)="openReleasenotes()">{{version$ | async}}</a></md-card-subtitle>
   <p>Hallo <span *ngIf="(userName | async)">{{' ' + (userName | async)}}</span>, mein Name ist <a href="https://www.kimkern.de" target="_blank">Kim</a>. Ich arbeite als Fullstack-Entwickler
     in Berlin und bin leidenschaftliches <a href="http://mysuperfit.de" target="_blank">SuperFit</a>-Mitglied.
   </p>
