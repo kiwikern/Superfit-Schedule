@@ -9,12 +9,8 @@ import { select } from '@angular-redux/store';
 export class NavigationComponent {
 
   @Input() sideNav;
+  @Input() fullWidth = true;
   @select(['authentication', 'jwt']) jwt$;
 
-  closeSidenav() {
-    if (this.sideNav) {
-      this.sideNav.close();
-    }
-  }
 
 }

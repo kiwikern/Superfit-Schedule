@@ -24,6 +24,7 @@ import { Angulartics2GoogleAnalytics, Angulartics2Module, Angulartics2Piwik } fr
 import { ReleasenotesModule } from '../releasenotes/releasenotes.module';
 import { ReleasenotesStoreModule } from '../releasenotes/store/releasenotes-store.module';
 import { LegalModule } from '../legal/legal.module';
+import { NavigationButtonComponent } from './navigation-button/navigation-button.component';
 
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AboutComponent,
-    NavigationComponent
+    NavigationComponent,
+    NavigationButtonComponent
   ],
   imports: [
     BrowserModule,

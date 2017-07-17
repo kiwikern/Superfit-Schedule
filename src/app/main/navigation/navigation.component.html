@@ -1,28 +1,27 @@
-<button md-button (click)="closeSidenav()" routerLink="/schedule">
-  <md-icon>event</md-icon>
-  Kursplan
-</button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/favorites">
-  <md-icon>favorite</md-icon>
-  Favoriten
-</button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/filter">
-  <md-icon>playlist_add</md-icon>
-  Kurswahl
-</button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/changes">
-  <md-icon>swap_horiz</md-icon>
-  Änderungen
-</button>
-<button md-button (click)="closeSidenav()" routerLink="/auth" aria-label="Login/Account">
-  <md-icon>person</md-icon>
-  {{(jwt$ | async) ? 'Account' : 'Login'}}
-</button>
-<button md-button (click)="closeSidenav()" routerLink="/schedule/settings">
-  <md-icon>settings</md-icon>
-  Einstellungen
-</button>
-<button md-button (click)="closeSidenav()" routerLink="/about">
-  <md-icon>import_contacts</md-icon>
-  Über
-</button>
+<sfs-navigation-button [name]="'Kursplan'" [path]="'/schedule'" [icon]="'event'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+
+<sfs-navigation-button [name]="'Favoriten'" [path]="'/schedule/favorites'" [icon]="'favorite'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+
+<sfs-navigation-button [name]="'Kurswahl'" [path]="'/schedule/filter'" [icon]="'playlist_add'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+
+<sfs-navigation-button [name]="'Änderungen'" [path]="'/schedule/changes'" [icon]="'swap_horiz'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+
+<sfs-navigation-button [name]="(jwt$ | async) ? 'Account' : 'Login'" [path]="'/auth'" [icon]="'person'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+
+<sfs-navigation-button [name]="'Einstellungen'" [path]="'/schedule/settings'" [icon]="'settings'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+
+<sfs-navigation-button [name]="'Über'" [path]="'/about'" [icon]="'import_contacts'"
+                       [sideNav]="sideNav" [fullWidth]="fullWidth"
+                       [class.fullwidth]="fullWidth"></sfs-navigation-button>

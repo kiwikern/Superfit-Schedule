@@ -5,11 +5,11 @@
   </button>
   <span>SuperFit Kursplan</span>
   <div fxFlex></div>
-  <sfs-navigation fxHide.lt-lg="true"></sfs-navigation>
+  <sfs-navigation fxHide.lt-lg="true" [fullWidth]="false"></sfs-navigation>
   <sfs-sync-status></sfs-sync-status>
 </md-toolbar>
 <md-sidenav-container fullscreen class="toolbar-margin">
-  <md-sidenav #sidenav>
+  <md-sidenav #sidenav class="sidenav-menu">
     <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
                     [sideNav]="sidenav"></sfs-navigation>
   </md-sidenav>

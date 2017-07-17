@@ -11,3 +11,8 @@
     margin-top: 56px;
   }
 }
+
+.sidenav-menu {
+  padding-top: 20px;
+  min-width: 200px;
+}
