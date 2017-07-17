@@ -28,7 +28,7 @@ export class SyncActions {
   }
 
   syncFailed() {
-    this.angulartics.eventTrack.next({action: 'syncFailed'});
+    this.angulartics.eventTrack.next({action: 'syncFailed', properties: {}});
     return {
       type: SyncActions.SYNC_FAILED
     };
@@ -54,7 +54,7 @@ export class SyncActions {
   }
 
   activateSyncFailed() {
-    this.angulartics.eventTrack.next({action: 'activateSyncFailed'});
+    this.angulartics.eventTrack.next({action: 'activateSyncFailed', properties: {}});
     return {
       type: SyncActions.SYNC_ACTIVATE_FAILED
     };
