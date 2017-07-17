@@ -3,6 +3,33 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.12',
+    date: new Date(2017, 6, 18),
+    entries: [
+      {
+        title: 'Fixierte Toolbar',
+        type: ChangeType.CHANGE,
+        description: `Die Toolbar bleibt oben fixiert, so dass du immer auf sie
+        zugreifen kannst.`
+      },
+      {
+        title: 'Datenschutzerklärung',
+        type: ChangeType.FEATURE,
+        description: `Die Datenschutzerklärung findest du jetzt als Dialog bei Über.`
+      },
+      {
+        title: 'Synchronisierung',
+        type: ChangeType.FIX,
+        description: `Es wird dir wieder korrekt angezeigt, wenn die Synchronisierung fehlschlägt.`
+      },
+      {
+        title: 'Änderungshistorie',
+        type: ChangeType.CHANGE,
+        description: `Die Änderungshistorie wird dir erst ab einer Änderung der Minor-Version angezeigt.`
+      }
+    ]
+  },
+  {
     version: 'v2.11',
     date: new Date(2017, 6, 17),
     entries: [
