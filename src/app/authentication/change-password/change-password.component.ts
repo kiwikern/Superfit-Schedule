@@ -9,7 +9,7 @@ import { AuthenticationActions } from '../store/authentication.actions';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  private token: string;
+  token: string;
   password: string;
   passwordConfirmation: string;
 
