@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DurationFilterComponent } from './duration-filter.component';
+import { SfsMaterialModule } from '../../../material/sfs-material.module';
+import { FormsModule } from '@angular/forms';
 
 describe('DurationFilterComponent', () => {
   let component: DurationFilterComponent;
@@ -8,7 +10,11 @@ describe('DurationFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DurationFilterComponent ]
+      declarations: [ DurationFilterComponent ],
+      imports: [
+        SfsMaterialModule,
+        FormsModule
+      ]
     })
     .compileComponents();
   }));

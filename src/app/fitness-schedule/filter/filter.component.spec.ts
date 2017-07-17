@@ -9,6 +9,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { DurationFilterComponent } from './duration-filter/duration-filter.component';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
@@ -17,7 +18,7 @@ describe('FilterComponent', () => {
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-      declarations: [ FilterComponent, SelectFilterComponent, TimeFilterComponent ],
+      declarations: [ FilterComponent, SelectFilterComponent, TimeFilterComponent, DurationFilterComponent ],
       imports: [
         SfsMaterialModule,
         FormsModule,

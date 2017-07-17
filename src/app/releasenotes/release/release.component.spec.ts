@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReleaseComponent } from './release.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { EntryComponent } from '../entry/entry.component';
 
 describe('ReleaseComponent', () => {
   let component: ReleaseComponent;
@@ -8,7 +10,10 @@ describe('ReleaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReleaseComponent ]
+      declarations: [ ReleaseComponent, EntryComponent ],
+      imports: [
+        SfsMaterialModule
+      ]
     })
     .compileComponents();
   }));
@@ -16,6 +21,7 @@ describe('ReleaseComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ReleaseComponent);
     component = fixture.componentInstance;
+    component.release = {version: '', entries: [], date: new Date()};
     fixture.detectChanges();
   });
 

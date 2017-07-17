@@ -65,30 +65,6 @@ describe('filterReducer', () => {
 
     state = filterReducer({workouts: ['bauchxp'], gyms: [0]}, {
       type: 'FILTER_ADDED',
-      payload: {filterName: 'durations', filterValue: [30]}
-    });
-    expect(state).toEqual({workouts: ['bauchxp'], gyms: [0], durations: [30]});
-
-    state = filterReducer({workouts: ['bauchxp'], gyms: [0], durations: [30]}, {
-      type: 'FILTER_ADDED',
-      payload: {filterName: 'durations', filterValue: [30, 60]}
-    });
-    expect(state).toEqual({workouts: ['bauchxp'], gyms: [0], durations: [30, 60]});
-
-    state = filterReducer({workouts: ['bauchxp'], gyms: [0], durations: [30, 60]}, {
-      type: 'FILTER_ADDED',
-      payload: {filterName: 'durations', filterValue: [30]}
-    });
-    expect(state).toEqual({workouts: ['bauchxp'], gyms: [0], durations: [30]});
-
-    state = filterReducer({workouts: ['bauchxp'], gyms: [0], durations: [30]}, {
-      type: 'FILTER_REMOVED',
-      payload: {filterName: 'durations'}
-    });
-    expect(state).toEqual({workouts: ['bauchxp'], gyms: [0]});
-
-    state = filterReducer({workouts: ['bauchxp'], gyms: [0]}, {
-      type: 'FILTER_ADDED',
       payload: {filterName: 'languages', filterValue: [0]}
     });
     expect(state).toEqual({workouts: ['bauchxp'], gyms: [0], languages: [0]});

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReleasenotesComponent } from './releasenotes.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { Component, Input } from '@angular/core';
+import { MdDialogRef } from '@angular/material';
 
 describe('ReleasenotesComponent', () => {
   let component: ReleasenotesComponent;
@@ -8,9 +11,15 @@ describe('ReleasenotesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReleasenotesComponent ]
+      declarations: [ReleasenotesComponent, MockComponent],
+      imports: [
+        SfsMaterialModule,
+      ],
+      providers: [
+        {provide: MdDialogRef, useValue: ''}
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,3 +32,11 @@ describe('ReleasenotesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'sfs-release',
+  template: ''
+})
+class MockComponent {
+  @Input() release;
+}
