@@ -21,6 +21,10 @@ export class NavigationPage {
     return this.clickOnRouterButton('/schedule/settings');
   }
 
+  navigateToChanges() {
+    this.clickOnRouterButton('/schedule/changes');
+  }
+
   navigateToAbout() {
     return this.clickOnRouterButton('/about');
   }
@@ -41,6 +45,10 @@ export class NavigationPage {
     this.clickOnRouterLink('../login');
   }
 
+  openReleasenotes() {
+    this.getFirstDisplayedElement(element.all(by.css('md-card-subtitle a'))).click();
+  }
+
   getAppTitle() {
     return element(by.css('md-toolbar-row > span')).getText();
   }
@@ -53,8 +61,16 @@ export class NavigationPage {
     return this.getFirstDisplayedElement(element.all(by.css('p'))).getText();
   }
 
+  getDialogTitle() {
+    return this.getFirstDisplayedElement(element.all(by.css('.mat-dialog-title'))).getText();
+  }
+
   clickOnVisibleRaisedButton() {
     return this.getFirstDisplayedElement(element.all(by.css('.mat-raised-button'))).click();
+  }
+
+  clickOnSecondToolbarButton(path: string) {
+    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="${path}"]`))).click();
   }
 
   getUrl() {
@@ -63,7 +79,7 @@ export class NavigationPage {
 
   private clickOnRouterButton(path: string) {
     element(by.id('nav_burger-menu')).click();
-    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="${path}"]`))).click();
+    return this.getFirstDisplayedElement(element.all(by.css(`button[ng-reflect-router-link="${path}"]`))).click();
   }
 
   private clickOnRouterLink(path: string) {

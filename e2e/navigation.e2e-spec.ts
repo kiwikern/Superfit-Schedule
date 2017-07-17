@@ -43,6 +43,11 @@ describe('Navigation', () => {
     expect(page.getFirstCardTitle()).toEqual('Kurswahl');
   });
 
+  it('should navigate to changes and show title', () => {
+    page.navigateToChanges();
+    expect(page.getFirstCardTitle()).toEqual('Änderungen des Kursplans');
+  });
+
   it('should navigate to settings and show title', () => {
     page.navigateToSettings();
     expect(page.getFirstCardTitle()).toEqual('Einstellungen');
@@ -76,6 +81,25 @@ describe('Navigation', () => {
     browser.waitForAngular();
     page.navigateToLogin();
     expect(page.getFirstCardTitle()).toEqual('Login');
+  });
+
+  it('should navigate to about and show releasenotes', () => {
+    page.navigateToAbout();
+    page.openReleasenotes();
+    expect(page.getFirstCardTitle()).toEqual('Über die App');
+  });
+
+  it('should navigate to all links in the schedule\'s second toolbar', () => {
+    page.navigateToSchedule();
+    page.clickOnSecondToolbarButton('/favorites');
+    expect(page.getFirstParagraphText()).toContain('Favoriten');
+    page.clickOnSecondToolbarButton('/filter');
+    expect(page.getFirstCardTitle()).toEqual('Kurswahl');
+    page.clickOnSecondToolbarButton('/settings');
+    expect(page.getFirstCardTitle()).toEqual('Einstellungen');
+    page.clickOnSecondToolbarButton('/');
+    const paragraph = page.getFirstParagraphText();
+    expect(paragraph).toContain('Lieblingskurse');
   });
 
 });
