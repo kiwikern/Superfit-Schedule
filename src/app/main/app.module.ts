@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationStoreModule } from '../authentication/store/authentication-store.module';
 import { SwUpdatesModule } from '../sw-updates/sw-updates.module';
 import { Angulartics2GoogleAnalytics, Angulartics2Module, Angulartics2Piwik } from 'angulartics2';
+import { ReleasenotesModule } from '../releasenotes/releasenotes.module';
 
 
 const appRoutes: Routes = [
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     RecaptchaModule.forRoot(),
     SyncModule,
     SwUpdatesModule,
-    Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics])
+    Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics]),
+    ReleasenotesModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'}

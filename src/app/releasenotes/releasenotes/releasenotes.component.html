@@ -1,0 +1,8 @@
+<h1 md-dialog-title>Änderungshistorie</h1>
+<md-dialog-content fxLayoutGap="20px" fxLayout="column">
+  <sfs-release *ngFor="let release of releases" [release]="release"></sfs-release>
+</md-dialog-content>
+
+<md-dialog-actions align="center">
+  <button md-raised-button md-dialog-close>Schließen</button>
+</md-dialog-actions>

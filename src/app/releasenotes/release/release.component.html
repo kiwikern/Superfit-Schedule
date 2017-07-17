@@ -1,0 +1,5 @@
+<h3>{{release.date | date:'mediumDate'}} ({{release.version}})</h3>
+<div *ngFor="let entry of release.entries; let last = last">
+  <sfs-entry [entry]="entry"></sfs-entry>
+  <hr *ngIf="!last">
+</div>
