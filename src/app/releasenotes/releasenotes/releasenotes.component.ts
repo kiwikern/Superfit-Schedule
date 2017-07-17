@@ -25,7 +25,7 @@ export class ReleasenotesComponent implements OnInit {
         date: new Date(2017, 6, 17),
         entries: [
           {
-            title: 'Neuer Kursdauerfilter',
+            title: 'Kursdauerfilter',
             type: ChangeType.CHANGE,
             description: `In der Kurswahl kannst du die Kurse nun nach minimaler
             und maximaler Dauer filtern. Das Layout wurde dem Zeitfilter angeglichen.`
@@ -33,8 +33,9 @@ export class ReleasenotesComponent implements OnInit {
           {
             title: 'Änderungshistorie',
             type: ChangeType.FEATURE,
-            description: `Wenn du auf der Seite "Über" auf die Versionsnummer klickst,
-            kannst du dir die Änderungshistorie ansehen.`
+            description: `Klicke auf der Seite "Über" auf die Versionsnummer,
+            um dir die Änderungshistorie anzusehen. Bei Updates wird sie automatisch
+            angezeigt. Wenn dich das nicht interessiert, schalte es einfach über die Einstellungen ab.`
           }
         ]
       },
@@ -62,7 +63,7 @@ export class ReleasenotesComponent implements OnInit {
         date: new Date(2017, 6, 10),
         entries: [
           {
-            title: 'Zweite Toolbar im Kursplan',
+            title: 'Kursplantoolbar',
             type: ChangeType.FEATURE,
             description: `Über die neue Toolbar im Kursplan kannst du auf mobilen Geräten
             noch einfacher auf deine Favoriten, Kurswahl und Einstellungen zugreifen.`
@@ -74,12 +75,12 @@ export class ReleasenotesComponent implements OnInit {
         date: new Date(2017, 6, 9),
         entries: [
           {
-            title: 'Kursplan Performance',
+            title: 'Kursplanperformance',
             type: ChangeType.PERFORMANCE,
             description: `Die Performance bei der Anzeige deines Kursplans hat sich deutlich verbessert.`
           },
           {
-            title: 'Uhrzeit Filter',
+            title: 'Uhrzeitfilter',
             type: ChangeType.FIX,
             description: `Kurse, deren Endzeit genau der maximale Endzeit entsprach, wurden nicht korrekt gefiltert.`
           }

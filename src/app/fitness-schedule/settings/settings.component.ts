@@ -15,6 +15,7 @@ export class SettingsComponent {
   @select(['settings', 'showSingleStudio']) showSingleStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   @select(['settings', 'showWorkoutType']) showWorkoutType$;
+  @select(['settings', 'hideReleasenotes']) hideReleasenotes$;
 
   constructor(private actions: SettingsActions) {
   }

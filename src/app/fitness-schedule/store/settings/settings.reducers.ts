@@ -11,6 +11,7 @@ const INITIAL_STATE: SettingsState = {
   showSingleStudio: true,
   showTodayFirst: true,
   showWorkoutType: false,
+  hideReleasenotes: false,
   daysLayout: ''
 };
 

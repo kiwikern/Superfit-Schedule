@@ -4,4 +4,5 @@ export interface SettingsState {
   showTodayFirst: boolean;
   showWorkoutType: boolean;
   daysLayout: string;
+  hideReleasenotes: boolean;
 }

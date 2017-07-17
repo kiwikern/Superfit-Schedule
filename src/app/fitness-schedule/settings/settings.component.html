@@ -30,6 +30,12 @@
           Kursart anzeigen
         </md-checkbox>
       </md-card>
+      <md-card>
+        <h3>Sonstiges</h3>
+        <md-checkbox [ngModel]="!(hideReleasenotes$ | async)" (change)="changeSetting('hideReleasenotes', !$event.checked)">
+          Zeige Änderungshistorie nach Update
+        </md-checkbox>
+      </md-card>
     </div>
     <button md-raised-button routerLink="/">Schließen</button>
   </md-card-content>

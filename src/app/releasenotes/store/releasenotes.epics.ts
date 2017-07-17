@@ -13,11 +13,14 @@ export class ReleasenotesEpics {
   private version: string;
   @select(['releasenotes', 'seenVersion']) seenVersion$: Observable<string>;
   private seenVersion: string;
+  @select(['settings', 'hideReleasenotes']) hideReleasenotes$: Observable<boolean>;
+  private hideReleasenotes: boolean;
 
   constructor(private actions: ReleasenotesActions,
               private dialog: MdDialog) {
     this.version = appVersion;
     this.seenVersion$.subscribe(seenVersion => this.seenVersion = seenVersion);
+    this.hideReleasenotes$.subscribe(hideReleasenotes => this.hideReleasenotes = hideReleasenotes);
   }
 
   createEpics() {
@@ -25,7 +28,7 @@ export class ReleasenotesEpics {
       action$ => action$
         .ofType(ReleasenotesActions.CHECK_VERSION)
         .map(() => {
-          if (this.seenVersion !== 'new' && this.version !== this.seenVersion) {
+          if (!this.hideReleasenotes && this.seenVersion !== 'new' && this.version !== this.seenVersion) {
             this.actions.showReleasenotes();
           }
           return this.actions.checkVersionSuccess(this.version);
