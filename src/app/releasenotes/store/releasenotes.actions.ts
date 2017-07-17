@@ -19,6 +19,7 @@ export class ReleasenotesActions {
   }
 
   checkVersionSuccess(version: string) {
+    this.angulartics.setUserProperties.next({dimension1: version});
     return {
       type: ReleasenotesActions.CHECK_VERSION_SUCCESS,
       payload: version
@@ -27,13 +28,13 @@ export class ReleasenotesActions {
 
   @dispatch()
   showReleasenotes() {
-    this.angulartics.eventTrack.next({action: 'showReleasenotes', properties: {}});
     return {
       type: ReleasenotesActions.SHOW_RELEASENOTES
     };
   }
 
   showReleasenotesSuccess(version: string) {
+    this.angulartics.eventTrack.next({action: 'showReleasenotes', properties: {category: version}});
     return {
       type: ReleasenotesActions.SHOW_RELEASENOTES_SUCCESS,
       payload: version
