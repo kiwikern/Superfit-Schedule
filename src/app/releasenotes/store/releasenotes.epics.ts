@@ -12,7 +12,7 @@ export class ReleasenotesEpics {
 
   private version: string;
   @select(['releasenotes', 'seenVersion']) seenVersion$: Observable<string>;
-  private seenVersion: string;
+  private seenVersion: string = '';
   @select(['settings', 'hideReleasenotes']) hideReleasenotes$: Observable<boolean>;
   private hideReleasenotes: boolean;
 
@@ -28,7 +28,7 @@ export class ReleasenotesEpics {
       action$ => action$
         .ofType(ReleasenotesActions.CHECK_VERSION)
         .map(() => {
-          if (!this.hideReleasenotes && this.seenVersion !== 'new' && this.version !== this.seenVersion) {
+          if (this.shouldShowReleasenotes()) {
             this.actions.showReleasenotes();
           }
           return this.actions.checkVersionSuccess(this.version);
@@ -40,5 +40,25 @@ export class ReleasenotesEpics {
           return this.actions.showReleasenotesSuccess(this.version);
         })
     ];
+  }
+
+  private shouldShowReleasenotes() {
+    const isSameMinorVersion = this.isSameMinorVersion(this.version, this.seenVersion);
+    const isFirstVisit = this.seenVersion === 'new';
+    return !this.hideReleasenotes && !isFirstVisit && !isSameMinorVersion;
+  }
+
+  private isSameMinorVersion(version1: string, version2: string): boolean {
+    if (typeof version1 !== 'string' || typeof version2 !== 'string') {
+      return true;
+    } else {
+      const minor1 = this.getMinorVersion(version1);
+      const minor2 = this.getMinorVersion(version2);
+      return minor1 === minor2;
+    }
+  }
+
+  private getMinorVersion(version: string) {
+    return version.substr(0, version.lastIndexOf('.'));
   }
 }
