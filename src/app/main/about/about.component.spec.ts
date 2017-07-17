@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AboutComponent } from './about.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { ReleasenotesActions } from '../../releasenotes/store/releasenotes.actions';
+import { LegalNavComponent } from '../../legal/legal-nav/legal-nav.component';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -10,7 +11,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ],
+      declarations: [ AboutComponent, LegalNavComponent ],
       imports: [SfsMaterialModule],
       providers: [
         {provide: ReleasenotesActions, useValue: ''}

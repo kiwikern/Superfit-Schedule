@@ -1,7 +1,7 @@
 import { async, TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationComponent } from '../navigation/navigation.component';
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
         AppComponent,
         MockClassListComponent,
         MockFilterComponent,
-        NavigationComponent,
+        MockNavComponent,
         MockSyncStatusComponent
       ],
       imports: [
@@ -59,6 +59,15 @@ class MockFilterComponent {
   template: ''
 })
 class MockSyncStatusComponent {
+}
+
+@Component({
+  selector: 'sfs-navigation',
+  template: ''
+})
+class MockNavComponent {
+  @Input() fullWidth;
+  @Input() sideNav;
 }
 
 @Injectable()

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigationButtonComponent } from './navigation-button.component';
+import { SfsMaterialModule } from '../../material/sfs-material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NavigationButtonComponent', () => {
   let component: NavigationButtonComponent;
@@ -8,9 +10,13 @@ describe('NavigationButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationButtonComponent ]
+      declarations: [NavigationButtonComponent],
+      imports: [
+        RouterTestingModule,
+        SfsMaterialModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
