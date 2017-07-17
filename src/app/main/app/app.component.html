@@ -1,14 +1,14 @@
-<md-sidenav-container fullscreen>
-  <md-toolbar color="primary">
-    <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-md="true" id="nav_burger-menu" aria-label="menu"
-    angulartics2On="click" angularticsEvent="OpenBurgerMenu">
-      <md-icon>menu</md-icon>
-    </button>
-    <span>SuperFit Kursplan</span>
-    <div fxFlex></div>
-    <sfs-navigation fxHide.lt-lg="true"></sfs-navigation>
-    <sfs-sync-status></sfs-sync-status>
-  </md-toolbar>
+<md-toolbar color="primary" style="position: sticky; top: 0; z-index: 1">
+  <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-md="true" id="nav_burger-menu" aria-label="menu"
+          angulartics2On="click" angularticsEvent="OpenBurgerMenu">
+    <md-icon>menu</md-icon>
+  </button>
+  <span>SuperFit Kursplan</span>
+  <div fxFlex></div>
+  <sfs-navigation fxHide.lt-lg="true"></sfs-navigation>
+  <sfs-sync-status></sfs-sync-status>
+</md-toolbar>
+<md-sidenav-container fullscreen class="toolbar-margin">
   <md-sidenav #sidenav>
     <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
                     [sideNav]="sidenav"></sfs-navigation>
