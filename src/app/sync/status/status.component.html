@@ -9,6 +9,7 @@
   </button>
 </div>
 
-<button md-icon-button routerLink="/auth/login" (click)="showLoginRequired()" *ngIf="!(sync$ | async)?.isSyncActivated">
+<button md-icon-button routerLink="/auth/login" (click)="showLoginRequired()" *ngIf="!(sync$ | async)?.isSyncActivated"
+        angulartics2On="click" angularticsEvent="LoginViaStatusComponent">
   <md-icon>sync_disabled</md-icon>
 </button>

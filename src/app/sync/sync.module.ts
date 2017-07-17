@@ -16,12 +16,14 @@ import { StatusComponent } from './status/status.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { RouterModule } from '@angular/router';
 import { SyncActivatedEpics } from './sync-activated.epics';
+import { Angulartics2Module } from 'angulartics2';
 
 @NgModule({
   imports: [
     CommonModule,
     SfsMaterialModule,
-    RouterModule
+    RouterModule,
+    Angulartics2Module.forChild()
   ],
   declarations: [
     StatusComponent
