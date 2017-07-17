@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AccountComponent } from './account/account.component';
 import { AccountAuthGuard } from './store/auth-guards/account-auth.guard';
@@ -34,8 +33,7 @@ const authenticationRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(authenticationRoutes),
-    RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaModule
   ],
   declarations: [
     RegistrationComponent,

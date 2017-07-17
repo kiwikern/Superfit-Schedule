@@ -9,7 +9,6 @@ import { AuthenticationActions } from '../store/authentication.actions';
 export class ResetPasswordComponent implements OnInit {
 
   mailAddress: string;
-  captcha: boolean;
   captchaResponse: string;
 
   constructor(private authActions: AuthenticationActions) {
