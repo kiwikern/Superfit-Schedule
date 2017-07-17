@@ -12,7 +12,6 @@ export class AboutComponent implements OnInit {
   @select(['releasenotes', 'version']) version$;
   @select(['authentication', 'userName']) userName;
   mailAddress = 'sfs@kimkern.de';
-  showLegal = false;
 
   constructor(private actions: ReleasenotesActions) {
   }
