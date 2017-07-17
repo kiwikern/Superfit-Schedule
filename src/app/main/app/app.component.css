@@ -2,12 +2,12 @@
   margin: 8px;
 }
 
-.toolbar-margin {
+.sidenav-margin {
   margin-top: 64px;
 }
 
 @media screen and (max-width: 600px) {
-  .toolbar-margin {
+  .sidenav-margin {
     margin-top: 56px;
   }
 }
