@@ -12,6 +12,7 @@ export class NavigationButtonComponent implements OnInit {
   @Input() icon: string;
   @Input() name: string;
   @Input() fullWidth = true;
+  @Input() activeRoute: string;
 
   constructor() { }
 
@@ -23,4 +24,5 @@ export class NavigationButtonComponent implements OnInit {
       this.sideNav.close();
     }
   }
+
 }
