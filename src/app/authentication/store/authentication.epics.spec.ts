@@ -11,7 +11,7 @@ import 'rxjs/add/operator/toArray';
 import { Observable } from 'rxjs/Observable';
 import { UPDATE_LOCATION } from '@angular-redux/router';
 import { Angulartics2 } from 'angulartics2';
-describe('ReleasenotesEpics', () => {
+describe('AuthenticationEpics', () => {
 
   beforeEach(() => {
     const mockAngulartics = jasmine.createSpyObj<Angulartics2>('angulartics2', ['eventTrack']);
