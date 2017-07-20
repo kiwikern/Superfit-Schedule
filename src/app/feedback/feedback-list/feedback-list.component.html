@@ -1,0 +1,23 @@
+<h1 align="center">Feedback</h1>
+<p>Hier kannst du alles loswerden, was du zu SFS zu sagen hast.
+  Besonders freue ich mich über Verbesserungsvorschläge jeglicher Art.</p>
+<p>Wenn du eine Antwort auf dein Feedback erhälst, wird dir das beim nächsten Aufruf der App angezeigt.</p>
+
+<md-card>
+  <md-card-title align="center">Gesendetes Feedback</md-card-title>
+  <md-card-content>
+    <md-list>
+      <md-list-item *ngIf="feedbackList.length == 0">Du hast bis jetzt noch kein Feedback hinterlassen.</md-list-item>
+      <md-list-item *ngFor="let feedback of feedbackList">
+        <md-icon md-list-icon>feedback</md-icon>
+        <h4 md-line>{{feedback.text}}</h4>
+        <p md-line>{{feedback.date | date:'mediumDate'}}</p>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
+
+
+<button md-fab class="fab-button" (click)="openFeedbackForm()" aria-label="add feedback">
+  <md-icon>feedback</md-icon>
+</button>

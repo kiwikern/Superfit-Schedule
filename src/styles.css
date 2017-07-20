@@ -10,3 +10,7 @@ a {
   color: #f48fb1;
   text-decoration: none;
 }
+
+md-dialog-container {
+  position: relative;
+}

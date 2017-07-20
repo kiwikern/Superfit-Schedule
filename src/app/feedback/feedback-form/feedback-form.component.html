@@ -1,0 +1,58 @@
+<h1 md-dialog-title>Feedback</h1>
+<button md-icon-button md-dialog-close class="close-button">
+  <md-icon>close</md-icon>
+</button>
+<form #feedbackForm="ngForm" (ngSubmit)="onSubmit()">
+  <md-dialog-content>
+    <p>
+      Du hast einen Fehler entdeckt, vermisst eine Funktion oder dir gefällt
+      etwas richtig gut?
+    </p>
+    <md-input-container class="feedback-text">
+    <textarea mdInput
+              mdTextareaAutosize mdAutosizeMinRows="2" mdAutosizeMaxRows="10"
+              required
+              name="text"
+              [(ngModel)]="text"
+              placeholder="Hinterlasse hier dein Feedeback"></textarea>
+    </md-input-container>
+    <label>Gerät (freiwillige Angabe)</label>
+    <md-radio-group [(ngModel)]="device" name="device" fxLayout="column">
+      <md-radio-button value="smartphone">Smartphone</md-radio-button>
+      <md-radio-button value="desktop">Desktop</md-radio-button>
+      <md-radio-button value="tablet">Tablet</md-radio-button>
+    </md-radio-group>
+    <br>
+    <label *ngIf="device">Betriebssystem</label>
+    <md-radio-group [(ngModel)]="os" name="os" fxLayout="column"
+                    *ngIf="device === 'smartphone' || device === 'tablet'">
+      <md-radio-button value="android">Android</md-radio-button>
+      <md-radio-button value="ios">iOS</md-radio-button>
+      <md-radio-button value="windows">Windows</md-radio-button>
+      <md-radio-button value="other">Andere</md-radio-button>
+    </md-radio-group>
+    <md-radio-group [(ngModel)]="os" name="os" fxLayout="column"
+                    *ngIf="device === 'desktop'">
+      <md-radio-button value="windows">Windows</md-radio-button>
+      <md-radio-button value="macos">macOS</md-radio-button>
+      <md-radio-button value="linux">Linux</md-radio-button>
+      <md-radio-button value="other">Andere</md-radio-button>
+    </md-radio-group>
+    <br>
+    <label *ngIf="os">Browser</label>
+    <md-radio-group [(ngModel)]="browser" name="browser" fxLayout="column"
+                    *ngIf="os">
+      <md-radio-button value="chrome">Chrome</md-radio-button>
+      <md-radio-button value="safari" *ngIf="os ==='ios' || os === 'macos'">Safari</md-radio-button>
+      <md-radio-button value="samsung" *ngIf="os ==='android'">Samsung Browser</md-radio-button>
+      <md-radio-button value="firefox">Firefox</md-radio-button>
+      <md-radio-button value="edge" *ngIf="os ==='windows'">Edge</md-radio-button>
+      <md-radio-button value="other">Andere</md-radio-button>
+    </md-radio-group>
+  </md-dialog-content>
+  <md-dialog-actions align="end">
+    <button md-dialog-close md-icon-button [disabled]="feedbackForm.invalid">
+      <md-icon>send</md-icon>
+    </button>
+  </md-dialog-actions>
+</form>

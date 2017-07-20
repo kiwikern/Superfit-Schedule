@@ -1,0 +1,10 @@
+.feedback-text {
+  width: 95%;
+  max-width: 600px;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

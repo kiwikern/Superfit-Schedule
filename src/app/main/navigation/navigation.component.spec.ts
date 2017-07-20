@@ -42,4 +42,5 @@ class MockNavButtonComponent {
   @Input() path;
   @Input() sideNav;
   @Input() fullWidth;
+  @Input() activeRoute;
 }
