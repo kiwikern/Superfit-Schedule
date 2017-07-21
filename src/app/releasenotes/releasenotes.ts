@@ -3,6 +3,29 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.13',
+    date: new Date(2017, 6, 21),
+    entries: [
+      {
+        title: 'Feedback',
+        type: ChangeType.FEATURE,
+        description: `Ab jetzt kannst du über den Punkt Feedback deine Verbesserungsvorschläge
+        direkt an mich weitergeben. Über Antworten zu deinem Feedback wirst du informiert.
+        \nIch freue mich sehr über neue Ideen und Hinweise auf bestehende Probleme! :-)`
+      },
+      {
+        title: 'Menü',
+        type: ChangeType.CHANGE,
+        description: `Die aktuelle Seite ist von nun an im Menü farblich markiert.`
+      },
+      {
+        title: 'Layout',
+        type: ChangeType.FIX,
+        description: `Kleinere Änderungen im Layout und Typos beseitigt.`
+      }
+    ]
+  },
+  {
     version: 'v2.12',
     date: new Date(2017, 6, 18),
     entries: [
