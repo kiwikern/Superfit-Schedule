@@ -34,7 +34,7 @@ export class NavigationPage {
   }
 
   navigateToLoginViaButton() {
-    return this.clickOnRouterButton('/auth/login');
+    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="/auth/login"]`))).click();
   }
 
   navigateToRegister() {
