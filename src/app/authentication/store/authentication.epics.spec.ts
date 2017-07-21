@@ -37,9 +37,9 @@ describe('AuthenticationEpics', () => {
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [
-          {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user'}}
+          {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user', userId: 'id'}}
         ];
-        mockBackendResponse(mockBackend, {token: 'token', userName: 'user'}, 200);
+        mockBackendResponse(mockBackend, {token: 'token', userName: 'user', userId: 'id'}, 200);
         performAction(epics, action$, expectedOutputActions, done);
       })();
   });
@@ -47,7 +47,7 @@ describe('AuthenticationEpics', () => {
   it('should actvivate sync and navigate to schedule after successful login', (done) => {
     inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MdSnackBar],
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
-        const action$ = ActionsObservable.of(actions.loginSuccess('', ''));
+        const action$ = ActionsObservable.of(actions.loginSuccess('', '', ''));
         const expectedOutputActions = [
           {type: UPDATE_LOCATION, payload: '/schedule'},
           {type: SyncActions.SYNC_ACTIVATE_REQUEST}

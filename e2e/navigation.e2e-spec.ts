@@ -59,26 +59,22 @@ describe('Navigation', () => {
   });
 
   it('should navigate to account, redirect to login and show title', () => {
-    page.navigateToAccount();
+    browser.get('/auth');
     expect(page.getFirstCardTitle()).toEqual('Login');
   });
 
   it('should navigate to register and show title', () => {
-    page.navigateToAccount();
-    browser.waitForAngular();
+    page.navigateToLoginViaButton();
     page.navigateToRegister();
     expect(page.getFirstCardTitle()).toEqual('Registrieren');
-    browser.waitForAngular();
     page.navigateToLogin();
     expect(page.getFirstCardTitle()).toEqual('Login');
   });
 
   it('should navigate to reset password and show title', () => {
-    page.navigateToAccount();
-    browser.waitForAngular();
+    page.navigateToLoginViaButton();
     page.navigateToResetPassword();
     expect(page.getFirstCardTitle()).toEqual('Passwort zurücksetzen');
-    browser.waitForAngular();
     page.navigateToLogin();
     expect(page.getFirstCardTitle()).toEqual('Login');
   });

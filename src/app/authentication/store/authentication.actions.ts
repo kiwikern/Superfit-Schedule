@@ -38,10 +38,10 @@ export class AuthenticationActions {
     };
   }
 
-  loginSuccess(userName, jwt) {
+  loginSuccess(userName, jwt, userId) {
     return {
       type: AuthenticationActions.LOGIN_SUCCESS,
-      payload: {userName, jwt}
+      payload: {userName, jwt, userId}
     };
   }
 
@@ -65,10 +65,10 @@ export class AuthenticationActions {
     };
   }
 
-  registerSuccess(userName, jwt) {
+  registerSuccess(userName, jwt, userId) {
     return {
       type: AuthenticationActions.REGISTRATION_SUCCESS,
-      payload: {userName, jwt}
+      payload: {userName, jwt, userId}
     };
   }
 

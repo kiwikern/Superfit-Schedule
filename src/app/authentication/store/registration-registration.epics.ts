@@ -19,19 +19,20 @@ export class RegistrationEpics {
 
   createEpics() {
     return action$ => action$
-        .ofType(AuthenticationActions.REGISTRATION_REQUESTED)
-        .map(action => action.payload)
-        .switchMap(credentials => this.requestLogin(credentials)
-          .flatMap(response => {
-            this.showSnackBar('Registrierung erfolgreich.');
-            return of(this.routerActions.navigateTo('/schedule'),
-              this.actions.registerSuccess(response.json().userName, response.json().token),
-              this.syncActions.activateSync());
-          })
-          .catch(error => {
-            this.showErrorMessage(error);
-            return of(this.actions.registerFailed());
-          }));
+      .ofType(AuthenticationActions.REGISTRATION_REQUESTED)
+      .map(action => action.payload)
+      .switchMap(credentials => this.requestLogin(credentials)
+        .flatMap(response => {
+          this.showSnackBar('Registrierung erfolgreich.');
+          const body = response.json();
+          return of(this.routerActions.navigateTo('/schedule'),
+            this.actions.registerSuccess(body.userName, body.token, body.userId),
+            this.syncActions.activateSync());
+        })
+        .catch(error => {
+          this.showErrorMessage(error);
+          return of(this.actions.registerFailed());
+        }));
   }
 
   private showErrorMessage(error) {

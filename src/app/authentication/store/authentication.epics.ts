@@ -24,7 +24,7 @@ export class AuthenticationEpics {
         .ofType(AuthenticationActions.LOGIN_REQUESTED)
         .map(action => action.payload)
         .switchMap(credentials => this.requestLogin(credentials)
-          .map(response => this.actions.loginSuccess(response.json().userName, response.json().token))
+          .map(response => this.actions.loginSuccess(response.json().userName, response.json().token, response.json().userId))
           .catch(error => {
             this.showErrorMessage(error);
             return of(this.actions.loginFailed());

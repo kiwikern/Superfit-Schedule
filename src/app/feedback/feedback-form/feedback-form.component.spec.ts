@@ -31,7 +31,7 @@ describe('FeedbackFormComponent', () => {
       ],
       providers: [
         {provide: MdDialogRef, useValue: ''},
-        FeedbackActions
+        {provide: FeedbackActions, useValue: ''}
       ]
     })
     .compileComponents();

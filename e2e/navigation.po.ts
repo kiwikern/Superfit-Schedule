@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 export class NavigationPage {
   navigateTo(path: string = '/') {
@@ -31,6 +31,10 @@ export class NavigationPage {
 
   navigateToAccount() {
     return this.clickOnRouterButton('/auth');
+  }
+
+  navigateToLoginViaButton() {
+    return this.clickOnRouterButton('/auth/login');
   }
 
   navigateToRegister() {

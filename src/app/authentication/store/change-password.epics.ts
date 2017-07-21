@@ -25,7 +25,7 @@ export class ChangePasswordEpics {
           this.showSnackBar('Dein Passwort wurde geändert.');
           if (response.token && response.userName) {
             return of(this.actions.changePasswordSuccess(),
-              this.actions.loginSuccess(response.userName, response.token))
+              this.actions.loginSuccess(response.userName, response.token, response.userId))
               .delay(2000);
           } else {
             return of(this.actions.changePasswordSuccess());

@@ -25,8 +25,7 @@ export function authenticationReducer(state: AuthenticationState = INITIAL_STATE
         isRequesting: false,
         jwt: action.payload.jwt,
         userName: action.payload.userName,
-        // FIXME: userId not yet delivered when logging in
-        userId: state.userId
+        userId: action.payload.userId
       };
     case AuthenticationActions.REGISTRATION_FAILED:
     case AuthenticationActions.LOGIN_FAILED: {
