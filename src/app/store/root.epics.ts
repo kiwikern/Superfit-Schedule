@@ -51,7 +51,6 @@ export class RootEpics {
       createEpicMiddleware(this.feedbackEpics.createEpics()[1]),
       createEpicMiddleware(this.feedbackEpics.createEpics()[2]),
       createEpicMiddleware(this.feedbackEpics.createEpics()[3]),
-      createEpicMiddleware(this.releasenotesEpics.createEpics()[1]),
       createEpicMiddleware(this.changePasswordEpics.createEpics())
     ];
   }
