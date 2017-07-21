@@ -6,7 +6,8 @@ import { IPayloadAction } from '../../store/payload-action.types';
  */
 
 export const INITIAL_STATE: AuthenticationState = {
-  isRequesting: false
+  isRequesting: false,
+  userId: Date.now() + Math.random().toString(36).substring(2, 15)
 };
 
 export function authenticationReducer(state: AuthenticationState = INITIAL_STATE,
@@ -15,24 +16,35 @@ export function authenticationReducer(state: AuthenticationState = INITIAL_STATE
   switch (action.type) {
     case AuthenticationActions.LOGIN_REQUESTED:
       return {
-        isRequesting: true
+        isRequesting: true,
+        userId: state.userId
       };
     case AuthenticationActions.REGISTRATION_SUCCESS:
     case AuthenticationActions.LOGIN_SUCCESS:
       return {
         isRequesting: false,
         jwt: action.payload.jwt,
-        userName: action.payload.userName
+        userName: action.payload.userName,
+        // FIXME: userId not yet delivered when logging in
+        userId: state.userId
       };
     case AuthenticationActions.REGISTRATION_FAILED:
     case AuthenticationActions.LOGIN_FAILED: {
       return {
-        isRequesting: false
+        isRequesting: false,
+        userId: state.userId
       };
     }
     case AuthenticationActions.LOGOUT: {
       return {
-        isRequesting: false
+        isRequesting: false,
+        userId: state.userId
+      };
+    }
+    case AuthenticationActions.SET_USER_ID: {
+      return {
+        isRequesting: false,
+        userId: action.payload
       };
     }
   }

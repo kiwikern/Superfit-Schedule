@@ -2,11 +2,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedbackFormComponent } from './feedback-form.component';
 import {
-  MdButtonModule, MdDialogModule, MdDialogRef, MdIconModule, MdInputModule,
+  MdButtonModule,
+  MdDialogModule,
+  MdDialogRef,
+  MdIconModule,
+  MdInputModule,
   MdRadioModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FeedbackActions } from '../store/feedback.actions';
 
 describe('FeedbackFormComponent', () => {
   let component: FeedbackFormComponent;
@@ -25,7 +30,8 @@ describe('FeedbackFormComponent', () => {
         FormsModule
       ],
       providers: [
-        {provide: MdDialogRef, useValue: ''}
+        {provide: MdDialogRef, useValue: ''},
+        FeedbackActions
       ]
     })
     .compileComponents();

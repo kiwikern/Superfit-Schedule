@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
 import { Feedback } from '../feedback-interface';
+import { Observable } from 'rxjs/Observable';
+import { select } from '@angular-redux/store';
+import { FeedbackActions } from '../store/feedback.actions';
 
 @Component({
   selector: 'sfs-feedback-list',
@@ -10,20 +13,22 @@ import { Feedback } from '../feedback-interface';
 })
 export class FeedbackListComponent implements OnInit {
 
-  feedbackList: Feedback[] = [
-    {text: 'Hallo, ich finde, du solltest deine App schließen. Sie ist kacke. Tschüss', id: '', date: new Date()},
-    {text: 'App schließen. Sie ist kacke. Tschüss', id: '', date: new Date()},
-    {text: 'Wo finde ich bei SuperFit den Ausgang?', id: '', date: new Date()}
-  ];
+  @select(['feedback', 'feedbackList']) feedbackList$: Observable<Feedback[]>;
 
-  constructor(private dialog: MdDialog) {
+  constructor(private dialog: MdDialog,
+              private actions: FeedbackActions) {
   }
 
   ngOnInit() {
+    this.actions.loadFeedback();
   }
 
   openFeedbackForm() {
     this.dialog.open(FeedbackFormComponent);
+  }
+
+  isUnread(feedback: Feedback) {
+    return feedback.responses.filter(r => r && !r.isRead).length > 0;
   }
 
 }

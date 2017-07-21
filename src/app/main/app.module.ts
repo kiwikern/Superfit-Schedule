@@ -25,6 +25,7 @@ import { ReleasenotesModule } from '../releasenotes/releasenotes.module';
 import { ReleasenotesStoreModule } from '../releasenotes/store/releasenotes-store.module';
 import { LegalModule } from '../legal/legal.module';
 import { NavigationButtonComponent } from './navigation-button/navigation-button.component';
+import { FeedbackStoreModule } from '../feedback/store/feedback-store.module';
 
 
 const appRoutes: Routes = [
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics]),
     ReleasenotesModule,
     ReleasenotesStoreModule,
-    LegalModule
+    LegalModule,
+    FeedbackStoreModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'}

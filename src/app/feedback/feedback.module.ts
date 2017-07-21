@@ -14,9 +14,11 @@ import {
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
+import { FeedbackDetailComponent } from './feedback-detail/feedback-detail.component';
 
 const feedbackRoutes: Routes = [
-  {path: '', component: FeedbackListComponent}
+  {path: '', component: FeedbackListComponent},
+  {path: ':id', component: FeedbackDetailComponent}
 ];
 
 @NgModule({
@@ -35,7 +37,8 @@ const feedbackRoutes: Routes = [
   ],
   declarations: [
     FeedbackFormComponent,
-    FeedbackListComponent
+    FeedbackListComponent,
+    FeedbackDetailComponent
   ],
   entryComponents: [
     FeedbackFormComponent

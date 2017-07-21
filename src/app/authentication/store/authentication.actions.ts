@@ -17,6 +17,7 @@ export class AuthenticationActions {
   static readonly CHANGE_PASSWORD_REQUESTED = 'CHANGE_PASSWORD_REQUESTED';
   static readonly CHANGE_PASSWORD_FAILED = 'CHANGE_PASSWORD_FAILED';
   static readonly CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS';
+  static readonly SET_USER_ID = 'SET_USER_ID';
 
   constructor(private angulartics: Angulartics2) {
   }
@@ -119,6 +120,14 @@ export class AuthenticationActions {
     return {
       type: AuthenticationActions.CHANGE_PASSWORD_FAILED,
       payload: error
+    };
+  }
+
+  @dispatch()
+  setUserId(id: string) {
+    return {
+      type: AuthenticationActions.SET_USER_ID,
+      payload: id
     };
   }
 }

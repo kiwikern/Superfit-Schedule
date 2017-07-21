@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FeedbackActions } from '../store/feedback.actions';
+import { MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'sfs-feedback-form',
@@ -12,14 +14,17 @@ export class FeedbackFormComponent implements OnInit {
   os: string;
   browser: string;
 
-  constructor() {
+  constructor(private actions: FeedbackActions,
+              private dialogRef: MdDialogRef<FeedbackFormComponent>) {
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    const payload = {text: this.text, device: this.device, os: this.os, browser: this.browser};
+    const feedback = {text: this.text, device: this.device, os: this.os, browser: this.browser};
+    this.dialogRef.close();
+    this.actions.sendFeedback(feedback);
   }
 
 }

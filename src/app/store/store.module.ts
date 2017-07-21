@@ -9,6 +9,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { RouterActions } from './router.actions';
 import { ChangesActions } from '../fitness-schedule/store/changes/changes.actions';
 import { ReleasenotesActions } from '../releasenotes/store/releasenotes.actions';
+import { FeedbackActions } from '../feedback/store/feedback.actions';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ export class StoreModule {
               scheduleActions: ScheduleActions,
               changesActions: ChangesActions,
               releasenotesActions: ReleasenotesActions,
+              feedbackActions: FeedbackActions,
               ngReduxRouter: NgReduxRouter) {
 
     const LOCAL_STORAGE_KEY = 'sfs.state';
@@ -52,5 +54,6 @@ export class StoreModule {
     store.dispatch(scheduleActions.loadSchedule());
     store.dispatch(changesActions.loadChanges());
     store.dispatch(releasenotesActions.checkVersion());
+    feedbackActions.loadFeedback();
   }
 }

@@ -1,0 +1,49 @@
+.line-break {
+  white-space: pre-wrap;
+}
+
+.mat-card-subtitle {
+  margin-bottom: 8px;
+}
+
+.mat-card {
+  padding: 15px;
+}
+
+.by-user {
+background-color: #aed9f2;
+margin-left: 40px;
+}
+
+.by-user:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: #aed9f2;
+  border-left: 0;
+  border-top: 0;
+  margin-left: -20px;
+}
+
+.by-sfs {
+  background-color: #b7dbd8;
+  margin-right: 40px;
+}
+
+.by-sfs:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-left-color: #b7dbd8;
+  border-right: 0;
+  border-top: 0;
+  margin-right: -20px;
+}

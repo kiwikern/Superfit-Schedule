@@ -9,6 +9,7 @@ import { routerReducer } from '@angular-redux/router';
 import { syncReducer } from '../sync/sync.reducers';
 import { changesReducer } from '../fitness-schedule/store/changes/changes.reducers';
 import { releasenotesReducer } from '../releasenotes/store/releasenotes.reducers';
+import { feedbackReducer } from '../feedback/store/feedback.reducers';
 /**
  * Created by Kim on 02.04.2017.
  */
@@ -23,6 +24,7 @@ export const rootReducer = combineReducers(<any>{
   authentication: authenticationReducer,
   sync: syncReducer,
   router: routerReducer,
-  releasenotes: releasenotesReducer
+  releasenotes: releasenotesReducer,
+  feedback: feedbackReducer
 });
 

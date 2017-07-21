@@ -1,0 +1,40 @@
+<div fxLayout="column" fxLayoutGap="20px">
+
+  <md-card class="by-user">
+    <md-card-subtitle align="right">{{feedback?.date | date:'mediumDate'}}</md-card-subtitle>
+    <md-card-content>
+      <p class="line-break">{{feedback?.text}}</p>
+    </md-card-content>
+  </md-card>
+
+  <md-card *ngFor="let response of feedback?.responses"
+           [class.by-user]="response?.userId !== 'sfs'"
+           [class.by-sfs]="response?.userId === 'sfs'">
+    <md-card-subtitle align="right">
+      {{response?.date | date:'mediumDate'}}
+    </md-card-subtitle>
+    <md-card-content>
+      <p class="line-break">{{response?.text}}</p>
+    </md-card-content>
+  </md-card>
+
+  <form #responseForm="ngForm" (ngSubmit)="onSubmit(); responseForm.reset();">
+    <md-card class="by-user" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <md-input-container style="width: 100%">
+      <textarea mdInput
+                mdTextareaAutosize mdAutosizeMinRows="1" mdAutosizeMaxRows="4"
+                color="primary"
+                name="text"
+                [(ngModel)]="text"
+                placeholder="Kommentar">
+      </textarea>
+      </md-input-container>
+      <button md-icon-button type="submit" [disabled]="!text">
+        <md-icon>send</md-icon>
+      </button>
+    </md-card>
+  </form>
+  <div align="end">
+    <button md-raised-button routerLink="..">Zurück</button>
+  </div>
+</div>
