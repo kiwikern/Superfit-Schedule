@@ -14,10 +14,10 @@ import { Subscription } from 'rxjs/Subscription';
 export class FeedbackDetailComponent implements OnInit, OnDestroy {
   @select(['feedback', 'feedbackList']) feedbackList$: Observable<Feedback[]>;
 
-  private feedback: Feedback;
-  private id: string;
   private subscription: Subscription;
-  private text: string;
+  id: string;
+  feedback: Feedback;
+  text: string;
 
   constructor(private route: ActivatedRoute,
               private actions: FeedbackActions) {
