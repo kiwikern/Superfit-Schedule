@@ -3,6 +3,9 @@ import { AuthenticationActions } from './authentication.actions';
 import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/windowTime';
+import * as isEqual from 'lodash.isequal';
 import { MdSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
@@ -20,6 +23,8 @@ export class RegistrationEpics {
   createEpics() {
     return action$ => action$
       .ofType(AuthenticationActions.REGISTRATION_REQUESTED)
+      .windowTime(5000)
+      .switchMap(source => source.distinctUntilChanged(isEqual))
       .map(action => action.payload)
       .switchMap(credentials => this.requestLogin(credentials)
         .flatMap(response => {
