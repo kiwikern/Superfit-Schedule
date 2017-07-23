@@ -5,13 +5,18 @@ import { NgServiceWorker } from '@angular/service-worker';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import { select } from '@angular-redux/store';
 
 @Injectable()
 export class PushNotificationEpics {
 
+  @select(['authentication', 'userId']) userId$: Observable<string>;
+  private userId: string;
+
   constructor(private serviceWorker: NgServiceWorker,
               private http: Http,
               private actions: PushNotificationActions) {
+    this.userId$.subscribe(userId => this.userId = userId);
   }
 
   createEpics() {
@@ -31,7 +36,7 @@ export class PushNotificationEpics {
 
   private sendSubscriptionToBackend(subscription) {
     const url = '/api/sfs/subscription';
-    return this.http.post(url, subscription);
+    return this.http.post(url, {subscription, userId: this.userId});
   }
 
 }
