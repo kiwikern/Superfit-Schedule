@@ -6,22 +6,43 @@
       {{version$ | async}}
     </a>
   </md-card-subtitle>
-  <p>Hallo<span *ngIf="(userName | async)">{{' ' + (userName | async)}}</span>, mein Name ist <a
-    href="https://www.kimkern.de" target="_blank">Kim</a>. Ich arbeite als Fullstack-Entwickler
-    in Berlin und bin leidenschaftliches <a href="http://mysuperfit.de" target="_blank">SuperFit</a>-Mitglied.
+  <p>
+    Hallo<span *ngIf="(userName | async)">{{' ' + (userName | async)}}</span>, mein Name ist
+    <a
+      href="https://www.kimkern.de"
+      target="_blank" angulartics2On="click"
+      angularticsEvent="ClickOnHomepage">Kim</a>.
+    Ich arbeite als Fullstack-Entwickler in Berlin und bin leidenschaftliches
+    <a href="http://mysuperfit.de"
+       target="_blank"
+       angulartics2On="click"
+       angularticsEvent="ClickOnSuperfit">SuperFit</a>-Mitglied.
   </p>
-  <p>Wenn dir die App gefällt, freue ich mich natürlich, wenn du mir z.B. über <a
-    href="http://paypal.me/kiwikern/" target="_blank">Paypal</a> einen Fitnessriegel spendierst. ;-) </p>
-  <p>Ich freue mich jederzeit über Feedback und Anregungen,
-    gerne an <a [href]="'mailto:' + mailAddress">{{mailAddress}}</a> oder direkt auf
-    <a href="https://github.com/kiwikern/Superfit-Schedule/issues" target="_blank">GitHub</a>.</p>
-  <p>Falls du diese Webseite auf deinem Mobilgerät besuchst, füge sie doch über das Menü deines Browsers zum
+  <p>
+    Wenn dir die App gefällt, freue ich mich natürlich, wenn du mir z.B. über <a href="http://paypal.me/kiwikern/"
+                                                                                 target="_blank"
+                                                                                 angulartics2On="click"
+                                                                                 angularticsEvent="ClickOnPaypal">Paypal</a>
+    einen Fitnessriegel spendierst. ;-) </p>
+  <p>
+    Ich freue mich jederzeit über Rückmeldungen und neue Ideen, gerne direkt über <a routerLink="/feedback">Feedback</a>,
+    als E-Mail an <a [href]="'mailto:' + mailAddress"
+                     angulartics2On="click"
+                     angularticsEvent="ClickOnMailTo">{{mailAddress}}</a>
+    oder als Issue auf <a href="https://github.com/kiwikern/Superfit-Schedule/issues"
+                          target="_blank"
+                          angulartics2On="click"
+                          angularticsEvent="ClickOnGithub">GitHub</a>.
+  </p>
+  <p>
+    Falls du diese Webseite auf deinem Mobilgerät besuchst, füge sie doch über das Menü deines Browsers zum
     Startbildschirm hinzu. Dadurch lässt sich die App wie eine native App aus deinem AppStore benutzen und steht dir
-    auch offline zur Verfügung.</p>
+    auch offline zur Verfügung.
+  </p>
   <br>
   <button fxFlexAlign="center" md-raised-button routerLink="/">Schließen</button>
 </md-card>
 
 <footer class="footer" fxLayoutAlign="center">
-  <sfs-legal-nav fxFlexAlign="center"></sfs-legal-nav>
+  <sfs-legal-nav angulartics2On="click" angularticsEvent="ClickOnLegalNav" fxFlexAlign="center"></sfs-legal-nav>
 </footer>
