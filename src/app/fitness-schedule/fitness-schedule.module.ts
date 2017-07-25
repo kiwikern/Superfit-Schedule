@@ -30,9 +30,9 @@ const fitnessRoutes: Routes = [
     {path: 'favorites', component: FavoritesScheduleComponent},
     {path: 'filter', component: FilterComponent},
     {path: 'settings', component: SettingsComponent},
+    {path: 'changes', component: ChangesComponent}
   ],
-  },
-  {path: 'changes', component: ChangesComponent}
+  }
 ];
 
 @NgModule({
