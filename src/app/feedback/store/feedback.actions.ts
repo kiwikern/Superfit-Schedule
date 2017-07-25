@@ -25,14 +25,12 @@ export class FeedbackActions {
 
   @dispatch()
   loadFeedback(): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'loadFeedback', properties: {}});
     return {
       type: FeedbackActions.LOAD_FEEDBACK_REQUEST
     };
   }
 
   loadFeedbackSuccess(feedbackList: Feedback[]): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'loadFeedbackSuccess', properties: {}});
     return {
       type: FeedbackActions.LOAD_FEEDBACK_SUCCESS,
       payload: {feedbackList}
@@ -40,7 +38,7 @@ export class FeedbackActions {
   }
 
   loadFeedbackError(error): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'loadFeedbackError', properties: {category: error}});
+    this.angulartics.eventTrack.next({action: 'loadFeedbackError', properties: {category: JSON.stringify(error)}});
     return {
       type: FeedbackActions.LOAD_FEEDBACK_FAIL,
       payload: error
@@ -64,7 +62,7 @@ export class FeedbackActions {
   }
 
   sendFeedbackError(error): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'sendFeedbackError', properties: {category: error}});
+    this.angulartics.eventTrack.next({action: 'sendFeedbackError', properties: {category: JSON.stringify(error)}});
     return {
       type: FeedbackActions.SEND_FEEDBACK_FAIL,
       payload: error
@@ -88,7 +86,7 @@ export class FeedbackActions {
   }
 
   sendResponseError(error): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'sendResponseError', properties: {category: error}});
+    this.angulartics.eventTrack.next({action: 'sendResponseError', properties: {category: JSON.stringify(error)}});
     return {
       type: FeedbackActions.SEND_RESPONSE_FAIL,
       payload: error
@@ -97,7 +95,6 @@ export class FeedbackActions {
 
   @dispatch()
   markFeedbackRead(feedbackId): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'markFeedbackRead', properties: {}});
     return {
       type: FeedbackActions.MARK_FEEDBACK_READ_REQUEST,
       payload: {feedbackId}
@@ -105,14 +102,13 @@ export class FeedbackActions {
   }
 
   markFeedbackReadSuccess(): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'markFeedbackReadSuccess', properties: {}});
     return {
       type: FeedbackActions.MARK_FEEDBACK_READ_SUCCESS
     };
   }
 
   markFeedbackReadError(error): IPayloadAction<FeedbackPayload> {
-    this.angulartics.eventTrack.next({action: 'markFeedbackReadError', properties: {category: error}});
+    this.angulartics.eventTrack.next({action: 'markFeedbackReadError', properties: {category: JSON.stringify(error)}});
     return {
       type: FeedbackActions.MARK_FEEDBACK_READ_FAIL,
       payload: error
