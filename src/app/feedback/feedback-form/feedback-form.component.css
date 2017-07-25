@@ -1,10 +1,12 @@
-.feedback-text {
-  width: 95%;
-  max-width: 600px;
+md-card-title {
+  margin-bottom: 5px;
 }
 
-.close-button {
-  position: absolute;
-  top: 0;
-  right: 0;
+md-card-subtitle {
+  text-align: center;
+}
+
+fieldset {
+  border: thin none lightgray;
+  border-top-style: solid;
 }

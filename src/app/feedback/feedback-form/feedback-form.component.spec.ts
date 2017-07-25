@@ -1,10 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FeedbackFormComponent } from './feedback-form.component';
 import {
   MdButtonModule,
   MdDialogModule,
-  MdDialogRef,
   MdIconModule,
   MdInputModule,
   MdRadioModule
@@ -12,6 +10,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FeedbackActions } from '../store/feedback.actions';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FeedbackFormComponent', () => {
   let component: FeedbackFormComponent;
@@ -27,11 +26,14 @@ describe('FeedbackFormComponent', () => {
         MdButtonModule,
         MdDialogModule,
         MdRadioModule,
-        FormsModule
+        FormsModule,
+
       ],
       providers: [
-        {provide: MdDialogRef, useValue: ''},
         {provide: FeedbackActions, useValue: ''}
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();

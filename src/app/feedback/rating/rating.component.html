@@ -1,0 +1,11 @@
+<div>
+<label>{{title}}</label>
+<div fxLayout="row">
+  <a md-icon-button
+          *ngFor="let value of values; let index = index"
+          (click)="onChange(value)"
+  [color]="index + 1 <= selectedValue ? color : ''">
+    <md-icon>{{index + 1 <= selectedValue ? selectedIcon : unselectedIcon}}</md-icon>
+  </a>
+</div>
+</div>

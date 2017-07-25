@@ -5,7 +5,6 @@ import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import {
   MdButtonModule,
   MdCardModule,
-  MdDialogModule,
   MdIconModule,
   MdInputModule,
   MdListModule,
@@ -15,9 +14,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { FeedbackDetailComponent } from './feedback-detail/feedback-detail.component';
+import { RatingComponent } from './rating/rating.component';
+import { FabButtonComponent } from './fab-button/fab-button.component';
 
 const feedbackRoutes: Routes = [
   {path: '', component: FeedbackListComponent},
+  {path: 'new', component: FeedbackFormComponent},
   {path: ':id', component: FeedbackDetailComponent}
 ];
 
@@ -30,7 +32,6 @@ const feedbackRoutes: Routes = [
     MdInputModule,
     MdIconModule,
     MdButtonModule,
-    MdDialogModule,
     MdRadioModule,
     MdCardModule,
     MdListModule
@@ -38,10 +39,9 @@ const feedbackRoutes: Routes = [
   declarations: [
     FeedbackFormComponent,
     FeedbackListComponent,
-    FeedbackDetailComponent
-  ],
-  entryComponents: [
-    FeedbackFormComponent
+    FeedbackDetailComponent,
+    RatingComponent,
+    FabButtonComponent
   ]
 })
 export class FeedbackModule {

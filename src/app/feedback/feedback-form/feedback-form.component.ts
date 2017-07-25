@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackActions } from '../store/feedback.actions';
-import { MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'sfs-feedback-form',
@@ -13,9 +12,10 @@ export class FeedbackFormComponent implements OnInit {
   device: string;
   os: string;
   browser: string;
+  overallRating: number;
+  performanceRating: number;
 
-  constructor(private actions: FeedbackActions,
-              private dialogRef: MdDialogRef<FeedbackFormComponent>) {
+  constructor(private actions: FeedbackActions) {
   }
 
   ngOnInit() {
@@ -23,7 +23,6 @@ export class FeedbackFormComponent implements OnInit {
 
   onSubmit() {
     const feedback = {text: this.text, device: this.device, os: this.os, browser: this.browser};
-    this.dialogRef.close();
     this.actions.sendFeedback(feedback);
   }
 

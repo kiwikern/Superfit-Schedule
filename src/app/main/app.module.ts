@@ -41,7 +41,7 @@ const appRoutes: Routes = [
     AppComponent,
     AboutComponent,
     NavigationComponent,
-    NavigationButtonComponent
+    NavigationButtonComponent,
   ],
   imports: [
     BrowserModule,

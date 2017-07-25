@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
-import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
 import { Feedback } from '../feedback-interface';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
@@ -15,16 +13,11 @@ export class FeedbackListComponent implements OnInit {
 
   @select(['feedback', 'feedbackList']) feedbackList$: Observable<Feedback[]>;
 
-  constructor(private dialog: MdDialog,
-              private actions: FeedbackActions) {
+  constructor(private actions: FeedbackActions) {
   }
 
   ngOnInit() {
     this.actions.loadFeedback();
-  }
-
-  openFeedbackForm() {
-    this.dialog.open(FeedbackFormComponent);
   }
 
   isUnread(feedback: Feedback) {

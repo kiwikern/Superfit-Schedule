@@ -4,6 +4,7 @@ import { FeedbackListComponent } from './feedback-list.component';
 import { MdButtonModule, MdCardModule, MdDialogModule, MdIconModule, MdListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FeedbackActions } from '../store/feedback.actions';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FeedbackListComponent', () => {
   let component: FeedbackListComponent;
@@ -24,6 +25,9 @@ describe('FeedbackListComponent', () => {
       ],
       providers: [
         {provide: FeedbackActions, useValue: actions}
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();
