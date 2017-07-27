@@ -1,3 +1,7 @@
+.max-size {
+  max-width: 600px;
+}
+
 md-card-title {
   margin-bottom: 5px;
 }

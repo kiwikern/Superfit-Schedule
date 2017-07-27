@@ -1,4 +1,5 @@
-<md-card fxLayout="column" fxLayoutAlign="start center" style="max-width: 600px;">
+<div class="max-size" fxLayout="column" fxLayoutAlign="center center">
+<md-card fxLayout="column" fxLayoutAlign="center center">
   <md-card-title>Feedback</md-card-title>
   <md-card-subtitle>
     Du hast einen Fehler entdeckt, vermisst eine Funktion oder dir gefällt
@@ -8,7 +9,7 @@
     <md-card-content fxLayout="column" fxLayoutGap="20px">
       <md-input-container>
         <textarea mdInput
-                  mdTextareaAutosize mdAutosizeMinRows="3" mdAutosizeMaxRows="10"
+                  mdTextareaAutosize mdAutosizeMinRows="1" mdAutosizeMaxRows="10"
                   required
                   name="text"
                   [(ngModel)]="text"
@@ -29,49 +30,53 @@
           [color]="'primary'"
           (change)="performanceRating = $event"></sfs-rating>
       </fieldset>
-      <fieldset fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" *ngIf="text">
+      <fieldset *ngIf="text">
         <legend>Benutzung</legend>
-        <div>
-          <label>Gerät</label>
-          <md-radio-group [(ngModel)]="device" name="device" fxLayout="column">
-            <md-radio-button value="smartphone">Smartphone</md-radio-button>
-            <md-radio-button value="desktop">Desktop</md-radio-button>
-            <md-radio-button value="tablet">Tablet</md-radio-button>
-          </md-radio-group>
-        </div>
-        <div>
-          <label *ngIf="device">Betriebssystem</label>
-          <md-radio-group [(ngModel)]="os" name="os" fxLayout="column"
-                          *ngIf="device === 'smartphone' || device === 'tablet'">
-            <md-radio-button value="android">Android</md-radio-button>
-            <md-radio-button value="ios">iOS</md-radio-button>
-            <md-radio-button value="windows">Windows</md-radio-button>
-            <md-radio-button value="other">Andere</md-radio-button>
-          </md-radio-group>
-        </div>
-        <div>
-          <md-radio-group [(ngModel)]="os" name="os" fxLayout="column"
-                          *ngIf="device === 'desktop'">
-            <md-radio-button value="windows">Windows</md-radio-button>
-            <md-radio-button value="macos">macOS</md-radio-button>
-            <md-radio-button value="linux">Linux</md-radio-button>
-            <md-radio-button value="other">Andere</md-radio-button>
-          </md-radio-group>
-        </div>
-        <div>
-          <label *ngIf="os">Browser</label>
-          <md-radio-group [(ngModel)]="browser" name="browser" fxLayout="column"
-                          *ngIf="os">
-            <md-radio-button value="chrome">Chrome</md-radio-button>
-            <md-radio-button value="safari" *ngIf="os ==='ios' || os === 'macos'">Safari</md-radio-button>
-            <md-radio-button value="samsung" *ngIf="os ==='android'">Samsung Browser</md-radio-button>
-            <md-radio-button value="firefox">Firefox</md-radio-button>
-            <md-radio-button value="edge" *ngIf="os ==='windows'">Edge</md-radio-button>
-            <md-radio-button value="other">Andere</md-radio-button>
-          </md-radio-group>
+        <div fxLayout="column" fxLayoutAlign="start center">
+          <div fxLayout="column" fxLayoutGap="10px">
+            <div>
+              <label>Gerät</label>
+              <md-radio-group [(ngModel)]="device" name="device" fxLayout="column">
+                <md-radio-button value="smartphone">Smartphone</md-radio-button>
+                <md-radio-button value="desktop">Desktop</md-radio-button>
+                <md-radio-button value="tablet">Tablet</md-radio-button>
+              </md-radio-group>
+            </div>
+            <div *ngIf="device" fxLayout="column">
+              <label>Betriebssystem</label>
+              <md-radio-group [(ngModel)]="os" name="os" fxLayout="column"
+                              *ngIf="device === 'smartphone' || device === 'tablet'">
+                <md-radio-button value="android">Android</md-radio-button>
+                <md-radio-button value="ios">iOS</md-radio-button>
+                <md-radio-button value="windows">Windows</md-radio-button>
+                <md-radio-button value="other">Andere</md-radio-button>
+              </md-radio-group>
+              <md-radio-group [(ngModel)]="os" name="os" fxLayout="column"
+                              *ngIf="device === 'desktop'">
+                <md-radio-button value="windows">Windows</md-radio-button>
+                <md-radio-button value="macos">macOS</md-radio-button>
+                <md-radio-button value="linux">Linux</md-radio-button>
+                <md-radio-button value="other">Andere</md-radio-button>
+              </md-radio-group>
+            </div>
+            <div *ngIf="os" fxLayout="column">
+              <label>Browser</label>
+              <md-radio-group [(ngModel)]="browser" name="browser" fxLayout="column"
+                              *ngIf="os">
+                <md-radio-button value="chrome">Chrome</md-radio-button>
+                <md-radio-button value="safari" *ngIf="os ==='ios' || os === 'macos'">Safari</md-radio-button>
+                <md-radio-button value="samsung" *ngIf="os ==='android'">Samsung</md-radio-button>
+                <md-radio-button value="firefox">Firefox</md-radio-button>
+                <md-radio-button value="edge" *ngIf="os ==='windows'">Edge</md-radio-button>
+                <md-radio-button value="other">Andere</md-radio-button>
+              </md-radio-group>
+            </div>
+          </div>
         </div>
       </fieldset>
     </md-card-content>
-    <sfs-fab-button [icon]="'send'" [type]="'submit'" [hidden]="feedbackForm.pristine" [showButton]="!feedbackForm.invalid"></sfs-fab-button>
+    <sfs-fab-button [icon]="'send'" [type]="'submit'" [hidden]="feedbackForm.pristine"
+                    [showButton]="!feedbackForm.invalid"></sfs-fab-button>
   </form>
 </md-card>
+</div>
