@@ -14,8 +14,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { FeedbackDetailComponent } from './feedback-detail/feedback-detail.component';
-import { RatingComponent } from './rating/rating.component';
-import { FabButtonComponent } from './fab-button/fab-button.component';
+import { RatingComponent } from '../common/rating/rating.component';
+import { FabButtonComponent } from '../common/fab-button/fab-button.component';
+import { SfsCommonModule } from '../common/common.module';
 
 const feedbackRoutes: Routes = [
   {path: '', component: FeedbackListComponent},
@@ -34,14 +35,13 @@ const feedbackRoutes: Routes = [
     MdButtonModule,
     MdRadioModule,
     MdCardModule,
-    MdListModule
+    MdListModule,
+    SfsCommonModule
   ],
   declarations: [
     FeedbackFormComponent,
     FeedbackListComponent,
-    FeedbackDetailComponent,
-    RatingComponent,
-    FabButtonComponent
+    FeedbackDetailComponent
   ]
 })
 export class FeedbackModule {
