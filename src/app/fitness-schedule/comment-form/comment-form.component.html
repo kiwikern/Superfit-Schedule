@@ -1,0 +1,59 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="max-size">
+<md-card fxLayout="column" fxLayoutAlign="start center">
+  <md-card-title>Neuer Kommentar</md-card-title>
+  <md-card-subtitle>
+    Teile der SFS-Communitiy mit, was diesen Kurs besonders macht.
+  </md-card-subtitle>
+  <form #commentForm="ngForm" (ngSubmit)="onSubmit()" fxFill>
+
+    <md-card-content fxLayout="column" fxLayoutGap="20px">
+      <md-input-container>
+        <textarea mdInput
+                  mdTextareaAutosize mdAutosizeMinRows="2" mdAutosizeMaxRows="10"
+                  required
+                  name="text"
+                  [(ngModel)]="text"
+                  placeholder="Dein Kommentar"></textarea>
+      </md-input-container>
+
+      <md-input-container>
+        <md-chip-list mdPrefix #chipList1>
+          <md-chip *ngFor="let instructor of instructors" [color]="color">
+            {{instructor}}
+            <md-icon mdChipRemove>cancel</md-icon>
+          </md-chip>
+        </md-chip-list>
+        <input type="text" mdInput
+               placeholder="Trainer"
+               [mdAutocomplete]="instructorsAuto"
+               [formControl]="instructorControl">
+      </md-input-container>
+      <md-autocomplete #instructorsAuto="mdAutocomplete">
+        <md-option *ngFor="let option of filteredInstructors | async" [value]="option">
+          {{ option }}
+        </md-option>
+      </md-autocomplete>
+
+      <sfs-rating
+        [title]="'Teilnehmerzahl'"
+        [selectedIcon]="'people'"
+        [unselectedIcon]="'people_outline'"
+        [scaleSize]="3"
+        [color]="'primary'"
+        (change)="attendance = $event"></sfs-rating>
+
+      <md-select placeholder="Highlights" [multiple]="true">
+        <md-option fxLayout="row" fxLayoutAlign="start center"
+                   *ngFor="let highlight of highlightService.getAllHighlights()" value="highlight">
+          <md-icon>{{highlightService.getHighlightIcon(highlight)}}</md-icon>
+          {{highlightService.getHighlightText(highlight)}}
+        </md-option>
+      </md-select>
+
+    </md-card-content>
+
+    <sfs-fab-button [icon]="'send'" [type]="'submit'" [hidden]="commentForm.pristine"
+                    [showButton]="!commentForm.invalid"></sfs-fab-button>
+  </form>
+</md-card>
+</div>

@@ -7,7 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SortClassesPipe } from './pipes/sort-classes.pipe';
 import { FilterClassesPipe } from './pipes/filter-classes.pipe';
 import { FilterComponent } from './filter/filter.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectFilterComponent } from './filter/select-filter/select-filter.component';
 import { OrderDaysPipe } from './pipes/order-days.pipe';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +22,13 @@ import { FitnessScheduleStoreModule } from './store/fitness-schedule-store.modul
 import { ChangesComponent } from './changes/changes.component';
 import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
 import { DurationFilterComponent } from './filter/duration-filter/duration-filter.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { SfsCommonModule } from '../common/common.module';
+import { RepeatPipe } from './pipes/repeat.pipe';
+import { CommentDetailComponent } from './comment-detail/comment-detail.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
+import { HighlightService } from './services/highlight.service';
+import { MdAutocompleteModule } from '@angular/material';
 
 const fitnessRoutes: Routes = [
   {
@@ -31,8 +38,9 @@ const fitnessRoutes: Routes = [
     {path: 'filter', component: FilterComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'changes', component: ChangesComponent}
-  ],
-  }
+  ]  },
+  {path: 'class/:id', component: CommentListComponent},
+  {path: 'class/:id/new', component: CommentFormComponent}
 ];
 
 @NgModule({
@@ -41,8 +49,11 @@ const fitnessRoutes: Routes = [
     SfsMaterialModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(fitnessRoutes),
-    FitnessScheduleStoreModule
+    FitnessScheduleStoreModule,
+    SfsCommonModule,
+    MdAutocompleteModule
   ],
   declarations: [
     TimePeriodComponent,
@@ -60,7 +71,11 @@ const fitnessRoutes: Routes = [
     DayColumnComponent,
     ChangesComponent,
     ScheduleRouterComponent,
-    DurationFilterComponent
+    DurationFilterComponent,
+    CommentListComponent,
+    RepeatPipe,
+    CommentDetailComponent,
+    CommentFormComponent
   ],
   exports: [
     ScheduleComponent,
@@ -68,6 +83,7 @@ const fitnessRoutes: Routes = [
   ],
   providers: [
     ScheduleParserService,
+    HighlightService
   ]
 })
 export class FitnessScheduleModule {

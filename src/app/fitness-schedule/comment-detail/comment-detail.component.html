@@ -1,0 +1,28 @@
+<md-card fxLayout="column">
+  <div fxLayout="row">
+    <div>
+      <md-card-subtitle>{{comment.userName}} ({{comment.date | date:'mediumDate'}})</md-card-subtitle>
+      <md-card-subtitle>
+        Trainer:
+        <span *ngFor="let instructor of comment.instructors; let last = last">
+        {{instructor}}{{last ? '' : ', '}}
+      </span>
+      </md-card-subtitle>
+    </div>
+    <span fxFlex></span>
+    <md-icon *ngFor="let i of comment.attendance | repeat" color="primary">people</md-icon>
+    <md-icon *ngFor="let i of (3 - comment.attendance) | repeat">people_outline</md-icon>
+  </div>
+  <md-card-content>
+    {{comment.text}}
+  </md-card-content>
+  <fieldset class="small-text" *ngIf="comment.highlights && comment.highlights.length > 0">
+    <legend>Highlights</legend>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+      <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let highlight of comment.highlights">
+        <md-icon>{{highlightService.getHighlightIcon(highlight)}}</md-icon>
+        <span>{{highlightService.getHighlightText(highlight)}}</span>
+      </div>
+    </div>
+  </fieldset>
+</md-card>

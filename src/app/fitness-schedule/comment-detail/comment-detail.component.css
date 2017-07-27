@@ -1,0 +1,27 @@
+md-card {
+  padding: 4px;
+}
+
+md-card-content {
+  margin-top: 10px;
+}
+
+md-card-subtitle {
+  margin-bottom: 0;
+}
+
+hr {
+  display: block;
+  margin: 10px 0 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+  width: 100%
+}
+
+fieldset {
+  border: thin none lightgray;
+  border-top-style: solid;
+}
+
+.small-text {
+  font-size: small;
+}

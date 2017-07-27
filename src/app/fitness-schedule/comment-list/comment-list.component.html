@@ -1,0 +1,13 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+  <h1>Kommentare</h1>
+  <sfs-fitness-class *ngIf="fitnessClass"
+                     [fitnessClass]="fitnessClass"
+                     [showDaysInClasses]="true"
+                     [showFavoriteButton]="false"
+                     [showSingleStudio]="true"
+                     style="margin-bottom: 20px"
+  ></sfs-fitness-class>
+  <sfs-comment-detail *ngFor="let comment of comments" [comment]="comment"
+                      style="width: 100%; max-width: 600px"></sfs-comment-detail>
+  <sfs-fab-button [icon]="'comment'" routerLink="new"></sfs-fab-button>
+</div>

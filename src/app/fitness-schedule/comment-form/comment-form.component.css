@@ -1,0 +1,11 @@
+md-card-title {
+  margin-bottom: 5px;
+}
+
+md-card-subtitle {
+  text-align: center;
+}
+
+.max-size {
+  max-width: 600px;
+}

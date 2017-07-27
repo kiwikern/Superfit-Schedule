@@ -11,7 +11,8 @@ import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'an
 })
 export class AppComponent implements OnInit {
 
-  private isChild = false;
+  isChild = false;
+  parentPath: string;
   @select(['authentication', 'userName']) userName$: Observable<string>;
   @select() router$: Observable<string>;
 
@@ -28,6 +29,18 @@ export class AppComponent implements OnInit {
   }
 
   private isChildPath(path: string): boolean {
-    return /(feedback\/.*)/.test(path);
+    if (/(feedback\/.*)/.test(path)) {
+      this.parentPath = '/feedback';
+      return true;
+    } else if (/(schedule\/class.*\/new)/.test(path)) {
+      this.parentPath = path.substring(0, path.length - 4);
+      return true;
+    } else if (/(schedule\/class.*)/.test(path)) {
+      this.parentPath = '/schedule';
+      return true;
+    } else {
+      this.parentPath = null;
+      return false;
+    }
   }
 }
