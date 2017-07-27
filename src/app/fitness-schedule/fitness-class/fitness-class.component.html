@@ -6,11 +6,11 @@
     <span [class.removed-class]="wasRemoved">
       {{getClassName()}}
     </span>
-    <button md-icon-button (click)="toggleFavorite()" *ngIf="!wasRemoved && showFavoriteButton">
+    <button md-icon-button (click)="toggleFavorite(); $event.stopPropagation()" *ngIf="!wasRemoved && showFavoriteButton">
       <md-icon [fxHide]="isFavorite">favorite_border</md-icon>
       <md-icon [fxShow]="isFavorite" color="warn">favorite</md-icon>
     </button>
-    <button md-icon-button (click)="showRemovedSnackBar()" *ngIf="wasRemoved && isFavorite">
+    <button md-icon-button (click)="showRemovedSnackBar(); $event.stopPropagation()" *ngIf="wasRemoved && isFavorite">
       <md-icon>warning</md-icon>
     </button>
     <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">

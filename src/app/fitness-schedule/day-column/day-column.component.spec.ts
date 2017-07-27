@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, Input } from '@angular/core';
 import { MappingService } from '../services/mapping.service';
 import { SortClassesPipe } from '../pipes/sort-classes.pipe';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DayColumnComponent', () => {
   let component: DayColumnComponent;
@@ -20,7 +21,8 @@ describe('DayColumnComponent', () => {
       ],
       imports: [
         SfsMaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        RouterTestingModule
       ],
       providers: [
         MappingService

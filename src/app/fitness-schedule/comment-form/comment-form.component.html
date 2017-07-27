@@ -18,12 +18,13 @@
 
       <md-input-container>
         <md-chip-list mdPrefix #chipList1>
-          <md-chip *ngFor="let instructor of instructors" [color]="color">
+          <md-chip *ngFor="let instructor of instructors">
             {{instructor}}
             <md-icon mdChipRemove>cancel</md-icon>
           </md-chip>
         </md-chip-list>
         <input type="text" mdInput
+               name="instructor"
                placeholder="Trainer"
                [mdAutocomplete]="instructorsAuto"
                [formControl]="instructorControl">

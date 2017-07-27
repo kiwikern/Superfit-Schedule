@@ -26,11 +26,15 @@ export class CommentFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.paramMap.subscribe(params => this.classId = params.get('id'));
+    this.router.params.subscribe(params => this.classId = params['id']);
     this.allInstructors = ['Marius', 'Yvonne'];
     this.filteredInstructors = this.instructorControl.valueChanges
       .startWith(null)
       .map(value => value ? this.filterInstructors(value) : this.allInstructors.slice());
+  }
+
+  onSubmit() {
+    // TODO
   }
 
   private filterInstructors(value: string): string[] {

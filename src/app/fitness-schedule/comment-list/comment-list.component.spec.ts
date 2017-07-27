@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommentListComponent } from './comment-list.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -12,7 +15,10 @@ describe('CommentListComponent', () => {
       declarations: [ CommentListComponent ],
       schemas: [
         NO_ERRORS_SCHEMA
-        ]
+        ],
+      imports: [
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));
