@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectFilterComponent } from './select-filter.component';
 import { FormsModule } from '@angular/forms';
-import { MappingService } from '../../services/mapping.service';
+import { MappingService } from '../../../workout/mapping.service';
 import { SfsMaterialModule } from '../../../material/sfs-material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 

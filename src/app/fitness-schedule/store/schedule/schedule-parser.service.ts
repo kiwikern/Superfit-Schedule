@@ -1,5 +1,5 @@
 import * as moment from 'moment-mini';
-import { FitnessClass } from '../../interfaces/fitness-class';
+import { FitnessClass } from '../../../workout/fitness-class';
 import { Gym } from '../../enums/gym.enum';
 import { Day } from '../../enums/day.enum';
 import { Language } from '../../enums/language.enum';

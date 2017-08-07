@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Gym } from '../enums/gym.enum';
-import { Day } from '../enums/day.enum';
+import { Gym } from '../fitness-schedule/enums/gym.enum';
+import { Day } from '../fitness-schedule/enums/day.enum';
 
 @Injectable()
 export class MappingService {

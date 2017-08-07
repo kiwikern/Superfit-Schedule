@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 import * as moment from 'moment-mini';
-import { MappingService } from '../src/app/fitness-schedule/services/mapping.service';
+import { MappingService } from '../src/app/workout/mapping.service';
 
 export class SchedulePage {
   navigateTo() {

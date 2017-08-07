@@ -5,7 +5,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, Injectable, Input } from '@angular/core';
 import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
-import { FitnessClass } from '../interfaces/fitness-class';
+import { FitnessClass } from '../../workout/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { Day } from '../enums/day.enum';
 import { Language } from '../enums/language.enum';

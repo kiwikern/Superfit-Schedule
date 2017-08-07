@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimePeriodComponent } from './time-period/time-period.component';
-import { FitnessClassComponent } from './fitness-class/fitness-class.component';
+import { TimePeriodComponent } from '../workout/fitness-class/time-period/time-period.component';
+import { FitnessClassComponent } from '../workout/fitness-class/fitness-class.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SortClassesPipe } from './pipes/sort-classes.pipe';
@@ -22,6 +22,7 @@ import { FitnessScheduleStoreModule } from './store/fitness-schedule-store.modul
 import { ChangesComponent } from './changes/changes.component';
 import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
 import { DurationFilterComponent } from './filter/duration-filter/duration-filter.component';
+import { WorkoutModule } from '../workout/workout.module';
 
 const fitnessRoutes: Routes = [
   {
@@ -45,10 +46,9 @@ const fitnessRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(fitnessRoutes),
     FitnessScheduleStoreModule,
+    WorkoutModule
   ],
   declarations: [
-    TimePeriodComponent,
-    FitnessClassComponent,
     ScheduleComponent,
     FilterComponent,
     SelectFilterComponent,
@@ -62,12 +62,11 @@ const fitnessRoutes: Routes = [
     DayColumnComponent,
     ChangesComponent,
     ScheduleRouterComponent,
-    DurationFilterComponent,
+    DurationFilterComponent
   ],
   exports: [
     ScheduleComponent,
-    FilterComponent,
-    FitnessClassComponent
+    FilterComponent
   ],
   providers: [
     ScheduleParserService

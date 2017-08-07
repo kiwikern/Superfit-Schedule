@@ -4,7 +4,7 @@ import { ScheduleEpics } from './schedule/schedule.epics';
 import { ScheduleActions } from './schedule/schedule.actions';
 import { FilterActions } from './filter/filter.actions';
 import { SettingsActions } from './settings/settings.actions';
-import { MappingService } from '../services/mapping.service';
+import { MappingService } from '../../workout/mapping.service';
 import { FavoriteActions } from './favorites/favorite.actions';
 import { ScheduleParserService } from './schedule/schedule-parser.service';
 import { ChangesActions } from './changes/changes.actions';

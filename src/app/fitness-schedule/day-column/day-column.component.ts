@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MappingService } from '../services/mapping.service';
+import { MappingService } from '../../workout/mapping.service';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
-import { FitnessClass } from '../interfaces/fitness-class';
+import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';

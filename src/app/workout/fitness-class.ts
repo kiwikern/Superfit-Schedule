@@ -1,6 +1,6 @@
-import { Language } from '../enums/language.enum';
-import { Gym } from '../enums/gym.enum';
-import { Day } from '../enums/day.enum';
+import { Language } from '../fitness-schedule/enums/language.enum';
+import { Gym } from '../fitness-schedule/enums/gym.enum';
+import { Day } from '../fitness-schedule/enums/day.enum';
 export interface FitnessClass {
   id: string;
   startHour: number;

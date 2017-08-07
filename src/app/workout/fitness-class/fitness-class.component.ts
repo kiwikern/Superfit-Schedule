@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MappingService } from '../services/mapping.service';
+import { MappingService } from '../mapping.service';
 import { NgRedux } from '@angular-redux/store';
-import { FitnessClass } from '../interfaces/fitness-class';
+import { FitnessClass } from '../fitness-class';
 import { IAppState } from '../../store/root-state.interface';
-import { FavoriteActions } from '../store/favorites/favorite.actions';
+import { FavoriteActions } from '../../fitness-schedule/store/favorites/favorite.actions';
 import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 

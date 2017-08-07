@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { FilterState } from '../store/filter/filter-state';
-import { FitnessClass } from '../interfaces/fitness-class';
+import { FitnessClass } from '../../workout/fitness-class';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({

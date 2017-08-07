@@ -4,7 +4,7 @@ import { DayColumnComponent } from './day-column.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Component, Input } from '@angular/core';
-import { MappingService } from '../services/mapping.service';
+import { MappingService } from '../../workout/mapping.service';
 import { SortClassesPipe } from '../pipes/sort-classes.pipe';
 import { RouterTestingModule } from '@angular/router/testing';
 

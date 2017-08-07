@@ -10,10 +10,10 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { SfsCommonModule } from '../common/common.module';
 import { RepeatPipe } from './repeat.pipe';
 import { RouterModule, Routes } from '@angular/router';
-import { FitnessScheduleModule } from '../fitness-schedule/fitness-schedule.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighlightsSelectionComponent } from './highlights-selection/highlights-selection.component';
+import { WorkoutModule } from '../workout/workout.module';
 
 const commentRoutes: Routes = [
   {path: ':id', component: CommentListComponent},
@@ -28,7 +28,7 @@ const commentRoutes: Routes = [
     FormsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FitnessScheduleModule,
+    WorkoutModule,
     SfsMaterialModule,
     MdAutocompleteModule
   ],

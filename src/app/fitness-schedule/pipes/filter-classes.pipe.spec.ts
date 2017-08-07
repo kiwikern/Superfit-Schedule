@@ -1,5 +1,5 @@
 import { FilterClassesPipe } from './filter-classes.pipe';
-import { FitnessClass } from '../interfaces/fitness-class';
+import { FitnessClass } from '../../workout/fitness-class';
 import { Day } from '../enums/day.enum';
 import { Gym } from '../enums/gym.enum';
 import { Language } from '../enums/language.enum';

@@ -1,4 +1,4 @@
-import { FitnessClass } from '../../interfaces/fitness-class';
+import { FitnessClass } from '../../../workout/fitness-class';
 export interface FavoriteState {
   workouts: FitnessClass[];
 }

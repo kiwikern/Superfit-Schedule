@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { FitnessClass } from '../../fitness-schedule/interfaces/fitness-class';
+import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
 import 'rxjs/add/observable/combineLatest';
 import { Observable } from 'rxjs/Observable';

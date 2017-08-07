@@ -1,5 +1,5 @@
 import { IPayloadAction } from '../../../store/payload-action.types';
-import { FitnessClass } from '../../interfaces/fitness-class';
+import { FitnessClass } from '../../../workout/fitness-class';
 import { FavoriteState } from './favorite-state';
 import { FavoriteActions } from './favorite.actions';
 /**
