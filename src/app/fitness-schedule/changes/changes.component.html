@@ -6,7 +6,7 @@
   </md-card-subtitle>
   <md-checkbox [(ngModel)]="filterClasses">Berücksichtige Kurswahl</md-checkbox>
   <md-card-content style="width: 95vw">
-  <md-tab-group>
+  <md-tab-group [(selectedIndex)]="selectedTab">
     <md-tab *ngFor="let change of changes; let index = index"
             [label]="change.timestamp | date:'d. MMMM yy'">
       <sfs-schedule [schedulePerDay]="change.schedule"
@@ -14,7 +14,8 @@
                     [removedFavorites]="change.removed"
                     [filter]="filterClasses ? (filter$ | async) : []"
                     [showFavoriteButton]="index === 0"
-                    [newClasses]="change.added"></sfs-schedule>
+                    [newClasses]="change.added"
+                    *ngIf="selectedTab === index"></sfs-schedule>
       <br>
     </md-tab>
   </md-tab-group>
