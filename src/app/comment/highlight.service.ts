@@ -7,8 +7,8 @@ export class HighlightService {
   highlightMapping = {};
 
   constructor() {
-    this.highlightMapping[Highlight.Encouragement] = {icon: 'mood', text: 'Stimmung'};
-    this.highlightMapping[Highlight.Exhausting] = {icon: 'fitness_center', text: 'Anstrengend'};
+    this.highlightMapping[Highlight.Encouragement] = {icon: 'mood', text: 'Party'};
+    this.highlightMapping[Highlight.Exhausting] = {icon: 'fitness_center', text: 'Härte'};
     this.highlightMapping[Highlight.Healthy] = {icon: 'favorite', text: 'Gesund'};
     this.highlightMapping[Highlight.Music] = {icon: 'music_note', text: 'Musik'};
     this.highlightMapping[Highlight.Technique] = {icon: 'school', text: 'Technik'};
