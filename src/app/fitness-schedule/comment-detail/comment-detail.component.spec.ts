@@ -33,7 +33,7 @@ describe('CommentDetailComponent', () => {
     fixture = TestBed.createComponent(CommentDetailComponent);
     component = fixture.componentInstance;
     component.comment = {
-      classId: '',
+      workoutId: '',
       highlights: [],
       userName: '',
       date: new Date(),

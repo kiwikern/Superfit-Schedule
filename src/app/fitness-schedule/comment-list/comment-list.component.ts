@@ -24,7 +24,7 @@ export class CommentListComponent implements OnInit {
   subscription: Subscription;
   comments: ClassComment[] = [{
     attendance: 2,
-    classId: '',
+    workoutId: '',
     highlights: [Highlight.Encouragement, Highlight.Exhausting],
     instructors: ['Marius', 'Yvonne'],
     text: 'Das ist der Kommentar',

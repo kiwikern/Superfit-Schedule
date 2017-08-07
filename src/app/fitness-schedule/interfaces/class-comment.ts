@@ -1,12 +1,12 @@
 import { Highlight } from '../enums/highlights.enum';
 
 export interface ClassComment {
-  classId: string;
+  workoutId: string;
   userId: string;
   userName: string;
   date: Date;
   text: string;
   instructors: string[];
-  attendance: number;
+  attendance?: number;
   highlights: Highlight[];
 }
