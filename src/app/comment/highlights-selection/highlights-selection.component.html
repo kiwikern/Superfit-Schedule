@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+  <div fxLayout="column" fxLayoutAlign="center center"
+       *ngFor="let highlight of service.getAllHighlights()"
+       (click)="select(highlight)">
+    <button md-icon-button [color]="highlights.includes(highlight) ? 'primary' : ''">
+      <md-icon>{{service.getHighlightIcon(highlight)}}</md-icon>
+    </button>
+    <span>{{service.getHighlightText(highlight)}}</span>
+  </div>
+</div>

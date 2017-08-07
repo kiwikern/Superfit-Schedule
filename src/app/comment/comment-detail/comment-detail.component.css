@@ -13,8 +13,5 @@ md-card-subtitle {
 fieldset {
   border: thin none lightgray;
   border-top-style: solid;
-}
-
-.small-text {
   font-size: small;
 }

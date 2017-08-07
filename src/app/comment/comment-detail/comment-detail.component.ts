@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ClassComment } from '../class-comment';
-import { HighlightService } from '../highlight.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,8 +12,7 @@ export class CommentDetailComponent implements OnInit {
   @Input() comment: ClassComment;
   classId: string;
 
-  constructor(public highlightService: HighlightService,
-              private router: ActivatedRoute) {
+  constructor(private router: ActivatedRoute) {
   }
 
   ngOnInit() {

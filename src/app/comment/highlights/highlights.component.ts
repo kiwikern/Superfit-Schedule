@@ -10,7 +10,7 @@ export class HighlightsComponent implements OnInit {
 
   @Input() highlights: string[];
 
-  constructor(private highlightService: HighlightService) { }
+  constructor(public service: HighlightService) { }
 
   ngOnInit() {
   }

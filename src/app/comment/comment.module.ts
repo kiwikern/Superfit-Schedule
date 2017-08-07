@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FitnessScheduleModule } from '../fitness-schedule/fitness-schedule.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HighlightsSelectionComponent } from './highlights-selection/highlights-selection.component';
 
 const commentRoutes: Routes = [
   {path: ':id', component: CommentListComponent},
@@ -36,7 +37,8 @@ const commentRoutes: Routes = [
     CommentDetailComponent,
     CommentFormComponent,
     HighlightsComponent,
-    RepeatPipe
+    RepeatPipe,
+    HighlightsSelectionComponent
   ],
   providers: [
     HighlightService

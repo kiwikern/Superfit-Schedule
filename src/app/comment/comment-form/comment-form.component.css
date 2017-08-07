@@ -10,6 +10,8 @@ md-card-subtitle {
   max-width: 600px;
 }
 
-md-autocomplete {
-  margin: 0!important;
+fieldset {
+  border: thin none lightgray;
+  border-top-style: solid;
+  font-size: small;
 }

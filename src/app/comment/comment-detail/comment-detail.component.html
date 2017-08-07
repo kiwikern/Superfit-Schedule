@@ -16,7 +16,7 @@
   <md-card-content>
     {{comment.text}}
   </md-card-content>
-  <fieldset class="small-text" *ngIf="comment.highlights && comment.highlights.length > 0">
+  <fieldset *ngIf="comment.highlights && comment.highlights.length > 0">
     <legend>Highlights</legend>
     <sfs-highlights [highlights]="comment.highlights"></sfs-highlights>
   </fieldset>

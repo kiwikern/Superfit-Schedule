@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="start center">
-  <label>{{title}}</label>
+  <label *ngIf="title">{{title}}</label>
   <div fxLayout="row">
     <a md-icon-button
        *ngFor="let value of values; let index = index"

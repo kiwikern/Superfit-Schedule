@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Highlight } from '../highlights.enum';
-import { HighlightService } from '../highlight.service';
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -21,8 +20,7 @@ export class CommentFormComponent implements OnInit {
   filteredInstructors: Observable<string[]>;
   classId: string;
 
-  constructor(public highlightService: HighlightService,
-              private router: ActivatedRoute) {
+  constructor(private router: ActivatedRoute) {
   }
 
   ngOnInit() {
