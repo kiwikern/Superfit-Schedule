@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Highlight } from '../enums/highlights.enum';
-import { HighlightService } from '../services/highlight.service';
+import { Highlight } from '../highlights.enum';
+import { HighlightService } from '../highlight.service';
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';

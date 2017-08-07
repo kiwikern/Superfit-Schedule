@@ -9,3 +9,7 @@ md-card-subtitle {
 .max-size {
   max-width: 600px;
 }
+
+md-autocomplete {
+  margin: 0!important;
+}

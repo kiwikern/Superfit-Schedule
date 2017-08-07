@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { FitnessClass } from '../interfaces/fitness-class';
+import { FitnessClass } from '../../fitness-schedule/interfaces/fitness-class';
 import { select } from '@angular-redux/store';
 import 'rxjs/add/observable/combineLatest';
 import { Observable } from 'rxjs/Observable';
-import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
+import { FitnessClassesPerDay } from '../../fitness-schedule/interfaces/fitness-classes-per-day';
 import { Subscription } from 'rxjs/Subscription';
-import { ClassComment } from '../interfaces/class-comment';
-import { Highlight } from '../enums/highlights.enum';
+import { ClassComment } from '../class-comment';
+import { Highlight } from '../highlights.enum';
 
 
 @Component({

@@ -18,11 +18,6 @@
   </md-card-content>
   <fieldset class="small-text" *ngIf="comment.highlights && comment.highlights.length > 0">
     <legend>Highlights</legend>
-    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
-      <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let highlight of comment.highlights">
-        <md-icon>{{highlightService.getHighlightIcon(highlight)}}</md-icon>
-        <span>{{highlightService.getHighlightText(highlight)}}</span>
-      </div>
-    </div>
+    <sfs-highlights [highlights]="comment.highlights"></sfs-highlights>
   </fieldset>
 </md-card>

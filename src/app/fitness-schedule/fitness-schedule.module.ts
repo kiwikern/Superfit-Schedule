@@ -22,13 +22,6 @@ import { FitnessScheduleStoreModule } from './store/fitness-schedule-store.modul
 import { ChangesComponent } from './changes/changes.component';
 import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
 import { DurationFilterComponent } from './filter/duration-filter/duration-filter.component';
-import { CommentListComponent } from './comment-list/comment-list.component';
-import { SfsCommonModule } from '../common/common.module';
-import { RepeatPipe } from './pipes/repeat.pipe';
-import { CommentDetailComponent } from './comment-detail/comment-detail.component';
-import { CommentFormComponent } from './comment-form/comment-form.component';
-import { HighlightService } from './services/highlight.service';
-import { MdAutocompleteModule } from '@angular/material';
 
 const fitnessRoutes: Routes = [
   {
@@ -38,9 +31,9 @@ const fitnessRoutes: Routes = [
     {path: 'filter', component: FilterComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'changes', component: ChangesComponent}
-  ]  },
-  {path: 'class/:id', component: CommentListComponent},
-  {path: 'class/:id/new', component: CommentFormComponent}
+  ]
+  },
+  {path: 'class', loadChildren: '../comment/comment.module#CommentModule'},
 ];
 
 @NgModule({
@@ -52,8 +45,6 @@ const fitnessRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(fitnessRoutes),
     FitnessScheduleStoreModule,
-    SfsCommonModule,
-    MdAutocompleteModule
   ],
   declarations: [
     TimePeriodComponent,
@@ -72,18 +63,14 @@ const fitnessRoutes: Routes = [
     ChangesComponent,
     ScheduleRouterComponent,
     DurationFilterComponent,
-    CommentListComponent,
-    RepeatPipe,
-    CommentDetailComponent,
-    CommentFormComponent
   ],
   exports: [
     ScheduleComponent,
-    FilterComponent
+    FilterComponent,
+    FitnessClassComponent
   ],
   providers: [
-    ScheduleParserService,
-    HighlightService
+    ScheduleParserService
   ]
 })
 export class FitnessScheduleModule {

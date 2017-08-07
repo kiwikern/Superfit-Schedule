@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ClassComment } from '../interfaces/class-comment';
-import { HighlightService } from '../services/highlight.service';
+import { ClassComment } from '../class-comment';
+import { HighlightService } from '../highlight.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

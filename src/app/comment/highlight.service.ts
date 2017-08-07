@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Highlight } from '../enums/highlights.enum';
+import { Highlight } from './highlights.enum';
 
 @Injectable()
 export class HighlightService {
