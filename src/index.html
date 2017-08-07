@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>SuperFit Kursplan</title>
+  <meta name="description" content="Erstelle deinen individuellen SuperFit Kursplan.
+  Wähle deine SuperFit Kurse nach Kursart, Studio, Uhrzeit, Dauer, usw.
+  Lass dich per PushNotification informieren, wenn sich der SuperFit Kursplan ändert.
+  Sieh dir in den Kursplan-Änderungen an, welche SuperFit Kurse neu oder nicht mehr angeboten werden." />
   <base href="/">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">
@@ -41,12 +45,20 @@
     ga('create', 'UA-102504463-1', 'auto');
     // ga('send', 'pageview');
   </script>
+  <noscript>
+    <img src="https://piwik.kimkern.de/piwik.php?idsite=3&rec=1" style="border:0" alt=""/>
+  </noscript>
+  <!-- End Piwik Code -->
   <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Helvetica, Arial, sans-serif;
+    }
     .spinner {
       width: 40px;
       height: 40px;
-      margin: 100px auto;
-      background-color: #333;
+      margin: 20px auto;
+      background-color: #e05082;
 
       border-radius: 100%;
       -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
@@ -74,18 +86,55 @@
         opacity: 0;
       }
     }
+
+    .initial-background {
+      background: #009688;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      color: white;
+    }
+
+    .features-title {
+      margin-top: 50px;
+      margin-bottom: 5px;
+      margin-left: 10px;
+      text-align: left;
+    }
+
+    .features-list {
+      /*list-style-type: "💪";*/
+      list-style: none;
+      text-align: left;
+      margin: 0;
+    }
+
+    .features-list > li {
+      margin-bottom: 10px;
+    }
+
+    .features-list > li:before {
+      display: block;
+      float: left;
+      width: 1.5em;
+      content: "💪"
+    }
   </style>
-  <noscript>
-    <img src="https://piwik.kimkern.de/piwik.php?idsite=3&rec=1" style="border:0" alt=""/>
-  </noscript>
-  <!-- End Piwik Code -->
 </head>
 <body>
 <sfs-root>
-  <div style="text-align: center">
-    <br><br><br><br>
+  <div class="initial-background">
+    <br>
+    <br>
     <h2>SuperFit Kursplan lädt...</h2>
     <div class="spinner"></div>
+    <h4 class="features-title">Was dich hier erwartet:</h4>
+    <ul class="features-list">
+      <li>Erstelle deinen individuellen SuperFit Kursplan.</li>
+      <li>Wähle deine SuperFit Kurse nach Kursart, Studio, Uhrzeit, Dauer,...</li>
+      <li>Erhalte eine PushNotification, wenn sich der SuperFit Kursplan ändert.</li>
+      <li>Zeige SuperFit Kurse, die neu oder nicht mehr angeboten werden.</li>
+    </ul>
   </div>
 </sfs-root>
 </body>
