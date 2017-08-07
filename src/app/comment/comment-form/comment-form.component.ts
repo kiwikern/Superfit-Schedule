@@ -16,6 +16,7 @@ export class CommentFormComponent implements OnInit {
   highlights: Highlight[];
   attendance: number;
   instructorControl = new FormControl();
+  instructorsAuto;
   allInstructors: string[];
   filteredInstructors: Observable<string[]>;
   classId: string;
