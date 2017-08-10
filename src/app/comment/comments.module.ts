@@ -15,7 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighlightsSelectionComponent } from './highlights-selection/highlights-selection.component';
 import { WorkoutModule } from '../workout/workout.module';
 
-const commentRoutes: Routes = [
+const commentsRoutes: Routes = [
   {path: ':id', component: CommentListComponent},
   {path: ':id/new', component: CommentFormComponent}
 ];
@@ -23,7 +23,7 @@ const commentRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(commentRoutes),
+    RouterModule.forChild(commentsRoutes),
     SfsCommonModule,
     FormsModule,
     FlexLayoutModule,
@@ -44,4 +44,4 @@ const commentRoutes: Routes = [
     HighlightService
   ]
 })
-export class CommentModule { }
+export class CommentsModule { }

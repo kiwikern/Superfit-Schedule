@@ -34,7 +34,7 @@ const fitnessRoutes: Routes = [
     {path: 'changes', component: ChangesComponent}
   ]
   },
-  {path: 'class', loadChildren: '../comment/comment.module#CommentModule'},
+  {path: 'class', loadChildren: '../comment/comments.module#CommentsModule'},
 ];
 
 @NgModule({
