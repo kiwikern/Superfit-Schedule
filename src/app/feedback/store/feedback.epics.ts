@@ -64,7 +64,7 @@ export class FeedbackEpics {
             return this.actions.loadFeedbackSuccess(response.feedbackList);
           })
           .catch(error => {
-            this.showErrorMessage(error, 'Laden');
+            // this.showErrorMessage(error, 'Laden');
             return of(this.actions.loadFeedbackError(error));
           })),
       action$ => action$
