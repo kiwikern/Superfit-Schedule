@@ -10,7 +10,7 @@
     "start:prod": "npm run start:local -- --prod -sm --watch=false --live-reload false",
     "start:sw": "npm run build && npm run start:liteserver",
     "start:liteserver": "lite-server -c liteserver_config.js",
-    "build": "npm run ng -- build --prod",
+    "build": "npm run ng -- build --prod --build-optimizer",
     "postbuild": "node src/service-worker/rollup.js",
     "test": "npm run ng -- test",
     "build-sm": "npm run ng -- build --prod --vendor-chunk=false -sm --output-hashing=none",
