@@ -2,18 +2,7 @@ h1 {
   margin: 10px 0;
 }
 
-md-card-subtitle, h4 {
-  margin: 0;
-}
-
 .max-size {
   width: 100%;
   max-width: 600px;
-}
-
-hr {
-  display: block;
-  margin: 20px 0 10px 0;
-  border-top: 1.5px solid rgba(0, 0, 0, .12);
-  width: 90%
 }

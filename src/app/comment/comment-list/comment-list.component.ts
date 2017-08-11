@@ -28,7 +28,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private cdRef: ChangeDetectorRef,
-              private mappingService: MappingService) {
+              public mappingService: MappingService) {
   }
 
   ngOnInit() {
@@ -37,7 +37,6 @@ export class CommentListComponent implements OnInit, OnDestroy {
       this.fitnessClass = this.findFitnessClass(schedulePerDay);
       this.comments = this.fitnessClass.comments;
       this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
-      console.log(this.otherClasses);
       this.cdRef.detectChanges();
     }).subscribe();
   }

@@ -5,6 +5,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { MappingService } from '../../workout/mapping.service';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -18,6 +19,9 @@ describe('CommentListComponent', () => {
         ],
       imports: [
         RouterTestingModule
+      ],
+      providers: [
+        MappingService
       ]
     })
     .compileComponents();

@@ -16,7 +16,8 @@ import {
   MdSliderModule,
   MdSnackBarModule,
   MdTabsModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdExpansionModule
 } from '@angular/material';
 import 'hammerjs';
 
@@ -38,7 +39,8 @@ import 'hammerjs';
     MdButtonToggleModule,
     MdTabsModule,
     MdDialogModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdExpansionModule
   ],
   exports: [
     CommonModule,
@@ -57,7 +59,8 @@ import 'hammerjs';
     MdButtonToggleModule,
     MdTabsModule,
     MdDialogModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdExpansionModule
   ]
 })
 export class SfsMaterialModule {

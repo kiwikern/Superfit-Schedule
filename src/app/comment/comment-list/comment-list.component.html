@@ -13,18 +13,17 @@
   </div>
   <sfs-comment-detail *ngFor="let comment of comments" [comment]="comment" class="max-size"></sfs-comment-detail>
 
-  <hr>
-
-  <div *ngIf="otherClasses && otherClasses.length > 0" class="max-size" fxLayout="column" fxLayoutGap="20px">
-  <div fxLayout="column" fxLayoutAlign="start center">
-    <h4>Weitere {{mappingService.getClassName(fitnessClass.workoutId)}} Kurse</h4>
-    <md-card-subtitle>Klicke auf den Kommentar, um zu dem zugehörigen Kurs zu gelangen.</md-card-subtitle>
-  </div>
-  <div *ngFor="let class of otherClasses" fxLayout="column" fxLayoutAlign="start stretch" class="max-size">
-    <sfs-comment-detail *ngFor="let comment of class.comments" [comment]="comment"
-                        [routerLink]="['/schedule/class/', class.id]"></sfs-comment-detail>
-  </div>
-  </div>
-
+  <md-expansion-panel class="max-size" *ngIf="otherClasses && otherClasses.length > 0">
+    <md-expansion-panel-header>
+      <mat-panel-title>Weitere {{mappingService.getClassName(fitnessClass.workoutId)}} Kurse</mat-panel-title>
+    </md-expansion-panel-header>
+    <md-card-subtitle>Klicke auf einen Kommentar, um zum zugehörigen Kurs zu gelangen.</md-card-subtitle>
+    <div fxLayout="column" fxLayoutGap="20px">
+    <div *ngFor="let class of otherClasses" fxLayout="column" fxLayoutAlign="start stretch" class="max-size" fxLayoutGap="20px">
+      <sfs-comment-detail *ngFor="let comment of class.comments" [comment]="comment"
+                          [routerLink]="['/schedule/class/', class.id]"></sfs-comment-detail>
+    </div>
+    </div>
+  </md-expansion-panel>
   <sfs-fab-button [icon]="'comment'" routerLink="new"></sfs-fab-button>
 </div>
