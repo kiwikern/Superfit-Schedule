@@ -50,7 +50,7 @@ export class AuthenticationStoreModule {
     // TODO: remove in sep 2017
     this.userId$.subscribe(userId => {
       if (!userId) {
-        const randomUserId = Date.now() + Math.random().toString(36).substring(2, 15);
+        const randomUserId = Date.now() + '_gen_' + Math.random().toString(36).substring(2, 15);
         authActions.setUserId(randomUserId);
       }
     });
