@@ -7,7 +7,8 @@
 
 This is a progressive web app providing an interactive schedule for the fitness classes at the [SuperFit](http://www.mysuperfit.com) gym in Berlin.
 ![lighthouse analysis](https://user-images.githubusercontent.com/2671139/27458374-f32805b4-57a8-11e7-9c02-5acd19c3ffc3.png)
-![start-page-mobile](https://cloud.githubusercontent.com/assets/2671139/26037491/f6a375bc-38f3-11e7-914d-a50f832bb50f.png) ![mobile_sidenav](https://cloud.githubusercontent.com/assets/2671139/26029647/b18b740c-383a-11e7-962b-cc172be4f14d.png)
+
+![sfs_feature_overview](https://user-images.githubusercontent.com/2671139/29234721-5ad775a6-7ef9-11e7-9450-3244c4846d75.gif)
 
 ## Features
 
