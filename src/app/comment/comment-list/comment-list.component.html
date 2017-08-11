@@ -8,7 +8,7 @@
   ></sfs-fitness-class>
   <md-spinner *ngIf="isLoading$ | async" style="width: 50px"></md-spinner>
   <div *ngIf="!comments || comments.length === 0" align="center" fxLayout="column">
-    <span>Dieser Kurse hat noch keine Kommentare.</span>
+    <span>Dieser Kurs hat noch keine Kommentare.</span>
     <span>Füge einen <a routerLink="new">neuen Kommentar</a> hinzu.</span>
   </div>
   <sfs-comment-detail *ngFor="let comment of comments" [comment]="comment"
