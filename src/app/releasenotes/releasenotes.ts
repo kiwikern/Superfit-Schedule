@@ -3,6 +3,41 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.14',
+    date: new Date(2017, 7, 11),
+    entries: [
+      {
+        title: 'Kommentare',
+        type: ChangeType.FEATURE,
+        description: `Ab jetzt kannst du über das Sprechblasensymbol im Kursplan zu jedem Kurs einen Kommentar
+        hinterlassen und die der anderen Mitglieder einsehen.
+         Schau dir an, wie voll der Kurs ist, was ihn besonders macht und welcher Trainer ihn gibt. Es werden weitere
+         Funktionalitäten wie Editieren, Löschen... folgen. Hast du einen Fehler bemerkt oder dir fehlt eine bestimmte
+         Funktionalität? Teile es mir über den Menüpunkt Feedback mit.`
+      },
+      {
+        title: 'Kursplantoolbar',
+        type: ChangeType.CHANGE,
+        description: `Die Kursplantoolbar enthält nun auch einen Link zu den Änderungen des Kursplans.`
+      },
+      {
+        title: 'Kursplanänderungen',
+        type: ChangeType.PERFORMANCE,
+        description: `Die Kursplanänderungen werden nun schneller dargstellt.`
+      },
+      {
+        title: 'Ladebildschirm',
+        type: ChangeType.CHANGE,
+        description: `Der Ladebildschirm passt zum Layout und enthält eine kurze Featurebeschreibung.`
+      },
+      {
+        title: 'Feedback',
+        type: ChangeType.CHANGE,
+        description: `Besseres Layout beim Hinzufügen von neuem Feedback.`
+      }
+    ]
+  },
+  {
     version: 'v2.13',
     date: new Date(2017, 6, 21),
     entries: [
