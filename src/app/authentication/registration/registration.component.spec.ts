@@ -10,6 +10,8 @@ import { PasswordInputComponent } from '../password-input/password-input.compone
 import { PasswordConfirmationInputComponent } from '../password-confirmation-input/password-confirmation-input.component';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { AuthenticationActions } from '../store/authentication.actions';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -29,7 +31,8 @@ describe('RegistrationComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         NoopAnimationsModule,
-        NgReduxTestingModule
+        NgReduxTestingModule,
+        RouterTestingModule
       ],
       providers: [
         {provide: AuthenticationActions, useClass: MockAuthActions}

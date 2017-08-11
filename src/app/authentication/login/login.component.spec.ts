@@ -9,6 +9,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { UserNameInputComponent } from '../user-name-input/user-name-input.component';
 import { MailAddressInputComponent } from '../mail-address-input/mail-address-input.component';
 import { PasswordInputComponent } from '../password-input/password-input.component';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -27,7 +29,8 @@ describe('LoginComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         NgReduxTestingModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        RouterTestingModule
       ],
       providers: [
         {provide: AuthenticationActions, useClass: MockAuthActions}

@@ -37,7 +37,8 @@ describe('AuthenticationEpics', () => {
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [
-          {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user', userId: 'id'}}
+          {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user', userId: 'id'}},
+          {type: UPDATE_LOCATION, payload: '/schedule'}
         ];
         mockBackendResponse(mockBackend, {token: 'token', userName: 'user', userId: 'id'}, 200);
         performAction(epics, action$, expectedOutputActions, done);
@@ -49,7 +50,6 @@ describe('AuthenticationEpics', () => {
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginSuccess('', '', ''));
         const expectedOutputActions = [
-          {type: UPDATE_LOCATION, payload: '/schedule'},
           {type: SyncActions.SYNC_ACTIVATE_REQUEST}
         ];
         mockBackendResponse(mockBackend, {token: 'token', userName: 'user'}, 200);

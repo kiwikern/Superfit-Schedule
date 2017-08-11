@@ -16,7 +16,7 @@ export class SchedulePage {
   }
 
   getFirstClassDay() {
-    return this.getFirstDisplayedElement(element.all(by.css('.mat-card >:last-child > span'))).getText();
+    return this.getFirstDisplayedElement(element.all(by.css('.mat-card >:last-child >:first-child >:last-child > span'))).getText();
   }
 
   getFirstClassTime() {

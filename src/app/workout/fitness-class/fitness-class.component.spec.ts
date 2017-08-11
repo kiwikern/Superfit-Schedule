@@ -10,6 +10,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FavoriteActions } from '../../fitness-schedule/store/favorites/favorite.actions';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('FitnessClassComponent', () => {
   let component: FitnessClassComponent;
@@ -21,7 +22,8 @@ describe('FitnessClassComponent', () => {
       imports: [
         SfsMaterialModule,
         FlexLayoutModule,
-        NgReduxTestingModule
+        NgReduxTestingModule,
+        RouterTestingModule
       ],
       providers: [
         MappingService,

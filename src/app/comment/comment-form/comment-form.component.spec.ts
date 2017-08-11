@@ -7,6 +7,9 @@ import { MdAutocompleteModule, MdInputModule } from '@angular/material';
 import { HighlightService } from '../highlight.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from '../../authentication/store/auth-service/auth.service';
+import { AuthenticationActions } from '../../authentication/store/authentication.actions';
+import { ScheduleActions } from '../../fitness-schedule/store/schedule/schedule.actions';
 
 describe('CommentFormComponent', () => {
   let component: CommentFormComponent;
@@ -25,7 +28,10 @@ describe('CommentFormComponent', () => {
         NoopAnimationsModule
       ],
       providers: [
-        HighlightService
+        HighlightService,
+        AuthService,
+        {provide: AuthenticationActions, useClass: MockAuthActions},
+        {provide: ScheduleActions, useValue: ''}
       ]
     })
       .compileComponents();
@@ -41,3 +47,8 @@ describe('CommentFormComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockAuthActions {
+  needsLogin() {
+  }
+}

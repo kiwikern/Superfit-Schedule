@@ -60,7 +60,7 @@ describe('Navigation', () => {
 
   it('should navigate to account, redirect to login and show title', () => {
     browser.get('/auth');
-    expect(page.getFirstCardTitle()).toEqual('Login');
+    expect(page.getFirstCardTitle()).toEqual('Registrieren');
   });
 
   it('should navigate to register and show title', () => {
