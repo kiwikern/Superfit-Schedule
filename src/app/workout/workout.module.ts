@@ -5,12 +5,14 @@ import { MappingService } from './mapping.service';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TimePeriodComponent } from './fitness-class/time-period/time-period.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     SfsMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule
   ],
   declarations: [
     FitnessClassComponent,

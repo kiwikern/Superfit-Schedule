@@ -1,21 +1,24 @@
 <md-card fxLayout="column">
-  <div fxLayout="row">
+  <div fxLayout="row" fxLayoutWrap>
     <div>
       <md-card-subtitle>{{comment.userName}} ({{comment.date | date:'mediumDate'}})</md-card-subtitle>
-      <md-card-subtitle>
-        Trainer:
-        <span *ngFor="let instructor of comment.instructors; let last = last">
-        {{instructor}}{{last ? '' : ', '}}
-      </span>
-      </md-card-subtitle>
     </div>
     <span fxFlex></span>
-    <md-icon *ngFor="let i of comment.attendance | repeat" color="primary">people</md-icon>
-    <md-icon *ngFor="let i of (3 - comment.attendance) | repeat">people_outline</md-icon>
+    <div *ngIf="comment.attendance" fxLayout="row" align="right">
+      <md-icon *ngFor="let i of comment.attendance | repeat" color="primary">people</md-icon>
+      <md-icon *ngFor="let i of (5 - comment.attendance) | repeat">people_outline</md-icon>
+    </div>
   </div>
+  <md-card-subtitle *ngIf="comment.instructors && comment.instructors.length > 0">
+    Trainer:
+    <span *ngFor="let instructor of comment.instructors; let last = last">
+        {{instructor}}{{last ? '' : ', '}}
+      </span>
+  </md-card-subtitle>
   <md-card-content>
     {{comment.text}}
   </md-card-content>
+  <span fxFlex *ngIf="!comment.highlights || comment.highlights.length === 0"></span>
   <fieldset *ngIf="comment.highlights && comment.highlights.length > 0">
     <legend>Highlights</legend>
     <sfs-highlights [highlights]="comment.highlights"></sfs-highlights>

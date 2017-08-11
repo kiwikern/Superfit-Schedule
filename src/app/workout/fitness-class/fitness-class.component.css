@@ -5,8 +5,8 @@ md-card {
 
 .new {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -5px;
+  right: -5px;
 }
 
 .class-headline {
@@ -20,4 +20,13 @@ md-card-subtitle {
 
 .removed-class {
   text-decoration: line-through;
+}
+
+.overlay {
+  color: lightgray;
+  position: absolute;
+  top: -1px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

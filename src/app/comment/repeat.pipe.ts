@@ -6,7 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RepeatPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return (new Array(value)).fill(1);
+    if (value && value > 0) {
+      return (new Array(value)).fill(1);
+    }
   }
 
 }

@@ -4,7 +4,7 @@
     <md-card-subtitle>
       Teile der SFS-Communitiy mit, was diesen Kurs besonders macht.
     </md-card-subtitle>
-    <form #commentForm="ngForm" (ngSubmit)="onSubmit()" fxFill>
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit()" fxFill (keydown.enter)="$event.preventDefault()">
 
       <md-card-content fxLayout="column">
         <md-input-container>
@@ -21,35 +21,44 @@
           <sfs-rating
             [selectedIcon]="'people'"
             [unselectedIcon]="'people_outline'"
-            [scaleSize]="3"
+            [scaleSize]="5"
             [color]="'primary'"
             (change)="attendance = $event"></sfs-rating>
         </fieldset>
 
         <fieldset>
           <legend>Highlights</legend>
-          <sfs-highlights-selection></sfs-highlights-selection>
+          <sfs-highlights-selection (onSelect)="setHighlights($event)"></sfs-highlights-selection>
         </fieldset>
 
-        <md-input-container>
-          <md-chip-list mdPrefix #chipList1>
-            <md-chip *ngFor="let instructor of instructors">
-              {{instructor}}
-              <md-icon mdChipRemove>cancel</md-icon>
-            </md-chip>
-          </md-chip-list>
-          <input mdInput
-                 name="instructor"
-                 placeholder="Trainer"
-                 [mdAutocomplete]="instructorsAuto"
-                 [formControl]="instructorControl">
-        </md-input-container>
+        <div fxLayoutAlign="start center" fxLayout="row">
+          <md-input-container fxFlex>
+            <input mdInput
+                   name="instructor"
+                   placeholder="Trainer"
+                   (keydown.enter)="addInstructor()"
+                   [mdAutocomplete]="instructorsAuto"
+                   [formControl]="instructorControl">
+          </md-input-container>
+          <button md-button type="button" (click)="addInstructor()"
+                  [disabled]="!instructorControl.value || instructorControl.value.length < 2">
+            Hinzufügen
+          </button>
+        </div>
         <md-autocomplete #instructorsAuto="mdAutocomplete">
-          <md-option *ngFor="let option of filteredInstructors | async" [value]="option">
+          <md-option *ngFor="let option of filteredInstructors | async" [value]="option"
+                     (click)="addInstructor()">
             {{ option }}
           </md-option>
         </md-autocomplete>
 
+        <md-chip-list mdPrefix #chipList>
+          <md-chip *ngIf="instructors.length === 0">Keine Trainer ausgewählt</md-chip>
+          <md-chip *ngFor="let instructor of instructors" fxLayout="row" fxLayoutAlign="center center">
+            {{instructor}}
+            <md-icon mdChipRemove (click)="removeInstructor(instructor)">cancel</md-icon>
+          </md-chip>
+        </md-chip-list>
       </md-card-content>
 
       <sfs-fab-button [icon]="'send'" [type]="'submit'" [hidden]="commentForm.pristine"

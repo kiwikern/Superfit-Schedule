@@ -9,6 +9,7 @@ import { FavoriteActions } from './favorites/favorite.actions';
 import { ScheduleParserService } from './schedule/schedule-parser.service';
 import { ChangesActions } from './changes/changes.actions';
 import { ChangesEpics } from './changes/changes.epics';
+import { CommentsEpics } from './schedule/comments.epics';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ChangesEpics } from './changes/changes.epics';
     FavoriteActions,
     ScheduleParserService,
     ChangesActions,
-    ChangesEpics
+    ChangesEpics,
+    CommentsEpics
   ]
 
 })

@@ -16,6 +16,7 @@ import { ResetPasswordEpics } from '../authentication/store/reset-password.epics
 import { ChangePasswordEpics } from '../authentication/store/change-password.epics';
 import { ReleasenotesEpics } from '../releasenotes/store/releasenotes.epics';
 import { FeedbackEpics } from '../feedback/store/feedback.epics';
+import { CommentsEpics } from '../fitness-schedule/store/schedule/comments.epics';
 
 @Injectable()
 export class RootEpics {
@@ -29,6 +30,7 @@ export class RootEpics {
               private registrationEpics: RegistrationEpics,
               private releasenotesEpics: ReleasenotesEpics,
               private feedbackEpics: FeedbackEpics,
+              private commentsEpics: CommentsEpics,
               private changeEpics: ChangesEpics) {
   }
 
@@ -39,12 +41,14 @@ export class RootEpics {
       createEpicMiddleware(this.authenticationEpics.createEpics()[0]),
       createEpicMiddleware(this.authenticationEpics.createEpics()[1]),
       createEpicMiddleware(this.authenticationEpics.createEpics()[2]),
+      createEpicMiddleware(this.authenticationEpics.createEpics()[3]),
       // ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
       createEpicMiddleware(this.syncRequestedEpics.createEpics()),
       createEpicMiddleware(this.syncActivatedEpics.createEpics()),
       createEpicMiddleware(this.registrationEpics.createEpics()),
       createEpicMiddleware(this.changeEpics.createEpics()),
       createEpicMiddleware(this.resetPasswordEpics.createEpics()),
+      createEpicMiddleware(this.commentsEpics.createEpics()),
       createEpicMiddleware(this.releasenotesEpics.createEpics()[0]),
       createEpicMiddleware(this.releasenotesEpics.createEpics()[1]),
       createEpicMiddleware(this.feedbackEpics.createEpics()[0]),

@@ -27,7 +27,7 @@
         <button md-raised-button color="accent" type="submit" [disabled]="!password || loginForm.invalid">
           Einloggen
         </button>
-        <a md-raised-button routerLink="../registration">Registrieren</a>
+        <a md-raised-button routerLink="../registration" queryParamsHandling="merge">Registrieren</a>
       </md-card-actions>
     </form>
   </md-card>

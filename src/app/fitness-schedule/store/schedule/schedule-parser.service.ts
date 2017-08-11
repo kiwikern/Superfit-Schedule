@@ -48,7 +48,8 @@ export class ScheduleParserService {
         workoutId: this.getClassName(course.course, course.type),
         type: course.type,
         gym: !isNullOrUndefined(this.GymMapping[course.studio]) ? this.GymMapping[course.studio]  : course.studio,
-        language: this.getClassLanguage(course.course)
+        language: this.getClassLanguage(course.course),
+        comments: course.comments
       };
       classes.push(fitnessClass);
     }

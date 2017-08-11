@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { FitnessClassesPerDay } from '../../fitness-schedule/interfaces/fitness-classes-per-day';
 import { Subscription } from 'rxjs/Subscription';
 import { ClassComment } from '../class-comment';
-import { Highlight } from '../highlights.enum';
 
 
 @Component({
@@ -16,31 +15,30 @@ import { Highlight } from '../highlights.enum';
   styleUrls: ['./comment-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CommentListComponent implements OnInit {
+export class CommentListComponent implements OnInit, OnDestroy {
 
   @select(['schedule', 'schedulePerDay']) schedulePerDay$;
+  @select(['schedule', 'isLoading']) isLoading$;
   id: string;
   fitnessClass: FitnessClass;
   subscription: Subscription;
-  comments: ClassComment[] = [{
-    attendance: 2,
-    workoutId: '',
-    highlights: [Highlight.Encouragement, Highlight.Exhausting],
-    instructors: ['Marius', 'Yvonne'],
-    text: 'Das ist der Kommentar',
-    userName: 'Kiwi',
-    userId: '',
-    date: new Date()
-  }];
+  comments: ClassComment[] = [];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private cdRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.subscription = Observable.combineLatest(this.route.paramMap, this.schedulePerDay$, (paramMap: ParamMap, schedulePerDay: any) => {
       this.id = paramMap.get('id');
       this.fitnessClass = this.findFitnessClass(schedulePerDay);
+      this.comments = this.fitnessClass.comments;
+      this.cdRef.detectChanges();
     }).subscribe();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   private findFitnessClass(schedulePerDay: FitnessClassesPerDay[]): FitnessClass {

@@ -17,24 +17,25 @@ export class AuthenticationActions {
   static readonly CHANGE_PASSWORD_REQUESTED = 'CHANGE_PASSWORD_REQUESTED';
   static readonly CHANGE_PASSWORD_FAILED = 'CHANGE_PASSWORD_FAILED';
   static readonly CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS';
+  static readonly NEEDS_LOGIN = 'NEEDS_LOGIN';
   static readonly SET_USER_ID = 'SET_USER_ID';
 
   constructor(private angulartics: Angulartics2) {
   }
 
-  loginWithUserName(userName: string, password: string) {
+  loginWithUserName(userName: string, password: string, redirectTo?: string) {
     this.angulartics.eventTrack.next({action: 'loginWithUserName', properties: {category: userName}});
     return {
       type: AuthenticationActions.LOGIN_REQUESTED,
-      payload: {userName, password}
+      payload: {userName, password, redirectTo}
     };
   }
 
-  loginWithMailAddress(mailAddress: string, password: string) {
+  loginWithMailAddress(mailAddress: string, password: string, redirectTo?: string) {
     this.angulartics.eventTrack.next({action: 'loginWithMailAddress', properties: {category: mailAddress}});
     return {
       type: AuthenticationActions.LOGIN_REQUESTED,
-      payload: {mailAddress, password}
+      payload: {mailAddress, password, redirectTo}
     };
   }
 
@@ -128,6 +129,15 @@ export class AuthenticationActions {
     return {
       type: AuthenticationActions.SET_USER_ID,
       payload: id
+    };
+  }
+
+  @dispatch()
+  needsLogin(route: string, message: string) {
+    this.angulartics.eventTrack.next({action: 'needsLogin', properties: {category: route}});
+    return {
+      type: AuthenticationActions.NEEDS_LOGIN,
+      payload: {route, message}
     };
   }
 }

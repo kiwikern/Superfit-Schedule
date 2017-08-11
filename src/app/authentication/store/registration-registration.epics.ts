@@ -25,7 +25,8 @@ export class RegistrationEpics {
         .flatMap(response => {
           this.showSnackBar('Registrierung erfolgreich.');
           const body = response.json();
-          return of(this.routerActions.navigateTo('/schedule'),
+          const redirectTo = credentials.redirectTo || '/schedule';
+          return of(this.routerActions.navigateTo(redirectTo),
             this.actions.registerSuccess(body.userName, body.token, body.userId),
             this.syncActions.activateSync());
         })

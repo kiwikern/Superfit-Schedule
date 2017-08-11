@@ -24,7 +24,12 @@ export class AuthenticationEpics {
         .ofType(AuthenticationActions.LOGIN_REQUESTED)
         .map(action => action.payload)
         .switchMap(credentials => this.requestLogin(credentials)
-          .map(response => this.actions.loginSuccess(response.json().userName, response.json().token, response.json().userId))
+          .flatMap(response => {
+            const redirectTo = credentials.redirectTo || '/schedule';
+            return of(
+              this.actions.loginSuccess(response.json().userName, response.json().token, response.json().userId),
+              <any>this.routerActions.navigateTo(redirectTo));
+          })
           .catch(error => {
             this.showErrorMessage(error);
             return of(this.actions.loginFailed());
@@ -34,11 +39,15 @@ export class AuthenticationEpics {
         .map(() => this.syncActions.deactivateSync()),
       action$ => action$
         .ofType(AuthenticationActions.LOGIN_SUCCESS)
-        .flatMap(() => {
+        .map(() => {
           this.showSnackBar('Login erfolgreich.');
-          return of(this.routerActions.navigateTo('/schedule'),
-            this.syncActions.activateSync()
-          );
+          return this.syncActions.activateSync();
+        }),
+      action$ => action$
+        .ofType(AuthenticationActions.NEEDS_LOGIN)
+        .map(action => {
+          this.showSnackBar(action.payload.message);
+          return this.routerActions.navigateTo(`/auth?route=${action.payload.route}`);
         })
     ];
   }

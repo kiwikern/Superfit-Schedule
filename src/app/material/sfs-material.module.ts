@@ -6,16 +6,17 @@ import {
   MdCardModule,
   MdCheckboxModule,
   MdChipsModule,
+  MdDialogModule,
   MdIconModule,
   MdInputModule,
+  MdProgressSpinnerModule,
   MdRadioModule,
   MdSelectModule,
   MdSidenavModule,
   MdSliderModule,
   MdSnackBarModule,
-  MdToolbarModule,
   MdTabsModule,
-  MdDialogModule
+  MdToolbarModule
 } from '@angular/material';
 import 'hammerjs';
 
@@ -36,7 +37,8 @@ import 'hammerjs';
     MdInputModule,
     MdButtonToggleModule,
     MdTabsModule,
-    MdDialogModule
+    MdDialogModule,
+    MdProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -54,7 +56,8 @@ import 'hammerjs';
     MdInputModule,
     MdButtonToggleModule,
     MdTabsModule,
-    MdDialogModule
+    MdDialogModule,
+    MdProgressSpinnerModule
   ]
 })
 export class SfsMaterialModule {

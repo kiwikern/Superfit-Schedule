@@ -2,6 +2,7 @@ import { IPayloadAction } from '../../../store/payload-action.types';
 import { ScheduleState } from './schedule-state';
 import { ScheduleActions } from './schedule.actions';
 import { FitnessClassesPerDay } from '../../interfaces/fitness-classes-per-day';
+
 /**
  * Created by Kim on 02.04.2017.
  */
@@ -32,6 +33,24 @@ export function scheduleReducer(state: ScheduleState = INITIAL_STATE,
         schedulePerDay: state.schedulePerDay || [],
         isLoading: false,
         error: action.error
+      };
+    case ScheduleActions.COMMENT_ADDED_REQUEST:
+      return {
+        schedulePerDay: state.schedulePerDay.slice(),
+        isLoading: true,
+        error: state.error
+      };
+    case ScheduleActions.COMMENT_ADDED_SUCCESS:
+      return {
+        schedulePerDay: state.schedulePerDay.slice(),
+        isLoading: false,
+        error: null
+      };
+    case ScheduleActions.COMMENT_ADDED_FAIL:
+      return {
+        schedulePerDay: state.schedulePerDay.slice(),
+        isLoading: false,
+        error: state.error
       };
   }
 
