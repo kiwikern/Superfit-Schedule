@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { FitnessClassesPerDay } from '../../fitness-schedule/interfaces/fitness-classes-per-day';
 import { Subscription } from 'rxjs/Subscription';
 import { ClassComment } from '../class-comment';
+import { MappingService } from '../../workout/mapping.service';
 
 
 @Component({
@@ -21,11 +22,13 @@ export class CommentListComponent implements OnInit, OnDestroy {
   @select(['schedule', 'isLoading']) isLoading$;
   id: string;
   fitnessClass: FitnessClass;
+  otherClasses: FitnessClass[];
   subscription: Subscription;
   comments: ClassComment[] = [];
 
   constructor(private route: ActivatedRoute,
-              private cdRef: ChangeDetectorRef) {
+              private cdRef: ChangeDetectorRef,
+              private mappingService: MappingService) {
   }
 
   ngOnInit() {
@@ -33,6 +36,8 @@ export class CommentListComponent implements OnInit, OnDestroy {
       this.id = paramMap.get('id');
       this.fitnessClass = this.findFitnessClass(schedulePerDay);
       this.comments = this.fitnessClass.comments;
+      this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
+      console.log(this.otherClasses);
       this.cdRef.detectChanges();
     }).subscribe();
   }
@@ -46,5 +51,14 @@ export class CommentListComponent implements OnInit, OnDestroy {
       .map(s => s.classes)
       .reduce((f1, f2) => f1.concat(f2), []);
     return allClasses.find(f => f.id === this.id);
+  }
+
+  private findWorkoutsWithComments(schedulePerDay: FitnessClassesPerDay[]): FitnessClass[] {
+    return schedulePerDay
+      .map(s => s.classes)
+      .reduce((f1, f2) => f1.concat(f2), [])
+      .filter(f => f.workoutId === this.fitnessClass.workoutId)
+      .filter(f => f.id !== this.fitnessClass.id)
+      .filter(f => f.comments && f.comments.length > 0);
   }
 }
