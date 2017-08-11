@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackActions } from '../store/feedback.actions';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'sfs-feedback-form',
@@ -15,7 +16,9 @@ export class FeedbackFormComponent implements OnInit {
   overallRating: number;
   performanceRating: number;
 
-  constructor(private actions: FeedbackActions) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private actions: FeedbackActions) {
   }
 
   ngOnInit() {
@@ -24,6 +27,7 @@ export class FeedbackFormComponent implements OnInit {
   onSubmit() {
     const feedback = {text: this.text, device: this.device, os: this.os, browser: this.browser};
     this.actions.sendFeedback(feedback);
+    this.router.navigate(['..'], {relativeTo: this.route});
   }
 
 }
