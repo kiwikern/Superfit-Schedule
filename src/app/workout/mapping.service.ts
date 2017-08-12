@@ -120,6 +120,7 @@ export class MappingService {
 
   getFitnessClassNameMapping() {
     return {
+      almistep: 'A LMI Step',
       bauchxp: 'Bauch Express',
       bbp: 'Bauch Beine Po',
       bodyattack: 'BodyAttack',
@@ -131,7 +132,6 @@ export class MappingService {
       bodyjam: 'BodyJam',
       bodypump: 'BodyPump',
       bodypumpxp: 'BodyPump Express',
-      bodystep: 'BodyStep',
       bodyvive: 'BodyVive',
       bodyvivexp: 'BodyVive Express',
       cycle: 'Cycle',

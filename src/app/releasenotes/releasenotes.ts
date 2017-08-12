@@ -34,6 +34,11 @@ export const releasenotes: Release[] = [
         title: 'Feedback',
         type: ChangeType.CHANGE,
         description: `Besseres Layout beim Hinzufügen von neuem Feedback.`
+      },
+      {
+        title: 'BodyStep',
+        type: ChangeType.FIX,
+        description: `BodyStep wurde vollständig zu LMI Step umbenannt.`
       }
     ]
   },
