@@ -36,7 +36,8 @@
     <button md-icon-button *ngIf="!wasRemoved"
             [routerLink]="['/schedule/class', fitnessClass.id]"
             style="margin-top: -6px; margin-bottom: -6px;">
-      <md-icon>chat_bubble</md-icon>
+      <md-icon *ngIf="fitnessClass.comments && fitnessClass.comments.length > 0; else empty">chat_bubble</md-icon>
+      <ng-template #empty><md-icon>chat_bubble_outline</md-icon></ng-template>
       <span class="overlay" *ngIf="fitnessClass.comments">
         {{fitnessClass.comments.length > 9 ? '+' : fitnessClass.comments.length}}
       </span>
