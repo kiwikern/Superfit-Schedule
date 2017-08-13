@@ -2,17 +2,42 @@
   margin: 8px;
 }
 
-.sidenav-margin {
-  margin-top: 64px;
+.sidenav-container {
+  min-height: 100vh;
+  height: auto !important;
+}
+
+.sidenav-content {
+  height: auto !important;
+  min-height: 100%;
+  padding-top: calc(64px + 8px);
 }
 
 @media screen and (max-width: 600px) {
-  .sidenav-margin {
-    margin-top: 56px;
+  .sidenav-content {
+    padding-top: calc(56px + 8px);
   }
 }
 
+.full-height {
+  height: 100vh;
+}
+
 .sidenav-menu {
+  position: fixed;
+  top: 64px;
   padding-top: 20px;
   min-width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+  .sidenav-menu {
+    top: 54px;
+  }
+}
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 10
 }

@@ -1,4 +1,4 @@
-<md-toolbar color="primary" style="position: fixed; top: 0; z-index: 1">
+<md-toolbar color="primary" class="toolbar">
   <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-md="true" id="nav_burger-menu" aria-label="menu"
           *ngIf="!isChild"
           angulartics2On="click" angularticsEvent="OpenBurgerMenu">
@@ -12,12 +12,12 @@
   <sfs-navigation fxHide.lt-lg="true" [fullWidth]="false"></sfs-navigation>
   <sfs-sync-status></sfs-sync-status>
 </md-toolbar>
-<md-sidenav-container fullscreen class="sidenav-margin">
+<md-sidenav-container class="sidenav-container">
   <md-sidenav #sidenav class="sidenav-menu">
     <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
                     [sideNav]="sidenav"></sfs-navigation>
   </md-sidenav>
-  <div class="margin">
+  <div class="sidenav-content">
     <router-outlet></router-outlet>
   </div>
 </md-sidenav-container>

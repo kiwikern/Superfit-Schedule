@@ -21,6 +21,11 @@ export const releasenotes: Release[] = [
         description: `Die Kursplantoolbar enthält nun auch einen Link zu den Änderungen des Kursplans.`
       },
       {
+        title: 'Kursplantoolbar',
+        type: ChangeType.FIX,
+        description: `Die Adressleiste wird beim Herunterscrollen in mobilen Browsern versteckt.`
+      },
+      {
         title: 'Kursplanänderungen',
         type: ChangeType.PERFORMANCE,
         description: `Die Kursplanänderungen werden nun schneller dargstellt.`
