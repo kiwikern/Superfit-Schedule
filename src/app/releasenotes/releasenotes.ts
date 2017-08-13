@@ -44,6 +44,11 @@ export const releasenotes: Release[] = [
         title: 'BodyStep',
         type: ChangeType.FIX,
         description: `BodyStep wurde vollständig zu LMI Step umbenannt.`
+      },
+      {
+        title: 'Scrollverhalten',
+        type: ChangeType.CHANGE,
+        description: `Das Scrollverhalten hat sich verbessert.`
       }
     ]
   },

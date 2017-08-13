@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { MappingService } from '../mapping.service';
 import { NgRedux } from '@angular-redux/store';
 import { FitnessClass } from '../fitness-class';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
   selector: 'sfs-fitness-class',
   templateUrl: './fitness-class.component.html',
   styleUrls: ['./fitness-class.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FitnessClassComponent implements OnInit, OnDestroy {
   @Input() gyms = [];
@@ -23,6 +23,7 @@ export class FitnessClassComponent implements OnInit, OnDestroy {
   @Input() isFavorite = false;
   @Input() showFavoriteButton = true;
   @Input() isNew = false;
+  @HostBinding('attr.id') id;
   isOnlyOneGymSelected: boolean = false;
   subscriptions: Subscription[] = [];
 
@@ -34,6 +35,7 @@ export class FitnessClassComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isOnlyOneGymSelected = this.gyms && this.gyms.length === 1;
+    this.id = this.fitnessClass.id;
   }
 
   ngOnDestroy() {

@@ -6,6 +6,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
 import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
+import { ScrollService } from '../../common/scroll.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,6 +26,7 @@ describe('AppComponent', () => {
       ],
       providers: [
         {provide: SwUpdatesService, useClass: MockService},
+        {provide: ScrollService, useClass: MockService},
         {provide: Angulartics2, useValue: mockAngulartics},
         {provide: Angulartics2GoogleAnalytics, useValue: mockAngulartics},
         {provide: Angulartics2Piwik, useValue: mockAngulartics},
