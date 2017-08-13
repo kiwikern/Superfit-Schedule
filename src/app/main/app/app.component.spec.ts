@@ -4,8 +4,7 @@ import { AppComponent } from './app.component';
 import { Component, Injectable, Input } from '@angular/core';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NavigationComponent } from '../navigation/navigation.component';
-import { SwUpdateNotificationsService } from '../../sw-updates/sw-update-notifications.service';
+import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
 import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
 
 describe('AppComponent', () => {
@@ -25,7 +24,7 @@ describe('AppComponent', () => {
         RouterTestingModule.withRoutes([{path: '', children: []}])
       ],
       providers: [
-        {provide: SwUpdateNotificationsService, useClass: MockService},
+        {provide: SwUpdatesService, useClass: MockService},
         {provide: Angulartics2, useValue: mockAngulartics},
         {provide: Angulartics2GoogleAnalytics, useValue: mockAngulartics},
         {provide: Angulartics2Piwik, useValue: mockAngulartics},

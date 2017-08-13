@@ -2,19 +2,17 @@ import { NgModule } from '@angular/core';
 import { MdSnackBarModule } from '@angular/material';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { globalProvider } from './global.value';
-import { SwUpdateNotificationsService } from './sw-update-notifications.service';
 import { SwUpdatesService } from './sw-updates.service';
+import { SfsCommonModule } from '../common/common.module';
 
 
 @NgModule({
   imports: [
+    SfsCommonModule,
     MdSnackBarModule,
     ServiceWorkerModule
   ],
   providers: [
-    globalProvider,
-    SwUpdateNotificationsService,
     SwUpdatesService
   ]
 })

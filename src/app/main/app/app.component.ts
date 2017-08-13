@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SwUpdateNotificationsService } from '../../sw-updates/sw-update-notifications.service';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
+import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
 
 @Component({
   selector: 'sfs-root',
@@ -16,14 +16,14 @@ export class AppComponent implements OnInit {
   @select(['authentication', 'userName']) userName$: Observable<string>;
   @select() router$: Observable<string>;
 
-  constructor(private swUpdateNotifications: SwUpdateNotificationsService,
+  constructor(private swUpdatesService: SwUpdatesService,
               private angulartics: Angulartics2,
               googleAnalytics: Angulartics2GoogleAnalytics,
               piwik: Angulartics2Piwik) {
   }
 
   ngOnInit() {
-    this.swUpdateNotifications.enable();
+    this.swUpdatesService.updateActivated.subscribe();
     this.userName$.subscribe(userName => this.angulartics.setUsername.next(userName));
     this.router$.subscribe(path => this.isChild = this.isChildPath(path));
   }
