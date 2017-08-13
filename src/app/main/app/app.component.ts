@@ -3,6 +3,7 @@ import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
 import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
+import { ScrollService } from '../../common/scroll.service';
 
 @Component({
   selector: 'sfs-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(private swUpdatesService: SwUpdatesService,
               private angulartics: Angulartics2,
+              private scrollService: ScrollService,
               googleAnalytics: Angulartics2GoogleAnalytics,
               piwik: Angulartics2Piwik) {
   }
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit {
     this.swUpdatesService.updateActivated.subscribe();
     this.userName$.subscribe(userName => this.angulartics.setUsername.next(userName));
     this.router$.subscribe(path => this.isChild = this.isChildPath(path));
+    this.router$.subscribe(() => this.scrollService.scrollToTop());
   }
 
   private isChildPath(path: string): boolean {

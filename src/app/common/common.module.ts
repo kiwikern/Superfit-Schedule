@@ -5,6 +5,7 @@ import { RatingComponent } from './rating/rating.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Logger } from './logger.service';
+import { ScrollService } from './scroll.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { Logger } from './logger.service';
     FabButtonComponent
   ],
   providers: [
-    Logger
+    Logger,
+    ScrollService
   ],
   exports: [
     RatingComponent,
