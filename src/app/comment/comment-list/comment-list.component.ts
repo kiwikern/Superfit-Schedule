@@ -3,11 +3,13 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
 import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/takeUntil';
 import { Observable } from 'rxjs/Observable';
 import { FitnessClassesPerDay } from '../../fitness-schedule/interfaces/fitness-classes-per-day';
 import { Subscription } from 'rxjs/Subscription';
 import { ClassComment } from '../class-comment';
 import { MappingService } from '../../workout/mapping.service';
+import { Subject } from 'rxjs/Subject';
 
 
 @Component({
@@ -20,11 +22,13 @@ export class CommentListComponent implements OnInit, OnDestroy {
 
   @select(['schedule', 'schedulePerDay']) schedulePerDay$;
   @select(['schedule', 'isLoading']) isLoading$;
+  isOtherPanelExpanded: boolean = false;
   id: string;
   fitnessClass: FitnessClass;
   otherClasses: FitnessClass[];
   subscription: Subscription;
   comments: ClassComment[] = [];
+  private onDestroy = new Subject();
 
   constructor(private route: ActivatedRoute,
               private cdRef: ChangeDetectorRef,
@@ -37,12 +41,16 @@ export class CommentListComponent implements OnInit, OnDestroy {
       this.fitnessClass = this.findFitnessClass(schedulePerDay);
       this.comments = this.fitnessClass.comments;
       this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
+      if (!this.comments || this.comments.length < 1) {
+        setTimeout(() => this.isOtherPanelExpanded = true, 500);
+      }
       this.cdRef.detectChanges();
-    }).subscribe();
+    }).takeUntil(this.onDestroy)
+      .subscribe();
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.onDestroy.next();
   }
 
   private findFitnessClass(schedulePerDay: FitnessClassesPerDay[]): FitnessClass {
