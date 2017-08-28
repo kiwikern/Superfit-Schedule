@@ -4,9 +4,10 @@ import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationEpics {
@@ -15,6 +16,7 @@ export class AuthenticationEpics {
               private actions: AuthenticationActions,
               private snackBar: MdSnackBar,
               private routerActions: RouterActions,
+              private router: Router,
               private syncActions: SyncActions) {
   }
 
@@ -46,8 +48,12 @@ export class AuthenticationEpics {
       action$ => action$
         .ofType(AuthenticationActions.NEEDS_LOGIN)
         .map(action => {
-          this.showSnackBar(action.payload.message);
-          return this.routerActions.navigateTo(`/auth?route=${action.payload.route}`);
+          const redirectRoute = action.payload.route;
+          const backRoute = redirectRoute.substr(0, redirectRoute.lastIndexOf('/'));
+          this.showSnackBar(action.payload.message, 'Zurück')
+            .onAction()
+            .subscribe(() => this.router.navigate([backRoute]));
+          return this.routerActions.navigateTo(`/auth?route=${redirectRoute}`);
         })
     ];
   }
@@ -69,8 +75,8 @@ export class AuthenticationEpics {
     this.showSnackBar(`${errorMessage}${errorInfo ? ' ' + errorInfo : ''}`);
   }
 
-  private showSnackBar(message: string) {
-    this.snackBar.open(message, null, {duration: 5000});
+  private showSnackBar(message: string, action?: string): MdSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {duration: 5000});
   }
 
   private requestLogin(credentials) {
