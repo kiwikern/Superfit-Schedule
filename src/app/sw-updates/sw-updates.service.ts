@@ -13,6 +13,7 @@ import 'rxjs/add/operator/takeUntil';
 
 import { Logger } from '../common/logger.service';
 import { MdSnackBar } from '@angular/material';
+import { Angulartics2 } from 'angulartics2';
 
 
 /**
@@ -36,11 +37,13 @@ export class SwUpdatesService implements OnDestroy {
     .takeUntil(this.onDestroy)
     .do(evt => this.log(`Update event: ${JSON.stringify(evt)}`))
     .filter(({type}) => type === 'activation')
+    .do(() => this.angulartics.eventTrack.next({action: 'updateSW', properties: {}}))
     .do(() => this.showSnackBar())
     .map(({version}) => version);
 
   constructor(private logger: Logger,
               private sw: NgServiceWorker,
+              private angulartics: Angulartics2,
               private snackBar: MdSnackBar) {
     this.checkForUpdateSubj
       .debounceTime(this.checkInterval)
