@@ -37,7 +37,7 @@ export class SwUpdatesService implements OnDestroy {
     .takeUntil(this.onDestroy)
     .do(evt => this.log(`Update event: ${JSON.stringify(evt)}`))
     .filter(({type}) => type === 'activation')
-    .do(() => this.angulartics.eventTrack.next({action: 'updateSW', properties: {}}))
+    .do(({version}) => this.angulartics.eventTrack.next({action: 'updateSW', properties: {version}}))
     .do(() => this.showSnackBar())
     .map(({version}) => version);
 
