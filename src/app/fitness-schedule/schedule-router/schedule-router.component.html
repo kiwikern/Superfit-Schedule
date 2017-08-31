@@ -1,8 +1,9 @@
 <div class="toolbar-margin">
   <router-outlet></router-outlet>
 </div>
-<md-toolbar fxLayoutAlign="center center" fxHide.gt-md="true" class="toolbar">
-  <div fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="center center">
+<md-toolbar fxHide.gt-md="true" class="toolbar" fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFill
+  >
     <sfs-bottom-navigation-button [scheduleRoute]="'/'"
                                   [icon]="'event'"
                                   [activeRoute]="router.url"
@@ -18,10 +19,10 @@
     <sfs-bottom-navigation-button [scheduleRoute]="'/changes'"
                                   [icon]="'swap_horiz'"
                                   [activeRoute]="router.url"
-                                  [name]="'Änderungen'"></sfs-bottom-navigation-button>
+                                  [name]="'Änderung'"></sfs-bottom-navigation-button>
     <sfs-bottom-navigation-button [scheduleRoute]="'/settings'"
                                   [icon]="'settings'"
                                   [activeRoute]="router.url"
-                                  [name]="'Einstellungen'"></sfs-bottom-navigation-button>
+                                  [name]="'Optionen'"></sfs-bottom-navigation-button>
   </div>
 </md-toolbar>
