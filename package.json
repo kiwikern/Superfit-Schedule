@@ -45,7 +45,7 @@
     "lodash-es": "^4.17.4",
     "lodash.isequal": "^4.5.0",
     "moment-mini": "^2.18.1",
-    "ng-recaptcha": "^2.2.0",
+    "ng-recaptcha": "^3.0.0",
     "redux": "^3.7.2",
     "redux-observable": "^0.14.1",
     "rxjs": "^5.4.3",
