@@ -1,4 +1,19 @@
 .toolbar {
-  margin: -8px -8px 8px -8px;
   width: 100vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 }
+
+@media screen and (max-width: 600px) {
+  .toolbar-margin {
+    margin-bottom: 64px;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .toolbar-margin {
+    margin-bottom: 56px;
+  }
+}
+
