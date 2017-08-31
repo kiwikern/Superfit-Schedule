@@ -1,0 +1,6 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <button md-icon-button [routerLink]="scheduleRoute">
+    <md-icon [color]="isActive() ? 'accent' : ''">{{icon}}</md-icon>
+  </button>
+  <span class="label" *ngIf="isActive()">{{name}}</span>
+</div>

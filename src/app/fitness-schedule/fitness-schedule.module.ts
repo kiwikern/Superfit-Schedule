@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimePeriodComponent } from '../workout/fitness-class/time-period/time-period.component';
-import { FitnessClassComponent } from '../workout/fitness-class/fitness-class.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SortClassesPipe } from './pipes/sort-classes.pipe';
@@ -23,6 +21,7 @@ import { ChangesComponent } from './changes/changes.component';
 import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
 import { DurationFilterComponent } from './filter/duration-filter/duration-filter.component';
 import { WorkoutModule } from '../workout/workout.module';
+import { BottomNavigationButtonComponent } from './bottom-navigation-button/bottom-navigation-button.component';
 
 const fitnessRoutes: Routes = [
   {
@@ -62,7 +61,8 @@ const fitnessRoutes: Routes = [
     DayColumnComponent,
     ChangesComponent,
     ScheduleRouterComponent,
-    DurationFilterComponent
+    DurationFilterComponent,
+    BottomNavigationButtonComponent
   ],
   exports: [
     ScheduleComponent,

@@ -1,22 +1,27 @@
 <div class="toolbar-margin">
   <router-outlet></router-outlet>
 </div>
-<md-toolbar fxLayoutAlign="center" fxHide.gt-md="true" class="toolbar">
-  <div fxLayoutGap="20px">
-    <button md-icon-button routerLink="/">
-      <md-icon [color]="getColor('/schedule')">event</md-icon>
-    </button>
-    <button md-icon-button routerLink="/favorites">
-      <md-icon [color]="getColor('/schedule/favorites')">favorite</md-icon>
-    </button>
-    <button md-icon-button routerLink="/filter">
-      <md-icon [color]="getColor('/schedule/filter')">playlist_add</md-icon>
-    </button>
-    <button md-icon-button routerLink="/changes">
-      <md-icon [color]="getColor('/schedule/changes')">swap_horiz</md-icon>
-    </button>
-    <button md-icon-button routerLink="/settings">
-      <md-icon [color]="getColor('/schedule/settings')">settings</md-icon>
-    </button>
+<md-toolbar fxLayoutAlign="center center" fxHide.gt-md="true" class="toolbar">
+  <div fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="center center">
+    <sfs-bottom-navigation-button [scheduleRoute]="'/'"
+                                  [icon]="'event'"
+                                  [activeRoute]="router.url"
+                                  [name]="'Kursplan'"></sfs-bottom-navigation-button>
+    <sfs-bottom-navigation-button [scheduleRoute]="'/favorites'"
+                                  [icon]="'favorite'"
+                                  [activeRoute]="router.url"
+                                  [name]="'Favoriten'"></sfs-bottom-navigation-button>
+    <sfs-bottom-navigation-button [scheduleRoute]="'/filter'"
+                                  [icon]="'playlist_add'"
+                                  [activeRoute]="router.url"
+                                  [name]="'Kurswahl'"></sfs-bottom-navigation-button>
+    <sfs-bottom-navigation-button [scheduleRoute]="'/changes'"
+                                  [icon]="'swap_horiz'"
+                                  [activeRoute]="router.url"
+                                  [name]="'Änderungen'"></sfs-bottom-navigation-button>
+    <sfs-bottom-navigation-button [scheduleRoute]="'/settings'"
+                                  [icon]="'settings'"
+                                  [activeRoute]="router.url"
+                                  [name]="'Einstellungen'"></sfs-bottom-navigation-button>
   </div>
 </md-toolbar>
