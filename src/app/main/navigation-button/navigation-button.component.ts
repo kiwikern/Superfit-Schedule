@@ -14,7 +14,8 @@ export class NavigationButtonComponent implements OnInit {
   @Input() fullWidth = true;
   @Input() activeRoute: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -23,6 +24,11 @@ export class NavigationButtonComponent implements OnInit {
     if (this.sideNav) {
       this.sideNav.close();
     }
+  }
+
+  isActive(): boolean {
+    const isAuthRoute: any = this.activeRoute.match(/auth/) && this.path.match(/auth/);
+    return this.activeRoute === this.path || isAuthRoute;
   }
 
 }
