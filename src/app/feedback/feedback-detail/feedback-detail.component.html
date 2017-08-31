@@ -20,7 +20,7 @@
 
   <form #responseForm="ngForm" (ngSubmit)="onSubmit(); responseForm.reset();">
     <md-card class="by-user" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-      <md-input-container style="width: 100%">
+      <md-form-field style="width: 100%">
       <textarea mdInput
                 mdTextareaAutosize mdAutosizeMinRows="1" mdAutosizeMaxRows="4"
                 color="primary"
@@ -28,7 +28,7 @@
                 [(ngModel)]="text"
                 placeholder="Kommentar">
       </textarea>
-      </md-input-container>
+      </md-form-field>
       <button md-icon-button type="submit" [disabled]="!text">
         <md-icon>send</md-icon>
       </button>

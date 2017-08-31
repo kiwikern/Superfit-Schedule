@@ -7,14 +7,15 @@
     <form #commentForm="ngForm" (ngSubmit)="onSubmit()" fxFill (keydown.enter)="$event.preventDefault()">
 
       <md-card-content fxLayout="column">
-        <md-input-container>
-        <textarea mdInput
-                  mdTextareaAutosize mdAutosizeMinRows="2" mdAutosizeMaxRows="10"
-                  required
-                  name="text"
-                  [(ngModel)]="text"
-                  placeholder="Dein Kommentar"></textarea>
-        </md-input-container>
+        <md-form-field>
+          <textarea mdInput
+                    mdTextareaAutosize mdAutosizeMinRows="2" mdAutosizeMaxRows="10"
+                    required
+                    name="text"
+                    [(ngModel)]="text"
+                    placeholder="Dein Kommentar">
+          </textarea>
+        </md-form-field>
 
         <fieldset>
           <legend>Teilnehmerzahl</legend>
@@ -32,14 +33,14 @@
         </fieldset>
 
         <div fxLayoutAlign="start center" fxLayout="row">
-          <md-input-container fxFlex>
+          <md-form-field fxFlex>
             <input mdInput
                    name="instructor"
                    placeholder="Trainer"
                    (keydown.enter)="addInstructor()"
                    [mdAutocomplete]="instructorsAuto"
                    [formControl]="instructorControl">
-          </md-input-container>
+          </md-form-field>
           <button md-button type="button" (click)="addInstructor()"
                   [disabled]="!instructorControl.value || instructorControl.value.length < 2">
             Hinzufügen

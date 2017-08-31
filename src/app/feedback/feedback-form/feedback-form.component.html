@@ -7,14 +7,14 @@
   </md-card-subtitle>
   <form #feedbackForm="ngForm" (ngSubmit)="onSubmit()" fxFill>
     <md-card-content fxLayout="column" fxLayoutGap="20px">
-      <md-input-container>
+      <md-form-field>
         <textarea mdInput
                   mdTextareaAutosize mdAutosizeMinRows="1" mdAutosizeMaxRows="10"
                   required
                   name="text"
                   [(ngModel)]="text"
                   placeholder="Hinterlasse hier dein Feedeback"></textarea>
-      </md-input-container>
+      </md-form-field>
       <fieldset fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" *ngIf="text">
         <legend>Zufriedenheit</legend>
         <sfs-rating

@@ -15,3 +15,7 @@ fieldset {
   border-top-style: solid;
   font-size: small;
 }
+
+.mat-form-field {
+  width: 100%;
+}

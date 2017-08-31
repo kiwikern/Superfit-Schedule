@@ -1,9 +1,9 @@
 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
   <md-icon>person</md-icon>
-  <md-input-container fxFlex>
+  <md-form-field fxFlex>
     <input mdInput [formControl]="inputControl" placeholder="Benutzername" required type="text" pattern="[a-zA-Z0-9]+"
            [(ngModel)]="userName" (input)="updateValue($event.target.value)">
     <md-error *ngIf="!userName || userName.length == 0">Der Benutzername ist ein Pflichtfeld.</md-error>
     <md-error *ngIf="userName?.length > 0">Der Benutzername darf nur Buchstaben und Zahlen enthalten.</md-error>
-  </md-input-container>
+  </md-form-field>
 </div>
