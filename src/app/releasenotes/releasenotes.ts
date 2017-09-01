@@ -3,6 +3,28 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.15',
+    date: new Date(2017, 8, 2),
+    entries: [
+      {
+        title: 'Kursplantoolbar',
+        type: ChangeType.CHANGE,
+        description: `Die Kursplantoolbar ist nach unten gewandert und hat eine Beschriftung erhalten,
+        damit du dich noch besser zurecht findest.`
+      },
+      {
+        title: 'Account',
+        type: ChangeType.CHANGE,
+        description: `Über die Statusleiste kommst du nun direkt zu deinem Account bzw. dem Login.`
+      },
+      {
+        title: 'Login',
+        type: ChangeType.FIX,
+        description: `Wenn ein Login notwendig ist, hast du nun die Möglichkeit ohne Login zurückzuspringen.`
+      },
+    ]
+  },
+  {
     version: 'v2.14',
     date: new Date(2017, 7, 11),
     entries: [
