@@ -27,7 +27,7 @@ export class NavigationButtonComponent implements OnInit {
   }
 
   isActive(): boolean {
-    const isAuthRoute: any = this.activeRoute.match(/auth/) && this.path.match(/auth/);
+    const isAuthRoute = /auth/.test(this.activeRoute) && /auth/.test(this.path);
     return this.activeRoute === this.path || isAuthRoute;
   }
 

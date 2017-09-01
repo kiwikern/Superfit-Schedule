@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
 import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
 import { ScrollService } from '../../common/scroll.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -22,6 +23,7 @@ describe('AppComponent', () => {
       ],
       imports: [
         SfsMaterialModule,
+        NoopAnimationsModule,
         RouterTestingModule.withRoutes([{path: '', children: []}])
       ],
       providers: [

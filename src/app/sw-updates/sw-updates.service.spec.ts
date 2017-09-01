@@ -7,6 +7,7 @@ import 'rxjs/add/operator/take';
 import { Logger } from '../common/logger.service';
 import { SwUpdatesService } from './sw-updates.service';
 import { MdSnackBar } from '@angular/material';
+import { Angulartics2 } from 'angulartics2';
 
 describe('SwUpdatesService', () => {
   let injector: ReflectiveInjector;
@@ -21,10 +22,14 @@ describe('SwUpdatesService', () => {
   //   `setup()` in a `beforeEach()` block. We use the `run()` helper to call `setup()` inside each
   //   test's zone.
   const setup = () => {
+    const mockAngulartics = jasmine.createSpyObj<Angulartics2>('angulartics2', ['eventTrack']);
+    mockAngulartics.eventTrack = jasmine.createSpyObj('angulartics2', ['next']);
+
     injector = ReflectiveInjector.resolveAndCreate([
       { provide: Logger, useClass: MockLogger },
       { provide: NgServiceWorker, useClass: MockNgServiceWorker },
-      { provide: MdSnackBar, useClass: MdSnackBarMock},
+      { provide: MdSnackBar, useClass: MdSnackBarMock },
+      { provide: Angulartics2, useValue: mockAngulartics },
       SwUpdatesService
     ]);
 

@@ -11,6 +11,8 @@ import 'rxjs/add/operator/toArray';
 import { Observable } from 'rxjs/Observable';
 import { UPDATE_LOCATION } from '@angular-redux/router';
 import { Angulartics2 } from 'angulartics2';
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('AuthenticationEpics', () => {
 
   beforeEach(() => {
@@ -18,6 +20,7 @@ describe('AuthenticationEpics', () => {
     mockAngulartics.eventTrack = jasmine.createSpyObj('angulartics2', ['next']);
     TestBed.configureTestingModule({
       imports: [
+        RouterTestingModule,
         HttpModule
       ],
       providers: [
