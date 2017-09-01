@@ -1,42 +1,56 @@
-<md-card fxLayout="column" fxLayoutAlign="center center">
+<div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
   <md-card-title>Einstellungen</md-card-title>
-  <md-card-content fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
-    <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="20px">
-      <md-card>
-        <h3>Erster Wochentag</h3>
-        <md-radio-group fxLayout="column" [ngModel]="(showTodayFirst$ | async) + ''"
-                        (change)="changeSetting('showTodayFirst', $event.value === 'true')">
-          <md-radio-button value="true">Heute</md-radio-button>
-          <md-radio-button value="false">Montag</md-radio-button>
-        </md-radio-group>
-      </md-card>
-      <md-card>
-        <h3>Anzeige der Tage</h3>
-        <md-radio-group fxLayout="column" [ngModel]="daysLayout$ | async" (change)="changeSetting('daysLayout', $event.value)">
-          <md-radio-button value="">automatisch</md-radio-button>
-          <md-radio-button value="row">nebeneinander</md-radio-button>
-          <md-radio-button value="column">untereinander</md-radio-button>
-        </md-radio-group>
-      </md-card>
-      <md-card fxLayout="column">
-        <h3>Kurslayout</h3>
+  <md-accordion>
+    <md-expansion-panel fxLayout="column">
+      <md-expansion-panel-header>
+        <md-panel-title>Wochenanfang</md-panel-title>
+        <md-panel-description>
+          {{(showTodayFirst$ | async) ? 'Heutiger Tag' : 'Montag'}}
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <md-radio-group fxLayout="column" [ngModel]="(showTodayFirst$ | async) + ''"
+                      (change)="changeSetting('showTodayFirst', $event.value === 'true')">
+        <md-radio-button value="true">Heutiger Tag</md-radio-button>
+        <md-radio-button value="false">Montag</md-radio-button>
+      </md-radio-group>
+    </md-expansion-panel>
+    <md-expansion-panel fxLayout="column">
+      <md-expansion-panel-header>
+        <md-panel-title>Kursplanlayout</md-panel-title>
+        <md-panel-description [ngSwitch]="daysLayout$ | async">
+          <span *ngSwitchDefault>automatisch</span>
+          <span *ngSwitchCase="'column'">untereinander</span>
+          <span *ngSwitchCase="'row'">nebeneinander</span>
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <md-radio-group fxLayout="column" [ngModel]="daysLayout$ | async"
+                      (change)="changeSetting('daysLayout', $event.value)">
+        <md-radio-button value="">automatisch</md-radio-button>
+        <md-radio-button value="row">nebeneinander</md-radio-button>
+        <md-radio-button value="column">untereinander</md-radio-button>
+      </md-radio-group>
+    </md-expansion-panel>
+    <md-expansion-panel>
+      <md-expansion-panel-header>Kurslayout</md-expansion-panel-header>
+      <div fxLayout="column">
         <md-checkbox [ngModel]="showSingleStudio$ | async" (change)="changeSetting('showSingleStudio', $event.checked)">
           Studio ausblenden, wenn nur eines ausgewählt
         </md-checkbox>
-        <md-checkbox [ngModel]="showDaysInClasses$ | async" (change)="changeSetting('showDaysInClasses', $event.checked)">
+        <md-checkbox [ngModel]="showDaysInClasses$ | async"
+                     (change)="changeSetting('showDaysInClasses', $event.checked)">
           Wochentag anzeigen
         </md-checkbox>
         <md-checkbox [ngModel]="showWorkoutType$ | async" (change)="changeSetting('showWorkoutType', $event.checked)">
           Kursart anzeigen
         </md-checkbox>
-      </md-card>
-      <md-card>
-        <h3>Sonstiges</h3>
-        <md-checkbox [ngModel]="!(hideReleasenotes$ | async)" (change)="changeSetting('hideReleasenotes', !$event.checked)">
-          Zeige Änderungshistorie nach Update
-        </md-checkbox>
-      </md-card>
-    </div>
-    <button md-raised-button routerLink="/">Schließen</button>
-  </md-card-content>
-</md-card>
+      </div>
+    </md-expansion-panel>
+    <md-expansion-panel>
+      <md-expansion-panel-header>Sonstiges</md-expansion-panel-header>
+      <md-checkbox [ngModel]="!(hideReleasenotes$ | async)"
+                   (change)="changeSetting('hideReleasenotes', !$event.checked)">
+        Zeige Änderungshistorie nach Update
+      </md-checkbox>
+    </md-expansion-panel>
+  </md-accordion>
+</div>
