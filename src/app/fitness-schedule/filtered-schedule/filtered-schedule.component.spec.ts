@@ -46,6 +46,5 @@ class MockClassListComponent {
   @Input() showSchedule;
   @Input() showFavoriteButton;
   @Input() newClasses;
-  @Input() hideSingleStudio;
 
 }

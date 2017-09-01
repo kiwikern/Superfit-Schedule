@@ -12,7 +12,7 @@ export class SettingsComponent {
 
   @select(['settings', 'daysLayout']) daysLayout$;
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
-  @select(['settings', 'showSingleStudio']) showSingleStudio$;
+  @select(['settings', 'showStudio']) showStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   @select(['settings', 'showWorkoutType']) showWorkoutType$;
   @select(['settings', 'hideReleasenotes']) hideReleasenotes$;

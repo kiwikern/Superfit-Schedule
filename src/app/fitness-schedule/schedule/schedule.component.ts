@@ -19,7 +19,6 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   @Input() schedulePerDay: any[] = [];
   @Input() removedFavorites: FitnessClass[] = [];
   @Input() newClasses = [];
-  @Input() hideSingleStudio = false;
 
   private subscriptions: Subscription[] = [];
 

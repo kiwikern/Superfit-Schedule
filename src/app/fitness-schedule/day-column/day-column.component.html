@@ -3,13 +3,12 @@
   <sfs-fitness-class *ngFor="let class of classesPerDay.classes | sortClasses"
                      [showDaysInClasses]="showDaysInClasses$ | async"
                      [showWorkoutType]="showWorkoutType$ | async"
-                     [showSingleStudio]="hideSingleStudio$ | async"
+                     [showStudio]="showStudio$ | async"
                      [isFavorite]="favoriteIds.indexOf(class.id) !== -1"
                      [fitnessClass]="class"
                      [showFavoriteButton]="showFavoriteButton"
                      [wasRemoved]="wasRemoved(class)"
                      [isNew]="isNewClass(class)"
-                     [gyms]="gyms$ | async"
                      fxFlex
   ></sfs-fitness-class>
 </div>

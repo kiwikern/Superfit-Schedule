@@ -2,13 +2,14 @@ import { IPayloadAction } from '../../../store/payload-action.types';
 import { SettingsActions } from './settings.actions';
 import { SettingsState } from './settings-state';
 import { SettingsPayload } from './settings-payload';
+
 /**
  * Created by Kim on 02.04.2017.
  */
 
 const INITIAL_STATE: SettingsState = {
   showDaysInClasses: true,
-  showSingleStudio: true,
+  showStudio: true,
   showTodayFirst: true,
   showWorkoutType: false,
   hideReleasenotes: false,

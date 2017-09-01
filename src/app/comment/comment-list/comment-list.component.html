@@ -4,7 +4,6 @@
                      [fitnessClass]="fitnessClass"
                      [showDaysInClasses]="true"
                      [showFavoriteButton]="false"
-                     [showSingleStudio]="true"
   ></sfs-fitness-class>
   <md-spinner *ngIf="isLoading$ | async" style="width: 50px"></md-spinner>
   <div *ngIf="!comments || comments.length === 0" align="center" fxLayout="column">

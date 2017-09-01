@@ -13,7 +13,7 @@
     <span [fxHide]="!showWorkoutType">
         {{getWorkoutType()}}
     </span>
-      <span [fxHide]="showSingleStudio && isOnlyOneGymSelected">
+      <span *ngIf="showStudio !== false">
       {{getGymName()}}
     </span>
   </md-card-subtitle>

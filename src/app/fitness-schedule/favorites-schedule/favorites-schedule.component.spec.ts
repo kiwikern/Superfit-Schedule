@@ -3,14 +3,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FavoritesScheduleComponent } from './favorites-schedule.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
 import { FitnessClass } from '../../workout/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { Day } from '../enums/day.enum';
 import { Language } from '../enums/language.enum';
 import { Gym } from '../enums/gym.enum';
-import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/lib/testing';
+import { MockNgRedux, NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -150,7 +150,6 @@ class MockClassListComponent {
   @Input() filter;
   @Input() showSchedule;
   @Input() removedFavorites;
-  @Input() hideSingleStudio;
 
 }
 

@@ -54,7 +54,7 @@ class MockFitnessClassComponent {
   @Input() gyms;
   @Input() showFavoriteButton;
   @Input() showWorkoutType;
-  @Input() showSingleStudio;
+  @Input() showStudio;
   @Input() isFavorite;
   @Input() isNew;
 }

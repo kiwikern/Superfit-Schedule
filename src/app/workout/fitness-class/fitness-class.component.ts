@@ -14,8 +14,7 @@ import { Subscription } from 'rxjs/Subscription';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FitnessClassComponent implements OnInit, OnDestroy {
-  @Input() gyms = [];
-  @Input() showSingleStudio = false;
+  @Input() showStudio = true;
   @Input() showDaysInClasses = true;
   @Input() showWorkoutType = false;
   @Input() fitnessClass: FitnessClass;
@@ -24,7 +23,6 @@ export class FitnessClassComponent implements OnInit, OnDestroy {
   @Input() showFavoriteButton = true;
   @Input() isNew = false;
   @HostBinding('attr.id') id;
-  isOnlyOneGymSelected: boolean = false;
   subscriptions: Subscription[] = [];
 
   constructor(private mappingService: MappingService,
@@ -34,7 +32,6 @@ export class FitnessClassComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.isOnlyOneGymSelected = this.gyms && this.gyms.length === 1;
     this.id = this.fitnessClass.id;
   }
 

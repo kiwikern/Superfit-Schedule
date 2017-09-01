@@ -17,14 +17,11 @@ export class DayColumnComponent implements OnInit, OnDestroy {
   @Input() removedFavorites = [];
   @Input() showFavoriteButton = true;
   @Input() newClasses = [];
-  @Input() hideSingleStudio = false;
 
-  @select(['filter', 'gyms']) gyms$;
-  @select(['settings', 'showSingleStudio']) showSingleStudio$;
+  @select(['settings', 'showStudio']) showStudio$;
   @select(['settings', 'showDaysInClasses']) showDaysInClasses$;
   @select(['settings', 'showWorkoutType']) showWorkoutType$;
   @select(['favorites', 'workouts']) favorites$: Observable<FitnessClass[]>;
-  hideSingleStudio$: Observable<boolean>;
   favoriteIds: string[] = [];
 
   subscriptions: Subscription[] = [];
@@ -34,7 +31,6 @@ export class DayColumnComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const sub = this.favorites$.subscribe(favs => this.favoriteIds = favs.map(f => f.id));
-    this.hideSingleStudio$ = this.showSingleStudio$.map(option => option && this.hideSingleStudio);
     this.subscriptions.push(sub);
   }
 

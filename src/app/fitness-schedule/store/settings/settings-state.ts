@@ -1,6 +1,6 @@
 export interface SettingsState {
   showDaysInClasses: boolean;
-  showSingleStudio: boolean;
+  showStudio: boolean;
   showTodayFirst: boolean;
   showWorkoutType: boolean;
   daysLayout: string;
