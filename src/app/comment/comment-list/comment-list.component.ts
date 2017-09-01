@@ -42,7 +42,10 @@ export class CommentListComponent implements OnInit, OnDestroy {
       this.comments = this.fitnessClass.comments;
       this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
       if (!this.comments || this.comments.length < 1) {
-        setTimeout(() => this.isOtherPanelExpanded = true, 500);
+        setTimeout(() => {
+          this.isOtherPanelExpanded = true;
+          this.cdRef.detectChanges();
+        }, 2000);
       }
       this.cdRef.detectChanges();
     }).takeUntil(this.onDestroy)

@@ -13,7 +13,9 @@
   </div>
   <sfs-comment-detail *ngFor="let comment of comments" [comment]="comment" class="max-size"></sfs-comment-detail>
 
-  <md-expansion-panel [expanded]="isOtherPanelExpanded" class="max-size" *ngIf="otherClasses && otherClasses.length > 0">
+  <md-expansion-panel [expanded]="isOtherPanelExpanded"
+                      class="max-size wider-gap"
+                      *ngIf="otherClasses && otherClasses.length > 0">
     <md-expansion-panel-header>
       <mat-panel-title>Weitere {{mappingService.getClassName(fitnessClass.workoutId)}} Kurse</mat-panel-title>
     </md-expansion-panel-header>
