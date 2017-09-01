@@ -21,12 +21,28 @@ export class BottomNavigationButtonComponent implements OnInit {
   }
 
   isActive(): boolean {
+    const activePath = this.getActivePath();
     if (this.scheduleRoute !== '/') {
       const fullRoute = '/schedule' + this.scheduleRoute;
-      return this.activeRoute === fullRoute;
+      return activePath === fullRoute;
     } else {
-      return this.activeRoute === '/schedule';
+      return activePath === '/schedule';
     }
   }
 
+  private getActivePath() {
+    let activePath = this.activeRoute;
+
+    const pathIndex = this.activeRoute.indexOf('?');
+    if (pathIndex !== -1) {
+      activePath = activePath.substr(0, pathIndex);
+    }
+
+    const anchorIndex = this.activeRoute.indexOf('#');
+    if (anchorIndex !== -1) {
+      activePath = activePath.substr(0, anchorIndex);
+    }
+
+    return activePath;
+  }
 }
