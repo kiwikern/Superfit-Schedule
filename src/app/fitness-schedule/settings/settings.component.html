@@ -1,5 +1,5 @@
 <div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
-  <md-card-title>Einstellungen</md-card-title>
+  <md-card-title>Optionen</md-card-title>
   <md-accordion>
     <md-expansion-panel fxLayout="column">
       <md-expansion-panel-header>
@@ -49,7 +49,7 @@
       <md-expansion-panel-header>Sonstiges</md-expansion-panel-header>
       <md-checkbox [ngModel]="!(hideReleasenotes$ | async)"
                    (change)="changeSetting('hideReleasenotes', !$event.checked)">
-        Zeige Änderungshistorie nach Update
+        Zeige Änderungshistorie bei Update
       </md-checkbox>
     </md-expansion-panel>
   </md-accordion>
