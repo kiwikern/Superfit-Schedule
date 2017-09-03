@@ -1,8 +1,9 @@
 <div class="toolbar-margin">
   <router-outlet></router-outlet>
 </div>
-<md-toolbar fxHide.gt-md="true" class="toolbar" fxLayout="row" fxLayoutAlign="center">
-  <div fxLayout="row" fxLayoutAlign="space-around center" fxFill
+<md-toolbar fxHide.gt-md="true" class="toolbar">
+  <span fxFlex></span>
+  <div fxLayout="row" fxLayoutAlign="space-around center" style="width: 552px"
   >
     <sfs-bottom-navigation-button [scheduleRoute]="'/'"
                                   [icon]="'event'"
@@ -25,4 +26,5 @@
                                   [activeRoute]="router.url"
                                   [name]="'Optionen'"></sfs-bottom-navigation-button>
   </div>
+  <span fxFlex></span>
 </md-toolbar>
