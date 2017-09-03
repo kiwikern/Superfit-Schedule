@@ -5,6 +5,7 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { FormsModule } from '@angular/forms';
 import { SettingsActions } from '../store/settings/settings.actions';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -16,6 +17,7 @@ describe('SettingsComponent', () => {
       imports: [
         SfsMaterialModule,
         FormsModule,
+        NoopAnimationsModule,
         NgReduxTestingModule
       ],
       providers: [

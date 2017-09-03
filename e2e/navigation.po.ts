@@ -34,7 +34,7 @@ export class NavigationPage {
   }
 
   navigateToLoginViaButton() {
-    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="/auth/login"]`))).click();
+    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="/auth"]`))).click();
   }
 
   navigateToRegister() {
@@ -74,7 +74,7 @@ export class NavigationPage {
   }
 
   clickOnSecondToolbarButton(path: string) {
-    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="${path}"]`))).click();
+    return this.getFirstDisplayedElement(element.all(by.css(`sfs-schedule-router button[ng-reflect-router-link="${path}"]`))).click();
   }
 
   getUrl() {
@@ -83,7 +83,7 @@ export class NavigationPage {
 
   private clickOnRouterButton(path: string) {
     element(by.id('nav_burger-menu')).click();
-    return this.getFirstDisplayedElement(element.all(by.css(`button[ng-reflect-router-link="${path}"]`))).click();
+    return this.getFirstDisplayedElement(element.all(by.css(`sfs-navigation-button button[ng-reflect-router-link="${path}"]`))).click();
   }
 
   private clickOnRouterLink(path: string) {

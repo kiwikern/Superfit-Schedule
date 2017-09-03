@@ -40,7 +40,7 @@ describe('Navigation', () => {
 
   it('should navigate to class selection and show title', () => {
     page.navigateToClassSelection();
-    expect(page.getFirstCardTitle()).toEqual('Kurswahl');
+    expect(page.getFirstCardTitle()).toEqual('Kurse');
   });
 
   it('should navigate to changes and show title', () => {
@@ -50,7 +50,7 @@ describe('Navigation', () => {
 
   it('should navigate to settings and show title', () => {
     page.navigateToSettings();
-    expect(page.getFirstCardTitle()).toEqual('Einstellungen');
+    expect(page.getFirstCardTitle()).toEqual('Optionen');
   });
 
   it('should navigate to about and show title', () => {
@@ -65,14 +65,15 @@ describe('Navigation', () => {
 
   it('should navigate to register and show title', () => {
     page.navigateToLoginViaButton();
-    page.navigateToRegister();
-    expect(page.getFirstCardTitle()).toEqual('Registrieren');
     page.navigateToLogin();
     expect(page.getFirstCardTitle()).toEqual('Login');
+    page.navigateToRegister();
+    expect(page.getFirstCardTitle()).toEqual('Registrieren');
   });
 
   it('should navigate to reset password and show title', () => {
     page.navigateToLoginViaButton();
+    page.navigateToLogin();
     page.navigateToResetPassword();
     expect(page.getFirstCardTitle()).toEqual('Passwort zurücksetzen');
     page.navigateToLogin();
