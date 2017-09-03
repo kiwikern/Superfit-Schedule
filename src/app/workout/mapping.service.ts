@@ -102,14 +102,6 @@ export class MappingService {
     };
   }
 
-  getDurationMapping() {
-    return {
-      30: '30 Minuten',
-      60: '60 Minuten',
-      90: '90 Minuten'
-    };
-  }
-
   getLanguageMapping() {
     return {
       0: 'Deutsch',
