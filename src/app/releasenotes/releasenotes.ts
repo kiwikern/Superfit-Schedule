@@ -22,6 +22,17 @@ export const releasenotes: Release[] = [
         type: ChangeType.FIX,
         description: `Wenn ein Login notwendig ist, hast du nun die Möglichkeit ohne Login zurückzuspringen.`
       },
+      {
+        title: 'Kommentare',
+        type: ChangeType.CHANGE,
+        description: `Wenn es noch keinen Kommentar für einen Kurs gibt,
+        werden die anderen Kommentare automatisch eingeblendet.`
+      },
+      {
+        title: 'Layout',
+        type: ChangeType.CHANGE,
+        description: `Das Layout ist nun an vielen Stellen aufgeräumter.`
+      }
     ]
   },
   {
