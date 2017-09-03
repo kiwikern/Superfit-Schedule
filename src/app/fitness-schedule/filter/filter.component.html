@@ -1,5 +1,4 @@
-<md-card fxLayout="column" fxLayoutGap="10px" fxFlexAlign="stretch center">
-  <md-card-title fxFlexAlign="center">Kurswahl</md-card-title>
+<div fxLayout="column" fxLayoutGap="10px" fxFlexAlign="stretch center">
   <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
     <sfs-select-filter [selectedValues]="(filter$ | async)?.workouts" (onSelection)="addFilter('workouts', $event)"
                        title="Kurse" [nameMapping]="classMapping" fxFlex="50"></sfs-select-filter>
@@ -25,7 +24,4 @@
                      [maxEndTime]="(filter$ | async)?.maxEndTime"
                      [filterOnlyWorkdays]="(filter$ | async)?.filterTimeOnlyOnWorkdays" fxFlex="50"></sfs-time-filter>
   </div>
-  <div fxLayoutAlign="center">
-    <button md-raised-button routerLink="/">Schließen</button>
-  </div>
-</md-card>
+</div>
