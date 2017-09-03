@@ -43,7 +43,8 @@ const appRoutes: Routes = [
   {path: 'schedule', loadChildren: '../fitness-schedule/fitness-schedule.module#FitnessScheduleModule'},
   {path: 'auth', loadChildren: '../authentication/authentication.module#AuthenticationModule'},
   {path: 'feedback', loadChildren: '../feedback/feedback.module#FeedbackModule'},
-  {path: 'about', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+  {path: 'onboarding', loadChildren: '../onboarding/onboarding.module#OnboardingModule'}
 ];
 
 @NgModule({
