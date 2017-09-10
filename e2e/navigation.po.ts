@@ -90,8 +90,8 @@ export class NavigationPage {
     return this.getFirstDisplayedElement(element.all(by.css(`a[routerLink="${path}"]`))).click();
   }
 
-  private getFirstDisplayedElement(element) {
-    return element.filter(e => e.isDisplayed()).first();
+  private getFirstDisplayedElement(elem) {
+    return elem.filter(e => e.isDisplayed()).first();
   }
 
 }

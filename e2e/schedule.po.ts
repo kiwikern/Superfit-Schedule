@@ -35,8 +35,8 @@ export class SchedulePage {
   markFirstClassAsFavorite() {
     return this.getFirstDisplayedElement(element.all(by.css('md-card button.mat-icon-button'))).click();
   }
-  private getFirstDisplayedElement(element) {
-    return element.filter(e => e.isDisplayed()).first();
+  private getFirstDisplayedElement(elem) {
+    return elem.filter(e => e.isDisplayed()).first();
   }
 
 }
