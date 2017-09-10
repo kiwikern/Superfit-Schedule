@@ -47,7 +47,7 @@
     "moment-mini": "^2.18.1",
     "ng-recaptcha": "^3.0.0",
     "redux": "^3.7.2",
-    "redux-observable": "^0.14.1",
+    "redux-observable": "^0.16.0",
     "rxjs": "^5.4.3",
     "zone.js": "^0.8.17"
   },
