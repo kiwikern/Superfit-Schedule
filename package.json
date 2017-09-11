@@ -7,7 +7,7 @@
     "serve": "npm run ng -- serve --host 0.0.0.0 --disable-host-check",
     "start": "npm run serve -- --proxy-config proxy.conf.local.json",
     "start:dist": "npm run serve -- --proxy-config proxy.conf.json",
-    "start:prod": "npm run start:local -- --prod -sm --watch=false --live-reload false",
+    "start:prod": "npm run start -- --prod -sm --watch=false --live-reload false",
     "start:sw": "npm run build && npm run start:liteserver",
     "start:liteserver": "lite-server -c liteserver_config.js",
     "build": "npm run ng -- build --prod",
