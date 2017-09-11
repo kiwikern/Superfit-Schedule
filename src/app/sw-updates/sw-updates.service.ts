@@ -38,7 +38,7 @@ export class SwUpdatesService implements OnDestroy {
     .do(evt => this.log(`Update event: ${JSON.stringify(evt)}`))
     .filter(({type}) => type === 'activation')
     .do(({version}) => this.angulartics.eventTrack.next({action: 'updateSW', properties: {version}}))
-    .do(() => this.showSnackBar())
+    .do(() => this.showSnackBar().onAction().subscribe(() => this.reloadPage()))
     .map(({version}) => version);
 
   constructor(private logger: Logger,
@@ -82,6 +82,13 @@ export class SwUpdatesService implements OnDestroy {
   }
 
   private showSnackBar() {
-    this.snackBar.open('Update installiert.', '', {duration: 5000});
+    return this.snackBar.open('Neues Update installiert.', 'Aktualiseren', {duration: 10000});
+  }
+
+  private reloadPage() {
+    const location = window.location;
+    if (location && location.reload) {
+      location.reload();
+    }
   }
 }
