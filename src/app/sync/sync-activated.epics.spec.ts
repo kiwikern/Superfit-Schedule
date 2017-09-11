@@ -7,13 +7,13 @@ import { SyncActivatedEpics } from './sync-activated.epics';
 import { AuthHttp, AuthModule } from 'angular2-jwt';
 import { SyncActions } from './sync.actions';
 import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.actions';
-import { settings } from 'cluster';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { MockNgRedux } from '@angular-redux/store/lib/testing';
 import { MdSnackBar } from '@angular/material';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { Angulartics2 } from 'angulartics2';
+import { Router } from '@angular/router';
 describe('SyncActivatedEpics', () => {
 
   beforeEach(() => {
@@ -34,7 +34,8 @@ describe('SyncActivatedEpics', () => {
         {provide: Angulartics2, useValue: mockAngulartics},
         {provide: MdSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend},
-        {provide: AuthHttp, useExisting: Http}
+        {provide: AuthHttp, useExisting: Http},
+        {provide: Router, useClass: RouterMock}
       ]
     });
   });
@@ -133,6 +134,11 @@ describe('SyncActivatedEpics', () => {
 
     open(message, action, options) {
       this.message = message;
+    }
+  }
+
+  class RouterMock {
+    navigate(route) {
     }
   }
 

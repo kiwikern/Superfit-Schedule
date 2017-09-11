@@ -93,7 +93,7 @@ export class FeedbackEpics {
   }
 
   private showSnackBar(message: string) {
-    this.snackBar.open(message, null, {duration: 5000});
+    this.snackBar.open(message, 'OK', {duration: 5000});
   }
 
   private sendFeedback(feedback) {

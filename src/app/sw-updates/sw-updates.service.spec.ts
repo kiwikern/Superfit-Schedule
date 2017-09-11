@@ -153,7 +153,9 @@ class MockLogger {
 }
 
 class MdSnackBarMock {
-  open = jasmine.createSpy('MdSnackBarMock.open');
+  open = jasmine.createSpy('MdSnackBarMock.open').and.returnValue(this);
+  onAction = jasmine.createSpy('MdSnackBarMock.onAction').and.returnValue(this);
+  subscribe = jasmine.createSpy('MdSnackBarMock.subscribe');
 }
 
 class MockNgServiceWorker {

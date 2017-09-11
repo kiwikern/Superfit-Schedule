@@ -11,6 +11,7 @@ import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-stat
 import { AuthHttp } from 'angular2-jwt';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { MdSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class SyncRequestedEpics {
@@ -30,6 +31,7 @@ export class SyncRequestedEpics {
   constructor(private http: AuthHttp,
               private actions: SyncActions,
               private authActions: AuthenticationActions,
+              private router: Router,
               private snackBar: MdSnackBar) {
     this.favorites$.subscribe(favorites => this.favorites = favorites);
     this.settings$.subscribe(settings => this.settings = settings);
@@ -69,7 +71,9 @@ export class SyncRequestedEpics {
   }
 
   private getAuthFailedActions(): Observable<any> {
-    this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.');
+    const snackbar = this.snackBar.open(
+      'Sitzung abgelaufen. Du wurdest ausgeloggt.', 'Login', {duration: 5000});
+    snackbar.onAction().subscribe(() => this.router.navigate(['/auth/login']));
     return of(this.actions.syncFailed(), this.authActions.logout());
   }
 

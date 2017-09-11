@@ -67,6 +67,6 @@ export class FavoritesScheduleComponent implements OnInit, OnDestroy {
 
   private showRemovedSnackBar() {
     this.snackBar.open(
-      'Kursplan enthält einen deiner Favoriten nicht mehr', '', {duration: 5000});
+      'Kursplan enthält einen deiner Favoriten nicht mehr', 'OK', {duration: 5000});
   }
 }

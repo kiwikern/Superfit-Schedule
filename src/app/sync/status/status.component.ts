@@ -40,7 +40,7 @@ export class StatusComponent implements OnInit {
   }
 
   showSnackBar(message: string): MdSnackBarRef<SimpleSnackBar> {
-    return this.snackBar.open(message, '', {duration: 5000});
+    return this.snackBar.open(message, 'OK', {duration: 5000});
   }
 
 }

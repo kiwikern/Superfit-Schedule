@@ -10,6 +10,8 @@ import { MdSnackBar } from '@angular/material';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { SyncRequestedEpics } from './sync-requested.epics';
 import { Angulartics2 } from 'angulartics2';
+import { Router } from '@angular/router';
+
 describe('SyncRequestedEpics', () => {
 
   beforeEach(() => {
@@ -27,7 +29,8 @@ describe('SyncRequestedEpics', () => {
         {provide: Angulartics2, useValue: mockAngulartics},
         {provide: MdSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend},
-        {provide: AuthHttp, useExisting: Http}
+        {provide: AuthHttp, useExisting: Http},
+        {provide: Router, useClass: RouterMock}
       ]
     });
   });
@@ -109,6 +112,20 @@ describe('SyncRequestedEpics', () => {
 
     open(message, action, options) {
       this.message = message;
+      return this;
+    }
+
+    onAction() {
+      return this;
+    }
+
+    subscribe() {
+    }
+
+  }
+
+  class RouterMock {
+    navigate(route) {
     }
   }
 

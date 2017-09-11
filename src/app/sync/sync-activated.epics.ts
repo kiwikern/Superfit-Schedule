@@ -11,6 +11,7 @@ import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.ac
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class SyncActivatedEpics {
@@ -24,6 +25,7 @@ export class SyncActivatedEpics {
               private filterActions: FilterActions,
               private settingsActions: SettingsActions,
               private authActions: AuthenticationActions,
+              private router: Router,
               private snackBar: MdSnackBar) {
     this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
   }
@@ -72,7 +74,9 @@ export class SyncActivatedEpics {
   }
 
   private getLogoutActions(): Observable<any> {
-    this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.', '', {duration: 5000});
+    const snackbar = this.snackBar.open('Sitzung abgelaufen. Du wurdest ausgeloggt.',
+      'Login', {duration: 5000});
+    snackbar.onAction().subscribe(() => this.router.navigate(['/auth/login']));
     return of(this.syncActions.activateSyncFailed(), this.authActions.logout());
   }
 

@@ -55,7 +55,7 @@ export class RegistrationEpics {
   }
 
   private showSnackBar(message: string) {
-    this.snackBar.open(message, null, {duration: 8000});
+    this.snackBar.open(message, 'OK', {duration: 8000});
   }
 
   private requestLogin(credentials) {

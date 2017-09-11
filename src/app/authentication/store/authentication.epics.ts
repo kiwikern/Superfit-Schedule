@@ -66,16 +66,16 @@ export class AuthenticationEpics {
       errorInfo = 'Keine Internetverbindung?';
     } else if (error.status === 401) {
       if (error.json().key === 'wrong_password') {
-        errorInfo = 'Passwort inkorrekt.';
+        errorInfo = 'Falsches Passwort.';
       } else {
-        errorInfo = 'Benutzer unbekannt.';
+        errorInfo = 'Unbekannter Benutzer.';
       }
     }
     const errorMessage = 'Login fehlgeschlagen.';
     this.showSnackBar(`${errorMessage}${errorInfo ? ' ' + errorInfo : ''}`);
   }
 
-  private showSnackBar(message: string, action?: string): MdSnackBarRef<SimpleSnackBar> {
+  private showSnackBar(message: string, action = 'OK'): MdSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {duration: 5000});
   }
 
