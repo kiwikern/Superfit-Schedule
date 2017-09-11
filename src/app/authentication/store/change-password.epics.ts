@@ -58,12 +58,10 @@ export class ChangePasswordEpics {
   }
 
   private changePassword(password, token): any {
-    let url;
+    const url = '/api/sfs/user/reset-password';
     if (!token) {
-      url = '/api/sfs/user';
-      return this.authHttp.put(url, {password});
+      return this.authHttp.post(url, {password});
     } else {
-      url = '/api/sfs/user/reset-password';
       return this.http.post<any>(url, {password}, {
         headers: new HttpHeaders().set('Authorization', `bearer ${token}`),
       });
