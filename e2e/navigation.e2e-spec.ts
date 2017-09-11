@@ -91,9 +91,9 @@ describe('Navigation', () => {
     page.clickOnSecondToolbarButton('/favorites');
     expect(page.getFirstParagraphText()).toContain('Favoriten');
     page.clickOnSecondToolbarButton('/filter');
-    expect(page.getFirstCardTitle()).toEqual('Kurswahl');
+    expect(page.getFirstCardTitle()).toEqual('Kurse');
     page.clickOnSecondToolbarButton('/settings');
-    expect(page.getFirstCardTitle()).toEqual('Einstellungen');
+    expect(page.getFirstCardTitle()).toEqual('Optionen');
     page.clickOnSecondToolbarButton('/');
     const paragraph = page.getFirstParagraphText();
     expect(paragraph).toContain('Lieblingskurse');
