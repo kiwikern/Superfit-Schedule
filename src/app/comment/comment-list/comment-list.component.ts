@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ClassComment } from '../class-comment';
 import { MappingService } from '../../workout/mapping.service';
 import { Subject } from 'rxjs/Subject';
+import Timer = NodeJS.Timer;
 
 
 @Component({
@@ -28,6 +29,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
   otherClasses: FitnessClass[];
   subscription: Subscription;
   comments: ClassComment[] = [];
+  timeout: Timer;
   private onDestroy = new Subject();
 
   constructor(private route: ActivatedRoute,
@@ -42,7 +44,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
       this.comments = this.fitnessClass.comments;
       this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
       if (!this.comments || this.comments.length < 1) {
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
           this.isOtherPanelExpanded = true;
           this.cdRef.detectChanges();
         }, 2000);
@@ -54,6 +56,8 @@ export class CommentListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.onDestroy.next();
+    this.cdRef.detach();
+    clearTimeout(this.timeout);
   }
 
   private findFitnessClass(schedulePerDay: FitnessClassesPerDay[]): FitnessClass {
