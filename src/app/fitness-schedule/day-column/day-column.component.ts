@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MappingService } from '../../workout/mapping.service';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { FitnessClass } from '../../workout/fitness-class';
@@ -11,6 +11,7 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
   selector: 'sfs-day-column',
   templateUrl: './day-column.component.html',
   styleUrls: ['./day-column.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('scheduleAnimation', [
       transition(':enter', [
