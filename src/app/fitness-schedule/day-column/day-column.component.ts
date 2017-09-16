@@ -63,4 +63,8 @@ export class DayColumnComponent implements OnInit, OnDestroy {
     return this.newClasses.findIndex(f => f.id === fitnessClass.id) !== -1;
   }
 
+  trackById(index: number, fitnessClass: FitnessClass) {
+    return fitnessClass.id;
+  }
+
 }
