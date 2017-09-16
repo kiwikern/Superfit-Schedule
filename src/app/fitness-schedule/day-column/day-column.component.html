@@ -1,4 +1,5 @@
-<div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
+<div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center"
+     @scheduleAnimation>
   <h2>{{ getDayName(classesPerDay.day) }}</h2>
   <sfs-fitness-class *ngFor="let class of classesPerDay.classes | sortClasses"
                      [showDaysInClasses]="showDaysInClasses$ | async"

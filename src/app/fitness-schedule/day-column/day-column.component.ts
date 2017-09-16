@@ -5,11 +5,24 @@ import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'sfs-day-column',
   templateUrl: './day-column.component.html',
-  styleUrls: ['./day-column.component.css']
+  styleUrls: ['./day-column.component.css'],
+  animations: [
+    trigger('scheduleAnimation', [
+      transition(':enter', [
+        query('sfs-fitness-class, h2', [
+          style({transform: 'translateY(-100px)', opacity: 0}),
+          stagger('100ms', [
+            animate('0.2s cubic-bezier(.35,0,.25,1)', style('*'))
+          ])
+        ])
+      ])
+    ])
+  ]
 })
 export class DayColumnComponent implements OnInit, OnDestroy {
 
