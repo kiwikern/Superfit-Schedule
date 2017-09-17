@@ -6,9 +6,7 @@ export class ClassSelectionPage {
   }
 
   removeAllFilter() {
-    return element.all(by.css('md-icon'))
-      .filter(icon => icon.getText().then(text => text === 'delete'))
-      .each(icon => icon.element(by.xpath('../..')).click());
+    return element.all(by.css('sfs-select-filter .mat-icon-button:not([disabled])')).click();
   }
 
   addClassFilter() {

@@ -22,8 +22,6 @@ describe('Navigation', () => {
 
   it('should navigate to schedule and show button to class selection', () => {
     page.navigateToSchedule();
-    const paragraph = page.getFirstParagraphText();
-    expect(paragraph).toContain('Lieblingskurse');
 
     page.clickOnVisibleRaisedButton();
     expect(page.getUrl()).toContain('filter');
@@ -31,8 +29,6 @@ describe('Navigation', () => {
 
   it('should navigate to favorites and show title', () => {
     page.navigateToFavorites();
-    const paragraph = page.getFirstParagraphText();
-    expect(paragraph).toContain('Favoriten');
 
     page.clickOnVisibleRaisedButton();
     expect(page.getUrl()).toContain('schedule');
@@ -71,13 +67,14 @@ describe('Navigation', () => {
     expect(page.getFirstCardTitle()).toEqual('Registrieren');
   });
 
-  it('should navigate to reset password and show title', () => {
-    page.navigateToLoginViaButton();
-    page.navigateToLogin();
-    page.navigateToResetPassword();
-    expect(page.getFirstCardTitle()).toEqual('Passwort zurücksetzen');
-    page.navigateToLogin();
-    expect(page.getFirstCardTitle()).toEqual('Login');
+  it('should navigate to reset password and show title', done => {
+    page.navigateToLoginViaButton()
+      .then(() => page.navigateToLogin())
+      .then(() => page.navigateToResetPassword())
+      .then(() => expect(page.getFirstCardTitle()).toEqual('Passwort zurücksetzen'))
+      .then(() => page.navigateToLogin())
+      .then(() => expect(page.getFirstCardTitle()).toEqual('Login'))
+      .then(() => done());
   });
 
   it('should navigate to about and show releasenotes', () => {
@@ -88,13 +85,15 @@ describe('Navigation', () => {
 
   it('should navigate to all links in the schedule\'s second toolbar', () => {
     page.navigateToSchedule();
-    page.clickOnSecondToolbarButton('/favorites');
+    page.clickOnSecondToolbarButton(1);
     expect(page.getFirstParagraphText()).toContain('Favoriten');
-    page.clickOnSecondToolbarButton('/filter');
+    page.clickOnSecondToolbarButton(2);
     expect(page.getFirstCardTitle()).toEqual('Kurse');
-    page.clickOnSecondToolbarButton('/settings');
+    page.clickOnSecondToolbarButton(3);
+    expect(page.getFirstCardTitle()).toEqual('Änderungen des Kursplans');
+    page.clickOnSecondToolbarButton(4);
     expect(page.getFirstCardTitle()).toEqual('Optionen');
-    page.clickOnSecondToolbarButton('/');
+    page.clickOnSecondToolbarButton(0);
     const paragraph = page.getFirstParagraphText();
     expect(paragraph).toContain('Lieblingskurse');
   });

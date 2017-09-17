@@ -22,7 +22,7 @@ export class NavigationPage {
   }
 
   navigateToChanges() {
-    this.clickOnRouterButton('/schedule/changes');
+    return this.clickOnRouterButton('/schedule/changes');
   }
 
   navigateToAbout() {
@@ -38,19 +38,19 @@ export class NavigationPage {
   }
 
   navigateToRegister() {
-    this.clickOnRouterLink('../registration');
+    return this.clickOnRouterLink('../registration');
   }
 
   navigateToResetPassword() {
-    this.clickOnRouterLink('../reset-password');
+    return this.clickOnRouterLink('../reset-password');
   }
 
   navigateToLogin() {
-    this.clickOnRouterLink('../login');
+    return this.clickOnRouterLink('../login');
   }
 
   openReleasenotes() {
-    this.getFirstDisplayedElement(element.all(by.css('md-card-subtitle a'))).click();
+    return this.getFirstDisplayedElement(element.all(by.css('md-card-subtitle a'))).click();
   }
 
   getAppTitle() {
@@ -73,8 +73,8 @@ export class NavigationPage {
     return this.getFirstDisplayedElement(element.all(by.css('.mat-raised-button'))).click();
   }
 
-  clickOnSecondToolbarButton(path: string) {
-    return this.getFirstDisplayedElement(element.all(by.css(`sfs-schedule-router button[ng-reflect-router-link="${path}"]`))).click();
+  clickOnSecondToolbarButton(index: number) {
+    return element.all(by.css(`sfs-bottom-navigation-button button`)).get(index).click();
   }
 
   getUrl() {
