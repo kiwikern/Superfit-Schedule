@@ -8,7 +8,7 @@
   <md-card-content style="width: 95vw">
     <md-tab-group [(selectedIndex)]="selectedTab" [dynamicHeight]="true">
       <md-tab *ngFor="let change of changes; let index = index"
-              [label]="change.timestamp | date:'d. MMMM yy'">
+              [label]="change.timestamp | date:'d. MMM yy'">
         <sfs-schedule [schedulePerDay]="change.schedule"
                       [showSchedule]="true"
                       [removedFavorites]="change.removed"
