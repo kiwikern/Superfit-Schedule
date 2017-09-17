@@ -1,16 +1,13 @@
 <div *ngIf="showSchedule">
-  <div id="second-scrollbar" fxHide.lt-md="true">
-    <div id="second-scrollbar-content">
-    </div>
-  </div>
-  <div [fxLayout]="(daysLayout$ | async) ? (daysLayout$ | async) : 'column'"
-       [fxLayout.gt-xs]="(daysLayout$ | async) ? (daysLayout$ | async) : 'row'"
-       fxLayoutGap="20px" class="scrollable" id="schedule" fxLayoutAlign.gt-lg="center" #schedule>
-    <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | filterClasses:filter | orderDays:showTodayFirst"
+  <div [ngClass]="[(daysLayout$ | async) ? (daysLayout$ | async) : 'column', 'flow']"
+       [ngClass.gt-xs]="[(daysLayout$ | async) ? (daysLayout$ | async) : 'row', 'flow']"
+       class="scrollable" id="schedule" #schedule>
+    <sfs-day-column *ngFor="let classesPerDay of schedulePerDay | filterClasses:filter | orderDays:showTodayFirst; trackBy: trackByIds"
                     [classesPerDay]="classesPerDay"
                     [removedFavorites]="removedFavorites"
                     [showFavoriteButton]="showFavoriteButton"
-                    [newClasses]="newClasses">
+                    [newClasses]="newClasses"
+                    class="margin-if-row">
     </sfs-day-column>
   </div>
   <div *ngIf="schedule.children.length == 0" fxLayoutAlign="center center" fxLayout="column">

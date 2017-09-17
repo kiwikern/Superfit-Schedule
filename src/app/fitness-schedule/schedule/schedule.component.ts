@@ -1,13 +1,15 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { FilterState } from '../store/filter/filter-state';
 import { FitnessClass } from '../../workout/fitness-class';
 import { Subscription } from 'rxjs/Subscription';
+import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 
 @Component({
   selector: 'sfs-schedule',
   templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.css']
+  styleUrls: ['./schedule.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScheduleComponent implements OnInit, OnDestroy {
   @select(['settings', 'showTodayFirst']) showTodayFirst$;
@@ -41,6 +43,11 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;
       scrollbar.onscroll = () => classList.scrollLeft = scrollbar.scrollLeft;
     }
+  }
+
+  trackByIds(index: number, classesPerDay: FitnessClassesPerDay) {
+    return classesPerDay.classes.map(f => f.id)
+      .reduce((id1, id2) => id1 + id2, '');
   }
 
 }

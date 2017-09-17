@@ -26,3 +26,26 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+
+.flow {
+  place-content: center;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-box-direction: normal;
+}
+
+.row {
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+}
+
+.column {
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  margin-bottom: 20px;
+}
+
+.row .margin-if-row {
+  margin-right: 20px;
+}

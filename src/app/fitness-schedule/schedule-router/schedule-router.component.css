@@ -6,6 +6,12 @@
   z-index: 1;
 }
 
+.centered-toolbar-row {
+  display: flex;
+  place-content: center;
+  width: 100%;
+}
+
 @media screen and (max-width: 600px) {
   .toolbar-margin {
     margin-bottom: 64px;

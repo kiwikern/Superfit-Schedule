@@ -2,29 +2,28 @@
   <router-outlet></router-outlet>
 </div>
 <md-toolbar fxHide.gt-md="true" class="toolbar">
-  <span fxFlex></span>
-  <div fxLayout="row" fxLayoutAlign="space-around center" style="width: 552px"
-  >
-    <sfs-bottom-navigation-button [scheduleRoute]="'/'"
-                                  [icon]="'event'"
-                                  [activeRoute]="router.url"
-                                  [name]="'Kursplan'"></sfs-bottom-navigation-button>
-    <sfs-bottom-navigation-button [scheduleRoute]="'/favorites'"
-                                  [icon]="'favorite'"
-                                  [activeRoute]="router.url"
-                                  [name]="'Favoriten'"></sfs-bottom-navigation-button>
-    <sfs-bottom-navigation-button [scheduleRoute]="'/filter'"
-                                  [icon]="'playlist_add'"
-                                  [activeRoute]="router.url"
-                                  [name]="'Kurswahl'"></sfs-bottom-navigation-button>
-    <sfs-bottom-navigation-button [scheduleRoute]="'/changes'"
-                                  [icon]="'swap_horiz'"
-                                  [activeRoute]="router.url"
-                                  [name]="'Änderung'"></sfs-bottom-navigation-button>
-    <sfs-bottom-navigation-button [scheduleRoute]="'/settings'"
-                                  [icon]="'settings'"
-                                  [activeRoute]="router.url"
-                                  [name]="'Optionen'"></sfs-bottom-navigation-button>
+  <div class="centered-toolbar-row">
+    <div style="display:flex; width: 552px; align-items: center; place-content: space-around;">
+      <sfs-bottom-navigation-button [scheduleRoute]="'/'"
+                                    [icon]="'event'"
+                                    [activeRoute]="router.url"
+                                    [name]="'Kursplan'"></sfs-bottom-navigation-button>
+      <sfs-bottom-navigation-button [scheduleRoute]="'/favorites'"
+                                    [icon]="'favorite'"
+                                    [activeRoute]="router.url"
+                                    [name]="'Favoriten'"></sfs-bottom-navigation-button>
+      <sfs-bottom-navigation-button [scheduleRoute]="'/filter'"
+                                    [icon]="'playlist_add'"
+                                    [activeRoute]="router.url"
+                                    [name]="'Kurswahl'"></sfs-bottom-navigation-button>
+      <sfs-bottom-navigation-button [scheduleRoute]="'/changes'"
+                                    [icon]="'swap_horiz'"
+                                    [activeRoute]="router.url"
+                                    [name]="'Änderung'"></sfs-bottom-navigation-button>
+      <sfs-bottom-navigation-button [scheduleRoute]="'/settings'"
+                                    [icon]="'settings'"
+                                    [activeRoute]="router.url"
+                                    [name]="'Optionen'"></sfs-bottom-navigation-button>
+    </div>
   </div>
-  <span fxFlex></span>
 </md-toolbar>

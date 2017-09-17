@@ -1,6 +1,6 @@
-<div fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
+<div style="display: flex;flex-direction: column;align-items: center">
      <!--@scheduleAnimation>-->
-  <h2>{{ getDayName(classesPerDay.day) }}</h2>
+  <h2 style="text-align: center; margin-bottom: 10px">{{ getDayName(classesPerDay.day) }}</h2>
   <sfs-fitness-class *ngFor="let class of classesPerDay.classes | sortClasses; trackBy: trackById"
                      [showDaysInClasses]="showDaysInClasses$ | async"
                      [showWorkoutType]="showWorkoutType$ | async"
@@ -10,6 +10,6 @@
                      [showFavoriteButton]="showFavoriteButton"
                      [wasRemoved]="wasRemoved(class)"
                      [isNew]="isNewClass(class)"
-                     fxFlex
+                     style="margin-bottom: 10px"
   ></sfs-fitness-class>
 </div>
