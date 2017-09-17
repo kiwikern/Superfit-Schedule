@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'sfs-bottom-navigation-button',
@@ -14,7 +13,7 @@ export class BottomNavigationButtonComponent implements OnInit {
   @Input() icon: string;
   @Input() activeRoute: string;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
