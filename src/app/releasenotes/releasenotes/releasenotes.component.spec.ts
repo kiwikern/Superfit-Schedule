@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReleasenotesComponent } from './releasenotes.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { Component, Input } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 describe('ReleasenotesComponent', () => {
   let component: ReleasenotesComponent;
@@ -16,7 +16,7 @@ describe('ReleasenotesComponent', () => {
         SfsMaterialModule,
       ],
       providers: [
-        {provide: MdDialogRef, useValue: ''}
+        {provide: MatDialogRef, useValue: ''}
       ]
     })
       .compileComponents();

@@ -1,4 +1,4 @@
-md-card {
+mat-card {
   width: 200px;
   padding: 8px;
 }
@@ -14,7 +14,7 @@ md-card {
   font-weight: 400;
 }
 
-md-card-subtitle {
+mat-card-subtitle {
   margin-bottom: 5px;
 }
 

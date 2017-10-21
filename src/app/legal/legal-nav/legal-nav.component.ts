@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { PrivacyPolicyComponent } from '../privacy-policy/privacy-policy.compone
 })
 export class LegalNavComponent implements OnInit {
 
-  constructor(private dialog: MdDialog) {
+  constructor(private dialog: MatDialog) {
   }
 
   ngOnInit() {

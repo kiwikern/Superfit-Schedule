@@ -1,37 +1,37 @@
 <div fxLayout="column" fxLayoutGap="20px">
 
-  <md-card class="by-user">
-    <md-card-subtitle align="right">{{feedback?.date | date:'mediumDate'}}</md-card-subtitle>
-    <md-card-content>
+  <mat-card class="by-user">
+    <mat-card-subtitle align="right">{{feedback?.date | date:'mediumDate'}}</mat-card-subtitle>
+    <mat-card-content>
       <p class="line-break">{{feedback?.text}}</p>
-    </md-card-content>
-  </md-card>
+    </mat-card-content>
+  </mat-card>
 
-  <md-card *ngFor="let response of feedback?.responses"
+  <mat-card *ngFor="let response of feedback?.responses"
            [class.by-user]="response?.userId !== 'sfs'"
            [class.by-sfs]="response?.userId === 'sfs'">
-    <md-card-subtitle align="right">
+    <mat-card-subtitle align="right">
       {{response?.date | date:'mediumDate'}}
-    </md-card-subtitle>
-    <md-card-content>
+    </mat-card-subtitle>
+    <mat-card-content>
       <p class="line-break">{{response?.text}}</p>
-    </md-card-content>
-  </md-card>
+    </mat-card-content>
+  </mat-card>
 
   <form #responseForm="ngForm" (ngSubmit)="onSubmit(); responseForm.reset();">
-    <md-card class="by-user" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-      <md-form-field style="width: 100%">
-      <textarea mdInput
-                mdTextareaAutosize mdAutosizeMinRows="1" mdAutosizeMaxRows="4"
+    <mat-card class="by-user" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-form-field style="width: 100%">
+      <textarea matInput
+                matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"
                 color="primary"
                 name="text"
                 [(ngModel)]="text"
                 placeholder="Kommentar">
       </textarea>
-      </md-form-field>
-      <button md-icon-button type="submit" [disabled]="!text">
-        <md-icon>send</md-icon>
+      </mat-form-field>
+      <button mat-icon-button type="submit" [disabled]="!text">
+        <mat-icon>send</mat-icon>
       </button>
-    </md-card>
+    </mat-card>
   </form>
 </div>

@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
   <div fxLayout="column" fxLayoutAlign="center center" *ngFor="let highlight of highlights">
-    <md-icon>{{service.getHighlightIcon(highlight)}}</md-icon>
+    <mat-icon>{{service.getHighlightIcon(highlight)}}</mat-icon>
     <span>{{service.getHighlightText(highlight)}}</span>
   </div>
 </div>

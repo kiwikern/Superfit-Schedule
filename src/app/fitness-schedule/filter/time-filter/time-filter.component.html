@@ -1,19 +1,19 @@
-<md-card>
-  <md-card-title>Uhrzeit</md-card-title>
+<mat-card>
+  <mat-card-title>Uhrzeit</mat-card-title>
   <div fxLayout="column">
     <label>Kurs beginnt frühestens um {{getTimeText(minStartTime)}}</label>
-    <md-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
+    <mat-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
                [(ngModel)]="minStartTime" (change)="onChange({filterName: 'minStartTime', value: minStartTime})">
-    </md-slider>
+    </mat-slider>
   </div>
   <div fxLayout="column">
     <label>Kurs endet spätestens um {{getTimeText(maxEndTime)}}</label>
-    <md-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
+    <mat-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
                [(ngModel)]="maxEndTime" (change)="onChange({filterName: 'maxEndTime', value: maxEndTime})">
-    </md-slider>
+    </mat-slider>
   </div>
-  <md-checkbox [(ngModel)]="filterOnlyWorkdays"
+  <mat-checkbox [(ngModel)]="filterOnlyWorkdays"
                (change)="onChange({filterName: 'filterTimeOnlyOnWorkdays', value: filterOnlyWorkdays})">
     Zeiteinschränkung nur werktags
-  </md-checkbox>
-</md-card>
+  </mat-checkbox>
+</mat-card>

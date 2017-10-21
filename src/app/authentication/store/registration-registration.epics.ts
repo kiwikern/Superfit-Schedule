@@ -3,7 +3,7 @@ import { AuthenticationActions } from './authentication.actions';
 import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
 
@@ -12,7 +12,7 @@ export class RegistrationEpics {
 
   constructor(private http: Http,
               private actions: AuthenticationActions,
-              private snackBar: MdSnackBar,
+              private snackBar: MatSnackBar,
               private routerActions: RouterActions,
               private syncActions: SyncActions) {
   }

@@ -1,13 +1,13 @@
-md-card {
+mat-card {
   background: #daedeb;
   padding: 4px;
 }
 
-md-card-content {
+mat-card-content {
   margin-top: 10px;
 }
 
-md-card-subtitle {
+mat-card-subtitle {
   margin-bottom: 5px;
 }
 

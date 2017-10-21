@@ -1,4 +1,4 @@
-<md-card [style.background-color]="getClassColor()">
+<mat-card [style.background-color]="getClassColor()">
   <svg height="30" width="30" class="new" *ngIf="isNew">
     <circle cx="15" cy="18" r="5" stroke="rgba(124,157,255,0.1)" stroke-width="0.5px" fill="rgba(124,157,255,0.5)"/>
   </svg>
@@ -9,14 +9,14 @@
       {{getClassName()}}
     </span>
       </div>
-      <md-card-subtitle>
+      <mat-card-subtitle>
     <span *ngIf="showWorkoutType">
         {{getWorkoutType()}}
     </span>
         <span *ngIf="showStudio !== false">
       {{getGymName()}}
     </span>
-      </md-card-subtitle>
+      </mat-card-subtitle>
       <div style="font-size: 14px; display: flex">
         <span *ngIf="showDaysInClasses">{{getDayName()}},&nbsp;</span>
         <sfs-time-period [startHour]="fitnessClass.startHour" [startMinute]="fitnessClass.startMinute"
@@ -26,19 +26,19 @@
     </div>
     <span style="flex: auto;display: flex"></span>
     <div style="margin-top: -5px;display: flex;flex-direction: column" *ngIf="showFavoriteButton">
-      <button md-icon-button (click)="toggleFavorite(); $event.stopPropagation()" *ngIf="!wasRemoved">
-        <md-icon *ngIf="!isFavorite">favorite_border</md-icon>
-        <md-icon *ngIf="isFavorite" color="warn">favorite</md-icon>
+      <button mat-icon-button (click)="toggleFavorite(); $event.stopPropagation()" *ngIf="!wasRemoved">
+        <mat-icon *ngIf="!isFavorite">favorite_border</mat-icon>
+        <mat-icon *ngIf="isFavorite" color="warn">favorite</mat-icon>
       </button>
-      <button md-icon-button (click)="showRemovedSnackBar(); $event.stopPropagation()" *ngIf="wasRemoved && isFavorite">
-        <md-icon>warning</md-icon>
+      <button mat-icon-button (click)="showRemovedSnackBar(); $event.stopPropagation()" *ngIf="wasRemoved && isFavorite">
+        <mat-icon>warning</mat-icon>
       </button>
-      <button md-icon-button *ngIf="!wasRemoved"
+      <button mat-icon-button *ngIf="!wasRemoved"
               [routerLink]="['/schedule/class', fitnessClass.id]"
               style="margin-top: -6px; margin-bottom: -6px;">
-        <md-icon *ngIf="fitnessClass.comments && fitnessClass.comments.length > 0; else empty">chat_bubble</md-icon>
+        <mat-icon *ngIf="fitnessClass.comments && fitnessClass.comments.length > 0; else empty">chat_bubble</mat-icon>
         <ng-template #empty>
-          <md-icon>chat_bubble_outline</md-icon>
+          <mat-icon>chat_bubble_outline</mat-icon>
         </ng-template>
         <span class="overlay" *ngIf="fitnessClass.comments">
         {{fitnessClass.comments.length > 9 ? '+' : fitnessClass.comments.length}}
@@ -48,4 +48,4 @@
       <img style="width: 24px;" src="assets/english.png" *ngIf="fitnessClass.language == 1">
     </div>
   </div>
-</md-card>
+</mat-card>

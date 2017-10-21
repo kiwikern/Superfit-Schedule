@@ -1,15 +1,15 @@
 <div *ngIf="(sync$ | async)?.isSyncActivated">
-  <button md-icon-button
+  <button mat-icon-button
           *ngIf="(sync$ | async)?.isRequesting">
-    <md-icon>sync</md-icon>
+    <mat-icon>sync</mat-icon>
   </button>
-  <button md-icon-button (click)="requestSync()"
+  <button mat-icon-button (click)="requestSync()"
           *ngIf="!(sync$ | async)?.isRequesting && (sync$ | async)?.hasError">
-    <md-icon>sync_problem</md-icon>
+    <mat-icon>sync_problem</mat-icon>
   </button>
 </div>
 
-<button md-icon-button routerLink="/auth" (click)="showLoginRequired()" *ngIf="!(sync$ | async)?.isSyncActivated"
+<button mat-icon-button routerLink="/auth" (click)="showLoginRequired()" *ngIf="!(sync$ | async)?.isSyncActivated"
         angulartics2On="click" angularticsEvent="LoginViaStatusComponent">
-  <md-icon>sync_disabled</md-icon>
+  <mat-icon>sync_disabled</mat-icon>
 </button>

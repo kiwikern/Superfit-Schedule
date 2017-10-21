@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommentFormComponent } from './comment-form.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdAutocompleteModule, MdInputModule } from '@angular/material';
+import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { HighlightService } from '../highlight.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,8 +22,8 @@ describe('CommentFormComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        MdAutocompleteModule,
-        MdInputModule,
+        MatAutocompleteModule,
+        MatInputModule,
         RouterTestingModule,
         NoopAnimationsModule
       ],

@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/delay';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class ChangePasswordEpics {
   constructor(private http: HttpClient,
               private authHttp: AuthHttp,
               private actions: AuthenticationActions,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
   }
 
   createEpics() {

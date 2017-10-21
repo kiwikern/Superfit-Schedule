@@ -24,16 +24,7 @@
 }
 
 .sidenav-menu {
-  position: fixed;
-  top: 64px;
-  padding-top: 20px;
   min-width: 200px;
-}
-
-@media screen and (max-width: 600px) {
-  .sidenav-menu {
-    top: 54px;
-  }
 }
 
 .toolbar {

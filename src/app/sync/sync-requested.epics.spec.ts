@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toArray';
 import { SyncActivatedEpics } from './sync-activated.epics';
 import { AuthHttp, AuthModule } from 'angular2-jwt';
 import { SyncActions } from './sync.actions';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { SyncRequestedEpics } from './sync-requested.epics';
 import { Angulartics2 } from 'angulartics2';
@@ -27,7 +27,7 @@ describe('SyncRequestedEpics', () => {
         SyncActions,
         AuthenticationActions,
         {provide: Angulartics2, useValue: mockAngulartics},
-        {provide: MdSnackBar, useClass: SnackBarMock},
+        {provide: MatSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend},
         {provide: AuthHttp, useExisting: Http},
         {provide: Router, useClass: RouterMock}
@@ -54,7 +54,7 @@ describe('SyncRequestedEpics', () => {
   });
 
   it('should not sync and logout when unauthenticated', (done) => {
-    inject([SyncRequestedEpics, XHRBackend, MdSnackBar],
+    inject([SyncRequestedEpics, XHRBackend, MatSnackBar],
       (epics: SyncActivatedEpics, mockBackend: MockBackend, snack: SnackBarMock) => {
         const expectedOutputActions = [
           {type: SyncActions.SYNC_FAILED},

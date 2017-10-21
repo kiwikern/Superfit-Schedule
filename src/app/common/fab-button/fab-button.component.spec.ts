@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FabButtonComponent } from './fab-button.component';
-import { MdButtonModule, MdIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FabButtonComponent', () => {
@@ -12,8 +12,8 @@ describe('FabButtonComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ FabButtonComponent ],
       imports: [
-        MdIconModule,
-        MdButtonModule,
+        MatIconModule,
+        MatButtonModule,
         BrowserAnimationsModule
       ]
     })

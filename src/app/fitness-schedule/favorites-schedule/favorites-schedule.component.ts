@@ -5,7 +5,7 @@ import 'rxjs/add/observable/combineLatest';
 import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
 import { FitnessClass } from '../../workout/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -23,7 +23,7 @@ export class FavoritesScheduleComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(private parseService: ScheduleParserService,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {

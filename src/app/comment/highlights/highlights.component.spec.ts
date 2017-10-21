@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HighlightsComponent } from './highlights.component';
 import { HighlightService } from '../highlight.service';
-import { MdIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
 
 describe('HighlightsComponent', () => {
   let component: HighlightsComponent;
@@ -12,7 +12,7 @@ describe('HighlightsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HighlightsComponent ],
       imports: [
-        MdIconModule
+        MatIconModule
       ],
       providers: [HighlightService]
     })

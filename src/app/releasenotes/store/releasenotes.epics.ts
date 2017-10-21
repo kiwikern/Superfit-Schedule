@@ -3,7 +3,8 @@ import { ReleasenotesActions } from './releasenotes.actions';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { ReleasenotesComponent } from '../releasenotes/releasenotes.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
+
 declare function require(moduleName: string): any;
 const {version: appVersion} = require('../../../../package.json');
 
@@ -17,7 +18,7 @@ export class ReleasenotesEpics {
   private hideReleasenotes: boolean;
 
   constructor(private actions: ReleasenotesActions,
-              private dialog: MdDialog) {
+              private dialog: MatDialog) {
     this.version = appVersion;
     this.seenVersion$.subscribe(seenVersion => this.seenVersion = seenVersion);
     this.hideReleasenotes$.subscribe(hideReleasenotes => this.hideReleasenotes = hideReleasenotes);

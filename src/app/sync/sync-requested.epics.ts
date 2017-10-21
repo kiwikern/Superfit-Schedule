@@ -10,7 +10,7 @@ import { SettingsState } from '../fitness-schedule/store/settings/settings-state
 import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
 import { AuthHttp } from 'angular2-jwt';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -32,7 +32,7 @@ export class SyncRequestedEpics {
               private actions: SyncActions,
               private authActions: AuthenticationActions,
               private router: Router,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
     this.favorites$.subscribe(favorites => this.favorites = favorites);
     this.settings$.subscribe(settings => this.settings = settings);
     this.filter$.subscribe(filter => this.filter = filter);

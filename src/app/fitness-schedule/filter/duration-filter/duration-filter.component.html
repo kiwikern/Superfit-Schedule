@@ -1,15 +1,15 @@
-<md-card>
-  <md-card-title>Kursdauer</md-card-title>
+<mat-card>
+  <mat-card-title>Kursdauer</mat-card-title>
   <div fxLayout="column">
     <label>Kurs dauert mindestens {{minDuration ? minDuration + ' Minuten' : 'egal'}} </label>
-    <md-slider [min]="0" [max]="MAX_DURATION" step="10"
+    <mat-slider [min]="0" [max]="MAX_DURATION" step="10"
                [(ngModel)]="minDuration" (change)="onChange({filterName: 'minDuration', value: minDuration})">
-    </md-slider>
+    </mat-slider>
   </div>
   <div fxLayout="column">
     <label>Kurs dauert maximal {{maxDuration ? maxDuration + ' Minuten' : 'egal'}}</label>
-    <md-slider [min]="0" [max]="MAX_DURATION" step="10"
+    <mat-slider [min]="0" [max]="MAX_DURATION" step="10"
                [(ngModel)]="maxDuration" (change)="onChange({filterName: 'maxDuration', value: maxDuration})">
-    </md-slider>
+    </mat-slider>
   </div>
-</md-card>
+</mat-card>

@@ -3,14 +3,14 @@ import { AuthenticationActions } from './authentication.actions';
 import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class ResetPasswordEpics {
 
   constructor(private http: Http,
               private actions: AuthenticationActions,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
   }
 
   createEpics() {

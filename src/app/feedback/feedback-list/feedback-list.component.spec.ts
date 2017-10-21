@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedbackListComponent } from './feedback-list.component';
-import { MdButtonModule, MdCardModule, MdDialogModule, MdIconModule, MdListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FeedbackActions } from '../store/feedback.actions';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -16,11 +16,11 @@ describe('FeedbackListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ FeedbackListComponent ],
       imports: [
-        MdIconModule,
-        MdButtonModule,
-        MdDialogModule,
-        MdCardModule,
-        MdListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatCardModule,
+        MatListModule,
         RouterTestingModule
       ],
       providers: [

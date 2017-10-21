@@ -1,56 +1,56 @@
 <div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
-  <md-card-title>Optionen</md-card-title>
-  <md-accordion>
-    <md-expansion-panel fxLayout="column">
-      <md-expansion-panel-header>
-        <md-panel-title>Wochenanfang</md-panel-title>
-        <md-panel-description>
+  <mat-card-title>Optionen</mat-card-title>
+  <mat-accordion>
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Wochenanfang</mat-panel-title>
+        <mat-panel-description>
           {{(showTodayFirst$ | async) ? 'Heutiger Tag' : 'Montag'}}
-        </md-panel-description>
-      </md-expansion-panel-header>
-      <md-radio-group fxLayout="column" [ngModel]="(showTodayFirst$ | async) + ''"
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-radio-group fxLayout="column" [ngModel]="(showTodayFirst$ | async) + ''"
                       (change)="changeSetting('showTodayFirst', $event.value === 'true')">
-        <md-radio-button value="true">Heutiger Tag</md-radio-button>
-        <md-radio-button value="false">Montag</md-radio-button>
-      </md-radio-group>
-    </md-expansion-panel>
-    <md-expansion-panel fxLayout="column">
-      <md-expansion-panel-header>
-        <md-panel-title>Kursplanlayout</md-panel-title>
-        <md-panel-description [ngSwitch]="daysLayout$ | async">
+        <mat-radio-button value="true">Heutiger Tag</mat-radio-button>
+        <mat-radio-button value="false">Montag</mat-radio-button>
+      </mat-radio-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Kursplanlayout</mat-panel-title>
+        <mat-panel-description [ngSwitch]="daysLayout$ | async">
           <span *ngSwitchDefault>automatisch</span>
           <span *ngSwitchCase="'column'">untereinander</span>
           <span *ngSwitchCase="'row'">nebeneinander</span>
-        </md-panel-description>
-      </md-expansion-panel-header>
-      <md-radio-group fxLayout="column" [ngModel]="daysLayout$ | async"
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-radio-group fxLayout="column" [ngModel]="daysLayout$ | async"
                       (change)="changeSetting('daysLayout', $event.value)">
-        <md-radio-button value="">automatisch</md-radio-button>
-        <md-radio-button value="row">nebeneinander</md-radio-button>
-        <md-radio-button value="column">untereinander</md-radio-button>
-      </md-radio-group>
-    </md-expansion-panel>
-    <md-expansion-panel>
-      <md-expansion-panel-header>Kurslayout</md-expansion-panel-header>
+        <mat-radio-button value="">automatisch</mat-radio-button>
+        <mat-radio-button value="row">nebeneinander</mat-radio-button>
+        <mat-radio-button value="column">untereinander</mat-radio-button>
+      </mat-radio-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Kurslayout</mat-expansion-panel-header>
       <div fxLayout="column">
-        <md-checkbox [ngModel]="showStudio$ | async" (change)="changeSetting('showStudio', $event.checked)">
+        <mat-checkbox [ngModel]="showStudio$ | async" (change)="changeSetting('showStudio', $event.checked)">
           Studio anzeigen
-        </md-checkbox>
-        <md-checkbox [ngModel]="showDaysInClasses$ | async"
+        </mat-checkbox>
+        <mat-checkbox [ngModel]="showDaysInClasses$ | async"
                      (change)="changeSetting('showDaysInClasses', $event.checked)">
           Wochentag anzeigen
-        </md-checkbox>
-        <md-checkbox [ngModel]="showWorkoutType$ | async" (change)="changeSetting('showWorkoutType', $event.checked)">
+        </mat-checkbox>
+        <mat-checkbox [ngModel]="showWorkoutType$ | async" (change)="changeSetting('showWorkoutType', $event.checked)">
           Kursart anzeigen
-        </md-checkbox>
+        </mat-checkbox>
       </div>
-    </md-expansion-panel>
-    <md-expansion-panel>
-      <md-expansion-panel-header>Sonstiges</md-expansion-panel-header>
-      <md-checkbox [ngModel]="!(hideReleasenotes$ | async)"
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Sonstiges</mat-expansion-panel-header>
+      <mat-checkbox [ngModel]="!(hideReleasenotes$ | async)"
                    (change)="changeSetting('hideReleasenotes', !$event.checked)">
         Zeige Änderungshistorie bei Update
-      </md-checkbox>
-    </md-expansion-panel>
-  </md-accordion>
+      </mat-checkbox>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

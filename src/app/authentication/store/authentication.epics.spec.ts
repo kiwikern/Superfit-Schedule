@@ -3,7 +3,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthenticationActions } from './authentication.actions';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
 import { ActionsObservable } from 'redux-observable';
@@ -29,14 +29,14 @@ describe('AuthenticationEpics', () => {
         RouterActions,
         SyncActions,
         {provide: Angulartics2, useValue: mockAngulartics},
-        {provide: MdSnackBar, useClass: SnackBarMock},
+        {provide: MatSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend}
       ]
     });
   });
 
   it('should process succesful login', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MdSnackBar],
+    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [
@@ -49,7 +49,7 @@ describe('AuthenticationEpics', () => {
   });
 
   it('should actvivate sync and navigate to schedule after successful login', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MdSnackBar],
+    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginSuccess('', '', ''));
         const expectedOutputActions = [
@@ -61,7 +61,7 @@ describe('AuthenticationEpics', () => {
   });
 
   it('should process failed login with incorrect password', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MdSnackBar],
+    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [{type: AuthenticationActions.LOGIN_FAILED}];
@@ -72,7 +72,7 @@ describe('AuthenticationEpics', () => {
   });
 
   it('should process failed login without internet connection', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MdSnackBar],
+    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
       (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [{type: AuthenticationActions.LOGIN_FAILED}];

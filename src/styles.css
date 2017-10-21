@@ -11,7 +11,7 @@ a {
   text-decoration: none;
 }
 
-md-dialog-container {
+mat-dialog-container {
   position: relative;
 }
 

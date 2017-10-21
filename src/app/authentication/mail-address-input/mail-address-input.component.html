@@ -1,8 +1,8 @@
 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-  <md-icon>email</md-icon>
-  <md-form-field fxFlex>
-    <input mdInput placeholder="E-Mail" [required]="isRequired" [email]="mailAddress?.length > 0" type="email"
+  <mat-icon>email</mat-icon>
+  <mat-form-field fxFlex>
+    <input matInput placeholder="E-Mail" [required]="isRequired" [email]="mailAddress?.length > 0" type="email"
            [(ngModel)]="mailAddress" [formControl]="inputControl" (input)="updateValue($event.target.value)">
-    <md-error>Die E-Mail-Adresse ist nicht gültig.</md-error>
-  </md-form-field>
+    <mat-error>Die E-Mail-Adresse ist nicht gültig.</mat-error>
+  </mat-form-field>
 </div>

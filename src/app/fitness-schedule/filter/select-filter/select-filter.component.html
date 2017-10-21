@@ -1,25 +1,27 @@
-<md-card fxLayout="column" fxLayoutGap="15px">
-  <md-card-title>{{title}}</md-card-title>
-  <!--<md-form-field>-->
-  <!--<input type="text" [(ngModel)]="selectedValue" mdInput #autoInput [mdAutocomplete]="auto" [placeholder]="title">-->
-  <!--</md-form-field>-->
-  <!--<md-autocomplete #auto="mdAutocomplete" (change)="onChange()">-->
-  <!--<md-option *ngFor="let value of filteredValues" [value]="value" (onSelectionChange)="onChange(value)">-->
+<mat-card fxLayout="column" fxLayoutGap="15px">
+  <mat-card-title>{{title}}</mat-card-title>
+  <!--<mat-form-field>-->
+  <!--<input type="text" [(ngModel)]="selectedValue" matInput #autoInput [matAutocomplete]="auto" [placeholder]="title">-->
+  <!--</mat-form-field>-->
+  <!--<mat-autocomplete #auto="matAutocomplete" (change)="onChange()">-->
+  <!--<mat-option *ngFor="let value of filteredValues" [value]="value" (onSelectionChange)="onChange(value)">-->
   <!--{{ getName(value) }}-->
-  <!--</md-option>-->
-  <!--</md-autocomplete>-->
-  <div fxLayoutGap="10px">
-    <md-select fxFlex [(ngModel)]="selectedValues" [placeholder]="title" multiple="true" (change)="onChange()">
-      <md-option *ngFor="let value of allValues" [value]="value">{{ getName(value) }}</md-option>
-    </md-select>
-    <button md-icon-button [disabled]="selectedValues.length == 0" (click)="delete()">
-      <md-icon>delete</md-icon>
+  <!--</mat-option>-->
+  <!--</mat-autocomplete>-->
+  <div fxLayoutGap="10px" fxLayoutAlign="center center">
+    <mat-form-field fxFlex>
+      <mat-select [(ngModel)]="selectedValues" [placeholder]="title" multiple="true" (change)="onChange()">
+        <mat-option *ngFor="let value of allValues" [value]="value">{{ getName(value) }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-icon-button [disabled]="selectedValues.length == 0" (click)="delete()">
+      <mat-icon>delete</mat-icon>
     </button>
   </div>
-  <md-chip-list>
-    <md-chip *ngIf="selectedValues.length == 0">ALLE</md-chip>
-    <md-chip *ngFor="let value of selectedValues">
+  <mat-chip-list>
+    <mat-chip *ngIf="selectedValues.length == 0">ALLE</mat-chip>
+    <mat-chip *ngFor="let value of selectedValues">
       {{ getName(value) }}
-    </md-chip>
-  </md-chip-list>
-</md-card>
+    </mat-chip>
+  </mat-chip-list>
+</mat-card>

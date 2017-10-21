@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LegalNavComponent } from './legal-nav.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 describe('LegalNavComponent', () => {
   let component: LegalNavComponent;
@@ -11,7 +11,7 @@ describe('LegalNavComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LegalNavComponent ],
       providers: [
-        {provide: MdDialog, useValue: ''}
+        {provide: MatDialog, useValue: ''}
       ]
     })
     .compileComponents();

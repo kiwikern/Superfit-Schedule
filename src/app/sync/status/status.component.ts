@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/root-state.interface';
 import { SyncActions } from '../sync.actions';
-import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { SyncState } from '../sync-state.interface';
 
@@ -17,7 +17,7 @@ export class StatusComponent implements OnInit {
 
   constructor(private ngRedux: NgRedux<IAppState>,
               private actions: SyncActions,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class StatusComponent implements OnInit {
     this.showSnackBar('Einloggen um Synchronisierung zu aktivieren.');
   }
 
-  showSnackBar(message: string): MdSnackBarRef<SimpleSnackBar> {
+  showSnackBar(message: string): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, 'OK', {duration: 5000});
   }
 

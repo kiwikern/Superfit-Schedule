@@ -10,10 +10,11 @@ import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.ac
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { MockNgRedux } from '@angular-redux/store/lib/testing';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { Angulartics2 } from 'angulartics2';
 import { Router } from '@angular/router';
+
 describe('SyncActivatedEpics', () => {
 
   beforeEach(() => {
@@ -32,7 +33,7 @@ describe('SyncActivatedEpics', () => {
         FilterActions,
         AuthenticationActions,
         {provide: Angulartics2, useValue: mockAngulartics},
-        {provide: MdSnackBar, useClass: SnackBarMock},
+        {provide: MatSnackBar, useClass: SnackBarMock},
         {provide: XHRBackend, useClass: MockBackend},
         {provide: AuthHttp, useExisting: Http},
         {provide: Router, useClass: RouterMock}

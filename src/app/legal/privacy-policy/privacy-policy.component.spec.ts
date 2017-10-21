@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrivacyPolicyComponent } from './privacy-policy.component';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 describe('PrivacyPolicyComponent', () => {
   let component: PrivacyPolicyComponent;
@@ -15,7 +15,7 @@ describe('PrivacyPolicyComponent', () => {
         SfsMaterialModule
       ],
       providers: [
-        {provide: MdDialogRef, useValue: ''}
+        {provide: MatDialogRef, useValue: ''}
       ]
     })
     .compileComponents();

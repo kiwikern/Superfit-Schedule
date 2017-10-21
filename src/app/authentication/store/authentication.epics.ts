@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
-import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class AuthenticationEpics {
 
   constructor(private http: Http,
               private actions: AuthenticationActions,
-              private snackBar: MdSnackBar,
+              private snackBar: MatSnackBar,
               private routerActions: RouterActions,
               private router: Router,
               private syncActions: SyncActions) {
@@ -75,7 +75,7 @@ export class AuthenticationEpics {
     this.showSnackBar(`${errorMessage}${errorInfo ? ' ' + errorInfo : ''}`);
   }
 
-  private showSnackBar(message: string, action = 'OK'): MdSnackBarRef<SimpleSnackBar> {
+  private showSnackBar(message: string, action = 'OK'): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {duration: 5000});
   }
 

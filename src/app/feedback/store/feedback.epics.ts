@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FeedbackActions } from './feedback.actions';
-import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { of } from 'rxjs/observable/of';
 import { FeedbackPayload } from './feedback-payload-interface';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,7 @@ export class FeedbackEpics {
 
   constructor(private http: HttpClient,
               private actions: FeedbackActions,
-              private snackBar: MdSnackBar,
+              private snackBar: MatSnackBar,
               private router: Router) {
     this.userId$.subscribe(userId => this.userId = userId);
     this.userName$.subscribe(userName => this.userName = userName);
@@ -123,7 +123,7 @@ export class FeedbackEpics {
       .reduce((fst, snd) => fst.concat(snd), []);
     const unreadCount = responses.filter(response => response && !response.isRead).length;
     if (unreadCount > 0) {
-      const snackBar: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Du hast ungelesene Nachrichten.',
+      const snackBar: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open('Du hast ungelesene Nachrichten.',
         'Zu Feedback', {duration: 10000});
       const subscription = snackBar.onAction().subscribe(() => {
         this.router.navigate(['/feedback']);

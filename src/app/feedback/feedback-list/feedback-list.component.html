@@ -3,20 +3,20 @@
   Besonders freue ich mich über Verbesserungsvorschläge jeglicher Art.</p>
 <p>Wenn du eine Antwort auf dein Feedback erhälst, wird dir das beim nächsten Aufruf der App angezeigt.</p>
 
-<md-card>
-  <md-card-title align="center">Gesendetes Feedback</md-card-title>
-  <md-card-content>
-    <md-list>
-      <md-list-item *ngIf="!(feedbackList$ | async) || (feedbackList$ | async)?.length == 0">
+<mat-card>
+  <mat-card-title align="center">Gesendetes Feedback</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngIf="!(feedbackList$ | async) || (feedbackList$ | async)?.length == 0">
         Du hast bis jetzt noch kein Feedback hinterlassen.
-      </md-list-item>
-      <md-list-item *ngFor="let feedback of feedbackList$ | async" [routerLink]="feedback.id">
-        <md-icon md-list-icon [color]="isUnread(feedback) ? 'primary' : ''">feedback</md-icon>
-        <h4 md-line>{{feedback.text}}</h4>
-        <p md-line>{{feedback.date | date:'mediumDate'}}</p>
-      </md-list-item>
-    </md-list>
-  </md-card-content>
-</md-card>
+      </mat-list-item>
+      <mat-list-item *ngFor="let feedback of feedbackList$ | async" [routerLink]="feedback.id">
+        <mat-icon mat-list-icon [color]="isUnread(feedback) ? 'primary' : ''">feedback</mat-icon>
+        <h4 matLine>{{feedback.text}}</h4>
+        <p matLine>{{feedback.date | date:'mediumDate'}}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
 
 <sfs-fab-button [icon]="'feedback'" routerLink="new"></sfs-fab-button>

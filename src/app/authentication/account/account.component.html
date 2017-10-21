@@ -1,17 +1,17 @@
-<md-card>
-  <md-card-title>Hallo {{userName$ | async}}!</md-card-title>
-  <md-card-content>
+<mat-card>
+  <mat-card-title>Hallo {{userName$ | async}}!</mat-card-title>
+  <mat-card-content>
     <p>Herzlichen Glückwunsch, du bist eingeloggt!
     Deine Einstellungen werden synchroniert.</p>
-    <button md-raised-button routerLink="change-password">
-      <md-icon>lock</md-icon>
+    <button mat-raised-button routerLink="change-password">
+      <mat-icon>lock</mat-icon>
       Passwort ändern
     </button>
-  </md-card-content>
-  <md-card-actions align="right">
-    <button md-raised-button (click)="logout()" routerLink="login">
-      <md-icon>exit_to_app</md-icon>
+  </mat-card-content>
+  <mat-card-actions align="right">
+    <button mat-raised-button (click)="logout()" routerLink="login">
+      <mat-icon>exit_to_app</mat-icon>
       Logout
     </button>
-  </md-card-actions>
-</md-card>
+  </mat-card-actions>
+</mat-card>

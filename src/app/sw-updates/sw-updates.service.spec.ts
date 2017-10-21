@@ -6,7 +6,7 @@ import 'rxjs/add/operator/take';
 
 import { Logger } from '../common/logger.service';
 import { SwUpdatesService } from './sw-updates.service';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Angulartics2 } from 'angulartics2';
 
 describe('SwUpdatesService', () => {
@@ -28,7 +28,7 @@ describe('SwUpdatesService', () => {
     injector = ReflectiveInjector.resolveAndCreate([
       { provide: Logger, useClass: MockLogger },
       { provide: NgServiceWorker, useClass: MockNgServiceWorker },
-      { provide: MdSnackBar, useClass: MdSnackBarMock },
+      { provide: MatSnackBar, useClass: MdSnackBarMock },
       { provide: Angulartics2, useValue: mockAngulartics },
       SwUpdatesService
     ]);

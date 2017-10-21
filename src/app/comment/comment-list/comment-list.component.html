@@ -5,26 +5,26 @@
                      [showDaysInClasses]="true"
                      [showFavoriteButton]="false"
   ></sfs-fitness-class>
-  <md-spinner *ngIf="isLoading$ | async" style="width: 50px"></md-spinner>
+  <mat-spinner *ngIf="isLoading$ | async" style="width: 50px"></mat-spinner>
   <div *ngIf="!comments || comments.length === 0" align="center" fxLayout="column">
     <span>Dieser Kurs hat noch keine Kommentare.</span>
     <span>Füge einen <a routerLink="new">neuen Kommentar</a> hinzu.</span>
   </div>
   <sfs-comment-detail *ngFor="let comment of comments" [comment]="comment" class="max-size"></sfs-comment-detail>
 
-  <md-expansion-panel [expanded]="isOtherPanelExpanded"
+  <mat-expansion-panel [expanded]="isOtherPanelExpanded"
                       class="max-size wider-gap"
                       *ngIf="otherClasses && otherClasses.length > 0">
-    <md-expansion-panel-header>
+    <mat-expansion-panel-header>
       <mat-panel-title>Weitere {{mappingService.getClassName(fitnessClass.workoutId)}} Kurse</mat-panel-title>
-    </md-expansion-panel-header>
-    <md-card-subtitle>Klicke auf einen Kommentar, um zum zugehörigen Kurs zu gelangen.</md-card-subtitle>
+    </mat-expansion-panel-header>
+    <mat-card-subtitle>Klicke auf einen Kommentar, um zum zugehörigen Kurs zu gelangen.</mat-card-subtitle>
     <div fxLayout="column" fxLayoutGap="20px">
     <div *ngFor="let class of otherClasses" fxLayout="column" fxLayoutAlign="start stretch" class="max-size" fxLayoutGap="20px">
       <sfs-comment-detail *ngFor="let comment of class.comments" [comment]="comment"
                           [routerLink]="['/schedule/class/', class.id]"></sfs-comment-detail>
     </div>
     </div>
-  </md-expansion-panel>
+  </mat-expansion-panel>
   <sfs-fab-button [icon]="'comment'" routerLink="new"></sfs-fab-button>
 </div>

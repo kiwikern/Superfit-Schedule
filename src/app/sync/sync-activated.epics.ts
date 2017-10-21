@@ -3,7 +3,7 @@ import { SyncActions } from './sync.actions';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
@@ -26,7 +26,7 @@ export class SyncActivatedEpics {
               private settingsActions: SettingsActions,
               private authActions: AuthenticationActions,
               private router: Router,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
     this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
   }
 

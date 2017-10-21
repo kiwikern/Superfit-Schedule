@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 import * as moment from 'moment-mini';
 import { MappingService } from '../src/app/workout/mapping.service';
 
@@ -12,7 +12,7 @@ export class SchedulePage {
   }
 
   getFirstClassStudio() {
-    return this.getFirstDisplayedElement(element.all(by.css('md-card-subtitle > span'))).getText();
+    return this.getFirstDisplayedElement(element.all(by.css('mat-card-subtitle > span'))).getText();
   }
 
   getFirstClassDay() {
@@ -33,7 +33,7 @@ export class SchedulePage {
   }
 
   markFirstClassAsFavorite() {
-    return this.getFirstDisplayedElement(element.all(by.css('md-card button.mat-icon-button'))).click();
+    return this.getFirstDisplayedElement(element.all(by.css('mat-card button.mat-icon-button'))).click();
   }
   private getFirstDisplayedElement(elem) {
     return elem.filter(e => e.isDisplayed()).first();

@@ -1,4 +1,4 @@
-import { browser, element, by, protractor } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 export class ClassSelectionPage {
   navigateTo() {
@@ -10,21 +10,21 @@ export class ClassSelectionPage {
   }
 
   addClassFilter() {
-    element(by.css('sfs-select-filter[title=Kurse] md-select')).click();
+    element(by.css('sfs-select-filter[title=Kurse] mat-select')).click();
     this.clickOnFirstNOptions(3);
     browser.refresh();
     // browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
   }
 
   addStudioFilter() {
-    element(by.css('sfs-select-filter[title=Studios] md-select')).click();
+    element(by.css('sfs-select-filter[title=Studios] mat-select')).click();
     this.clickOnFirstNOptions(3);
     browser.refresh();
     // browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
   }
 
   private clickOnFirstNOptions(n: number) {
-    element.all(by.css('md-option'))
+    element.all(by.css('mat-option'))
       .filter((option, index) => option.isDisplayed() && index < n)
       .each(option => option.click());
   }

@@ -1,26 +1,26 @@
-<md-toolbar color="primary" class="toolbar">
-  <button md-icon-button (click)="sidenav.toggle()" fxHide.gt-md="true" id="nav_burger-menu" aria-label="menu"
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-md="true" id="nav_burger-menu" aria-label="menu"
           *ngIf="!isChild"
           angulartics2On="click" angularticsEvent="OpenBurgerMenu">
-    <md-icon>menu</md-icon>
+    <mat-icon>menu</mat-icon>
   </button>
-  <button md-icon-button [routerLink]="parentPath" [fragment]="fragment" *ngIf="isChild">
-    <md-icon>arrow_back</md-icon>
+  <button mat-icon-button [routerLink]="parentPath" [fragment]="fragment" *ngIf="isChild">
+    <mat-icon>arrow_back</mat-icon>
   </button>
   <span>SuperFit Kursplan</span>
   <div fxFlex></div>
   <sfs-navigation fxHide.lt-lg="true" [fullWidth]="false"></sfs-navigation>
   <sfs-sync-status></sfs-sync-status>
-  <button md-icon-button routerLink="/auth">
-    <md-icon>account_circle</md-icon>
+  <button mat-icon-button routerLink="/auth">
+    <mat-icon>account_circle</mat-icon>
   </button>
-</md-toolbar>
-<md-sidenav-container class="sidenav-container">
-  <md-sidenav #sidenav class="sidenav-menu">
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav-menu" fixedTopGap="54" fixedInViewport="true">
     <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
                     [sideNav]="sidenav"></sfs-navigation>
-  </md-sidenav>
+  </mat-sidenav>
   <div class="sidenav-content">
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>

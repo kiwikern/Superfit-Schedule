@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdButtonModule, MdIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { RatingComponent } from './rating/rating.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -10,9 +10,9 @@ import { ScrollService } from './scroll.service';
 @NgModule({
   imports: [
     CommonModule,
-    MdIconModule,
-    MdButtonModule,
-    MdIconModule,
+    MatIconModule,
+    MatButtonModule,
+    MatIconModule,
     FlexLayoutModule
   ],
   declarations: [

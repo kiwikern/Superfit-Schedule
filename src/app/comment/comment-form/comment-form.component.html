@@ -1,21 +1,21 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="max-size">
-  <md-card fxLayout="column" fxLayoutAlign="start center">
-    <md-card-title>Neuer Kommentar</md-card-title>
-    <md-card-subtitle>
+  <mat-card fxLayout="column" fxLayoutAlign="start center">
+    <mat-card-title>Neuer Kommentar</mat-card-title>
+    <mat-card-subtitle>
       Teile der SFS-Communitiy mit, was diesen Kurs besonders macht.
-    </md-card-subtitle>
+    </mat-card-subtitle>
     <form #commentForm="ngForm" (ngSubmit)="onSubmit()" fxFill (keydown.enter)="$event.preventDefault()">
 
-      <md-card-content fxLayout="column">
-        <md-form-field>
-          <textarea mdInput
-                    mdTextareaAutosize mdAutosizeMinRows="2" mdAutosizeMaxRows="10"
+      <mat-card-content fxLayout="column">
+        <mat-form-field>
+          <textarea matInput
+                    matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="10"
                     required
                     name="text"
                     [(ngModel)]="text"
                     placeholder="Dein Kommentar">
           </textarea>
-        </md-form-field>
+        </mat-form-field>
 
         <fieldset>
           <legend>Teilnehmerzahl</legend>
@@ -33,37 +33,37 @@
         </fieldset>
 
         <div fxLayoutAlign="start center" fxLayout="row">
-          <md-form-field fxFlex>
-            <input mdInput
+          <mat-form-field fxFlex>
+            <input matInput
                    name="instructor"
                    placeholder="Trainer"
                    (keydown.enter)="addInstructor()"
-                   [mdAutocomplete]="instructorsAuto"
+                   [matAutocomplete]="instructorsAuto"
                    [formControl]="instructorControl">
-          </md-form-field>
-          <button md-button type="button" (click)="addInstructor()"
+          </mat-form-field>
+          <button mat-button type="button" (click)="addInstructor()"
                   [disabled]="!instructorControl.value || instructorControl.value.length < 2">
             Hinzufügen
           </button>
         </div>
-        <md-autocomplete #instructorsAuto="mdAutocomplete">
-          <md-option *ngFor="let option of filteredInstructors | async" [value]="option"
+        <mat-autocomplete #instructorsAuto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredInstructors | async" [value]="option"
                      (click)="addInstructor()">
             {{ option }}
-          </md-option>
-        </md-autocomplete>
+          </mat-option>
+        </mat-autocomplete>
 
-        <md-chip-list mdPrefix #chipList>
-          <md-chip *ngIf="instructors.length === 0">Keine Trainer ausgewählt</md-chip>
-          <md-chip *ngFor="let instructor of instructors" fxLayout="row" fxLayoutAlign="center center">
+        <mat-chip-list matPrefix #chipList>
+          <mat-chip *ngIf="instructors.length === 0">Keine Trainer ausgewählt</mat-chip>
+          <mat-chip *ngFor="let instructor of instructors" fxLayout="row" fxLayoutAlign="center center">
             {{instructor}}
-            <md-icon mdChipRemove (click)="removeInstructor(instructor)">cancel</md-icon>
-          </md-chip>
-        </md-chip-list>
-      </md-card-content>
+            <mat-icon matChipRemove (click)="removeInstructor(instructor)">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-content>
 
       <sfs-fab-button [icon]="'send'" [type]="'submit'" [hidden]="commentForm.pristine"
                       [showButton]="!commentForm.invalid"></sfs-fab-button>
     </form>
-  </md-card>
+  </mat-card>
 </div>

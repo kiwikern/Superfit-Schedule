@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CommentDetailComponent } from './comment-detail/comment-detail.component';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { HighlightService } from './highlight.service';
-import { MdAutocompleteModule } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material';
 import { HighlightsComponent } from './highlights/highlights.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { CommentListComponent } from './comment-list/comment-list.component';
@@ -30,7 +30,7 @@ const commentsRoutes: Routes = [
     ReactiveFormsModule,
     WorkoutModule,
     SfsMaterialModule,
-    MdAutocompleteModule
+    MatAutocompleteModule
   ],
   declarations: [
     CommentListComponent,

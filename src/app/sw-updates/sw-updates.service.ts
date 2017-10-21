@@ -12,7 +12,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/takeUntil';
 
 import { Logger } from '../common/logger.service';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Angulartics2 } from 'angulartics2';
 
 
@@ -44,7 +44,7 @@ export class SwUpdatesService implements OnDestroy {
   constructor(private logger: Logger,
               private sw: NgServiceWorker,
               private angulartics: Angulartics2,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
     this.checkForUpdateSubj
       .debounceTime(this.checkInterval)
       .startWith(null)

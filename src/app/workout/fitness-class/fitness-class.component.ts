@@ -4,7 +4,7 @@ import { NgRedux } from '@angular-redux/store';
 import { FitnessClass } from '../fitness-class';
 import { IAppState } from '../../store/root-state.interface';
 import { FavoriteActions } from '../../fitness-schedule/store/favorites/favorite.actions';
-import { MdSnackBar, MdSnackBarRef, SimpleSnackBar } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -28,7 +28,7 @@ export class FitnessClassComponent implements OnInit, OnDestroy {
   constructor(private mappingService: MappingService,
               private ngRedux: NgRedux<IAppState>,
               private actions: FavoriteActions,
-              private snackBar: MdSnackBar) {
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -70,7 +70,7 @@ export class FitnessClassComponent implements OnInit, OnDestroy {
   }
 
   showRemovedSnackBar() {
-    const snackBar: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open(
+    const snackBar: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open(
       'Kursplan enthält Favorit nicht mehr', 'Entferne Favorit', {duration: 5000});
     const sub = snackBar.onAction()
       .subscribe(() => this.toggleFavorite());

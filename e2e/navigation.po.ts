@@ -50,15 +50,15 @@ export class NavigationPage {
   }
 
   openReleasenotes() {
-    return this.getFirstDisplayedElement(element.all(by.css('md-card-subtitle a'))).click();
+    return this.getFirstDisplayedElement(element.all(by.css('mat-card-subtitle a'))).click();
   }
 
   getAppTitle() {
-    return element(by.css('md-toolbar-row > span')).getText();
+    return element(by.css('mat-toolbar-row > span')).getText();
   }
 
   getFirstCardTitle() {
-    return this.getFirstDisplayedElement(element.all(by.css('md-card-title'))).getText();
+    return this.getFirstDisplayedElement(element.all(by.css('mat-card-title'))).getText();
   }
 
   getFirstParagraphText() {
