@@ -33,7 +33,7 @@
       <button mat-icon-button (click)="showRemovedSnackBar(); $event.stopPropagation()" *ngIf="wasRemoved && isFavorite">
         <mat-icon>warning</mat-icon>
       </button>
-      <button mat-icon-button *ngIf="!wasRemoved"
+      <button mat-icon-button *ngIf="false && !wasRemoved"
               [routerLink]="['/schedule/class', fitnessClass.id]"
               style="margin-top: -6px; margin-bottom: -6px;">
         <mat-icon *ngIf="fitnessClass.comments && fitnessClass.comments.length > 0; else empty">chat_bubble</mat-icon>

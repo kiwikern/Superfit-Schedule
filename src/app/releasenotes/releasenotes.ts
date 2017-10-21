@@ -3,6 +3,28 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.16',
+    date: new Date(2017, 9, 21),
+    entries: [
+      {
+        title: 'Kommentare entfernt',
+        type: ChangeType.FIX,
+        description: `Da die Kursleiter aus Datenschutzgründen nicht gelistet werden dürfen, wurde die Kommentarfunktion
+        vorerst deaktiviert. :-(`
+      },
+      {
+        title: 'Performanceverbesserungen',
+        type: ChangeType.PERFORMANCE,
+        description: `Deutliche Performance Verbesserungen vor allem im Kursplan.`
+      },
+      {
+        title: 'Neue Kurse',
+        type: ChangeType.CHANGE,
+        description: `Neue Kurse Twerkout und BodyPump 45 hinzugefügt.`
+      }
+    ]
+  },
+  {
     version: 'v2.15',
     date: new Date(2017, 8, 2),
     entries: [
