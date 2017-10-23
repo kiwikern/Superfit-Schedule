@@ -1,20 +1,27 @@
 <h1 align="center">Feedback</h1>
-<p>Hier kannst du alles loswerden, was du zu SFS zu sagen hast.
-  Besonders freue ich mich über Verbesserungsvorschläge jeglicher Art.</p>
-<p>Wenn du eine Antwort auf dein Feedback erhälst, wird dir das beim nächsten Aufruf der App angezeigt.</p>
+<div fxLayoutAlign.sm="start" fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="12px">
+  <div>Hier kannst du alles loswerden, was du zu SFS zu sagen hast.
+    Besonders freue ich mich über Verbesserungsvorschläge jeglicher Art.
+  </div>
+  <div>Wenn du eine Antwort auf dein Feedback erhälst, wird dir das beim nächsten Aufruf der App angezeigt.</div>
+</div>
 
-<mat-card>
-  <mat-card-title align="center">Gesendetes Feedback</mat-card-title>
+<mat-card style="margin-top: 15px; padding-top: 0; padding-bottom: 0;">
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngIf="!(feedbackList$ | async) || (feedbackList$ | async)?.length == 0">
         Du hast bis jetzt noch kein Feedback hinterlassen.
       </mat-list-item>
-      <mat-list-item *ngFor="let feedback of feedbackList$ | async" [routerLink]="feedback.id">
-        <mat-icon mat-list-icon [color]="isUnread(feedback) ? 'primary' : ''">feedback</mat-icon>
-        <h4 matLine>{{feedback.text}}</h4>
-        <p matLine>{{feedback.date | date:'mediumDate'}}</p>
-      </mat-list-item>
+      <div *ngFor="let feedback of feedbackList$ | async; let last = last">
+        <mat-list-item [routerLink]="feedback.id" style="cursor: pointer">
+          <mat-icon mat-list-icon [color]="isUnread(feedback) ? 'primary' : ''" [ngClass]="{shake: isUnread(feedback)}">
+            feedback
+          </mat-icon>
+          <h4 matLine>{{feedback.text}}</h4>
+          <p matLine>{{feedback.date | date:'mediumDate'}}</p>
+        </mat-list-item>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </div>
     </mat-list>
   </mat-card-content>
 </mat-card>
