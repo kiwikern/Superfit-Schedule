@@ -30,6 +30,15 @@ export class SelectFilterComponent implements OnChanges, OnInit {
     }
   }
 
+  /**
+   * Returns a string representation of the selected values.
+   */
+  public getSelectionText() {
+    return this.selectedValues
+      .map(v => this.nameMapping[v])
+      .join(', ');
+  }
+
   ngOnInit() {
     this.allValues = Object.keys(this.nameMapping)
       .sort((a, b) => this.getName(a).localeCompare(this.getName(b)))

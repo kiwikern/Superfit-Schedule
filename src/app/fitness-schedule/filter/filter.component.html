@@ -1,27 +1,75 @@
-<div fxLayout="column" fxLayoutGap="10px" fxFlexAlign="stretch center">
-  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-    <sfs-select-filter [selectedValues]="(filter$ | async)?.workouts" (onSelection)="addFilter('workouts', $event)"
-                       title="Kurse" [nameMapping]="classMapping" fxFlex="50"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="(filter$ | async)?.teamTrainings"
-                       (onSelection)="addFilter('teamTrainings', $event)"
-                       title="Teamtrainings" [nameMapping]="teamTrainingMapping" fxFlex="50"></sfs-select-filter>
-  </div>
-  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-    <sfs-select-filter [selectedValues]="(filter$ | async)?.gyms" (onSelection)="addFilter('gyms', $event)"
-                       title="Studios" [nameMapping]="gymMapping" fxFlex="50"></sfs-select-filter>
-    <sfs-select-filter [selectedValues]="(filter$ | async)?.languages" (onSelection)="addFilter('languages', $event)"
-                       title="Sprachen" [nameMapping]="languageMapping" fxFlex="50"></sfs-select-filter>
-  </div>
+<div fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
+  <mat-card-title>Kurswahl</mat-card-title>
+  <mat-accordion>
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Kurse</mat-panel-title>
+        <mat-panel-description>
+          {{workoutFilter.getSelectionText()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <sfs-select-filter [selectedValues]="(filter$ | async)?.workouts"
+                         (onSelection)="addFilter('workouts', $event)"
+                         [nameMapping]="classMapping"
+                         #workoutFilter
+      ></sfs-select-filter>
+    </mat-expansion-panel>
 
-  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-    <sfs-duration-filter (onSelect)="addFilter($event.filterName, $event.value)"
-                         [minDuration]="(filter$ | async)?.minDuration"
-                         [maxDuration]="(filter$ | async)?.maxDuration"
-                         fxFlex="50"
-    ></sfs-duration-filter>
-    <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)"
-                     [minStartTime]="(filter$ | async)?.minStartTime"
-                     [maxEndTime]="(filter$ | async)?.maxEndTime"
-                     [filterOnlyWorkdays]="(filter$ | async)?.filterTimeOnlyOnWorkdays" fxFlex="50"></sfs-time-filter>
-  </div>
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Teamtrainings</mat-panel-title>
+        <mat-panel-description>
+          {{teamTrainingFilter.getSelectionText()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <sfs-select-filter [selectedValues]="(filter$ | async)?.teamTrainings"
+                         (onSelection)="addFilter('teamTrainings', $event)"
+                         [nameMapping]="teamTrainingMapping"
+                         #teamTrainingFilter
+      ></sfs-select-filter>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Studios</mat-panel-title>
+        <mat-panel-description>
+          {{gymFilter.getSelectionText()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <sfs-select-filter [selectedValues]="(filter$ | async)?.gyms"
+                         (onSelection)="addFilter('gyms', $event)"
+                         [nameMapping]="gymMapping"
+                         #gymFilter
+      ></sfs-select-filter>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Kursdauer</mat-panel-title>
+        <mat-panel-description>
+          {{durationFilter.getText()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <sfs-duration-filter (onSelect)="addFilter($event.filterName, $event.value)"
+                           [minDuration]="(filter$ | async)?.minDuration"
+                           [maxDuration]="(filter$ | async)?.maxDuration"
+                           #durationFilter
+      ></sfs-duration-filter>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel fxLayout="column">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Uhrzeit</mat-panel-title>
+        <mat-panel-description>
+          {{timeFilter.getText()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)"
+                       [minStartTime]="(filter$ | async)?.minStartTime"
+                       [maxEndTime]="(filter$ | async)?.maxEndTime"
+                       [filterOnlyWorkdays]="(filter$ | async)?.filterTimeOnlyOnWorkdays"
+                       #timeFilter
+      ></sfs-time-filter>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

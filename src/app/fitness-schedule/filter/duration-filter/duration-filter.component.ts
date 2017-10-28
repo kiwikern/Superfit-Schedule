@@ -18,6 +18,18 @@ export class DurationFilterComponent implements OnInit {
   ngOnInit() {
   }
 
+  public getText() {
+    if (this.minDuration && this.maxDuration) {
+      return `${this.minDuration} - ${this.maxDuration} Minuten`;
+    } else if (this.minDuration) {
+      return `Mindestens ${this.minDuration} Minuten`;
+    } else if (this.maxDuration) {
+      return `Maximal ${this.maxDuration} Minuten`;
+    } else {
+      return '';
+    }
+  }
+
   onChange(change: any) {
     if (change.value === 0) {
       change.value = null;
