@@ -1,5 +1,5 @@
-<div class="toolbar-margin">
-  <router-outlet></router-outlet>
+<div class="toolbar-margin outlet-container" [@routeAnimation]="scheduleOutlet.activatedRouteData.position">
+  <router-outlet #scheduleOutlet="outlet"></router-outlet>
 </div>
 <mat-toolbar fxHide.gt-md="true" class="toolbar">
   <div class="centered-toolbar-row">

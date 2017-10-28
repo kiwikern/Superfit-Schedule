@@ -12,6 +12,14 @@
   width: 100%;
 }
 
+.outlet-container {
+  position: relative;
+}
+
+.outlet-container>* {
+  display: block;
+}
+
 @media screen and (max-width: 600px) {
   .toolbar-margin {
     margin-bottom: 64px;

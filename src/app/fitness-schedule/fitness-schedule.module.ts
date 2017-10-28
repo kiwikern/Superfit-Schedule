@@ -26,11 +26,11 @@ import { BottomNavigationButtonComponent } from './bottom-navigation-button/bott
 const fitnessRoutes: Routes = [
   {
     path: '', component: ScheduleRouterComponent, children: [
-    {path: '', component: FilteredScheduleComponent},
-    {path: 'favorites', component: FavoritesScheduleComponent},
-    {path: 'filter', component: FilterComponent},
-    {path: 'settings', component: SettingsComponent},
-    {path: 'changes', component: ChangesComponent}
+    {path: '', component: FilteredScheduleComponent, data: {position: 0}},
+    {path: 'favorites', component: FavoritesScheduleComponent, data: {position: 1}},
+    {path: 'filter', component: FilterComponent, data: {position: 2}},
+    {path: 'settings', component: SettingsComponent, data: {position: 4}},
+    {path: 'changes', component: ChangesComponent, data: {position: 3}}
   ]
   },
   {path: 'class', loadChildren: '../comment/comments.module#CommentsModule'},
