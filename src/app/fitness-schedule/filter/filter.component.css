@@ -9,3 +9,8 @@ mat-accordion {
   width: 95%;
   max-width: 95%;
 }
+
+/* TODO: Find better solution */
+/deep/ .mat-expansion-panel-body {
+  overflow: visible !important;
+}
