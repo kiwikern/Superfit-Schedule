@@ -1,16 +1,8 @@
 <div fxLayout="column" fxLayoutGap="15px">
-  <!--<mat-card-title>{{title}}</mat-card-title>-->
-  <!--<mat-form-field>-->
-  <!--<input type="text" [(ngModel)]="selectedValue" matInput #autoInput [matAutocomplete]="auto" [placeholder]="title">-->
-  <!--</mat-form-field>-->
-  <!--<mat-autocomplete #auto="matAutocomplete" (change)="onChange()">-->
-  <!--<mat-option *ngFor="let value of filteredValues" [value]="value" (onSelectionChange)="onChange(value)">-->
-  <!--{{ getName(value) }}-->
-  <!--</mat-option>-->
-  <!--</mat-autocomplete>-->
   <div fxLayoutGap="10px" fxLayoutAlign="center center">
-    <mat-form-field fxFlex>
-      <mat-select [(ngModel)]="selectedValues" [placeholder]="title" multiple="true" (change)="onChange()">
+    <mat-form-field fxFlex floatPlaceholder="never">
+      <mat-select [(ngModel)]="selectedValues" placeholder="Neue hinzufügen..." multiple="true" (change)="onChange()">
+        <mat-select-trigger style="color: #9e9e9e;">Neue hinzufügen...</mat-select-trigger>
         <mat-option *ngFor="let value of allValues" [value]="value">{{ getName(value) }}</mat-option>
       </mat-select>
     </mat-form-field>

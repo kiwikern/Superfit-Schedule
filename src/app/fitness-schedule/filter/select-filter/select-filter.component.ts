@@ -8,7 +8,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
 })
 export class SelectFilterComponent implements OnChanges, OnInit {
 
-  @Input() title: string;
   @Input() selectedValues: any[];
   @Input() nameMapping;
   allValues: any[];
