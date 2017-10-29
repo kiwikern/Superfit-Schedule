@@ -3,6 +3,18 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.17',
+    date: new Date(2017, 10, 3),
+    entries: [
+      {
+        title: 'Kurswahllayout',
+        type: ChangeType.CHANGE,
+        description: `Das Layout der Kurswahl wurde verbessert. Nun siehst du auf einen Blick, welche Einstellungen
+        du gesetzt hast.`
+      },
+    ]
+  },
+  {
     version: 'v2.16',
     date: new Date(2017, 9, 21),
     entries: [
