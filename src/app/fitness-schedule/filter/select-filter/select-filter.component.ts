@@ -55,4 +55,14 @@ export class SelectFilterComponent implements OnChanges, OnInit {
     this.onSelection.emit(this.selectedValues);
   }
 
+  remove(value: string): void {
+    const index = this.selectedValues.indexOf(value);
+
+    if (index >= 0) {
+      this.selectedValues = this.selectedValues.slice();
+      this.selectedValues.splice(index, 1);
+      this.onChange();
+    }
+  }
+
 }

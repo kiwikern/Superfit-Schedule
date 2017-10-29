@@ -20,8 +20,8 @@
   </div>
   <mat-chip-list>
     <mat-chip *ngIf="selectedValues.length == 0">ALLE</mat-chip>
-    <mat-chip *ngFor="let value of selectedValues">
-      {{ getName(value) }}
+    <mat-chip *ngFor="let value of selectedValues" removable="true" (remove)="remove(value)">
+      {{ getName(value) }} <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
   </mat-chip-list>
 </div>
