@@ -36,7 +36,7 @@ describe('Navigation', () => {
 
   it('should navigate to class selection and show title', () => {
     page.navigateToClassSelection();
-    expect(page.getFirstCardTitle()).toEqual('Kurse');
+    expect(page.getFirstCardTitle()).toEqual('Kurswahl');
   });
 
   it('should navigate to changes and show title', () => {
@@ -84,16 +84,15 @@ describe('Navigation', () => {
   });
 
   it('should navigate to all links in the schedule\'s second toolbar', () => {
-    page.navigateToSchedule();
-    page.clickOnSecondToolbarButton(1);
+    page.clickOnBottomNavigationButton(1);
     expect(page.getFirstParagraphText()).toContain('Favoriten');
-    page.clickOnSecondToolbarButton(2);
-    expect(page.getFirstCardTitle()).toEqual('Kurse');
-    page.clickOnSecondToolbarButton(3);
+    page.clickOnBottomNavigationButton(2);
+    expect(page.getFirstCardTitle()).toEqual('Kurswahl');
+    page.clickOnBottomNavigationButton(3);
     expect(page.getFirstCardTitle()).toEqual('Änderungen des Kursplans');
-    page.clickOnSecondToolbarButton(4);
+    page.clickOnBottomNavigationButton(4);
     expect(page.getFirstCardTitle()).toEqual('Optionen');
-    page.clickOnSecondToolbarButton(0);
+    page.clickOnBottomNavigationButton(0);
     const paragraph = page.getFirstParagraphText();
     expect(paragraph).toContain('Lieblingskurse');
   });

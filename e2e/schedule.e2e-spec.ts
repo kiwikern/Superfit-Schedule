@@ -27,7 +27,7 @@ describe('Schedule', () => {
 
   afterAll(() => {
     classSelectionPage.navigateTo();
-    classSelectionPage.removeAllFilter();
+    classSelectionPage.removeAllFilters();
   });
 
   it('should show a class with title, studio and time', () => {

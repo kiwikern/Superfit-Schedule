@@ -73,7 +73,7 @@ export class NavigationPage {
     return this.getFirstDisplayedElement(element.all(by.css('.mat-raised-button'))).click();
   }
 
-  clickOnSecondToolbarButton(index: number) {
+  clickOnBottomNavigationButton(index: number) {
     return element.all(by.css(`sfs-bottom-navigation-button button`)).get(index).click();
   }
 
