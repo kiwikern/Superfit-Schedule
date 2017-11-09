@@ -29,7 +29,7 @@ describe('CommentFormComponent', () => {
       ],
       providers: [
         HighlightService,
-        AuthService,
+        {provide: AuthService, useClass: MockAuthService},
         {provide: AuthenticationActions, useClass: MockAuthActions},
         {provide: ScheduleActions, useValue: ''}
       ]
@@ -50,5 +50,11 @@ describe('CommentFormComponent', () => {
 
 class MockAuthActions {
   needsLogin() {
+  }
+}
+
+class MockAuthService {
+  isLoggedIn() {
+    return true;
   }
 }

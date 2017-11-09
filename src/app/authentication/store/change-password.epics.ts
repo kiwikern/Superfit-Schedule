@@ -5,13 +5,11 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/delay';
 import { MatSnackBar } from '@angular/material';
-import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
 export class ChangePasswordEpics {
 
   constructor(private http: HttpClient,
-              private authHttp: AuthHttp,
               private actions: AuthenticationActions,
               private snackBar: MatSnackBar) {
   }
@@ -60,7 +58,7 @@ export class ChangePasswordEpics {
   private changePassword(password, token): any {
     const url = '/api/sfs/user/reset-password';
     if (!token) {
-      return this.authHttp.post(url, {password});
+      return this.http.post(url, {password});
     } else {
       return this.http.post<any>(url, {password}, {
         headers: new HttpHeaders().set('Authorization', `bearer ${token}`),

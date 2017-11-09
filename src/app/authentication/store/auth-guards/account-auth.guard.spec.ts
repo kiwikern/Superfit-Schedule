@@ -1,4 +1,4 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { AccountAuthGuard } from './account-auth.guard';
 import { AuthService } from '../auth-service/auth.service';
@@ -8,16 +8,22 @@ describe('AccountAuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
       ],
       providers: [
         AccountAuthGuard,
-        AuthService,
+        {provide: AuthService, useClass: MockAuthService},
       ]
     });
-  });
 
-  it('should ...', inject([AccountAuthGuard], (guard: AccountAuthGuard) => {
-    expect(guard).toBeTruthy();
-  }));
+    it('should ...', inject([AccountAuthGuard], (guard: AccountAuthGuard) => {
+      expect(guard).toBeTruthy();
+    }));
+  });
 });
+
+class MockAuthService {
+  isLoggedIn() {
+    return true;
+  }
+}

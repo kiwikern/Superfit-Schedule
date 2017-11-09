@@ -6,12 +6,12 @@ import 'rxjs/add/operator/catch';
 import { MatSnackBar } from '@angular/material';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { AuthHttp } from 'angular2-jwt';
 import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.actions';
 import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SyncActivatedEpics {
@@ -19,7 +19,7 @@ export class SyncActivatedEpics {
   @select(['sync', 'lastUpdate']) lastUpdate$: Observable<number>;
   lastUpdate: number;
 
-  constructor(private http: AuthHttp,
+  constructor(private http: HttpClient,
               private syncActions: SyncActions,
               private favoriteActions: FavoriteActions,
               private filterActions: FilterActions,
@@ -34,8 +34,7 @@ export class SyncActivatedEpics {
     return action$ => action$
       .ofType(SyncActions.SYNC_ACTIVATE_REQUEST)
       .switchMap(credentials => this.getSyncState()
-        .flatMap(response => {
-          const body = response.json();
+        .flatMap(body => {
           const lastUpdate: number = body.lastUpdate || 0;
           const userId: string = body.userid || null;
           const successAction = this.syncActions.activateSyncSuccess(lastUpdate, userId);
@@ -57,7 +56,7 @@ export class SyncActivatedEpics {
       );
   }
 
-  private getSyncState() {
+  private getSyncState(): any {
     const url = '/api/sfs/sync';
     return this.http.get(url);
   }

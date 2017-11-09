@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -7,10 +7,9 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
 
   @select(['authentication', 'jwt']) jwtToken$: Observable<string>;
-  jwtHelper: JwtHelper = new JwtHelper();
   token: string;
 
-  constructor() {
+  constructor(private jwtHelper: JwtHelperService) {
     this.jwtToken$.subscribe(token => this.token = token);
   }
 

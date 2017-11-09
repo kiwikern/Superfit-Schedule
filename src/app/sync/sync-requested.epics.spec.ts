@@ -1,16 +1,14 @@
 import { inject, TestBed } from '@angular/core/testing';
-import { Http, HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
-import { MockBackend, MockConnection } from '@angular/http/testing';
 import { ActionsObservable } from 'redux-observable';
 import 'rxjs/add/operator/toArray';
 import { SyncActivatedEpics } from './sync-activated.epics';
-import { AuthHttp, AuthModule } from 'angular2-jwt';
 import { SyncActions } from './sync.actions';
 import { MatSnackBar } from '@angular/material';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { SyncRequestedEpics } from './sync-requested.epics';
 import { Angulartics2 } from 'angulartics2';
 import { Router } from '@angular/router';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('SyncRequestedEpics', () => {
 
@@ -19,8 +17,7 @@ describe('SyncRequestedEpics', () => {
     mockAngulartics.eventTrack = jasmine.createSpyObj('angulartics2', ['next']);
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
-        AuthModule
+        HttpClientTestingModule,
       ],
       providers: [
         SyncRequestedEpics,
@@ -28,8 +25,6 @@ describe('SyncRequestedEpics', () => {
         AuthenticationActions,
         {provide: Angulartics2, useValue: mockAngulartics},
         {provide: MatSnackBar, useClass: SnackBarMock},
-        {provide: XHRBackend, useClass: MockBackend},
-        {provide: AuthHttp, useExisting: Http},
         {provide: Router, useClass: RouterMock}
       ]
     });
@@ -43,37 +38,37 @@ describe('SyncRequestedEpics', () => {
   });
 
   it('should sync successfully', (done) => {
-    inject([SyncRequestedEpics, XHRBackend],
-      (epics: SyncActivatedEpics, mockBackend: MockBackend) => {
+    inject([SyncRequestedEpics],
+      (epics: SyncActivatedEpics) => {
         const expectedOutputActions = [
           {type: SyncActions.SYNC_SUCCESS, payload: {lastUpdate: 1}},
         ];
-        mockBackendResponse(mockBackend, {lastUpdate: 1});
         performAction(epics, expectedOutputActions, done);
+        mockBackendResponse({lastUpdate: 1});
       })();
   });
 
   it('should not sync and logout when unauthenticated', (done) => {
-    inject([SyncRequestedEpics, XHRBackend, MatSnackBar],
-      (epics: SyncActivatedEpics, mockBackend: MockBackend, snack: SnackBarMock) => {
+    inject([SyncRequestedEpics, MatSnackBar],
+      (epics: SyncActivatedEpics, snack: SnackBarMock) => {
         const expectedOutputActions = [
           {type: SyncActions.SYNC_FAILED},
           {type: AuthenticationActions.LOGOUT}
         ];
-        mockBackendError(mockBackend, 401);
         performAction(epics, expectedOutputActions, done, snack, 'ausgeloggt');
+        mockBackendError(401);
       })();
   });
 
   it('should not sync on error', (done) => {
-    inject([SyncRequestedEpics, XHRBackend],
-      (epics: SyncActivatedEpics, mockBackend: MockBackend) => {
+    inject([SyncRequestedEpics],
+      (epics: SyncActivatedEpics) => {
         const expectedOutputActions = [
           {type: SyncActions.SYNC_FAILED},
           {type: SyncActions.SYNC_ACTIVATE_REQUEST}
         ];
-        mockBackendError(mockBackend, 409);
         performAction(epics, expectedOutputActions, done);
+        mockBackendError(409);
       })();
   });
 
@@ -90,21 +85,15 @@ describe('SyncRequestedEpics', () => {
       });
   }
 
-  function mockBackendResponse(mockBackend: MockBackend, body: Object) {
-    mockBackend.connections.subscribe((connection: MockConnection) => {
-      connection.mockRespond(new Response(new ResponseOptions({body})));
-    });
+
+  function mockBackendResponse(body: Object) {
+    const http = TestBed.get(HttpTestingController);
+    http.expectOne('/api/sfs/sync').flush(body);
   }
 
-  function mockBackendError(mockBackend: MockBackend, status: number) {
-    mockBackend.connections.subscribe((connection: MockConnection) => {
-      connection.mockError(new MockError(new ResponseOptions({status})));
-    });
-  }
-
-  class MockError extends Response implements Error {
-    name: any;
-    message: any;
+  function mockBackendError(status: number) {
+    const http = TestBed.get(HttpTestingController);
+    http.expectOne('/api/sfs/sync').error({}, {status});
   }
 
   class SnackBarMock {

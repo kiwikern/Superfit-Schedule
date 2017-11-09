@@ -26,6 +26,7 @@ import { ReleasenotesStoreModule } from '../releasenotes/store/releasenotes-stor
 import { LegalModule } from '../legal/legal.module';
 import { NavigationButtonComponent } from './navigation-button/navigation-button.component';
 import { FeedbackStoreModule } from '../feedback/store/feedback-store.module';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 const appRoutes: Routes = [
@@ -35,6 +36,14 @@ const appRoutes: Routes = [
   {path: 'feedback', loadChildren: '../feedback/feedback.module#FeedbackModule'},
   {path: 'about', component: AboutComponent}
 ];
+
+export function tokenGetter() {
+  try {
+    return JSON.parse(localStorage.getItem('sfs.state')).authentication.jwt;
+  } catch (error) {
+    return null;
+  }
+};
 
 @NgModule({
   declarations: [
@@ -49,6 +58,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     HttpClientModule,
+    JwtModule.forRoot({config: {tokenGetter}}),
     NgReduxModule,
     StoreModule,
     FitnessScheduleStoreModule,

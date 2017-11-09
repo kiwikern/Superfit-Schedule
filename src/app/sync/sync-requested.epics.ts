@@ -8,10 +8,10 @@ import { Observable } from 'rxjs/Observable';
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';
 import { SettingsState } from '../fitness-schedule/store/settings/settings-state';
 import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
-import { AuthHttp } from 'angular2-jwt';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SyncRequestedEpics {
@@ -28,7 +28,7 @@ export class SyncRequestedEpics {
   lastUpdate: string;
   userId: string;
 
-  constructor(private http: AuthHttp,
+  constructor(private http: HttpClient,
               private actions: SyncActions,
               private authActions: AuthenticationActions,
               private router: Router,
@@ -44,7 +44,7 @@ export class SyncRequestedEpics {
     return action$ => action$
       .ofType(SyncActions.SYNC_REQUESTED)
       .switchMap(credentials => this.postSyncState()
-        .map(response => this.actions.syncSuccess(response.json().lastUpdate))
+        .map(response => this.actions.syncSuccess(response.lastUpdate))
         .catch(error => this.handleError(error))
       );
   }

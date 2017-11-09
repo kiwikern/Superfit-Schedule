@@ -6,8 +6,8 @@ import 'rxjs/add/operator/map';
 import { ScheduleActions } from './schedule.actions';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
-import { AuthHttp } from 'angular2-jwt';
 import { ClassComment } from '../../../comment/class-comment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CommentsEpics {
@@ -20,7 +20,7 @@ export class CommentsEpics {
   userId: string;
 
   constructor(private actions: ScheduleActions,
-              private http: AuthHttp) {
+              private http: HttpClient) {
     this.userName$.subscribe(userName => this.userName = userName);
     this.userId$.subscribe(userId => this.userId = userId);
   }
