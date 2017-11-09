@@ -16,8 +16,6 @@ export class FilterComponent {
   classMapping = this.mappingService.getFitnessClassNameMapping();
   teamTrainingMapping = this.mappingService.getTeamTrainingNameMapping();
   gymMapping = this.mappingService.getGymMapping();
-  durationMapping = this.mappingService.getDurationMapping();
-  languageMapping = this.mappingService.getLanguageMapping();
 
   constructor(private mappingService: MappingService,
               private filterActions: FilterActions) {
