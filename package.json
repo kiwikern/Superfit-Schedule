@@ -18,6 +18,8 @@
     "test:once": "npm run test -- --watch=false --code-coverage",
     "lint": "npm run ng -- lint",
     "e2e": "npm run ng -- e2e --proxy-config proxy.conf.json",
+    "e2e-dev": "npm run e2e -- --serve=false",
+    "e2e-explore": "npm run e2e -- --ee",
     "ci": "npm run lint && npm run test:once && npm run e2e"
   },
   "private": true,
