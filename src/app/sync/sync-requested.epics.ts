@@ -11,7 +11,7 @@ import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-stat
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class SyncRequestedEpics {
@@ -59,15 +59,16 @@ export class SyncRequestedEpics {
     return this.http.post(url, body);
   }
 
-  private handleError(error: Response | Error): Observable<any> {
+  private handleError(error: HttpErrorResponse | Error): Observable<any> {
     if (error instanceof Error) {
       if (error.name.includes('JWT')) {
         return this.getAuthFailedActions();
       }
     } else if (error.status === 401) {
       return this.getAuthFailedActions();
+    } else {
+      return of(this.actions.syncFailed(), this.actions.activateSync());
     }
-    return of(this.actions.syncFailed(), this.actions.activateSync());
   }
 
   private getAuthFailedActions(): Observable<any> {

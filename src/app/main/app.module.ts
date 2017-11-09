@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app/app.component';
@@ -43,7 +42,7 @@ export function tokenGetter() {
   } catch (error) {
     return null;
   }
-};
+}
 
 @NgModule({
   declarations: [
@@ -56,7 +55,6 @@ export function tokenGetter() {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     JwtModule.forRoot({config: {tokenGetter}}),
     NgReduxModule,

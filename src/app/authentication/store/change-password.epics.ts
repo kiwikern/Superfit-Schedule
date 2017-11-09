@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/delay';
@@ -35,15 +35,14 @@ export class ChangePasswordEpics {
         }));
   }
 
-  private showErrorMessage(error) {
+  private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;
     if (error.status === 404) {
       errorInfo = 'User nicht gefunden.';
     } else if (error.status === 0) {
       errorInfo = 'Keine Internetverbindung?';
     } else if (error.status === 400) {
-      const cause = error.json();
-      if (cause.key === 'captcha_failed') {
+      if (error.error.key === 'captcha_failed') {
         errorInfo = 'Captcha ungültig.';
       }
     }

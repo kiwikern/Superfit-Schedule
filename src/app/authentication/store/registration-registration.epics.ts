@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
-import { Http } from '@angular/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import { MatSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class RegistrationEpics {
 
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private actions: AuthenticationActions,
               private snackBar: MatSnackBar,
               private routerActions: RouterActions,
@@ -22,9 +22,8 @@ export class RegistrationEpics {
       .ofType(AuthenticationActions.REGISTRATION_REQUESTED)
       .map(action => action.payload)
       .switchMap(credentials => this.requestLogin(credentials)
-        .flatMap(response => {
+        .flatMap(body => {
           this.showSnackBar('Registrierung erfolgreich.');
-          const body = response.json();
           const redirectTo = credentials.redirectTo || '/schedule';
           return of(this.routerActions.navigateTo(redirectTo),
             this.actions.registerSuccess(body.userName, body.token, body.userId),
@@ -36,17 +35,17 @@ export class RegistrationEpics {
         }));
   }
 
-  private showErrorMessage(error) {
+  private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;
     if (error.status === 404) {
       errorInfo = 'Versuche es später erneut.';
     } else if (error.status === 0) {
       errorInfo = 'Keine Internetverbindung?';
     } else if (error.status === 400) {
-      const cause = error.json();
-      if (cause.key === 'username_exists') {
+      const errorKey = error.error.key;
+      if (errorKey === 'username_exists') {
         errorInfo = 'Benutzername bereits vergeben.';
-      } else if (cause.key === 'mailaddress_exists') {
+      } else if (errorKey === 'mailaddress_exists') {
         errorInfo = 'E-Mail bereits registriert.';
       }
     }
@@ -58,7 +57,7 @@ export class RegistrationEpics {
     this.snackBar.open(message, 'OK', {duration: 8000});
   }
 
-  private requestLogin(credentials) {
+  private requestLogin(credentials): any {
     const url = '/api/sfs/user';
     return this.http.post(url, credentials);
   }

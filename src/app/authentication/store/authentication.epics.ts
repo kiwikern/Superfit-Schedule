@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
-import { Http } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthenticationEpics {
 
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private actions: AuthenticationActions,
               private snackBar: MatSnackBar,
               private routerActions: RouterActions,
@@ -29,7 +29,7 @@ export class AuthenticationEpics {
           .flatMap(response => {
             const redirectTo = credentials.redirectTo || '/schedule';
             return of(
-              this.actions.loginSuccess(response.json().userName, response.json().token, response.json().userId),
+              this.actions.loginSuccess(response.userName, response.token, response.userId),
               <any>this.routerActions.navigateTo(redirectTo));
           })
           .catch(error => {
@@ -58,14 +58,14 @@ export class AuthenticationEpics {
     ];
   }
 
-  private showErrorMessage(error) {
+  private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;
     if (error.status === 500) {
       errorInfo = 'Versuche es später erneut.';
     } else if (error.status === 0) {
       errorInfo = 'Keine Internetverbindung?';
     } else if (error.status === 401) {
-      if (error.json().key === 'wrong_password') {
+      if (error.error.key === 'wrong_password') {
         errorInfo = 'Falsches Passwort.';
       } else {
         errorInfo = 'Unbekannter Benutzer.';
@@ -79,7 +79,7 @@ export class AuthenticationEpics {
     return this.snackBar.open(message, action, {duration: 5000});
   }
 
-  private requestLogin(credentials) {
+  private requestLogin(credentials): any {
     const url = '/api/sfs/user/session';
     return this.http.post(url, credentials);
   }

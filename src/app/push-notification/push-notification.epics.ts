@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PushNotificationActions } from './push-notification.actions';
-import { Http } from '@angular/http';
 import { NgServiceWorker } from '@angular/service-worker';
+import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
@@ -14,7 +14,7 @@ export class PushNotificationEpics {
   private userId: string;
 
   constructor(private serviceWorker: NgServiceWorker,
-              private http: Http,
+              private http: HttpClient,
               private actions: PushNotificationActions) {
     this.userId$.subscribe(userId => this.userId = userId);
   }

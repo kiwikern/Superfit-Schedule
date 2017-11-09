@@ -1,7 +1,5 @@
 import { AuthenticationEpics } from './authentication.epics';
 import { inject, TestBed } from '@angular/core/testing';
-import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
-import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthenticationActions } from './authentication.actions';
 import { MatSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
@@ -12,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { UPDATE_LOCATION } from '@angular-redux/router';
 import { Angulartics2 } from 'angulartics2';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('AuthenticationEpics', () => {
 
@@ -21,7 +20,7 @@ describe('AuthenticationEpics', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HttpModule
+        HttpClientTestingModule
       ],
       providers: [
         AuthenticationEpics,
@@ -30,54 +29,52 @@ describe('AuthenticationEpics', () => {
         SyncActions,
         {provide: Angulartics2, useValue: mockAngulartics},
         {provide: MatSnackBar, useClass: SnackBarMock},
-        {provide: XHRBackend, useClass: MockBackend}
       ]
     });
   });
 
   it('should process succesful login', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
-      (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
+    inject([AuthenticationEpics, AuthenticationActions, MatSnackBar],
+      (epics: AuthenticationEpics, actions: AuthenticationActions, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [
           {type: AuthenticationActions.LOGIN_SUCCESS, payload: {jwt: 'token', userName: 'user', userId: 'id'}},
           {type: UPDATE_LOCATION, payload: '/schedule'}
         ];
-        mockBackendResponse(mockBackend, {token: 'token', userName: 'user', userId: 'id'}, 200);
         performAction(epics, action$, expectedOutputActions, done);
+        mockBackendResponse({token: 'token', userName: 'user', userId: 'id'});
       })();
   });
 
   it('should actvivate sync and navigate to schedule after successful login', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
-      (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
+    inject([AuthenticationEpics, AuthenticationActions, MatSnackBar],
+      (epics: AuthenticationEpics, actions: AuthenticationActions, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginSuccess('', '', ''));
         const expectedOutputActions = [
           {type: SyncActions.SYNC_ACTIVATE_REQUEST}
         ];
-        mockBackendResponse(mockBackend, {token: 'token', userName: 'user'}, 200);
         performAction(epics, action$, expectedOutputActions, done, snack, 'erfolgreich');
       })();
   });
 
   it('should process failed login with incorrect password', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
-      (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
+    inject([AuthenticationEpics, AuthenticationActions, MatSnackBar],
+      (epics: AuthenticationEpics, actions: AuthenticationActions, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [{type: AuthenticationActions.LOGIN_FAILED}];
         const errorBody = {key: 'wrong_password'};
-        mockBackendError(mockBackend, errorBody, 401);
         performAction(epics, action$, expectedOutputActions, done, snack, 'Passwort');
+        mockBackendError(errorBody, 401);
       })();
   });
 
   it('should process failed login without internet connection', (done) => {
-    inject([AuthenticationEpics, AuthenticationActions, XHRBackend, MatSnackBar],
-      (epics: AuthenticationEpics, actions: AuthenticationActions, mockBackend: MockBackend, snack: SnackBarMock) => {
+    inject([AuthenticationEpics, AuthenticationActions, MatSnackBar],
+      (epics: AuthenticationEpics, actions: AuthenticationActions, snack: SnackBarMock) => {
         const action$ = ActionsObservable.of(actions.loginWithUserName('', ''));
         const expectedOutputActions = [{type: AuthenticationActions.LOGIN_FAILED}];
-        mockBackendError(mockBackend, null, 0);
         performAction(epics, action$, expectedOutputActions, done, snack, 'Internetverbindung');
+        mockBackendError(null, 0);
       })();
   });
 
@@ -104,22 +101,14 @@ describe('AuthenticationEpics', () => {
       });
   }
 
-  function mockBackendResponse(mockBackend: MockBackend, body: Object, status: number) {
-    mockBackend.connections.subscribe((connection: MockConnection) => {
-      connection.mockRespond(new Response(new ResponseOptions({body, status})));
-    });
+  function mockBackendResponse(body: Object) {
+    const http = TestBed.get(HttpTestingController);
+    http.expectOne('/api/sfs/user/session').flush(body);
   }
 
-  function mockBackendError(mockBackend: MockBackend, body: Object, status: number) {
-    body = JSON.stringify(body);
-    mockBackend.connections.subscribe((connection: MockConnection) => {
-      connection.mockError(new MockError(new ResponseOptions({body, status})));
-    });
-  }
-
-  class MockError extends Response implements Error {
-    name: any;
-    message: any;
+  function mockBackendError(body: Object, status: number) {
+    const http = TestBed.get(HttpTestingController);
+    http.expectOne('/api/sfs/user/session').error(body, {status});
   }
 
   class SnackBarMock {

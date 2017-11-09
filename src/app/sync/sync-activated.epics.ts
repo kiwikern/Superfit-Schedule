@@ -11,7 +11,7 @@ import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { SettingsActions } from '../fitness-schedule/store/settings/settings.actions';
 import { AuthenticationActions } from '../authentication/store/authentication.actions';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class SyncActivatedEpics {
@@ -61,7 +61,7 @@ export class SyncActivatedEpics {
     return this.http.get(url);
   }
 
-  private handleErrors(error: Error | Response): Observable<any> {
+  private handleErrors(error: Error | HttpErrorResponse): Observable<any> {
     if (error instanceof Error) {
       if (error.message.includes('JWT')) {
         return this.getLogoutActions();

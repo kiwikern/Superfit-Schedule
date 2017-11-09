@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
-import { Http } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/switchMap';
 import { MatSnackBar } from '@angular/material';
@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material';
 @Injectable()
 export class ResetPasswordEpics {
 
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private actions: AuthenticationActions,
               private snackBar: MatSnackBar) {
   }
@@ -28,15 +28,14 @@ export class ResetPasswordEpics {
         }));
   }
 
-  private showErrorMessage(error) {
+  private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;
     if (error.status === 404) {
       errorInfo = 'User nicht gefunden.';
     } else if (error.status === 0) {
       errorInfo = 'Keine Internetverbindung?';
     } else if (error.status === 400) {
-      const cause = error.json();
-      if (cause.key === 'captcha_failed') {
+      if (error.error.key === 'captcha_failed') {
         errorInfo = 'Captcha ungültig.';
       }
     }
