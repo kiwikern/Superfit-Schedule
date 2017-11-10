@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import { ScheduleActions } from './schedule.actions';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { ClassComment } from '../../../comment/class-comment';
 import { HttpClient } from '@angular/common/http';
+import { catchError, flatMap, switchMap } from 'rxjs/operators';
+import { IPayloadAction } from '../../../store/payload-action.types';
 
 @Injectable()
 export class CommentsEpics {
@@ -28,10 +28,12 @@ export class CommentsEpics {
   createEpics() {
     return action$ => action$
       .ofType(ScheduleActions.COMMENT_ADDED_REQUEST)
-      .switchMap(action => this.postComment(action.payload)
-        .flatMap(scheduleJSON => of(this.actions.addCommentSuccess(), this.actions.loadSchedule()))
-        .catch(error => of(this.actions.addCommentFail(error)))
-      );
+      .pipe(
+        switchMap((action: IPayloadAction<any>) => this.postComment(action.payload)
+          .pipe(
+            flatMap(scheduleJSON => of(this.actions.addCommentSuccess(), this.actions.loadSchedule())),
+            catchError(error => of(this.actions.addCommentFail(error)))
+          )));
   }
 
   private postComment(comment: ClassComment) {

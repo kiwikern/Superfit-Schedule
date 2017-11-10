@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SyncActions } from './sync.actions';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/catch';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';
@@ -12,6 +10,7 @@ import { AuthenticationActions } from '../authentication/store/authentication.ac
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class SyncRequestedEpics {
@@ -43,10 +42,12 @@ export class SyncRequestedEpics {
   createEpics() {
     return action$ => action$
       .ofType(SyncActions.SYNC_REQUESTED)
-      .switchMap(credentials => this.postSyncState()
-        .map(response => this.actions.syncSuccess(response.lastUpdate))
-        .catch(error => this.handleError(error))
-      );
+      .pipe(
+        switchMap(credentials => this.postSyncState()
+          .pipe(
+            map(response => this.actions.syncSuccess(response.lastUpdate)),
+            catchError(error => this.handleError(error))
+          )));
   }
 
   private postSyncState(): Observable<any> {

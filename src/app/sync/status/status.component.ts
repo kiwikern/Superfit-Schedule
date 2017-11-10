@@ -5,6 +5,7 @@ import { SyncActions } from '../sync.actions';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { SyncState } from '../sync-state.interface';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'sfs-sync-status',
@@ -26,7 +27,7 @@ export class StatusComponent implements OnInit {
   requestSync() {
     const ref = this.showSnackBar('Erneuter Versuch zu synchronisieren.');
     this.ngRedux.dispatch(this.actions.sync());
-    const subscription = this.sync$.debounceTime(500)
+    const subscription = this.sync$.pipe(debounceTime(500))
       .subscribe(sync => {
         if (sync.hasError && !sync.isRequesting) {
           this.showSnackBar('Synchronisierung erneut fehlgeschlagen.');

@@ -4,8 +4,8 @@ import { NgServiceWorker } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
 import { select } from '@angular-redux/store';
+import { catchError, flatMap, map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class PushNotificationEpics {
@@ -22,10 +22,14 @@ export class PushNotificationEpics {
   createEpics() {
     return action$ => action$
       .ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED)
-      .flatMap(action => this.register())
-      .switchMap(sub => this.sendSubscriptionToBackend(sub)
-        .map(() => this.actions.subscriptionAdded())
-        .catch(error => of(this.actions.subscriptionFailed()))
+      .pipe(
+        flatMap(action => this.register()),
+        switchMap(sub => this.sendSubscriptionToBackend(sub)
+          .pipe(
+            map(() => this.actions.subscriptionAdded()),
+            catchError(error => of(this.actions.subscriptionFailed()))
+          )
+        )
       );
   }
 

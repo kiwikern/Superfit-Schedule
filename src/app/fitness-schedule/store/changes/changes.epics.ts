@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import { ChangesActions } from './changes.actions';
 import { ScheduleParserService } from '../schedule/schedule-parser.service';
 import { HttpClient } from '@angular/common/http';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class ChangesEpics {
@@ -17,15 +16,17 @@ export class ChangesEpics {
   createEpics() {
     return action$ => action$
       .ofType(ChangesActions.CHANGE_LOAD_STARTED)
-      .switchMap(action => this.fetchSchedule()
-        .map(scheduleJSON => this.actions.loadSucceded(scheduleJSON.map(c => ({
-          timestamp: c.timestamp,
-          scheduleId: c.scheduleId,
-          added: this.parseService.parse(c.added),
-          removed: this.parseService.parse(c.removed)
-        }))))
-        .catch(error => of(this.actions.loadFailed(error)))
-      );
+      .pipe(
+        switchMap(action => this.fetchSchedule()
+          .pipe(
+            map((scheduleJSON: any[]) => this.actions.loadSucceded(scheduleJSON.map(c => ({
+              timestamp: c.timestamp,
+              scheduleId: c.scheduleId,
+              added: this.parseService.parse(c.added),
+              removed: this.parseService.parse(c.removed)
+            })))),
+            catchError(error => of(this.actions.loadFailed(error)))
+          )));
   }
 
   private fetchSchedule() {

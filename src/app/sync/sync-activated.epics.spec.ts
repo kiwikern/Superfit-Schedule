@@ -1,6 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { ActionsObservable } from 'redux-observable';
-import 'rxjs/add/operator/toArray';
 import { SyncActivatedEpics } from './sync-activated.epics';
 import { SyncActions } from './sync.actions';
 import { FavoriteActions } from '../fitness-schedule/store/favorites/favorite.actions';
@@ -12,6 +11,7 @@ import { AuthenticationActions } from '../authentication/store/authentication.ac
 import { Angulartics2 } from 'angulartics2';
 import { Router } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { toArray } from 'rxjs/operators';
 
 describe('SyncActivatedEpics', () => {
 
@@ -101,11 +101,11 @@ describe('SyncActivatedEpics', () => {
 
   function performAction(epics, action$, expectedOutputActions, done) {
     epics.createEpics()(action$)
-      .toArray()
-      .subscribe(outputActions => {
-        expect(outputActions).toEqual(expectedOutputActions);
-        done();
-      });
+      .pipe(toArray()
+      ).subscribe(outputActions => {
+      expect(outputActions).toEqual(expectedOutputActions);
+      done();
+    });
   }
 
   function mockBackendResponse(body: Object) {

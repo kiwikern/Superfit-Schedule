@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/takeUntil';
 import { Observable } from 'rxjs/Observable';
 import { FitnessClassesPerDay } from '../../fitness-schedule/interfaces/fitness-classes-per-day';
 import { Subscription } from 'rxjs/Subscription';
 import { ClassComment } from '../class-comment';
 import { MappingService } from '../../workout/mapping.service';
 import { Subject } from 'rxjs/Subject';
+import { takeUntil } from 'rxjs/operators';
+import 'rxjs/add/observable/combineLatest';
 import Timer = NodeJS.Timer;
 
 
@@ -50,7 +50,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
         }, 2000);
       }
       this.cdRef.detectChanges();
-    }).takeUntil(this.onDestroy)
+    }).pipe(takeUntil(this.onDestroy))
       .subscribe();
   }
 

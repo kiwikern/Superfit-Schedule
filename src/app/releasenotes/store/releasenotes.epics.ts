@@ -4,8 +4,10 @@ import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { ReleasenotesComponent } from '../releasenotes/releasenotes.component';
 import { MatDialog } from '@angular/material';
+import { map } from 'rxjs/operators';
 
 declare function require(moduleName: string): any;
+
 const {version: appVersion} = require('../../../../package.json');
 
 @Injectable()
@@ -28,18 +30,20 @@ export class ReleasenotesEpics {
     return [
       action$ => action$
         .ofType(ReleasenotesActions.CHECK_VERSION)
-        .map(() => {
-          if (this.shouldShowReleasenotes()) {
-            this.actions.showReleasenotes();
-          }
-          return this.actions.checkVersionSuccess(this.version);
-        }),
+        .pipe(
+          map(() => {
+            if (this.shouldShowReleasenotes()) {
+              this.actions.showReleasenotes();
+            }
+            return this.actions.checkVersionSuccess(this.version);
+          })),
       action$ => action$
         .ofType(ReleasenotesActions.SHOW_RELEASENOTES)
-        .map(() => {
-          this.dialog.open(ReleasenotesComponent);
-          return this.actions.showReleasenotesSuccess(this.version);
-        })
+        .pipe(
+          map(() => {
+            this.dialog.open(ReleasenotesComponent);
+            return this.actions.showReleasenotesSuccess(this.version);
+          }))
     ];
   }
 

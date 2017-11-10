@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/delay';
 import { MatSnackBar } from '@angular/material';
+import { catchError, delay, flatMap, map, switchMap } from 'rxjs/operators';
+import { IPayloadAction } from '../../store/payload-action.types';
 
 @Injectable()
 export class ChangePasswordEpics {
@@ -17,22 +17,24 @@ export class ChangePasswordEpics {
   createEpics() {
     return action$ => action$
       .ofType(AuthenticationActions.CHANGE_PASSWORD_REQUESTED)
-      .map(action => action.payload)
-      .switchMap(payload => this.changePassword(payload.password, payload.token)
-        .flatMap(response => {
+      .pipe(
+      map((action: IPayloadAction<any>) => action.payload),
+      switchMap((payload: any) => this.changePassword(payload.password, payload.token)
+        .pipe(
+        flatMap((response: any) => {
           this.showSnackBar('Dein Passwort wurde geändert.');
           if (response.token && response.userName) {
             return of(this.actions.changePasswordSuccess(),
               this.actions.loginSuccess(response.userName, response.token, response.userId))
-              .delay(2000);
+              .pipe(delay(2000));
           } else {
             return of(this.actions.changePasswordSuccess());
           }
-        })
-        .catch(error => {
+        }),
+        catchError(error => {
           this.showErrorMessage(error);
           return of(this.actions.changePasswordFailed(error));
-        }));
+        }))));
   }
 
   private showErrorMessage(error: HttpErrorResponse) {

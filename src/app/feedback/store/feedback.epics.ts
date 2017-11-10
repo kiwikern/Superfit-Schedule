@@ -9,6 +9,8 @@ import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { Router } from '@angular/router';
 import { FeedbackResponse } from '../response-interface';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { IPayloadAction } from '../../store/payload-action.types';
 
 @Injectable()
 export class FeedbackEpics {
@@ -33,50 +35,57 @@ export class FeedbackEpics {
     return [
       action$ => action$
         .ofType(FeedbackActions.SEND_FEEDBACK_REQUEST)
-        .map(action => action.payload)
-        .switchMap((payload: FeedbackPayload) => this.sendFeedback(payload.feedback)
-          .map(() => {
-            this.actions.loadFeedback();
-            return this.actions.sendFeedbackSuccess();
-          })
-          .catch(error => {
-            this.showErrorMessage(error, 'Senden');
-            return of(this.actions.sendFeedbackError(error));
-          })),
+        .pipe(
+          map((action: IPayloadAction<any>) => action.payload),
+          switchMap((payload: FeedbackPayload) => this.sendFeedback(payload.feedback)
+            .pipe(map(() => {
+                this.actions.loadFeedback();
+                return this.actions.sendFeedbackSuccess();
+              }),
+              catchError(error => {
+                this.showErrorMessage(error, 'Senden');
+                return of(this.actions.sendFeedbackError(error));
+              })))),
       action$ => action$
         .ofType(FeedbackActions.SEND_RESPONSE_REQUEST)
-        .map(action => action.payload)
-        .switchMap((payload: FeedbackPayload) => this.sendResponse(payload.response)
-          .map(() => {
-            this.actions.loadFeedback();
-            return this.actions.sendFeedbackSuccess();
-          })
-          .catch(error => {
-            this.showErrorMessage(error, 'Senden');
-            return of(this.actions.sendFeedbackError(error));
-          })),
+        .pipe(
+          map((action: IPayloadAction<any>) => action.payload),
+          switchMap((payload: FeedbackPayload) => this.sendResponse(payload.response)
+            .pipe(
+              map(() => {
+                this.actions.loadFeedback();
+                return this.actions.sendFeedbackSuccess();
+              }),
+              catchError(error => {
+                this.showErrorMessage(error, 'Senden');
+                return of(this.actions.sendFeedbackError(error));
+              })))),
       action$ => action$
         .ofType(FeedbackActions.LOAD_FEEDBACK_REQUEST)
-        .map(action => action.payload)
-        .switchMap((payload: FeedbackPayload) => this.loadFeedback()
-          .map(response => {
-            this.checkUnreadResponses(response.feedbackList);
-            return this.actions.loadFeedbackSuccess(response.feedbackList);
-          })
-          .catch(error => {
-            // this.showErrorMessage(error, 'Laden');
-            return of(this.actions.loadFeedbackError(error));
-          })),
+        .pipe(
+          map((action: IPayloadAction<any>) => action.payload),
+          switchMap((payload: FeedbackPayload) => this.loadFeedback()
+            .pipe(
+              map(response => {
+                this.checkUnreadResponses(response.feedbackList);
+                return this.actions.loadFeedbackSuccess(response.feedbackList);
+              }),
+              catchError(error => {
+                // this.showErrorMessage(error, 'Laden');
+                return of(this.actions.loadFeedbackError(error));
+              })))),
       action$ => action$
         .ofType(FeedbackActions.MARK_FEEDBACK_READ_REQUEST)
-        .map(action => action.payload)
-        .switchMap((payload: FeedbackPayload) => this.markRead(payload.feedbackId)
-          .map(response => {
-            return this.actions.markFeedbackReadSuccess();
-          })
-          .catch(error => {
-            return of(this.actions.markFeedbackReadError(error));
-          }))
+        .pipe(
+          map((action: IPayloadAction<any>) => action.payload),
+          switchMap((payload: FeedbackPayload) => this.markRead(payload.feedbackId)
+            .pipe(
+              map(response => {
+                return this.actions.markFeedbackReadSuccess();
+              }),
+              catchError(error => {
+                return of(this.actions.markFeedbackReadError(error));
+              }))))
     ];
   }
 

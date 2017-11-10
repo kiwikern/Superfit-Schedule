@@ -9,6 +9,7 @@ import { select } from '@angular-redux/store';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../authentication/store/auth-service/auth.service';
 import { AuthenticationActions } from '../../authentication/store/authentication.actions';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'sfs-comment-form',
@@ -45,8 +46,9 @@ export class CommentFormComponent implements OnInit, OnDestroy {
       'Jasmin', 'Jenny', 'Judith', 'Mariusz', 'Max', 'Milena', 'Nadja', 'Nicola', 'Laura', 'Lea',
       'Pascal', 'Patrick', 'Richy', 'Ronny', 'Stefan', 'Tareq', 'Theresa', 'Toni', 'Vivian', 'Yannick', 'Yvonne'];
     this.filteredInstructors = this.instructorControl.valueChanges
-      .startWith('')
-      .map(value => this.filterInstructors(value));
+      .pipe(
+      startWith(''),
+      map(value => this.filterInstructors(value)));
   }
 
   ngOnDestroy() {

@@ -4,11 +4,10 @@
 import { Injectable } from '@angular/core';
 
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import { ScheduleActions } from './schedule.actions';
 import { HttpClient } from '@angular/common/http';
 import { ScheduleParserService } from './schedule-parser.service';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class ScheduleEpics {
@@ -20,10 +19,12 @@ export class ScheduleEpics {
   createEpics() {
     return action$ => action$
       .ofType(ScheduleActions.SCHEDULE_LOAD_STARTED)
-      .switchMap(action => this.fetchSchedule()
-        .map(scheduleJSON => this.actions.loadSucceded(this.parseService.getAllClassesByDay(this.parseService.parse(scheduleJSON))))
-        .catch(error => of(this.actions.loadFailed(error)))
-      );
+      .pipe(
+        switchMap(action => this.fetchSchedule()
+          .pipe(
+            map(scheduleJSON => this.actions.loadSucceded(this.parseService.getAllClassesByDay(this.parseService.parse(scheduleJSON)))),
+            catchError(error => of(this.actions.loadFailed(error)))
+          )));
   }
 
   private fetchSchedule() {

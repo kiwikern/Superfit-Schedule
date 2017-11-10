@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/catch';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
 import { Router } from '@angular/router';
+import { catchError, flatMap, map, switchMap } from 'rxjs/operators';
+import { IPayloadAction } from '../../store/payload-action.types';
 
 @Injectable()
 export class AuthenticationEpics {
@@ -24,37 +24,44 @@ export class AuthenticationEpics {
     return [
       action$ => action$
         .ofType(AuthenticationActions.LOGIN_REQUESTED)
-        .map(action => action.payload)
-        .switchMap(credentials => this.requestLogin(credentials)
-          .flatMap(response => {
-            const redirectTo = credentials.redirectTo || '/schedule';
-            return of(
-              this.actions.loginSuccess(response.userName, response.token, response.userId),
-              <any>this.routerActions.navigateTo(redirectTo));
-          })
-          .catch(error => {
-            this.showErrorMessage(error);
-            return of(this.actions.loginFailed());
-          })),
+        .pipe(
+          map((action: IPayloadAction<any>) => action.payload),
+          switchMap((credentials: any) => this.requestLogin(credentials)
+            .pipe(
+              flatMap((response: any) => {
+                const redirectTo = credentials.redirectTo || '/schedule';
+                return of(
+                  this.actions.loginSuccess(response.userName, response.token, response.userId),
+                  <any>this.routerActions.navigateTo(redirectTo));
+              }),
+              catchError(error => {
+                this.showErrorMessage(error);
+                return of(this.actions.loginFailed());
+              })))),
       action$ => action$
         .ofType(AuthenticationActions.LOGOUT)
-        .map(() => this.syncActions.deactivateSync()),
+        .pipe(
+          map(() => this.syncActions.deactivateSync())
+        ),
       action$ => action$
         .ofType(AuthenticationActions.LOGIN_SUCCESS)
-        .map(() => {
-          this.showSnackBar('Login erfolgreich.');
-          return this.syncActions.activateSync();
-        }),
+        .pipe(
+          map(() => {
+            this.showSnackBar('Login erfolgreich.');
+            return this.syncActions.activateSync();
+          })
+        ),
       action$ => action$
         .ofType(AuthenticationActions.NEEDS_LOGIN)
-        .map(action => {
-          const redirectRoute = action.payload.route;
-          const backRoute = redirectRoute.substr(0, redirectRoute.lastIndexOf('/'));
-          this.showSnackBar(action.payload.message, 'Zurück')
-            .onAction()
-            .subscribe(() => this.router.navigate([backRoute]));
-          return this.routerActions.navigateTo(`/auth?route=${redirectRoute}`);
-        })
+        .pipe(
+          map((action: IPayloadAction<any>) => {
+            const redirectRoute = action.payload.route;
+            const backRoute = redirectRoute.substr(0, redirectRoute.lastIndexOf('/'));
+            this.showSnackBar(action.payload.message, 'Zurück')
+              .onAction()
+              .subscribe(() => this.router.navigate([backRoute]));
+            return this.routerActions.navigateTo(`/auth?route=${redirectRoute}`);
+          }))
     ];
   }
 

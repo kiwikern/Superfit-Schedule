@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/switchMap';
 import { MatSnackBar } from '@angular/material';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { IPayloadAction } from '../../store/payload-action.types';
 
 @Injectable()
 export class ResetPasswordEpics {
@@ -16,16 +17,20 @@ export class ResetPasswordEpics {
   createEpics() {
     return action$ => action$
       .ofType(AuthenticationActions.RESET_PASSWORD_REQUESTED)
-      .map(action => action.payload)
-      .switchMap(body => this.requestPasswordReset(body)
-        .map(response => {
-          this.showSnackBar('Eine E-Mail wurde an dich versandt.');
-          return this.actions.resetPasswordSuccess();
-        })
-        .catch(error => {
-          this.showErrorMessage(error);
-          return of(this.actions.resetPasswordFailed(error));
-        }));
+      .pipe(
+        map((action: IPayloadAction<any>) => action.payload),
+        switchMap(body => this.requestPasswordReset(body)
+          .pipe(
+            map(response => {
+              this.showSnackBar('Eine E-Mail wurde an dich versandt.');
+              return this.actions.resetPasswordSuccess();
+            }),
+            catchError(error => {
+              this.showErrorMessage(error);
+              return of(this.actions.resetPasswordFailed(error));
+            })
+          ))
+      );
   }
 
   private showErrorMessage(error: HttpErrorResponse) {

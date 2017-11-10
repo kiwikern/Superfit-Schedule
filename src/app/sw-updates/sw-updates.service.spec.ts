@@ -2,12 +2,12 @@ import { ReflectiveInjector } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { NgServiceWorker } from '@angular/service-worker';
 import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/take';
 
 import { Logger } from '../common/logger.service';
 import { SwUpdatesService } from './sw-updates.service';
 import { MatSnackBar } from '@angular/material';
 import { Angulartics2 } from 'angulartics2';
+import { take } from 'rxjs/operators';
 
 describe('SwUpdatesService', () => {
   let injector: ReflectiveInjector;
@@ -166,8 +166,8 @@ class MockNgServiceWorker {
   updates = this.$$updatesSubj.asObservable();
 
   activateUpdate = jasmine.createSpy('MockNgServiceWorker.activateUpdate')
-    .and.callFake(() => this.$$activateUpdateSubj.take(1));
+    .and.callFake(() => this.$$activateUpdateSubj.pipe(take(1)));
 
   checkForUpdate = jasmine.createSpy('MockNgServiceWorker.checkForUpdate')
-    .and.callFake(() => this.$$checkForUpdateSubj.take(1));
+    .and.callFake(() => this.$$checkForUpdateSubj.pipe(take(1)));
 }

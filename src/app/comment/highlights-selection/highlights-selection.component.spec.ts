@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HighlightsSelectionComponent } from './highlights-selection.component';
 import { HighlightService } from '../highlight.service';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 describe('HighlightsSelectionComponent', () => {
   let component: HighlightsSelectionComponent;
@@ -12,7 +12,8 @@ describe('HighlightsSelectionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HighlightsSelectionComponent ],
       imports: [
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
       ],
       providers: [HighlightService]
     })

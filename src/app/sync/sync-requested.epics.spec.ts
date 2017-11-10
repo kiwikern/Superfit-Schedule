@@ -1,6 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { ActionsObservable } from 'redux-observable';
-import 'rxjs/add/operator/toArray';
 import { SyncActivatedEpics } from './sync-activated.epics';
 import { SyncActions } from './sync.actions';
 import { MatSnackBar } from '@angular/material';
@@ -9,6 +8,7 @@ import { SyncRequestedEpics } from './sync-requested.epics';
 import { Angulartics2 } from 'angulartics2';
 import { Router } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { toArray } from 'rxjs/operators';
 
 describe('SyncRequestedEpics', () => {
 
@@ -75,7 +75,9 @@ describe('SyncRequestedEpics', () => {
 
   function performAction(epics, expectedOutputActions, done, snack?, message?) {
     epics.createEpics()(action$)
-      .toArray()
+      .pipe(
+        toArray()
+      )
       .subscribe(outputActions => {
         expect(outputActions).toEqual(expectedOutputActions);
         if (snack) {

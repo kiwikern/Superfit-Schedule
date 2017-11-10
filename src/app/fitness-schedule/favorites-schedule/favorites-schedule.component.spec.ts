@@ -12,8 +12,8 @@ import { Language } from '../enums/language.enum';
 import { Gym } from '../enums/gym.enum';
 import { MockNgRedux, NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import 'rxjs/add/observable/combineLatest';
 
 describe('FavoritesScheduleComponent', () => {
   let component: FavoritesScheduleComponent;
