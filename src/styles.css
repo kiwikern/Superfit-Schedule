@@ -14,8 +14,3 @@ a {
 mat-dialog-container {
   position: relative;
 }
-
-/*TODO: Workaround @see https://github.com/angular/material2/issues/998*/
-.mat-drawer-container, .mat-drawer-content {
-  transform: none !important;
-}
