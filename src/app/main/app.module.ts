@@ -26,7 +26,10 @@ import { LegalModule } from '../legal/legal.module';
 import { NavigationButtonComponent } from './navigation-button/navigation-button.component';
 import { FeedbackStoreModule } from '../feedback/store/feedback-store.module';
 import { JwtModule } from '@auth0/angular-jwt';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
 
+registerLocaleData(localeDe);
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'schedule', pathMatch: 'prefix'},
