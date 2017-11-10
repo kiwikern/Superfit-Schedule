@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   fragment: string;
   @select(['authentication', 'userName']) userName$: Observable<string>;
   @select() router$: Observable<string>;
+  @select(['authentication', 'jwt']) jwt$;
 
   constructor(private swUpdatesService: SwUpdatesService,
               private angulartics: Angulartics2,

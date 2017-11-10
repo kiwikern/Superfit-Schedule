@@ -1,83 +1,11 @@
-<sfs-navigation-button [name]="'Kursplan'"
-                       [path]="'/schedule'"
-                       [icon]="'event'"
+<ng-template ngFor let-route [ngForOf]="navigationConfiguration">
+<sfs-navigation-button [name]="route.name"
+                       [path]="route.path"
+                       [icon]="route.icon"
+                       *ngIf="route.loginStateMustBe == null || route.loginStateMustBe === isLoggedIn"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
                        [class.fullwidth]="fullWidth"
                        (click)="onClick.emit()">
 </sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Favoriten'"
-                       [path]="'/schedule/favorites'"
-                       [icon]="'favorite'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Kurswahl'"
-                       [path]="'/schedule/filter'"
-                       [icon]="'playlist_add'"
-                       [sideNav]="sideNav"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Änderungen'"
-                       [path]="'/schedule/changes'"
-                       [icon]="'swap_horiz'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Login'"
-                       *ngIf="!(jwt$ | async)"
-                       [path]="'/auth'"
-                       [icon]="'person'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Account'"
-                       *ngIf="jwt$ | async"
-                       [path]="'/auth'"
-                       [icon]="'person'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Optionen'"
-                       [path]="'/schedule/settings'"
-                       [icon]="'settings'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Feedback'"
-                       [path]="'/feedback'"
-                       [icon]="'feedback'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
-
-<sfs-navigation-button [name]="'Über'"
-                       [path]="'/about'"
-                       [icon]="'import_contacts'"
-                       [fullWidth]="fullWidth"
-                       [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"
-                       (click)="onClick.emit()">
-</sfs-navigation-button>
+</ng-template>
