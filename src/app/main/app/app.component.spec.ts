@@ -70,7 +70,7 @@ class MockSyncStatusComponent {
 })
 class MockNavComponent {
   @Input() fullWidth;
-  @Input() sideNav;
+  @Input() isLoggedIn;
 }
 
 @Injectable()
