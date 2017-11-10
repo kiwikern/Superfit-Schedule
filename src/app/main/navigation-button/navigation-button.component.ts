@@ -20,12 +20,6 @@ export class NavigationButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeSidenav() {
-    if (this.sideNav) {
-      this.sideNav.close();
-    }
-  }
-
   isActive(): boolean {
     const isAuthRoute = /auth/.test(this.activeRoute) && /auth/.test(this.path);
     return this.activeRoute === this.path || isAuthRoute;

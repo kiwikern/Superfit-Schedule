@@ -1,18 +1,20 @@
 <sfs-navigation-button [name]="'Kursplan'"
                        [path]="'/schedule'"
                        [icon]="'event'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Favoriten'"
                        [path]="'/schedule/favorites'"
                        [icon]="'favorite'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Kurswahl'"
                        [path]="'/schedule/filter'"
@@ -20,54 +22,62 @@
                        [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Änderungen'"
                        [path]="'/schedule/changes'"
                        [icon]="'swap_horiz'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Login'"
                        *ngIf="!(jwt$ | async)"
                        [path]="'/auth'"
                        [icon]="'person'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Account'"
                        *ngIf="jwt$ | async"
                        [path]="'/auth'"
                        [icon]="'person'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Optionen'"
                        [path]="'/schedule/settings'"
                        [icon]="'settings'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Feedback'"
                        [path]="'/feedback'"
                        [icon]="'feedback'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>
 
 <sfs-navigation-button [name]="'Über'"
                        [path]="'/about'"
                        [icon]="'import_contacts'"
-                       [sideNav]="sideNav"
                        [fullWidth]="fullWidth"
                        [activeRoute]="router$ | async"
-                       [class.fullwidth]="fullWidth"></sfs-navigation-button>
+                       [class.fullwidth]="fullWidth"
+                       (click)="onClick.emit()">
+</sfs-navigation-button>

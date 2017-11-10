@@ -18,7 +18,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav-menu" fixedTopGap="54" fixedInViewport="true">
     <sfs-navigation fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px"
-                    [sideNav]="sidenav"></sfs-navigation>
+                    (onClick)="sidenav.close()"></sfs-navigation>
   </mat-sidenav>
   <div class="sidenav-content">
     <router-outlet></router-outlet>
