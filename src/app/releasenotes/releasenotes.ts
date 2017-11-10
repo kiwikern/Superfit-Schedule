@@ -12,6 +12,16 @@ export const releasenotes: Release[] = [
         description: `Das Layout der Kurswahl wurde verbessert. Nun siehst du auf einen Blick, welche Einstellungen
         du gesetzt hast.`
       },
+      {
+        title: 'Verbesserte Navigation',
+        type: ChangeType.CHANGE,
+        description: `Der Zurückpfeil führt nun direkt zur zuletzt aufgerufenen Hauptseite.`
+      },
+      {
+        title: 'Performanceverbesserung',
+        type: ChangeType.PERFORMANCE,
+        description: `Die App braucht nun weniger Speicherplatz und wird dadurch schneller geladen.`
+      },
     ]
   },
   {
