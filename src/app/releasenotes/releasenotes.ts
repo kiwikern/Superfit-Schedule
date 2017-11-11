@@ -28,6 +28,11 @@ export const releasenotes: Release[] = [
         description: `Beim Kursplanlayout 'nebeneinander' wurde der erste Tag abgeschnitten,
         wenn der Platz nicht ausreichte.`
       },
+      {
+        title: 'Benachrichitung über Fehler',
+        type: ChangeType.FEATURE,
+        description: `Du wirst von nun an benachrichtigt, wenn in der App ein Fehler auftritt.`
+      }
     ]
   },
   {
