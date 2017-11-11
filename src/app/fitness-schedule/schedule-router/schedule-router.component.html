@@ -4,26 +4,12 @@
 <mat-toolbar fxHide.gt-md="true" class="toolbar">
   <div class="centered-toolbar-row">
     <div style="display:flex; width: 552px; align-items: center; place-content: space-around;">
-      <sfs-bottom-navigation-button [scheduleRoute]="'/'"
-                                    [icon]="'event'"
-                                    [activeRoute]="router.url"
-                                    [name]="'Kursplan'"></sfs-bottom-navigation-button>
-      <sfs-bottom-navigation-button [scheduleRoute]="'/favorites'"
-                                    [icon]="'favorite'"
-                                    [activeRoute]="router.url"
-                                    [name]="'Favoriten'"></sfs-bottom-navigation-button>
-      <sfs-bottom-navigation-button [scheduleRoute]="'/filter'"
-                                    [icon]="'playlist_add'"
-                                    [activeRoute]="router.url"
-                                    [name]="'Kurswahl'"></sfs-bottom-navigation-button>
-      <sfs-bottom-navigation-button [scheduleRoute]="'/changes'"
-                                    [icon]="'swap_horiz'"
-                                    [activeRoute]="router.url"
-                                    [name]="'Änderung'"></sfs-bottom-navigation-button>
-      <sfs-bottom-navigation-button [scheduleRoute]="'/settings'"
-                                    [icon]="'settings'"
-                                    [activeRoute]="router.url"
-                                    [name]="'Optionen'"></sfs-bottom-navigation-button>
+      <sfs-bottom-navigation-button *ngFor="let entry of navigationConfiguration"
+                                    [scheduleRoute]="entry.path"
+                                    [icon]="entry.icon"
+                                    [name]="entry.name"
+                                    [isActive]="isActive(entry.path)">
+      </sfs-bottom-navigation-button>
     </div>
   </div>
 </mat-toolbar>

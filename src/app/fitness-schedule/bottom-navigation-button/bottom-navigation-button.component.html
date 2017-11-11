@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column; align-items: center">
   <button mat-icon-button [routerLink]="scheduleRoute">
-    <mat-icon [color]="isActive() ? 'accent' : ''">{{icon}}</mat-icon>
+    <mat-icon [color]="isActive ? 'accent' : ''">{{icon}}</mat-icon>
   </button>
-  <span class="label" *ngIf="isActive()">{{name}}</span>
+  <span class="label" *ngIf="isActive">{{name}}</span>
 </div>

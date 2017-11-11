@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
+import { NavigationConfigEntry } from './navigation-config-entry.interface';
 
 @Component({
   selector: 'sfs-navigation',
@@ -67,9 +68,3 @@ export class NavigationComponent {
 
 }
 
-interface NavigationConfigEntry {
-  name: string;
-  path: string;
-  icon: string;
-  loginStateMustBe?: boolean;
-}

@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
+import { NavigationConfigEntry } from '../../main/navigation/navigation-config-entry.interface';
 
 @Component({
   selector: 'sfs-schedule-router',
@@ -38,22 +39,63 @@ import { animate, group, query, style, transition, trigger } from '@angular/anim
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScheduleRouterComponent implements OnInit {
+export class ScheduleRouterComponent {
 
-  private previousPosition = -1;
+  navigationConfiguration: NavigationConfigEntry[] = [
+    {
+      name: 'Kursplan',
+      path: '/',
+      icon: 'event'
+    },
+    {
+      name: 'Favoriten',
+      path: '/favorites',
+      icon: 'favorite'
+    },
+    {
+      name: 'Kurswahl',
+      path: '/filter',
+      icon: 'playlist_add'
+    },
+    {
+      name: 'Änderungen',
+      path: '/changes',
+      icon: 'swap_horiz'
+    },
+    {
+      name: 'Optionen',
+      path: '/settings',
+      icon: 'settings'
+    }
+  ];
 
   constructor(public router: Router) {
   }
 
-  ngOnInit() {
+  isActive(scheduleRoute: string): boolean {
+    const activePath = this.getActivePath();
+    if (scheduleRoute !== '/') {
+      const fullRoute = '/schedule' + scheduleRoute;
+      return activePath === fullRoute;
+    } else {
+      return activePath === '/schedule';
+    }
   }
 
-  getColor(route: string) {
-    if (this.router.isActive(route, true)) {
-      return 'accent';
-    } else {
-      return '';
+  private getActivePath() {
+    let activePath = this.router.url;
+
+    const pathIndex = activePath.indexOf('?');
+    if (pathIndex !== -1) {
+      activePath = activePath.substr(0, pathIndex);
     }
+
+    const anchorIndex = activePath.indexOf('#');
+    if (anchorIndex !== -1) {
+      activePath = activePath.substr(0, anchorIndex);
+    }
+
+    return activePath;
   }
 
 }
