@@ -54,7 +54,7 @@ export class NavigationPage {
   }
 
   getAppTitle() {
-    return element(by.css('mat-toolbar-row > span')).getText();
+    return element(by.css('mat-toolbar > span')).getText();
   }
 
   getFirstCardTitle() {
