@@ -1,4 +1,4 @@
-<div *ngIf="showSchedule">
+<div *ngIf="showSchedule" class="horizontal-center">
   <div [ngClass]="[(daysLayout$ | async) ? (daysLayout$ | async) : 'column', 'flow']"
        [ngClass.gt-xs]="[(daysLayout$ | async) ? (daysLayout$ | async) : 'row', 'flow']"
        class="scrollable" id="schedule" #schedule>

@@ -4,7 +4,7 @@ import { ChangeType } from './entry/type.enum';
 export const releasenotes: Release[] = [
   {
     version: 'v2.17',
-    date: new Date(2017, 10, 3),
+    date: new Date(2017, 10, 11),
     entries: [
       {
         title: 'Kurswahllayout',
@@ -21,6 +21,12 @@ export const releasenotes: Release[] = [
         title: 'Performanceverbesserung',
         type: ChangeType.PERFORMANCE,
         description: `Die App braucht nun weniger Speicherplatz und wird dadurch schneller geladen.`
+      },
+      {
+        title: 'Kursplan abgeschnitten',
+        type: ChangeType.FIX,
+        description: `Beim Kursplanlayout 'nebeneinander' wurde der erste Tag abgeschnitten,
+        wenn der Platz nicht ausreichte.`
       },
     ]
   },

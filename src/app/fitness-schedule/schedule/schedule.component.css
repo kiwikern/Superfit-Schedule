@@ -19,7 +19,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -27,9 +27,7 @@
   outline: 1px solid slategrey;
 }
 
-
 .flow {
-  place-content: center;
   display: flex;
   box-sizing: border-box;
   -webkit-box-direction: normal;
@@ -48,4 +46,9 @@
 
 .row .margin-if-row {
   margin-right: 20px;
+}
+
+.horizontal-center {
+  display: flex;
+  justify-content: center
 }
