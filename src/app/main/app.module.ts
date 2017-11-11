@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -31,6 +31,7 @@ import localeDe from '@angular/common/locales/de';
 import { Angulartics2Piwik } from 'angulartics2/piwik';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from '../../environments/environment';
+import { RemoteErrorHandler } from './RemoteErrorHandler';
 
 registerLocaleData(localeDe);
 
@@ -83,10 +84,10 @@ export function tokenGetter() {
     FeedbackStoreModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'de-DE'}
+    {provide: LOCALE_ID, useValue: 'de-DE'},
+    {provide: ErrorHandler, useClass: RemoteErrorHandler},
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }

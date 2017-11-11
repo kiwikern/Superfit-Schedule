@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatSnackBarModule } from '@angular/material';
 import { RatingComponent } from './rating/rating.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,6 +13,7 @@ import { ScrollService } from './scroll.service';
     MatIconModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
     FlexLayoutModule
   ],
   declarations: [

@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { MatSnackBar } from '@angular/material';
 
 
 @Injectable()
 export class Logger {
+
+  constructor(private snackbar: MatSnackBar) {
+  }
 
   log(value: any, ...rest) {
     if (!environment.production) {
@@ -18,6 +22,7 @@ export class Logger {
   }
 
   error(value: any, ...rest) {
+    this.snackbar.open('Ups, ein Fehler ist aufgetreten. 😳', 'OK', {duration: 5000});
     console.error(value, ...rest);
   }
 
