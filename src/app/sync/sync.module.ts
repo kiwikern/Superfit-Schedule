@@ -23,7 +23,7 @@ import 'rxjs/add/observable/combineLatest';
     CommonModule,
     SfsMaterialModule,
     RouterModule,
-    Angulartics2Module.forChild()
+    Angulartics2Module
   ],
   declarations: [
     StatusComponent

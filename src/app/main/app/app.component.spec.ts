@@ -5,9 +5,11 @@ import { Component, Injectable, Input } from '@angular/core';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
-import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
+import { Angulartics2 } from 'angulartics2';
 import { ScrollService } from '../../common/scroll.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2Piwik } from 'angulartics2/piwik';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

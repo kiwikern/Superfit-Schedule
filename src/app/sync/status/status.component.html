@@ -10,6 +10,6 @@
 </div>
 
 <button mat-icon-button routerLink="/auth" (click)="showLoginRequired()" *ngIf="!(sync$ | async)?.isSyncActivated"
-        angulartics2On="click" angularticsEvent="LoginViaStatusComponent">
+        angulartics2On="click" angularticsAction="LoginViaStatusComponent">
   <mat-icon>sync_disabled</mat-icon>
 </button>

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { Angulartics2, Angulartics2GoogleAnalytics, Angulartics2Piwik } from 'angulartics2';
+import { Angulartics2 } from 'angulartics2';
 import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
 import { ScrollService } from '../../common/scroll.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2Piwik } from 'angulartics2/piwik';
 
 @Component({
   selector: 'sfs-root',

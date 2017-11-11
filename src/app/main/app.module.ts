@@ -19,7 +19,7 @@ import { FitnessScheduleStoreModule } from '../fitness-schedule/store/fitness-sc
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationStoreModule } from '../authentication/store/authentication-store.module';
 import { SwUpdatesModule } from '../sw-updates/sw-updates.module';
-import { Angulartics2GoogleAnalytics, Angulartics2Module, Angulartics2Piwik } from 'angulartics2';
+import { Angulartics2Module } from 'angulartics2';
 import { ReleasenotesModule } from '../releasenotes/releasenotes.module';
 import { ReleasenotesStoreModule } from '../releasenotes/store/releasenotes-store.module';
 import { LegalModule } from '../legal/legal.module';
@@ -28,6 +28,9 @@ import { FeedbackStoreModule } from '../feedback/store/feedback-store.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { Angulartics2Piwik } from 'angulartics2/piwik';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { environment } from '../../environments/environment';
 
 registerLocaleData(localeDe);
 
@@ -72,7 +75,8 @@ export function tokenGetter() {
     RecaptchaModule.forRoot(),
     SyncModule,
     SwUpdatesModule,
-    Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics]),
+    Angulartics2Module.forRoot([Angulartics2Piwik, Angulartics2GoogleAnalytics],
+      {developerMode: !environment.production}),
     ReleasenotesModule,
     ReleasenotesStoreModule,
     LegalModule,

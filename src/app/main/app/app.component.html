@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="toolbar">
   <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-md="true" id="nav_burger-menu" aria-label="menu"
           *ngIf="!isChild"
-          angulartics2On="click" angularticsEvent="OpenBurgerMenu">
+          angulartics2On="click" angularticsAction="OpenBurgerMenu">
     <mat-icon>menu</mat-icon>
   </button>
   <button mat-icon-button [routerLink]="parentPath" [fragment]="fragment" *ngIf="isChild">
