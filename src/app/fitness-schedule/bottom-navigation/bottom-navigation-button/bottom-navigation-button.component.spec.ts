@@ -24,7 +24,6 @@ describe('BottomNavigationButtonComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BottomNavigationButtonComponent);
     component = fixture.componentInstance;
-    component.activeRoute = '';
     fixture.detectChanges();
   });
 

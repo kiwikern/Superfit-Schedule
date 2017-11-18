@@ -1,15 +1,7 @@
 <div class="toolbar-margin outlet-container" [@routeAnimation]="scheduleOutlet.activatedRouteData.position">
   <router-outlet #scheduleOutlet="outlet"></router-outlet>
 </div>
-<mat-toolbar fxHide.gt-md="true" class="toolbar">
-  <div class="centered-toolbar-row">
-    <div style="display:flex; width: 552px; align-items: center; place-content: space-around;">
-      <sfs-bottom-navigation-button *ngFor="let entry of navigationConfiguration"
-                                    [scheduleRoute]="entry.path"
-                                    [icon]="entry.icon"
-                                    [name]="entry.name"
-                                    [isActive]="isActive(entry.path)">
-      </sfs-bottom-navigation-button>
-    </div>
-  </div>
-</mat-toolbar>
+<sfs-bottom-navigation [activeRoute]="getActivePath()"
+                       [navigationConfiguration]="navigationConfiguration"
+                       fxHide.gt-md="true">
+</sfs-bottom-navigation>

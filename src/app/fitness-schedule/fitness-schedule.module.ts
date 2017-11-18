@@ -21,7 +21,8 @@ import { ChangesComponent } from './changes/changes.component';
 import { ScheduleRouterComponent } from './schedule-router/schedule-router.component';
 import { DurationFilterComponent } from './filter/duration-filter/duration-filter.component';
 import { WorkoutModule } from '../workout/workout.module';
-import { BottomNavigationButtonComponent } from './bottom-navigation-button/bottom-navigation-button.component';
+import { BottomNavigationButtonComponent } from './bottom-navigation/bottom-navigation-button/bottom-navigation-button.component';
+import { BottomNavigationComponent } from './bottom-navigation/bottom-navigation.component';
 
 const fitnessRoutes: Routes = [
   {
@@ -62,7 +63,8 @@ const fitnessRoutes: Routes = [
     ChangesComponent,
     ScheduleRouterComponent,
     DurationFilterComponent,
-    BottomNavigationButtonComponent
+    BottomNavigationButtonComponent,
+    BottomNavigationComponent
   ],
   exports: [
     ScheduleComponent,

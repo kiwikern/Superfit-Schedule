@@ -72,17 +72,7 @@ export class ScheduleRouterComponent {
   constructor(public router: Router) {
   }
 
-  isActive(scheduleRoute: string): boolean {
-    const activePath = this.getActivePath();
-    if (scheduleRoute !== '/') {
-      const fullRoute = '/schedule' + scheduleRoute;
-      return activePath === fullRoute;
-    } else {
-      return activePath === '/schedule';
-    }
-  }
-
-  private getActivePath() {
+  getActivePath() {
     let activePath = this.router.url;
 
     const pathIndex = activePath.indexOf('?');
@@ -93,6 +83,14 @@ export class ScheduleRouterComponent {
     const anchorIndex = activePath.indexOf('#');
     if (anchorIndex !== -1) {
       activePath = activePath.substr(0, anchorIndex);
+    }
+
+    if (activePath.startsWith('/schedule')) {
+      activePath = activePath.substring(9);
+    }
+
+    if (activePath === '') {
+      activePath = '/';
     }
 
     return activePath;

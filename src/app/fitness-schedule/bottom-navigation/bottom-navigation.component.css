@@ -1,0 +1,13 @@
+.toolbar {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.centered-toolbar-row {
+  display: flex;
+  place-content: center;
+  width: 100%;
+}
