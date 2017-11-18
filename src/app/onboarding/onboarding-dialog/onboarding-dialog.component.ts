@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 import { LinkDotsComponent } from '../link-dots/link-dots.component';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'sfs-onboarding-dialog',
@@ -14,12 +15,14 @@ export class OnboardingDialogComponent implements OnInit {
   private onDestroy = new Subject();
 
   constructor(private router: Router,
-              private dialogRef: MdDialogRef<OnboardingDialogComponent>) {
+              private dialogRef: MatDialogRef<OnboardingDialogComponent>) {
   }
-
+ 
   ngOnInit() {
     this.dialogRef.afterClosed()
-      .takeUntil(this.onDestroy)
+      .pipe(
+        takeUntil(this.onDestroy)
+      )
       .subscribe(() => {
         this.router.navigate(['/schedule']);
         this.onDestroy.next();

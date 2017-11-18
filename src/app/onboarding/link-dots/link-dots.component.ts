@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'sfs-link-dots',
@@ -20,7 +21,9 @@ export class LinkDotsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.router$
-      .takeUntil(this.onDestroy)
+      .pipe(
+        takeUntil(this.onDestroy)
+      )
       .subscribe(route => this.activeIndex = this.getActiveIndex(route));
   }
 

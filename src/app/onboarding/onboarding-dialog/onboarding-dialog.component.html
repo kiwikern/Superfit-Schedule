@@ -1,8 +1,8 @@
 <router-outlet name="onboarding"></router-outlet>
-<md-toolbar color="primary" class="toolbar">
-  <button md-button md-dialog-close>Abbrechen</button>
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-button mat-dialog-close>Abbrechen</button>
   <span fxFlex></span>
   <sfs-link-dots #dots [steps]="['start', 'gymselection']"></sfs-link-dots>
   <span fxFlex></span>
-  <button md-button (click)="next(dots)">Weiter</button>
-</md-toolbar>
+  <button mat-button (click)="next(dots)">Weiter</button>
+</mat-toolbar>
