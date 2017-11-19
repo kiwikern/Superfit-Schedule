@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommentDetailComponent } from './comment-detail.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { RepeatPipe } from '../repeat.pipe';
+import { RepeatPipe } from '../../common/repeat.pipe';
 import { HighlightService } from '../highlight.service';
 import { RouterTestingModule } from '@angular/router/testing';
 

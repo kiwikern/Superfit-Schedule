@@ -6,6 +6,7 @@ import { FabButtonComponent } from './fab-button/fab-button.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Logger } from './logger.service';
 import { ScrollService } from './scroll.service';
+import { RepeatPipe } from './repeat.pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ScrollService } from './scroll.service';
   ],
   declarations: [
     RatingComponent,
-    FabButtonComponent
+    FabButtonComponent,
+    RepeatPipe
   ],
   providers: [
     Logger,
@@ -26,7 +28,8 @@ import { ScrollService } from './scroll.service';
   ],
   exports: [
     RatingComponent,
-    FabButtonComponent
+    FabButtonComponent,
+    RepeatPipe
   ]
 })
 export class SfsCommonModule { }

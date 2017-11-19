@@ -8,7 +8,6 @@ import { HighlightsComponent } from './highlights/highlights.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { SfsCommonModule } from '../common/common.module';
-import { RepeatPipe } from './repeat.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -37,7 +36,6 @@ const commentsRoutes: Routes = [
     CommentDetailComponent,
     CommentFormComponent,
     HighlightsComponent,
-    RepeatPipe,
     HighlightsSelectionComponent
   ],
   providers: [
