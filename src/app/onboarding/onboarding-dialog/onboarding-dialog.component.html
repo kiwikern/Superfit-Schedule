@@ -2,7 +2,9 @@
 <mat-toolbar color="primary" class="toolbar">
   <button mat-button mat-dialog-close>Abbrechen</button>
   <span fxFlex></span>
-  <sfs-link-dots #dots [steps]="['start', 'gymselection']"></sfs-link-dots>
+  <sfs-link-dots [dotsCount]="steps.length"
+                 [activeIndex]="activeIndex"
+                 (onIndexChange)="navigateTo($event)"></sfs-link-dots>
   <span fxFlex></span>
-  <button mat-button (click)="next(dots)">Weiter</button>
+  <button mat-button (click)="next()">{{steps.length - 1 > activeIndex ? 'Weiter' : 'Fertig'}}</button>
 </mat-toolbar>
