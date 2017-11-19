@@ -11,7 +11,7 @@ export class OnboardingComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private router: Router) {
-    this.dialog.open(OnboardingDialogComponent, {height: '100%', width: '100%'});
+    this.dialog.open(OnboardingDialogComponent, {height: '100vh', width: '100vw', maxWidth: '100vw'});
   }
 
   ngOnInit() {

@@ -4,8 +4,3 @@
   left: 0;
   bottom: 0;
 }
-
-/** TODO: remove when https://github.com/angular/material2/issues/3209 was merged. */
-/deep/ .mat-dialog-container {
-  max-width: 100vw !important;
-}
