@@ -14,7 +14,7 @@ import { FeedbackActions } from '../feedback/store/feedback.actions';
 @NgModule({
   imports: [
     NgReduxModule,
-    NgReduxRouterModule
+    NgReduxRouterModule.forRoot()
   ],
   declarations: [],
   providers: [
