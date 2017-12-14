@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MappingService } from '../../workout/mapping.service';
+import { MappingService } from '../workout/mapping.service';
 import { select } from '@angular-redux/store';
-import { FilterActions } from '../store/filter/filter.actions';
-import { FilterPayload } from '../store/filter/filter-payload';
+import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
+import { FilterPayload } from '../fitness-schedule/store/filter/filter-payload';
 
 @Component({
   selector: 'sfs-filter',
