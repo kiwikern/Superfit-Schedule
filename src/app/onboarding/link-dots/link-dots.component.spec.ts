@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LinkDotsComponent } from './link-dots.component';
+import { RepeatPipe } from '../../common/repeat.pipe';
+import { LinkDotComponent } from '../link-dot/link-dot.component';
 
 describe('LinkDotsComponent', () => {
   let component: LinkDotsComponent;
@@ -8,7 +10,11 @@ describe('LinkDotsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LinkDotsComponent ]
+      declarations: [
+        LinkDotsComponent,
+        LinkDotComponent,
+        RepeatPipe
+      ]
     })
     .compileComponents();
   }));

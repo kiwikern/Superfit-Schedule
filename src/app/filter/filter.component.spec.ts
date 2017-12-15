@@ -4,12 +4,12 @@ import { FilterComponent } from './filter.component';
 import { SelectFilterComponent } from './select-filter/select-filter.component';
 import { FormsModule } from '@angular/forms';
 import { MappingService } from '../workout/mapping.service';
-import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { SfsMaterialModule } from '../material/sfs-material.module';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { DurationFilterComponent } from './duration-filter/duration-filter.component';
+import { FilterService } from './filter.service';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
@@ -27,7 +27,7 @@ describe('FilterComponent', () => {
       ],
       providers: [
         MappingService,
-        {provide: FilterActions, useClass: MockActions}
+        {provide: FilterService, useClass: MockFilterService},
       ]
     })
     .compileComponents();
@@ -44,5 +44,5 @@ describe('FilterComponent', () => {
   });
 });
 
-class MockActions {
+class MockFilterService {
 }

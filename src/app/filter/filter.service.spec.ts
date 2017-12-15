@@ -1,11 +1,15 @@
 import { inject, TestBed } from '@angular/core/testing';
 
 import { FilterService } from './filter.service';
+import { FilterActions } from '../fitness-schedule/store/filter/filter.actions';
 
 describe('FilterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FilterService]
+      providers: [
+        FilterService,
+        {provide: FilterActions, useClass: MockFilterActions}
+      ]
     });
   });
 
@@ -13,3 +17,6 @@ describe('FilterService', () => {
     expect(service).toBeTruthy();
   }));
 });
+
+class MockFilterActions {
+}
