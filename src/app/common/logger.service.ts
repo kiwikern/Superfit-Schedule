@@ -22,7 +22,7 @@ export class Logger {
   }
 
   error(value: any, ...rest) {
-    this.snackbar.open('Ups, ein Fehler ist aufgetreten. 😳', 'OK', {duration: 5000});
+    // this.snackbar.open('Ups, ein Fehler ist aufgetreten. 😳', 'OK', {duration: 5000});
     console.error(value, ...rest);
   }
 
