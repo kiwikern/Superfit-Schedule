@@ -7,6 +7,7 @@ import { DurationFilterComponent } from './duration-filter/duration-filter.compo
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SfsMaterialModule } from '../material/sfs-material.module';
+import { FilterService } from './filter.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,10 @@ import { SfsMaterialModule } from '../material/sfs-material.module';
     FilterComponent,
     SelectFilterComponent,
     TimeFilterComponent,
-    DurationFilterComponent,
+    DurationFilterComponent
+  ],
+  providers: [
+    FilterService
   ],
   exports: [
     FilterComponent

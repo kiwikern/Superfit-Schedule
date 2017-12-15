@@ -9,7 +9,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <sfs-select-filter [selectedValues]="(filter$ | async)?.workouts"
-                         (onSelection)="addFilter('workouts', $event)"
+                         (onSelection)="filterService.addWorkoutFilter($event)"
                          [nameMapping]="classMapping"
                          #workoutFilter
       ></sfs-select-filter>
@@ -23,7 +23,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <sfs-select-filter [selectedValues]="(filter$ | async)?.teamTrainings"
-                         (onSelection)="addFilter('teamTrainings', $event)"
+                         (onSelection)="filterService.addTeamTrainingsFilter($event)"
                          [nameMapping]="teamTrainingMapping"
                          #teamTrainingFilter
       ></sfs-select-filter>
@@ -37,7 +37,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <sfs-select-filter [selectedValues]="(filter$ | async)?.gyms"
-                         (onSelection)="addFilter('gyms', $event)"
+                         (onSelection)="filterService.addGymsFilter($event)"
                          [nameMapping]="gymMapping"
                          #gymFilter
       ></sfs-select-filter>
@@ -50,7 +50,7 @@
           {{durationFilter.getText()}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <sfs-duration-filter (onSelect)="addFilter($event.filterName, $event.value)"
+      <sfs-duration-filter (onSelect)="filterService.addFilter($event.filterName, $event.value)"
                            [minDuration]="(filter$ | async)?.minDuration"
                            [maxDuration]="(filter$ | async)?.maxDuration"
                            #durationFilter
@@ -64,7 +64,7 @@
           {{timeFilter.getText()}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <sfs-time-filter (onSelect)="addFilter($event.filterName, $event.value)"
+      <sfs-time-filter (onSelect)="filterService.addFilter($event.filterName, $event.value)"
                        [minStartTime]="(filter$ | async)?.minStartTime"
                        [maxEndTime]="(filter$ | async)?.maxEndTime"
                        [filterOnlyWorkdays]="(filter$ | async)?.filterTimeOnlyOnWorkdays"
