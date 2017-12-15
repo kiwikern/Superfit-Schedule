@@ -10,6 +10,7 @@ import { GymselectionComponent } from './gymselection/gymselection.component';
 import { OnboardingComponent } from './onboarding/onboarding.component';
 import { LinkDotsComponent } from './link-dots/link-dots.component';
 import { LinkDotComponent } from './link-dot/link-dot.component';
+import { FilterModule } from '../filter/filter.module';
 
 const onboardingRoutes: Routes = [
   {path: '', component: OnboardingComponent},
@@ -24,6 +25,7 @@ const onboardingRoutes: Routes = [
     SfsMaterialModule,
     RouterModule.forChild(onboardingRoutes),
     FlexLayoutModule,
+    FilterModule
     // WorkoutModule,
     // FitnessScheduleModule
   ],

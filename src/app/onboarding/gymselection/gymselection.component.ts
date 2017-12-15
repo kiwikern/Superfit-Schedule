@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
+import { MappingService } from '../../workout/mapping.service';
+import { FilterService } from '../../filter/filter.service';
 
 @Component({
   selector: 'sfs-gymselection',
@@ -9,15 +11,14 @@ import { select } from '@angular-redux/store';
 export class GymselectionComponent implements OnInit {
 
   @select() readonly filter$;
+  gymMapping = this.mappingService.getGymMapping();
 
-  // constructor(private mappingService: MappingService) {
-  // }
+  constructor(private mappingService: MappingService,
+              public filterService: FilterService) {
+  }
 
   ngOnInit() {
   }
 
-  addFilter(filterName: string, value: any) {
-
-  }
 
 }

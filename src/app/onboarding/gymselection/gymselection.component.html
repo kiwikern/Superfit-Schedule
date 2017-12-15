@@ -1,11 +1,8 @@
-<p>
-  Welche Studios besuchst du?
-</p>
+<h1>
+  Wähle deine Studios
+</h1>
 
-{{(filter$ | async)?.gyms | json}}
-
-<!--<sfs-select-filter [selectedValues]="(filter$ | async)?.gyms"-->
-                   <!--[nameMapping]="gymMapping"-->
-                   <!--(onSelection)="addFilter('gyms', $event)"-->
-                   <!--title="Studios"-->
-                   <!--fxFlex="50"></sfs-select-filter>-->
+<sfs-select-filter [selectedValues]="(filter$ | async)?.gyms"
+                   (onSelection)="filterService.addGymsFilter($event)"
+                   [nameMapping]="gymMapping"
+></sfs-select-filter>
