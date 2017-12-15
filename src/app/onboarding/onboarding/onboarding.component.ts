@@ -15,7 +15,7 @@ export class OnboardingComponent implements OnInit {
       height: '100vh',
       width: '100vw',
       maxWidth: '100vw',
-      data: {steps: ['start', 'gymselection']}
+      data: {steps: ['start', 'gymselection', 'classselection']}
     });
   }
 

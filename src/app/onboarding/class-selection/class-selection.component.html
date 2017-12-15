@@ -1,0 +1,15 @@
+<h1>
+  Wähle deine Kurse
+</h1>
+
+<h2>Kurse</h2>
+<sfs-select-filter [selectedValues]="(filter$ | async)?.workouts"
+                   (onSelection)="filterService.addWorkoutFilter($event)"
+                   [nameMapping]="classMapping"
+></sfs-select-filter>
+
+<h2>Teamtrainings</h2>
+<sfs-select-filter [selectedValues]="(filter$ | async)?.teamTrainings"
+                   (onSelection)="filterService.addTeamTrainingsFilter($event)"
+                   [nameMapping]="teamTrainingMapping"
+></sfs-select-filter>

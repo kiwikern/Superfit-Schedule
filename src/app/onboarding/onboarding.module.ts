@@ -11,11 +11,13 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
 import { LinkDotsComponent } from './link-dots/link-dots.component';
 import { LinkDotComponent } from './link-dot/link-dot.component';
 import { FilterModule } from '../filter/filter.module';
+import { ClassSelectionComponent } from './class-selection/class-selection.component';
 
 const onboardingRoutes: Routes = [
   {path: '', component: OnboardingComponent},
   {path: 'start', component: WelcomeComponent, outlet: 'onboarding'},
-  {path: 'gymselection', component: GymselectionComponent, outlet: 'onboarding'}
+  {path: 'gymselection', component: GymselectionComponent, outlet: 'onboarding'},
+  {path: 'classselection', component: ClassSelectionComponent, outlet: 'onboarding'}
 ];
 
 @NgModule({
@@ -26,8 +28,6 @@ const onboardingRoutes: Routes = [
     RouterModule.forChild(onboardingRoutes),
     FlexLayoutModule,
     FilterModule
-    // WorkoutModule,
-    // FitnessScheduleModule
   ],
   declarations: [
     OnboardingDialogComponent,
@@ -35,7 +35,8 @@ const onboardingRoutes: Routes = [
     GymselectionComponent,
     OnboardingComponent,
     LinkDotsComponent,
-    LinkDotComponent
+    LinkDotComponent,
+    ClassSelectionComponent
   ],
   entryComponents: [
     OnboardingDialogComponent
