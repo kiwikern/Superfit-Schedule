@@ -137,6 +137,7 @@ export class MappingService {
       bodyvive: 'BodyVive',
       bodyvivexp: 'BodyVive Express',
       cycle: 'Cycle',
+      'CXWORX': 'CXWORX',
       fatburner: 'Fatburner',
       gritplyo: 'GRIT PLYO',
       jumpingfitness: 'Jumping Fitness',
