@@ -5,12 +5,12 @@ import { MatSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
 import { ActionsObservable } from 'redux-observable';
-import { Observable } from 'rxjs/Observable';
 import { UPDATE_LOCATION } from '@angular-redux/router';
 import { Angulartics2 } from 'angulartics2';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { toArray } from 'rxjs/operators';
+import { merge } from 'rxjs/observable/merge';
 
 describe('AuthenticationEpics', () => {
 
@@ -90,7 +90,7 @@ describe('AuthenticationEpics', () => {
   });
 
   function performAction(epics, action$, expectedOutputActions, done, snack?, message?) {
-    Observable.merge(...epics.createEpics().map((epic: any) => epic(action$)))
+    merge(...epics.createEpics().map((epic: any) => epic(action$)))
       .pipe(toArray())
       .subscribe(outputActions => {
         expect(outputActions).toEqual(expectedOutputActions);
