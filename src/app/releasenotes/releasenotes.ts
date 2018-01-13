@@ -3,6 +3,23 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.18',
+    date: new Date(2018, 0, 13),
+    entries: [
+      {
+        title: 'Kurspläne Neukölln',
+        type: ChangeType.CHANGE,
+        description: `Der Kursplan für Neukölln kann aus technischen Gründen leider nicht zur Verfügung gestellt werden.
+        Der Kursplan für Neukölln women wurde hinzugefügt.`
+      },
+      {
+        title: 'Updateprozess',
+        type: ChangeType.PERFORMANCE,
+        description: `Der Updateprozess und die Offlineverfügbarkeit wurden verbessert`
+      }
+    ]
+  },
+  {
     version: 'v2.17',
     date: new Date(2017, 10, 11),
     entries: [
