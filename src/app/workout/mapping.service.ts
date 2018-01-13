@@ -84,7 +84,9 @@ export class MappingService {
       5: 'Tegel',
       6: 'Europacenter',
       7: 'Mitte',
-      8: 'Köpenick'
+      8: 'Köpenick',
+      // 9: 'Neukölln',
+      10: 'Neukölln women'
     };
   }
 

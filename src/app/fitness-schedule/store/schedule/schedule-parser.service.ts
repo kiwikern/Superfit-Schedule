@@ -19,7 +19,9 @@ export class ScheduleParserService {
     'berlin-tegel': Gym.TEGEL,
     'brandenburg-potsdam': Gym.POTSDAM,
     'berlin-koepenick': Gym.KOEPENICK,
-    'berlin-friedrichshain': Gym.FRIEDRICHSHAIN
+    'berlin-friedrichshain': Gym.FRIEDRICHSHAIN,
+    'berlin-neukoelln': Gym.NEUKOELLN,
+    'berlin-neukoelln-women': Gym.NEUKOELLN_WOMEN
   };
 
   private DayMapping = {
