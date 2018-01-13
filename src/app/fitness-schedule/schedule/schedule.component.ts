@@ -4,6 +4,7 @@ import { FilterState } from '../store/filter/filter-state';
 import { FitnessClass } from '../../workout/fitness-class';
 import { Subscription } from 'rxjs/Subscription';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'sfs-schedule',
@@ -24,10 +25,18 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  constructor(private snackBar: MatSnackBar) {
+  }
+
   ngOnInit() {
     setTimeout(this.createSecondScrollbar, 100);
     const sub = this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
     this.subscriptions.push(sub);
+    if (this.filter && this.filter.gyms) {
+      if (this.filter.gyms.includes(9)) {
+        return setTimeout(() => this.snackBar.open('Kursplan für Neukölln mixed ist wegen fehlender Zugriffsrechte leider nicht verfügbar. Um diese Meldung nicht mehr anzuzeigen, entferne Neukölln aus deiner Kurswahl.', 'OK', {duration: 10000}), 0);
+      }
+    }
   }
 
   ngOnDestroy() {
