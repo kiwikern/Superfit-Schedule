@@ -70,7 +70,7 @@ export function tokenGetter() {
     SfsMaterialModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
-    ServiceWorkerModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     PushNotificationModule,
     AuthenticationStoreModule,
     RecaptchaModule.forRoot(),

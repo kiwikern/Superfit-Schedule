@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.swUpdatesService.updateActivated.subscribe();
     this.userName$.subscribe(userName => this.angulartics.setUsername.next(userName));
     this.router$.subscribe(path => this.setChildPath(path));
     this.router.events.subscribe(event => {

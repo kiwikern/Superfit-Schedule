@@ -1,12 +1,9 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { NgServiceWorker } from '@angular/service-worker';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-
+import { Injectable, NgZone } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 import { Logger } from '../common/logger.service';
 import { MatSnackBar } from '@angular/material';
 import { Angulartics2 } from 'angulartics2';
-import { concat, debounceTime, filter, map, startWith, take, takeUntil, tap } from 'rxjs/operators';
+import { interval } from 'rxjs/observable/interval';
 
 
 /**
@@ -22,51 +19,34 @@ import { concat, debounceTime, filter, map, startWith, take, takeUntil, tap } fr
  * `updateActivated` {Observable<string>} - Emit the version hash whenever an update is activated.
  */
 @Injectable()
-export class SwUpdatesService implements OnDestroy {
-  private checkInterval = 1000 * 60 * 60 * 6;   // 6 hours
-  private onDestroy = new Subject();
-  private checkForUpdateSubj = new Subject();
-  updateActivated = this.sw.updates
-    .pipe(
-    takeUntil(this.onDestroy),
-    tap(evt => this.log(`Update event: ${JSON.stringify(evt)}`)),
-    filter(({type}) => type === 'activation'),
-    tap(({version}) => this.angulartics.eventTrack.next({action: 'updateSW', properties: {version}})),
-    tap(() => this.showSnackBar().onAction().subscribe(() => this.reloadPage())),
-    map(({version}) => version)
-);
+export class SwUpdatesService {
+  private readonly CHECK_INTERVAL = 1000 * 60 * 60 * 6;   // 6 hours
 
   constructor(private logger: Logger,
-              private sw: NgServiceWorker,
+              private updates: SwUpdate,
               private angulartics: Angulartics2,
+              ngZone: NgZone,
               private snackBar: MatSnackBar) {
-    this.checkForUpdateSubj.pipe(
-      debounceTime(this.checkInterval),
-      startWith(null),
-      takeUntil(this.onDestroy),
-    ).subscribe(() => this.checkForUpdate());
-  }
+    ngZone.runOutsideAngular(() => {
+      interval(this.CHECK_INTERVAL).subscribe(() => ngZone.run(() => updates.checkForUpdate()));
+    });
 
-  ngOnDestroy() {
-    this.onDestroy.next();
-  }
+    this.updates.available.subscribe(event => {
+      this.log(`Update available: ${event.current} -> ${event.available}`);
+      this.angulartics.eventTrack.next({
+        action: 'updateAvailable',
+        properties: {current: event.current, available: event.available}
+      });
+      this.showReloadSnackBar();
+    });
 
-  private activateUpdate() {
-    this.log('Activating update...');
-    this.sw.activateUpdate(null)
-      .subscribe(() => this.scheduleCheckForUpdate());
-  }
-
-  private checkForUpdate() {
-    this.log('Checking for update...');
-    this.sw.checkForUpdate()
-      .pipe(
-        // Temp workaround for https://github.com/angular/mobile-toolkit/pull/137.
-        // TODO (gkalpak): Remove once #137 is fixed.
-        concat(Observable.of(false)),
-        take(1),
-        tap(v => this.log(`Update available: ${v}`))
-      ).subscribe(v => v ? this.activateUpdate() : this.scheduleCheckForUpdate());
+    this.updates.activated.subscribe(event => {
+      this.log(`Update activated: ${event.previous} -> ${event.current}`);
+      this.angulartics.eventTrack.next({
+        action: 'updateActivated',
+        properties: {current: event.current, previous: event.previous}
+      });
+    });
   }
 
   private log(message: string) {
@@ -74,12 +54,9 @@ export class SwUpdatesService implements OnDestroy {
     this.logger.log(`[SwUpdates - ${timestamp}]: ${message}`);
   }
 
-  private scheduleCheckForUpdate() {
-    this.checkForUpdateSubj.next();
-  }
-
-  private showSnackBar() {
-    return this.snackBar.open('Neues Update installiert.', 'Aktualiseren', {duration: 10000});
+  private showReloadSnackBar() {
+    return this.snackBar.open('Neues Update installiert.', 'Aktualiseren', {duration: 10000})
+      .onAction().subscribe(() => this.reloadPage());
   }
 
   private reloadPage() {

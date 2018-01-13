@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PushNotificationActions } from './push-notification.actions';
-import { NgServiceWorker } from '@angular/service-worker';
+import { SwPush } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -13,7 +13,7 @@ export class PushNotificationEpics {
   @select(['authentication', 'userId']) userId$: Observable<string>;
   private userId: string;
 
-  constructor(private serviceWorker: NgServiceWorker,
+  constructor(private serviceWorker: SwPush,
               private http: HttpClient,
               private actions: PushNotificationActions) {
     this.userId$.subscribe(userId => this.userId = userId);
@@ -34,8 +34,8 @@ export class PushNotificationEpics {
   }
 
   private register() {
-    const applicationServerKey = 'BI8fL00tA1vjDQjbqKwh4B61gkRdifSc7tV82sUxmugcSENDYJXZjnvYi07NEugNnL7UAj2EZ0Qo5_oXs_JC-xs';
-    return this.serviceWorker.registerForPush({applicationServerKey});
+    const serverPublicKey = 'BI8fL00tA1vjDQjbqKwh4B61gkRdifSc7tV82sUxmugcSENDYJXZjnvYi07NEugNnL7UAj2EZ0Qo5_oXs_JC-xs';
+    return this.serviceWorker.requestSubscription({serverPublicKey});
   }
 
   private sendSubscriptionToBackend(subscription) {

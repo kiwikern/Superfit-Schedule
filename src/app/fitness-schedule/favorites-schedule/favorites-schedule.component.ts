@@ -6,7 +6,8 @@ import { FitnessClass } from '../../workout/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/combineLatest';
+import { first } from 'rxjs/operators';
+import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @Component({
   selector: 'sfs-favorites-schedule',
@@ -38,12 +39,12 @@ export class FavoritesScheduleComponent implements OnInit, OnDestroy {
   }
 
   private checkFavoritesAvailability() {
-    const combined = Observable.combineLatest(this.favorites$, this.schedulePerDay$, (fav, sched) => ({fav, sched}))
-      .first();
-    combined.subscribe(params => {
-      this.removedFavorites = this.findFavoritesNotInSchedule(params.fav, params.sched);
-      this.notifyAboutRemovedFavorites();
-    });
+    combineLatest(this.favorites$, this.schedulePerDay$, (fav, sched) => ({fav, sched}))
+      .pipe(first())
+      .subscribe(params => {
+        this.removedFavorites = this.findFavoritesNotInSchedule(params.fav, params.sched);
+        this.notifyAboutRemovedFavorites();
+      });
   }
 
   private findFavoritesNotInSchedule(favorites: FitnessClass[], schedulePerDay: FitnessClassesPerDay[]): FitnessClass[] {
