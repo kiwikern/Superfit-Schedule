@@ -2,7 +2,7 @@ const proxy = require('http-proxy-middleware');
 const fallback = require('connect-history-api-fallback');
 module.exports = {
   "open": false,
-  "port": 4200,
+  "port": 8080,
   "server": {
     "baseDir": "dist",
     "middleware": {
