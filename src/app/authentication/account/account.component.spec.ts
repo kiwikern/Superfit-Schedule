@@ -5,6 +5,11 @@ import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { NgReduxTestingModule } from '@angular-redux/store/lib/testing';
 import { AuthenticationActions } from '../store/authentication.actions';
 
+class MockAuthActions {
+  logout() {
+  }
+}
+
 describe('AccountComponent', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
@@ -33,8 +38,3 @@ describe('AccountComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-class MockAuthActions {
-  logout() {
-  }
-}

@@ -9,6 +9,11 @@ import { PasswordInputComponent } from '../password-input/password-input.compone
 import { PasswordConfirmationInputComponent } from '../password-confirmation-input/password-confirmation-input.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+class MockAuthActions {
+  logout() {
+  }
+}
+
 describe('ChangePasswordComponent', () => {
   let component: ChangePasswordComponent;
   let fixture: ComponentFixture<ChangePasswordComponent>;
@@ -44,8 +49,3 @@ describe('ChangePasswordComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-class MockAuthActions {
-  logout() {
-  }
-}

@@ -61,7 +61,7 @@
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^6.0.96",
     "codacy-coverage": "^2.0.3",
-    "codelyzer": "^3.2.2",
+    "codelyzer": "^4.0.2",
     "connect-history-api-fallback": "^1.5.0",
     "http-proxy-middleware": "^0.17.4",
     "jasmine-core": "^2.8.0",

@@ -107,6 +107,7 @@
       "check-separator",
       "check-type"
     ],
+    "angular-whitespace": [true, "check-semicolon", "check-interpolation", "check-pipe"],
 
     "directive-selector": [true, "attribute", "sfs", "camelCase"],
     "component-selector": [true, "element", "sfs", "kebab-case"],
@@ -119,8 +120,9 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "no-access-missing-member": true,
-    "templates-use-public": true,
-    "invoke-injectable": true
+    "no-output-on-prefix": true,
+    "banana-in-box": true,
+    "templates-no-negated-async": true,
+    "use-view-encapsulation": true
   }
 }
