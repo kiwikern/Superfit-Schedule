@@ -32,6 +32,8 @@ import { Angulartics2Piwik } from 'angulartics2/piwik';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from '../../environments/environment';
 import { RemoteErrorHandler } from './RemoteErrorHandler';
+import { SharingService } from './sharing.service';
+import { ShareButtonComponent } from './share-button/share-button.component';
 
 registerLocaleData(localeDe);
 
@@ -57,6 +59,7 @@ export function tokenGetter() {
     AboutComponent,
     NavigationComponent,
     NavigationButtonComponent,
+    ShareButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +89,7 @@ export function tokenGetter() {
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'},
     {provide: ErrorHandler, useClass: RemoteErrorHandler},
+    SharingService
   ],
   bootstrap: [AppComponent]
 })

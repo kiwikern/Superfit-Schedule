@@ -10,8 +10,9 @@
   <span>SuperFit Kursplan</span>
   <div fxFlex></div>
   <sfs-navigation fxHide.lt-lg="true" [fullWidth]="false" [isLoggedIn]="!!(jwt$ | async)"></sfs-navigation>
+  <sfs-share-button></sfs-share-button>
   <sfs-sync-status></sfs-sync-status>
-  <button mat-icon-button routerLink="/auth">
+  <button mat-icon-button routerLink="/auth" *ngIf="!!(jwt$ | async)">
     <mat-icon>account_circle</mat-icon>
   </button>
 </mat-toolbar>
