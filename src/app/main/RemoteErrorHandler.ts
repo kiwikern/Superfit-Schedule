@@ -17,6 +17,10 @@ export class RemoteErrorHandler implements ErrorHandler {
   handleError(error) {
     const message = error.message || error.toString();
     const url = this.location ? this.location.path() : '';
-    this.log.error(message, url, error);
+    if (this.log) {
+      this.log.error(message, url, error);
+    } else {
+      console.error(message, url, error);
+    }
   }
 }

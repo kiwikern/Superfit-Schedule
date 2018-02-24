@@ -18,12 +18,10 @@ export class FilteredScheduleComponent implements OnInit {
 
   filter: FilterState = {};
   showSchedule: boolean = false;
-  // TODO: remove after codelyzer fix
-  private async: any;
 
   ngOnInit() {
     this.filter$.subscribe(f => this.filter = f);
-    this.filter$.subscribe(f => this.showSchedule = f.hasOwnProperty('gyms') || f.hasOwnProperty('workouts'));
+    this.filter$.subscribe(f => this.showSchedule = f.hasOwnProperty('gyms') || f.hasOwnProperty('workouts') || f.hasOwnProperty('teamTrainings'));
   }
 
 }
