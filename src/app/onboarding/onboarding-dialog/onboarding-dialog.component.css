@@ -4,3 +4,8 @@
   left: 0;
   bottom: 0;
 }
+
+.scrollable {
+  overflow: hidden;
+  margin-bottom: 56px;
+}
