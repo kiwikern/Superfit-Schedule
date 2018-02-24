@@ -9,8 +9,20 @@ export const releasenotes: Release[] = [
       {
         title: 'Teilen Button',
         type: ChangeType.FEATURE,
-        description: `Auf Anfrage gibt es nun einen Teilen-Button in der Toolbar, mit dem du
+        description: `Es gibt nun einen Teilen-Button in der Toolbar, mit dem du
         die App mit deinen Freunden teilen kannst.`
+      },
+      {
+        title: 'Onboarding',
+        type: ChangeType.FEATURE,
+        description: `Neuen Nutzern (und einmalig Bestandsnutzern) wird ein Einführungsdialog gezeigt,
+        der durch die Erstellung des Kursplans leitet.`
+      },
+      {
+        title: 'Teamtrainings aller Studios',
+        type: ChangeType.FIX,
+        description: `Es ist nun auch ohne Wahl eines Studios möglich,
+        Teamtrainings im Kursplan anzuzeigen.`
       }
     ]
   },
