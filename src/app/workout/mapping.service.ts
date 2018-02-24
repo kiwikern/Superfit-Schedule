@@ -133,6 +133,7 @@ export class MappingService {
       cycle: 'Cycle',
       'CXWORX': 'CXWORX',
       fatburner: 'Fatburner',
+      'Fullbody Cycle': 'Fullbody Cycle',
       gritplyo: 'GRIT PLYO',
       jumpingfitness: 'Jumping Fitness',
       lmistep: 'LMI Step',
