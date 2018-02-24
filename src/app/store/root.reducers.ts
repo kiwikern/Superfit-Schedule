@@ -10,6 +10,8 @@ import { syncReducer } from '../sync/sync.reducers';
 import { changesReducer } from '../fitness-schedule/store/changes/changes.reducers';
 import { releasenotesReducer } from '../releasenotes/store/releasenotes.reducers';
 import { feedbackReducer } from '../feedback/store/feedback.reducers';
+import { onboardingReducer } from '../onboarding/store/onboarding.reducers';
+
 /**
  * Created by Kim on 02.04.2017.
  */
@@ -25,6 +27,7 @@ export const rootReducer = combineReducers(<any>{
   sync: syncReducer,
   router: routerReducer,
   releasenotes: releasenotesReducer,
-  feedback: feedbackReducer
+  feedback: feedbackReducer,
+  onboarding: onboardingReducer
 });
 

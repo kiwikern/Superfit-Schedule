@@ -35,6 +35,7 @@ import { SharingService } from './sharing.service';
 import { ShareButtonComponent } from './share-button/share-button.component';
 import { AuthInterceptor } from '../authentication/store/auth-interceptor';
 import { ShareDialogComponent } from './share-dialog/share-dialog.component';
+import { OnboardingStoreModule } from '../onboarding/store/onboarding-store.module';
 
 registerLocaleData(localeDe);
 
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     ReleasenotesModule,
     ReleasenotesStoreModule,
     LegalModule,
-    FeedbackStoreModule
+    FeedbackStoreModule,
+    OnboardingStoreModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'},
