@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app/app.component';
 import { NgReduxModule } from '@angular-redux/store';
@@ -25,7 +25,6 @@ import { ReleasenotesStoreModule } from '../releasenotes/store/releasenotes-stor
 import { LegalModule } from '../legal/legal.module';
 import { NavigationButtonComponent } from './navigation-button/navigation-button.component';
 import { FeedbackStoreModule } from '../feedback/store/feedback-store.module';
-import { JwtModule } from '@auth0/angular-jwt';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { Angulartics2Piwik } from 'angulartics2/piwik';
@@ -34,6 +33,7 @@ import { environment } from '../../environments/environment';
 import { RemoteErrorHandler } from './RemoteErrorHandler';
 import { SharingService } from './sharing.service';
 import { ShareButtonComponent } from './share-button/share-button.component';
+import { AuthInterceptor } from '../authentication/store/auth-interceptor';
 
 registerLocaleData(localeDe);
 
@@ -44,14 +44,6 @@ const appRoutes: Routes = [
   {path: 'feedback', loadChildren: '../feedback/feedback.module#FeedbackModule'},
   {path: 'about', component: AboutComponent}
 ];
-
-export function tokenGetter() {
-  try {
-    return JSON.parse(localStorage.getItem('sfs.state')).authentication.jwt;
-  } catch (error) {
-    return null;
-  }
-}
 
 @NgModule({
   declarations: [
@@ -66,7 +58,6 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    JwtModule.forRoot({config: {tokenGetter}}),
     NgReduxModule,
     StoreModule,
     FitnessScheduleStoreModule,
@@ -89,6 +80,7 @@ export function tokenGetter() {
   providers: [
     {provide: LOCALE_ID, useValue: 'de-DE'},
     {provide: ErrorHandler, useClass: RemoteErrorHandler},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     SharingService
   ],
   bootstrap: [AppComponent]
