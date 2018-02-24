@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { OnboardingDialogComponent } from '../onboarding-dialog/onboarding-dialog.component';
 
@@ -7,20 +7,25 @@ import { OnboardingDialogComponent } from '../onboarding-dialog/onboarding-dialo
   selector: 'sfs-onboarding',
   template: '<div fxLayoutAlign="center"><mat-spinner></mat-spinner></div>',
 })
-export class OnboardingComponent implements OnInit {
+export class OnboardingComponent implements OnInit, OnDestroy {
+  private dialogRef: MatDialogRef<OnboardingDialogComponent>;
 
   constructor(private dialog: MatDialog,
               private router: Router) {
-    this.dialog.open(OnboardingDialogComponent, {
-      height: '100vh',
-      width: '100vw',
-      maxWidth: '100vw',
-      data: {steps: ['start', 'gymselection', 'classselection']}
-    });
   }
 
   ngOnInit() {
+    this.dialogRef = this.dialog.open(OnboardingDialogComponent, {
+      height: '100vh',
+      width: '100vw',
+      maxWidth: '100vw',
+      data: {steps: ['start', 'gymselection', 'classselection', 'timeselection', 'registration']}
+    });
     this.router.navigate(['/onboarding', {outlets: {onboarding: ['start']}}]);
+  }
+
+  ngOnDestroy() {
+    this.dialogRef.close();
   }
 
 }

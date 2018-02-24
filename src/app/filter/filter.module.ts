@@ -27,7 +27,9 @@ import { FilterService } from './filter.service';
   ],
   exports: [
     FilterComponent,
-    SelectFilterComponent
+    SelectFilterComponent,
+    TimeFilterComponent,
+    DurationFilterComponent
   ]
 })
 export class FilterModule { }

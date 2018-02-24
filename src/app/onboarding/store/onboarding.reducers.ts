@@ -14,6 +14,8 @@ export function onboardingReducer(state: OnboardingState = INITIAL_STATE,
     case OnboardingActions.INCREMENT_GENERAL_ONBOARDING_VERSION:
       newState.general++;
       break;
+    case OnboardingActions.RESET_ONBOARDING:
+      return INITIAL_STATE;
   }
 
 

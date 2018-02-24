@@ -12,12 +12,16 @@ import { LinkDotsComponent } from './link-dots/link-dots.component';
 import { LinkDotComponent } from './link-dot/link-dot.component';
 import { FilterModule } from '../filter/filter.module';
 import { ClassSelectionComponent } from './class-selection/class-selection.component';
+import { RegisterComponent } from './register/register.component';
+import { TimeSelectionComponent } from './time-selection/time-selection.component';
 
 const onboardingRoutes: Routes = [
   {path: '', component: OnboardingComponent},
   {path: 'start', component: WelcomeComponent, outlet: 'onboarding'},
   {path: 'gymselection', component: GymselectionComponent, outlet: 'onboarding'},
-  {path: 'classselection', component: ClassSelectionComponent, outlet: 'onboarding'}
+  {path: 'classselection', component: ClassSelectionComponent, outlet: 'onboarding'},
+  {path: 'timeselection', component: TimeSelectionComponent, outlet: 'onboarding'},
+  {path: 'registration', component: RegisterComponent, outlet: 'onboarding'}
 ];
 
 @NgModule({
@@ -36,7 +40,9 @@ const onboardingRoutes: Routes = [
     OnboardingComponent,
     LinkDotsComponent,
     LinkDotComponent,
-    ClassSelectionComponent
+    ClassSelectionComponent,
+    RegisterComponent,
+    TimeSelectionComponent
   ],
   entryComponents: [
     OnboardingDialogComponent

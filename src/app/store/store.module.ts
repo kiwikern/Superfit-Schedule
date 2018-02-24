@@ -52,11 +52,11 @@ export class StoreModule {
 
     ngReduxRouter.initialize();
 
+    onboardingActions.checkGeneralOnboardingVersion();
     store.dispatch(pushNotificationActions.addPushSubscription());
     store.dispatch(scheduleActions.loadSchedule());
     store.dispatch(changesActions.loadChanges());
     store.dispatch(releasenotesActions.checkVersion());
     feedbackActions.loadFeedback();
-    onboardingActions.checkGeneralOnboardingVersion();
   }
 }

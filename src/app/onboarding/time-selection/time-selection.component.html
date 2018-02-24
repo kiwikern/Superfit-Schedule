@@ -1,0 +1,16 @@
+<h1>Trainingszeit</h1>
+
+<h2>Uhrzeit</h2>
+<sfs-time-filter (onSelect)="filterService.addFilter($event.filterName, $event.value)"
+                 [minStartTime]="(filter$ | async)?.minStartTime"
+                 [maxEndTime]="(filter$ | async)?.maxEndTime"
+                 [filterOnlyWorkdays]="(filter$ | async)?.filterTimeOnlyOnWorkdays"
+                 #timeFilter
+></sfs-time-filter>
+
+<h2>Dauer</h2>
+<sfs-duration-filter (onSelect)="filterService.addFilter($event.filterName, $event.value)"
+                     [minDuration]="(filter$ | async)?.minDuration"
+                     [maxDuration]="(filter$ | async)?.maxDuration"
+                     #durationFilter
+></sfs-duration-filter>

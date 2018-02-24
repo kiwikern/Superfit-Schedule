@@ -32,7 +32,7 @@ export class OnboardingEpics {
       case 0:
       case null:
       case undefined:
-        this.router.navigate([{outlets: {onboarding: ['start']}}]);
+        this.router.navigate(['onboarding', {outlets: {onboarding: ['start']}}]);
         return this.actions.incrementGeneralOnboardingVersion();
       default:
         return this.actions.confirmOnboardingVersion();

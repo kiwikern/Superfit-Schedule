@@ -22,15 +22,6 @@ export class OnboardingDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dialogRef.afterClosed()
-      .pipe(
-        takeUntil(this.onDestroy)
-      )
-      .subscribe(() => {
-        this.router.navigate(['/schedule']);
-        this.onDestroy.next();
-      });
-
     this.router.events.pipe(
       takeUntil(this.onDestroy),
       filter(event => event instanceof NavigationEnd)
@@ -43,6 +34,7 @@ export class OnboardingDialogComponent implements OnInit {
       this.navigateToActiveIndex();
     } else {
       this.dialogRef.close();
+      this.router.navigate(['/schedule']);
     }
   }
 
