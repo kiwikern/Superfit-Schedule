@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SharingService } from '../sharing.service';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { ShareDialogComponent } from '../share-dialog/share-dialog.component';
 
 @Component({
   selector: 'sfs-share-button',
@@ -10,7 +11,8 @@ import { MatSnackBar } from '@angular/material';
 export class ShareButtonComponent {
 
   constructor(private sharingService: SharingService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private dialogService: MatDialog) {
   }
 
   shareApp() {
@@ -22,6 +24,7 @@ export class ShareButtonComponent {
     const title = 'SFS - SuperFit Schedule';
     const successfullyShared = this.sharingService.shareViaWebApi(title, text, url);
     if (!successfullyShared) {
+      this.dialogService.open(ShareDialogComponent);
       const successfullyCopied = this.sharingService.copyToClipboard(url);
       if (successfullyCopied) {
         this.snackBar.open('Die URL wurde in deine Zwischenablage kopiert.', 'OK', {duration: 5000});

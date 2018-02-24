@@ -34,6 +34,7 @@ import { RemoteErrorHandler } from './RemoteErrorHandler';
 import { SharingService } from './sharing.service';
 import { ShareButtonComponent } from './share-button/share-button.component';
 import { AuthInterceptor } from '../authentication/store/auth-interceptor';
+import { ShareDialogComponent } from './share-dialog/share-dialog.component';
 
 registerLocaleData(localeDe);
 
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     NavigationComponent,
     NavigationButtonComponent,
     ShareButtonComponent,
+    ShareDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,9 @@ const appRoutes: Routes = [
     {provide: ErrorHandler, useClass: RemoteErrorHandler},
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     SharingService
+  ],
+  entryComponents: [
+    ShareDialogComponent
   ],
   bootstrap: [AppComponent]
 })
