@@ -3,6 +3,18 @@ import { ChangeType } from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.19',
+    date: new Date(2018, 1, 24),
+    entries: [
+      {
+        title: 'Teilen Button',
+        type: ChangeType.FEATURE,
+        description: `Auf Anfrage gibt es nun einen Teilen-Button in der Toolbar, mit dem du
+        die App mit deinen Freunden teilen kannst.`
+      }
+    ]
+  },
+  {
     version: 'v2.18',
     date: new Date(2018, 0, 13),
     entries: [
