@@ -1,4 +1,5 @@
 <div fxLayout="row">
-  <sfs-link-dot *ngFor="let x of dotsCount | repeat; let i = index" (click)="onIndexChange.emit(i)"
+  <sfs-link-dot *ngFor="let x of dotsCount | repeat; let i = index"
+                (click)="onIndexChange.emit(i)"
                 [isActive]="activeIndex === i">{{i}}</sfs-link-dot>
 </div>
