@@ -8,9 +8,10 @@ import { Feedback } from '../feedback-interface';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { Router } from '@angular/router';
-import { FeedbackResponse } from '../response-interface';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { IPayloadAction } from '../../store/payload-action.types';
+import { AuthService } from '../../authentication/store/auth-service/auth.service';
+import { FeedbackService } from './feedback.service';
 
 @Injectable()
 export class FeedbackEpics {
@@ -25,6 +26,8 @@ export class FeedbackEpics {
   constructor(private http: HttpClient,
               private actions: FeedbackActions,
               private snackBar: MatSnackBar,
+              private authService: AuthService,
+              private feedbackService: FeedbackService,
               private router: Router) {
     this.userId$.subscribe(userId => this.userId = userId);
     this.userName$.subscribe(userName => this.userName = userName);
@@ -117,7 +120,12 @@ export class FeedbackEpics {
   }
 
   private loadFeedback(): Observable<FeedbackPayload> {
-    const url = `/api/sfs/feedback/${this.userId}`;
+    let url: string;
+    if (!this.authService.isAdmin()) {
+      url = `/api/sfs/feedback/${this.userId}`;
+    } else {
+      url = `/api/sfs/feedback`;
+    }
     return this.http.get<FeedbackPayload>(url);
   }
 
@@ -127,11 +135,10 @@ export class FeedbackEpics {
   }
 
   private checkUnreadResponses(feedbackList: Feedback[]) {
-    const responses: FeedbackResponse[] = feedbackList
-      .map(feedback => feedback.responses)
-      .reduce((fst, snd) => fst.concat(snd), []);
-    const unreadCount = responses.filter(response => response && !response.isRead).length;
-    if (unreadCount > 0) {
+    const hasUnreadFeedback: boolean = feedbackList
+      .map(feedback => this.feedbackService.isUnread(feedback))
+      .reduce((fst, snd) => fst || snd, false);
+    if (hasUnreadFeedback) {
       const snackBar: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open('Du hast ungelesene Nachrichten.',
         'Zu Feedback', {duration: 10000});
       const subscription = snackBar.onAction().subscribe(() => {

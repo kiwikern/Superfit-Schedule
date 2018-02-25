@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="20px">
 
-  <mat-card class="by-user">
+  <mat-card [ngClass]="isOwnResponse(feedback?.userId) ? 'by-user' : 'by-other'">
     <mat-card-subtitle align="right">{{feedback?.date | date:'mediumDate'}}</mat-card-subtitle>
     <mat-card-content>
       <p class="line-break">{{feedback?.text}}</p>
@@ -8,8 +8,7 @@
   </mat-card>
 
   <mat-card *ngFor="let response of feedback?.responses"
-           [class.by-user]="response?.userId !== 'sfs'"
-           [class.by-sfs]="response?.userId === 'sfs'">
+           [ngClass]="isOwnResponse(response?.userId) ? 'by-user' : 'by-other'">
     <mat-card-subtitle align="right">
       {{response?.date | date:'mediumDate'}}
     </mat-card-subtitle>

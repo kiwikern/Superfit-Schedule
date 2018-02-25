@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeedbackActions } from './feedback.actions';
 import { FeedbackEpics } from './feedback.epics';
+import { FeedbackService } from './feedback.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { FeedbackEpics } from './feedback.epics';
   declarations: [],
   providers: [
     FeedbackActions,
-    FeedbackEpics
+    FeedbackEpics,
+    FeedbackService
   ]
 })
 export class FeedbackStoreModule { }

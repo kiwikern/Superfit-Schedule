@@ -3,6 +3,7 @@ import { Feedback } from '../feedback-interface';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { FeedbackActions } from '../store/feedback.actions';
+import { FeedbackService } from '../store/feedback.service';
 
 @Component({
   selector: 'sfs-feedback-list',
@@ -13,7 +14,8 @@ export class FeedbackListComponent implements OnInit {
 
   @select(['feedback', 'feedbackList']) feedbackList$: Observable<Feedback[]>;
 
-  constructor(private actions: FeedbackActions) {
+  constructor(private actions: FeedbackActions,
+              private feedbackService: FeedbackService) {
   }
 
   ngOnInit() {
@@ -21,7 +23,8 @@ export class FeedbackListComponent implements OnInit {
   }
 
   isUnread(feedback: Feedback) {
-    return feedback.responses.filter(r => r && !r.isRead).length > 0;
+    return this.feedbackService.isUnread(feedback);
   }
+
 
 }

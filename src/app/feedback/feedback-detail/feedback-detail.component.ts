@@ -5,6 +5,7 @@ import { select } from '@angular-redux/store';
 import { ActivatedRoute } from '@angular/router';
 import { FeedbackActions } from '../store/feedback.actions';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from '../../authentication/store/auth-service/auth.service';
 
 @Component({
   selector: 'sfs-feedback-detail',
@@ -20,7 +21,8 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
   text: string;
 
   constructor(private route: ActivatedRoute,
-              private actions: FeedbackActions) {
+              private actions: FeedbackActions,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -46,6 +48,12 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
   onSubmit() {
     const response = {feedbackId: this.id, text: this.text};
     this.actions.sendResponse(response);
+  }
+
+  isOwnResponse(userId) {
+    const isResponseByAdmin = userId === 'sfs';
+    const isAdmin = this.authService.isAdmin();
+    return isResponseByAdmin === isAdmin;
   }
 
 }

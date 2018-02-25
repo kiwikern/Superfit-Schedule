@@ -7,43 +7,45 @@
 }
 
 .mat-card {
-  padding: 15px;
+  padding: 10px;
 }
 
-.by-user {
+.by-other {
 background-color: #aed9f2;
-margin-left: 40px;
+margin-left: 20px;
+  margin-right: 60px;
 }
 
-.by-user:after {
+.by-other:after {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
   width: 0;
   height: 0;
-  border: 20px solid transparent;
+  border: 10px solid transparent;
   border-right-color: #aed9f2;
   border-left: 0;
   border-top: 0;
-  margin-left: -20px;
+  margin-left: -10px;
 }
 
-.by-sfs {
+.by-user {
   background-color: #b7dbd8;
-  margin-right: 40px;
+  margin-right: 20px;
+  margin-left: 60px;
 }
 
-.by-sfs:after {
+.by-user:after {
   content: '';
   position: absolute;
   right: 0;
   top: 0;
   width: 0;
   height: 0;
-  border: 20px solid transparent;
+  border: 10px solid transparent;
   border-left-color: #b7dbd8;
   border-right: 0;
   border-top: 0;
-  margin-right: -20px;
+  margin-right: -10px;
 }

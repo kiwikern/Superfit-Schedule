@@ -1,4 +1,5 @@
 import { FeedbackResponse } from './response-interface';
+
 export interface Feedback {
   id: string;
   text: string;
@@ -8,4 +9,5 @@ export interface Feedback {
   device?: string;
   os?: string;
   browser?: string;
+  isRead?: boolean;
 }
