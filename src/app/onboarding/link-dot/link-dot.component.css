@@ -1,7 +1,4 @@
-.dot {
-  cx: 10;
-  cy: 10;
-  r: 4;
+.inactive {
   fill: rgba(255, 255, 255, 0.3);
 }
 
