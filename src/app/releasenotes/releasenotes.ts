@@ -10,6 +10,11 @@ export const releasenotes: Release[] = [
         title: 'Neue Kurse',
         type: ChangeType.CHANGE,
         description: `Neue Kurse TONE, TONE Express und neues Teamtraining TRX Mobility.`
+      },
+      {
+        title: 'Verbessertes Layout',
+        type: ChangeType.CHANGE,
+        description: `Das Layout eines Kurses wurde stabilisiert.`
       }
     ]
   },
