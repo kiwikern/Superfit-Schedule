@@ -1,7 +1,18 @@
-import { Release } from './release/release.interface';
-import { ChangeType } from './entry/type.enum';
+import {Release} from './release/release.interface';
+import {ChangeType} from './entry/type.enum';
 
 export const releasenotes: Release[] = [
+  {
+    version: 'v2.20',
+    date: new Date(2018, 3, 2),
+    entries: [
+      {
+        title: 'Neue Kurse',
+        type: ChangeType.CHANGE,
+        description: `Neue Kurse TONE, TONE Express und neues Teamtraining TRX Mobility.`
+      }
+    ]
+  },
   {
     version: 'v2.19',
     date: new Date(2018, 1, 24),

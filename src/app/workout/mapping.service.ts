@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Gym } from '../fitness-schedule/enums/gym.enum';
-import { Day } from '../fitness-schedule/enums/day.enum';
+import {Injectable} from '@angular/core';
+import {Gym} from '../fitness-schedule/enums/gym.enum';
+import {Day} from '../fitness-schedule/enums/day.enum';
 
 @Injectable()
 export class MappingService {
@@ -146,6 +146,8 @@ export class MappingService {
       sprint: 'Sprint',
       strong: 'Strong by Zumba',
       TwerkOut: 'TwerkOut',
+      'TONE': 'TONE',
+      'TONE Express': 'TONE Express',
       yoga: 'Yoga',
       yogaxp: 'Yoga Express',
       zumba: 'Zumba',
@@ -166,6 +168,7 @@ export class MappingService {
         faszientraining: 'Faszientraining',
         fullbodyworkout: 'Full Body Workout',
         trxbauch: 'TRX Bauch',
+        'TRX Mobility': 'TRX Mobility',
         tsm: 'Trainingsstart',
         hiit: 'HIIT',
         functional: 'Functional',
