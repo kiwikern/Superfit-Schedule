@@ -156,6 +156,7 @@ export class MappingService {
 
   getTeamTrainingNameMapping() {
       return {
+        'Bungee Fitness': 'Bungee Fitness',
         circuit: 'Circuit',
         po: 'Po',
         qxstrong: 'Queenax Strong',

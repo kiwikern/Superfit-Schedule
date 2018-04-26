@@ -3,6 +3,17 @@ import {ChangeType} from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.21',
+    date: new Date(2018, 4, 2),
+    entries: [
+      {
+        title: 'Neuer Kurs',
+        type: ChangeType.CHANGE,
+        description: `Neuer Kurse Bungee Fitness.`
+      }
+    ]
+  },
+  {
     version: 'v2.20',
     date: new Date(2018, 3, 2),
     entries: [
