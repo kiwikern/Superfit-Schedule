@@ -13,10 +13,13 @@ exports.config = {
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
+  SELENIUM_PROMISE_MANAGER: false,
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
+    // comment out for debugging
+    // defaultTimeoutInterval: 9999999,
     print: function() {}
   },
   beforeLaunch: function() {

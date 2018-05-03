@@ -1,40 +1,40 @@
-import { browser, by, element } from 'protractor';
+import {browser, by, element} from 'protractor';
 
 export class NavigationPage {
-  navigateTo(path: string = '/') {
-    return browser.get(path);
+  async navigateTo(path: string = '/') {
+    return await browser.get(path);
   }
 
-  navigateToSchedule() {
-    return this.clickOnRouterButton('/schedule');
+  async navigateToSchedule() {
+    return await this.clickOnRouterButton(1);
   }
 
-  navigateToFavorites() {
-    return this.clickOnRouterButton('/schedule/favorites');
+  async navigateToFavorites() {
+    return await this.clickOnRouterButton(2);
   }
 
-  navigateToClassSelection() {
-    return this.clickOnRouterButton('/schedule/filter');
+  async navigateToClassSelection() {
+    return await this.clickOnRouterButton(3);
   }
 
-  navigateToSettings() {
-    return this.clickOnRouterButton('/schedule/settings');
+  async navigateToSettings() {
+    return await this.clickOnRouterButton(6);
   }
 
-  navigateToChanges() {
-    return this.clickOnRouterButton('/schedule/changes');
+  async navigateToChanges() {
+    return await this.clickOnRouterButton(4);
   }
 
-  navigateToAbout() {
-    return this.clickOnRouterButton('/about');
+  async navigateToAbout() {
+    return await this.clickOnRouterButton(8);
   }
 
-  navigateToAccount() {
-    return this.clickOnRouterButton('/auth');
+  async navigateToAccount() {
+    return await this.clickOnRouterButton(5);
   }
 
-  navigateToLoginViaButton() {
-    return this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="/auth"]`))).click();
+  async navigateToLoginViaButton() {
+    return (await this.getFirstDisplayedElement(element.all(by.css(`button[routerLink="/auth"]`)))).click();
   }
 
   navigateToRegister() {
@@ -49,49 +49,57 @@ export class NavigationPage {
     return this.clickOnRouterLink('../login');
   }
 
-  openReleasenotes() {
-    return this.getFirstDisplayedElement(element.all(by.css('mat-card-subtitle a'))).click();
+  async openReleasenotes() {
+    const versionText = await this.getFirstDisplayedElement(element.all(by.css('mat-card-subtitle a')));
+    return versionText.click();
   }
 
-  getAppTitle() {
-    return element(by.css('mat-toolbar > span')).getText();
+  async getAppTitle() {
+    return (await element(by.css('mat-toolbar > span'))).getText();
   }
 
-  getFirstCardTitle() {
-    return this.getFirstDisplayedElement(element.all(by.css('mat-card-title'))).getText();
+  async getFirstCardTitle() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('mat-card-title')))).getText();
   }
 
-  getFirstParagraphText() {
-    return this.getFirstDisplayedElement(element.all(by.css('p'))).getText();
+  async getFirstParagraphText() {
+    const paragraph = await this.getFirstDisplayedElement(element.all(by.css('p')));
+    return paragraph.getText();
   }
 
-  getDialogTitle() {
-    return this.getFirstDisplayedElement(element.all(by.css('.mat-dialog-title'))).getText();
+  async getDialogTitle() {
+    const dialogTitle = await this.getFirstDisplayedElement(element.all(by.css('.mat-dialog-title')));
+    return dialogTitle.getText();
   }
 
-  clickOnVisibleRaisedButton() {
-    return this.getFirstDisplayedElement(element.all(by.css('.mat-raised-button'))).click();
+  async clickOnVisibleRaisedButton() {
+    const button = await this.getFirstDisplayedElement(element.all(by.css('.mat-raised-button')));
+    return button.click();
   }
 
-  clickOnBottomNavigationButton(index: number) {
-    return element.all(by.css(`sfs-bottom-navigation-button button`)).get(index).click();
+  async clickOnBottomNavigationButton(index: number) {
+    const buttons = await element.all(by.css(`sfs-bottom-navigation-button button`));
+    return buttons[index].click();
   }
 
-  getUrl() {
-    return browser.getCurrentUrl();
+  async getUrl() {
+    return await browser.getCurrentUrl();
   }
 
-  private clickOnRouterButton(path: string) {
-    element(by.id('nav_burger-menu')).click();
-    return this.getFirstDisplayedElement(element.all(by.css(`sfs-navigation-button button[ng-reflect-router-link="${path}"]`))).click();
+  private async clickOnRouterButton(index: number) {
+    const burgerMenu = await element(by.id('nav_burger-menu'));
+    await burgerMenu.click();
+    const routerButton = await element(by.css(`sfs-navigation-button.fullwidth:nth-child(${index})`));
+    return routerButton.click();
   }
 
-  private clickOnRouterLink(path: string) {
-    return this.getFirstDisplayedElement(element.all(by.css(`a[routerLink="${path}"]`))).click();
+  private async clickOnRouterLink(path: string) {
+    const link = await this.getFirstDisplayedElement(element.all(by.css(`a[routerLink="${path}"]`)));
+    return link.click();
   }
 
-  private getFirstDisplayedElement(elem) {
-    return elem.filter(e => e.isDisplayed()).first();
+  private async getFirstDisplayedElement(elem) {
+    return (await elem.filter(async e => await e.isDisplayed()))[0];
   }
 
 }

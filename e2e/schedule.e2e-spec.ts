@@ -1,7 +1,7 @@
-import { ClassSelectionPage } from './class-selection.po';
-import { SchedulePage } from './schedule.po';
-import { AppPage } from './app.po';
-import { NavigationPage } from './navigation.po';
+import {ClassSelectionPage} from './class-selection.po';
+import {SchedulePage} from './schedule.po';
+import {AppPage} from './app.po';
+import {NavigationPage} from './navigation.po';
 
 describe('Schedule', () => {
   let classSelectionPage: ClassSelectionPage;
@@ -9,43 +9,43 @@ describe('Schedule', () => {
   let appPage: AppPage;
   let navigationPage: NavigationPage;
 
-  beforeAll(() => {
+  beforeAll(async () => {
     classSelectionPage = new ClassSelectionPage();
     schedulePage = new SchedulePage();
     appPage = new AppPage();
     navigationPage = new NavigationPage();
 
-    appPage.setMobileBrowserSize();
-    classSelectionPage.navigateTo();
-    classSelectionPage.addClassFilter();
-    classSelectionPage.addStudioFilter();
+    await appPage.setMobileBrowserSize();
+    await classSelectionPage.navigateTo();
+    await classSelectionPage.addClassFilter();
+    await classSelectionPage.addStudioFilter();
   });
 
-  beforeEach(() => {
-    schedulePage.navigateTo();
+  beforeEach(async () => {
+    await schedulePage.navigateTo();
   });
 
-  afterAll(() => {
-    classSelectionPage.navigateTo();
-    classSelectionPage.removeAllFilters();
+  afterAll(async() => {
+    await classSelectionPage.navigateTo();
+    await classSelectionPage.removeAllFilters();
   });
 
-  it('should show a class with title, studio and time', () => {
-    expect(schedulePage.getFirstClassTitle()).not.toBeNull();
-    expect(schedulePage.getFirstClassStudio()).not.toBeNull();
-    expect(schedulePage.getFirstClassDay()).toBe(schedulePage.getToday() + ', ');
-    expect(schedulePage.getFirstClassTime()).toContain(' - ');
+  it('should show a class with title, studio and time', async () => {
+    expect(await schedulePage.getFirstClassTitle()).not.toBeNull();
+    expect(await schedulePage.getFirstClassStudio()).not.toBeNull();
+    expect(await schedulePage.getFirstClassDay()).toBe(schedulePage.getToday() + ', ');
+    expect(await schedulePage.getFirstClassTime()).toContain(' - ');
   });
 
-  it('should show today as first day', () => {
-    expect(schedulePage.getFirstShownDay()).toBe(schedulePage.getToday());
+  it('should show today as first day', async () => {
+    expect(await schedulePage.getFirstShownDay()).toBe(schedulePage.getToday());
   });
 
-  it('should add a favorite and show it in favorites list', () => {
-    const firstTitle = schedulePage.getFirstClassTitle();
-    schedulePage.markFirstClassAsFavorite();
-    navigationPage.navigateToFavorites();
-    expect(schedulePage.getFirstClassTitle()).toBe(firstTitle);
+  it('should add a favorite and show it in favorites list', async () => {
+    const firstTitle = await schedulePage.getFirstClassTitle();
+    await schedulePage.markFirstClassAsFavorite();
+    await navigationPage.navigateToFavorites();
+    expect(await schedulePage.getFirstClassTitle()).toBe(firstTitle);
   });
 
 });

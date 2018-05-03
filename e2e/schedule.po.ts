@@ -1,30 +1,30 @@
-import { browser, by, element } from 'protractor';
+import {browser, by, element} from 'protractor';
 import * as moment from 'moment-mini';
-import { MappingService } from '../src/app/workout/mapping.service';
+import {MappingService} from '../src/app/workout/mapping.service';
 
 export class SchedulePage {
-  navigateTo() {
-    return browser.get('/schedule');
+  async navigateTo() {
+    return await browser.get('/schedule');
   }
 
-  getFirstClassTitle() {
-    return this.getFirstDisplayedElement(element.all(by.css('.class-headline > span'))).getText();
+  async getFirstClassTitle() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('.class-headline > span')))).getText();
   }
 
-  getFirstClassStudio() {
-    return this.getFirstDisplayedElement(element.all(by.css('mat-card-subtitle > span'))).getText();
+  async getFirstClassStudio() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('mat-card-subtitle > span')))).getText();
   }
 
-  getFirstClassDay() {
-    return this.getFirstDisplayedElement(element.all(by.css('.mat-card >:last-child >:first-child >:last-child > span'))).getText();
+  async getFirstClassDay() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('.mat-card >:last-child >:first-child >:last-child > span')))).getText();
   }
 
-  getFirstClassTime() {
-    return this.getFirstDisplayedElement(element.all(by.css('sfs-time-period'))).getText();
+  async getFirstClassTime() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('sfs-time-period')))).getText();
   }
 
-  getFirstShownDay() {
-    return this.getFirstDisplayedElement(element.all(by.css('h2'))).getText();
+  async getFirstShownDay() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('h2')))).getText();
   }
   getToday() {
     const service = new MappingService();
@@ -32,11 +32,11 @@ export class SchedulePage {
     return service.getDayName(day);
   }
 
-  markFirstClassAsFavorite() {
-    return this.getFirstDisplayedElement(element.all(by.css('mat-card button.mat-icon-button'))).click();
+  async markFirstClassAsFavorite() {
+    return (await this.getFirstDisplayedElement(element.all(by.css('mat-card button.mat-icon-button')))).click();
   }
-  private getFirstDisplayedElement(elem) {
-    return elem.filter(e => e.isDisplayed()).first();
+  private async getFirstDisplayedElement(elem) {
+    return await elem.filter(e => e.isDisplayed()).first();
   }
 
 }
