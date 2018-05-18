@@ -1,12 +1,12 @@
-import { browser, by, element, protractor } from 'protractor';
+import {browser, by, element, protractor} from 'protractor';
 
 export class ClassSelectionPage {
-  navigateTo() {
-    return browser.get('/schedule/filter');
+  async navigateTo() {
+    return await browser.get('/schedule/filter');
   }
 
-  removeAllFilters() {
-    return element.all(by.css('mat-expansion-panel')).then((array: any[]) => {
+  async removeAllFilters() {
+    return await element.all(by.css('mat-expansion-panel')).then((array: any[]) => {
       array.forEach(panel => {
         panel.click();
         element.all(by.css('sfs-select-filter .mat-icon-button:not([disabled])'))
@@ -16,22 +16,22 @@ export class ClassSelectionPage {
     });
   }
 
-  addClassFilter() {
-    this.openExpansionPanelAtPosition(0);
-    this.clickOnDisplayedSelectList(0);
-    this.clickOnFirstNOptions(3);
-    this.clickOnBackdrop();
+  async addClassFilter() {
+    await this.openExpansionPanelAtPosition(0);
+    await this.clickOnDisplayedSelectList(0);
+    await this.clickOnFirstNOptions(3);
+    await this.clickOnBackdrop();
   }
 
-  addStudioFilter() {
-    this.openExpansionPanelAtPosition(2);
-    this.clickOnDisplayedSelectList(1);
-    this.clickOnFirstNOptions(3);
-    this.clickOnBackdrop();
+  async addStudioFilter() {
+    await this.openExpansionPanelAtPosition(2);
+    await this.clickOnDisplayedSelectList(1);
+    await this.clickOnFirstNOptions(3);
+    await this.clickOnBackdrop();
   }
 
-  private openExpansionPanelAtPosition(n: number) {
-    element.all(by.css('mat-expansion-panel'))
+  private async openExpansionPanelAtPosition(n: number) {
+    await element.all(by.css('mat-expansion-panel'))
       .get(n)
       .click();
   }
@@ -41,21 +41,21 @@ export class ClassSelectionPage {
    * an index is used.
    * @param n
    */
-  private clickOnDisplayedSelectList(n) {
-    element.all(by.css('sfs-select-filter mat-select'))
+  private async clickOnDisplayedSelectList(n) {
+    return await element.all(by.css('sfs-select-filter mat-select'))
       .filter(e => e.isDisplayed())
       .get(n)
       .click();
   }
 
-  private clickOnFirstNOptions(n: number) {
-    element.all(by.css('mat-option'))
+  private async clickOnFirstNOptions(n: number) {
+    await element.all(by.css('mat-option'))
       .filter((option, index) => index < n && option.isDisplayed())
       .each(option => option.click());
   }
 
-  private clickOnBackdrop() {
-    browser.driver.actions().sendKeys(protractor.Key.ESCAPE).perform();
+  private async clickOnBackdrop() {
+    await browser.driver.actions().sendKeys(protractor.Key.ESCAPE).perform();
   }
 
 }

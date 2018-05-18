@@ -3,7 +3,7 @@ import {SchedulePage} from './schedule.po';
 import {AppPage} from './app.po';
 import {NavigationPage} from './navigation.po';
 
-describe('Schedule', () => {
+fdescribe('Schedule', () => {
   let classSelectionPage: ClassSelectionPage;
   let schedulePage: SchedulePage;
   let appPage: AppPage;
@@ -16,6 +16,7 @@ describe('Schedule', () => {
     navigationPage = new NavigationPage();
 
     await appPage.setMobileBrowserSize();
+    await navigationPage.navigateTo('/about');
     await classSelectionPage.navigateTo();
     await classSelectionPage.addClassFilter();
     await classSelectionPage.addStudioFilter();

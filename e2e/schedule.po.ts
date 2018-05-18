@@ -36,7 +36,7 @@ export class SchedulePage {
     return (await this.getFirstDisplayedElement(element.all(by.css('mat-card button.mat-icon-button')))).click();
   }
   private async getFirstDisplayedElement(elem) {
-    return await elem.filter(e => e.isDisplayed()).first();
+    return elem.filter(e => e.isDisplayed()).first();
   }
 
 }

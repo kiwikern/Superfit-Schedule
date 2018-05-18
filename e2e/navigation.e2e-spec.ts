@@ -29,8 +29,7 @@ describe('Navigation', () => {
 
   it('should navigate to favorites and show title', async () => {
     await page.navigateToFavorites();
-
-    await page.clickOnVisibleRaisedButton();
+    await page.clickOnVisibleRaisedButton('Kursplan');
     expect(await page.getUrl()).toContain('schedule');
   });
 

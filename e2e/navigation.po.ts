@@ -1,4 +1,4 @@
-import {browser, by, element} from 'protractor';
+import {browser, by, element, protractor} from 'protractor';
 
 export class NavigationPage {
   async navigateTo(path: string = '/') {
@@ -72,14 +72,16 @@ export class NavigationPage {
     return dialogTitle.getText();
   }
 
-  async clickOnVisibleRaisedButton() {
-    const button = await this.getFirstDisplayedElement(element.all(by.css('.mat-raised-button')));
+  async clickOnVisibleRaisedButton(buttonText: string) {
+    const button = await element.all(by.partialButtonText(buttonText))
+      .filter(b => b.isDisplayed())
+      .first();
     return button.click();
   }
 
   async clickOnBottomNavigationButton(index: number) {
-    const buttons = await element.all(by.css(`sfs-bottom-navigation-button button`));
-    return buttons[index].click();
+    const button = await element.all(by.css(`sfs-bottom-navigation-button button`)).get(index);
+    return button.click();
   }
 
   async getUrl() {
@@ -90,7 +92,10 @@ export class NavigationPage {
     const burgerMenu = await element(by.id('nav_burger-menu'));
     await burgerMenu.click();
     const routerButton = await element(by.css(`sfs-navigation-button.fullwidth:nth-child(${index})`));
-    return routerButton.click();
+    await routerButton.click();
+    const EC = protractor.ExpectedConditions;
+    const backdrop = await element(by.css('.mat-drawer-backdrop'));
+    await browser.wait(EC.invisibilityOf(backdrop));
   }
 
   private async clickOnRouterLink(path: string) {
@@ -99,7 +104,7 @@ export class NavigationPage {
   }
 
   private async getFirstDisplayedElement(elem) {
-    return (await elem.filter(async e => await e.isDisplayed()))[0];
+    return (elem.filter(async e => await e.isDisplayed())).first();
   }
 
 }
