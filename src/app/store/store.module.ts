@@ -11,6 +11,8 @@ import { ChangesActions } from '../fitness-schedule/store/changes/changes.action
 import { ReleasenotesActions } from '../releasenotes/store/releasenotes.actions';
 import { FeedbackActions } from '../feedback/store/feedback.actions';
 import { OnboardingActions } from '../onboarding/store/onboarding.actions';
+import { createEpicMiddleware } from 'redux-observable';
+import { applyMiddleware } from 'redux';
 
 @NgModule({
   imports: [
@@ -42,21 +44,28 @@ export class StoreModule {
     } catch (e) {
       persistedState = {};
     }
+
+    const epicMiddleware = createEpicMiddleware();
+
     store.configureStore(rootReducer,
       persistedState,
-      [...rootEpics.createEpics()],
+      [epicMiddleware],
       devTools.isEnabled() ? [devTools.enhancer()] : []);
+
     store.subscribe(() => {
+
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(store.getState()));
     });
 
     ngReduxRouter.initialize();
 
+    epicMiddleware.run(rootEpics.createEpics());
+
     onboardingActions.checkGeneralOnboardingVersion();
-    store.dispatch(pushNotificationActions.addPushSubscription());
+    pushNotificationActions.addPushSubscription();
     store.dispatch(scheduleActions.loadSchedule());
-    store.dispatch(changesActions.loadChanges());
-    store.dispatch(releasenotesActions.checkVersion());
+    changesActions.loadChanges();
+    releasenotesActions.checkVersion();
     feedbackActions.loadFeedback();
   }
 }

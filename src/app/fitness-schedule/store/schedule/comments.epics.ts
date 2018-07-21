@@ -8,6 +8,7 @@ import { ClassComment } from '../../../comment/class-comment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, flatMap, switchMap } from 'rxjs/operators';
 import { IPayloadAction } from '../../../store/payload-action.types';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class CommentsEpics {
@@ -25,16 +26,14 @@ export class CommentsEpics {
     this.userId$.subscribe(userId => this.userId = userId);
   }
 
-  createEpics() {
-    return action$ => action$
-      .ofType(ScheduleActions.COMMENT_ADDED_REQUEST)
-      .pipe(
-        switchMap((action: IPayloadAction<any>) => this.postComment(action.payload)
-          .pipe(
-            flatMap(scheduleJSON => of(this.actions.addCommentSuccess(), this.actions.loadSchedule())),
-            catchError(error => of(this.actions.addCommentFail(error)))
-          )));
-  }
+  epics = action$ => action$
+    .pipe(
+      ofType(ScheduleActions.COMMENT_ADDED_REQUEST),
+      switchMap((action: IPayloadAction<any>) => this.postComment(action.payload)
+        .pipe(
+          flatMap(scheduleJSON => of(this.actions.addCommentSuccess(), this.actions.loadSchedule())),
+          catchError(error => of(this.actions.addCommentFail(error)))
+        )));
 
   private postComment(comment: ClassComment) {
     const url = '/api/sfs/schedule/comment';

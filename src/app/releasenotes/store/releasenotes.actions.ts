@@ -12,6 +12,7 @@ export class ReleasenotesActions {
   constructor(private angulartics: Angulartics2) {
   }
 
+  @dispatch()
   checkVersion() {
     return {
       type: ReleasenotesActions.CHECK_VERSION

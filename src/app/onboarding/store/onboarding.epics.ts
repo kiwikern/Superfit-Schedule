@@ -5,6 +5,7 @@ import { select } from '@angular-redux/store';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Action } from 'redux';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class OnboardingEpics {
@@ -17,15 +18,11 @@ export class OnboardingEpics {
     this.generalVersion$.subscribe(generalVersion => this.generalVersion = generalVersion);
   }
 
-  createEpics() {
-    return [
-      action$ => action$
-        .ofType(OnboardingActions.CHECK_GENERAL_ONBOARDING_VERSION)
-        .pipe(
-          map((action: Action) => this.checkGeneralVersion()),
-        ),
-    ];
-  }
+  epics = action$ => action$
+    .pipe(
+      ofType(OnboardingActions.CHECK_GENERAL_ONBOARDING_VERSION),
+      map((action: Action) => this.checkGeneralVersion()),
+    );
 
   private checkGeneralVersion() {
     switch (this.generalVersion) {

@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { catchError, flatMap, map, switchMap } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class PushNotificationEpics {
@@ -19,19 +20,17 @@ export class PushNotificationEpics {
     this.userId$.subscribe(userId => this.userId = userId);
   }
 
-  createEpics() {
-    return action$ => action$
-      .ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED)
-      .pipe(
-        flatMap(action => this.register()),
-        switchMap(sub => this.sendSubscriptionToBackend(sub)
-          .pipe(
-            map(() => this.actions.subscriptionAdded()),
-            catchError(error => of(this.actions.subscriptionFailed()))
-          )
+  epics = action$ => action$
+    .pipe(
+      ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED),
+      flatMap(action => this.register()),
+      switchMap(sub => this.sendSubscriptionToBackend(sub)
+        .pipe(
+          map(() => this.actions.subscriptionAdded()),
+          catchError(error => of(this.actions.subscriptionFailed()))
         )
-      );
-  }
+      )
+    );
 
   private register() {
     const serverPublicKey = 'BI8fL00tA1vjDQjbqKwh4B61gkRdifSc7tV82sUxmugcSENDYJXZjnvYi07NEugNnL7UAj2EZ0Qo5_oXs_JC-xs';

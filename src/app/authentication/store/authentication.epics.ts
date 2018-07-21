@@ -8,9 +8,13 @@ import { SyncActions } from '../../sync/sync.actions';
 import { Router } from '@angular/router';
 import { catchError, flatMap, map, switchMap } from 'rxjs/operators';
 import { IPayloadAction } from '../../store/payload-action.types';
+import { combineEpics, ofType } from 'redux-observable';
 
 @Injectable()
 export class AuthenticationEpics {
+
+  public epics;
+
 
   constructor(private http: HttpClient,
               private actions: AuthenticationActions,
@@ -18,52 +22,51 @@ export class AuthenticationEpics {
               private routerActions: RouterActions,
               private router: Router,
               private syncActions: SyncActions) {
+
+
+    const logout = action$ => action$
+      .pipe(
+        ofType(AuthenticationActions.LOGOUT),
+        map(() => this.syncActions.deactivateSync())
+      );
+    const loginSuccess = action$ => action$
+      .pipe(
+        ofType(AuthenticationActions.LOGIN_SUCCESS),
+        map(() => {
+          this.showSnackBar('Login erfolgreich.');
+          return this.syncActions.activateSync();
+        })
+      );
+    const needsLogin = action$ => action$
+      .pipe(
+        ofType(AuthenticationActions.NEEDS_LOGIN),
+        map((action: IPayloadAction<any>) => {
+          const redirectRoute = action.payload.route;
+          const backRoute = redirectRoute.substr(0, redirectRoute.lastIndexOf('/'));
+          this.showSnackBar(action.payload.message, 'Zurück')
+            .onAction()
+            .subscribe(() => this.router.navigate([backRoute]));
+          return this.routerActions.navigateTo(`/auth?route=${redirectRoute}`);
+        }));
+    const loginRequest = action$ => action$
+      .pipe(
+        ofType(AuthenticationActions.LOGIN_REQUESTED),
+        map((action: IPayloadAction<any>) => action.payload),
+        switchMap((credentials: any) => this.requestLogin(credentials)
+          .pipe(
+            flatMap((response: any) => {
+              const redirectTo = credentials.redirectTo || '/schedule';
+              return of(
+                this.actions.loginSuccess(response.userName, response.token, response.userId),
+                <any>this.routerActions.navigateTo(redirectTo));
+            }),
+            catchError(error => {
+              this.showErrorMessage(error);
+              return of(this.actions.loginFailed());
+            }))));
+    this.epics = combineEpics(logout, loginSuccess, needsLogin, loginRequest);
   }
 
-  createEpics() {
-    return [
-      action$ => action$
-        .ofType(AuthenticationActions.LOGIN_REQUESTED)
-        .pipe(
-          map((action: IPayloadAction<any>) => action.payload),
-          switchMap((credentials: any) => this.requestLogin(credentials)
-            .pipe(
-              flatMap((response: any) => {
-                const redirectTo = credentials.redirectTo || '/schedule';
-                return of(
-                  this.actions.loginSuccess(response.userName, response.token, response.userId),
-                  <any>this.routerActions.navigateTo(redirectTo));
-              }),
-              catchError(error => {
-                this.showErrorMessage(error);
-                return of(this.actions.loginFailed());
-              })))),
-      action$ => action$
-        .ofType(AuthenticationActions.LOGOUT)
-        .pipe(
-          map(() => this.syncActions.deactivateSync())
-        ),
-      action$ => action$
-        .ofType(AuthenticationActions.LOGIN_SUCCESS)
-        .pipe(
-          map(() => {
-            this.showSnackBar('Login erfolgreich.');
-            return this.syncActions.activateSync();
-          })
-        ),
-      action$ => action$
-        .ofType(AuthenticationActions.NEEDS_LOGIN)
-        .pipe(
-          map((action: IPayloadAction<any>) => {
-            const redirectRoute = action.payload.route;
-            const backRoute = redirectRoute.substr(0, redirectRoute.lastIndexOf('/'));
-            this.showSnackBar(action.payload.message, 'Zurück')
-              .onAction()
-              .subscribe(() => this.router.navigate([backRoute]));
-            return this.routerActions.navigateTo(`/auth?route=${redirectRoute}`);
-          }))
-    ];
-  }
 
   private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;

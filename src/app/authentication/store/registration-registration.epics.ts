@@ -7,6 +7,7 @@ import { SyncActions } from '../../sync/sync.actions';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IPayloadAction } from '../../store/payload-action.types';
 import { catchError, flatMap, map, switchMap } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class RegistrationEpics {
@@ -18,10 +19,9 @@ export class RegistrationEpics {
               private syncActions: SyncActions) {
   }
 
-  createEpics() {
-    return action$ => action$
-      .ofType(AuthenticationActions.REGISTRATION_REQUESTED)
+    epics = action$ => action$
       .pipe(
+        ofType(AuthenticationActions.REGISTRATION_REQUESTED),
         map((action: IPayloadAction<any>) => action.payload),
         switchMap((credentials: any) => this.requestLogin(credentials)
           .pipe(
@@ -36,7 +36,6 @@ export class RegistrationEpics {
               this.showErrorMessage(error);
               return of(this.actions.registerFailed());
             }))));
-  }
 
   private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;

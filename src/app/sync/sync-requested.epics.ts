@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class SyncRequestedEpics {
@@ -39,16 +40,14 @@ export class SyncRequestedEpics {
     this.userId$.subscribe(userId => this.userId = userId);
   }
 
-  createEpics() {
-    return action$ => action$
-      .ofType(SyncActions.SYNC_REQUESTED)
-      .pipe(
-        switchMap(credentials => this.postSyncState()
-          .pipe(
-            map(response => this.actions.syncSuccess(response.lastUpdate)),
-            catchError(error => this.handleError(error))
-          )));
-  }
+  epics = action$ => action$
+    .pipe(
+      ofType(SyncActions.SYNC_REQUESTED),
+      switchMap(credentials => this.postSyncState()
+        .pipe(
+          map(response => this.actions.syncSuccess(response.lastUpdate)),
+          catchError(error => this.handleError(error))
+        )));
 
   private postSyncState(): Observable<any> {
     const url = '/api/sfs/sync';

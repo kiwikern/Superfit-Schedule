@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="15px">
   <div fxLayoutGap="10px" fxLayoutAlign="center center">
-    <mat-form-field fxFlex floatPlaceholder="never">
-      <mat-select [(ngModel)]="selectedValues" placeholder="Neue hinzufügen..." multiple="true" (change)="onChange()">
+    <mat-form-field fxFlex floatLabel="never">
+      <mat-select [(ngModel)]="selectedValues" placeholder="Neue hinzufügen..." multiple="true" (selectionChange)="onChange()">
         <mat-select-trigger style="color: #9e9e9e;">Neue hinzufügen...</mat-select-trigger>
         <mat-option *ngFor="let value of allValues" [value]="value">{{ getName(value) }}</mat-option>
       </mat-select>

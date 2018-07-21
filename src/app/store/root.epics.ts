@@ -3,7 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import { ScheduleEpics } from '../fitness-schedule/store/schedule/schedule.epics';
-import { createEpicMiddleware } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
 import { PushNotificationEpics } from '../push-notification/push-notification.epics';
 import { AuthenticationEpics } from '../authentication/store/authentication.epics';
 import { SyncRequestedEpics } from '../sync/sync-requested.epics';
@@ -35,28 +35,20 @@ export class RootEpics {
   }
 
   createEpics() {
-    return [
-      createEpicMiddleware(this.scheduleEpics.createEpics()),
-      createEpicMiddleware(this.pushNotificationEpics.createEpics()),
-      createEpicMiddleware(this.authenticationEpics.createEpics()[0]),
-      createEpicMiddleware(this.authenticationEpics.createEpics()[1]),
-      createEpicMiddleware(this.authenticationEpics.createEpics()[2]),
-      createEpicMiddleware(this.authenticationEpics.createEpics()[3]),
-      // ...this.authenticationEpics.createEpics().map(createEpicMiddleware),
-      createEpicMiddleware(this.syncRequestedEpics.createEpics()),
-      createEpicMiddleware(this.syncActivatedEpics.createEpics()),
-      createEpicMiddleware(this.registrationEpics.createEpics()),
-      createEpicMiddleware(this.changeEpics.createEpics()),
-      createEpicMiddleware(this.resetPasswordEpics.createEpics()),
-      createEpicMiddleware(this.commentsEpics.createEpics()),
-      createEpicMiddleware(this.releasenotesEpics.createEpics()[0]),
-      createEpicMiddleware(this.releasenotesEpics.createEpics()[1]),
-      createEpicMiddleware(this.feedbackEpics.createEpics()[0]),
-      createEpicMiddleware(this.feedbackEpics.createEpics()[1]),
-      createEpicMiddleware(this.feedbackEpics.createEpics()[2]),
-      createEpicMiddleware(this.feedbackEpics.createEpics()[3]),
-      createEpicMiddleware(this.changePasswordEpics.createEpics()),
-      createEpicMiddleware(this.onboardingEpics.createEpics()[0])
-    ];
+    return combineEpics(
+      // this.scheduleEpics.epics,
+      this.pushNotificationEpics.epics,
+      this.authenticationEpics.epics,
+      // this.syncRequestedEpics.epics,
+      // this.syncActivatedEpics.epics,
+      // this.registrationEpics.epics,
+      // this.changeEpics.epics,
+      // this.resetPasswordEpics.epics,
+      // this.commentsEpics.epics,
+      // this.releasenotesEpics.epics,
+      // this.feedbackEpics.epics,
+      // this.changePasswordEpics.epics,
+      // this.onboardingEpics.epics
+    );
   }
 }

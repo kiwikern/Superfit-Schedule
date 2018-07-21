@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { MatSnackBar } from '@angular/material';
 import { catchError, delay, flatMap, map, switchMap } from 'rxjs/operators';
 import { IPayloadAction } from '../../store/payload-action.types';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class ChangePasswordEpics {
@@ -14,13 +15,11 @@ export class ChangePasswordEpics {
               private snackBar: MatSnackBar) {
   }
 
-  createEpics() {
-    return action$ => action$
-      .ofType(AuthenticationActions.CHANGE_PASSWORD_REQUESTED)
+  epics = action$ => action$.pipe(
+    ofType(AuthenticationActions.CHANGE_PASSWORD_REQUESTED),
+    map((action: IPayloadAction<any>) => action.payload),
+    switchMap((payload: any) => this.changePassword(payload.password, payload.token)
       .pipe(
-      map((action: IPayloadAction<any>) => action.payload),
-      switchMap((payload: any) => this.changePassword(payload.password, payload.token)
-        .pipe(
         flatMap((response: any) => {
           this.showSnackBar('Dein Passwort wurde geändert.');
           if (response.token && response.userName) {
@@ -35,7 +34,6 @@ export class ChangePasswordEpics {
           this.showErrorMessage(error);
           return of(this.actions.changePasswordFailed(error));
         }))));
-  }
 
   private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;

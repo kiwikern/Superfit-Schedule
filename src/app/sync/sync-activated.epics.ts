@@ -11,6 +11,7 @@ import { AuthenticationActions } from '../authentication/store/authentication.ac
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, flatMap, switchMap } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
 
 @Injectable()
 export class SyncActivatedEpics {
@@ -29,33 +30,31 @@ export class SyncActivatedEpics {
     this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
   }
 
-  createEpics() {
-    return action$ => action$
-      .ofType(SyncActions.SYNC_ACTIVATE_REQUEST)
-      .pipe(
-        switchMap(credentials => this.getSyncState()
-            .pipe(
-              flatMap((body: any) => {
-                const lastUpdate: number = body.lastUpdate || 0;
-                const userId: string = body.userid || null;
-                const successAction = this.syncActions.activateSyncSuccess(lastUpdate, userId);
-                let setActions = [];
-                if (body.state) {
-                  setActions = [
-                    this.filterActions.setFilter(body.state.filter),
-                    this.favoriteActions.setFavorites(body.state.favorites),
-                    this.settingsActions.setSettings(body.state.settings)
-                  ];
-                }
-                if (lastUpdate === this.lastUpdate) {
-                  return [successAction];
-                } else {
-                  return [successAction, ...setActions];
-                }
-              }),
+  epics = action$ => action$
+    .pipe(
+      ofType(SyncActions.SYNC_ACTIVATE_REQUEST),
+      switchMap(credentials => this.getSyncState()
+        .pipe(
+          flatMap((body: any) => {
+            const lastUpdate: number = body.lastUpdate || 0;
+            const userId: string = body.userid || null;
+            const successAction = this.syncActions.activateSyncSuccess(lastUpdate, userId);
+            let setActions = [];
+            if (body.state) {
+              setActions = [
+                this.filterActions.setFilter(body.state.filter),
+                this.favoriteActions.setFavorites(body.state.favorites),
+                this.settingsActions.setSettings(body.state.settings)
+              ];
+            }
+            if (lastUpdate === this.lastUpdate) {
+              return [successAction];
+            } else {
+              return [successAction, ...setActions];
+            }
+          }),
           catchError(error => this.handleErrors(error))
         )));
-  }
 
   private getSyncState(): any {
     const url = '/api/sfs/sync';
