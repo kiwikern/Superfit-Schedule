@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { PushNotificationActions } from './push-notification.actions';
 import { SwPush } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
-import { of, from, Observable, EMPTY } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { select } from '@angular-redux/store';
-import { catchError, flatMap, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class PushNotificationEpics {
       .pipe(
         ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED),
         switchMap(action => this.register()),
-        switchMap(sub => {
+        switchMap((sub: PushSubscription) => {
             console.log(sub);
             if (sub) {
               return this.sendSubscriptionToBackend(sub).pipe(
@@ -40,14 +40,14 @@ export class PushNotificationEpics {
   }
 
 
-  private register(): Observable<PushSubscription | null> {
+  private register(): Observable<PushSubscription> {
     const serverPublicKey = 'BI8fL00tA1vjDQjbqKwh4B61gkRdifSc7tV82sUxmugcSENDYJXZjnvYi07NEugNnL7UAj2EZ0Qo5_oXs_JC-xs';
     return from(this.serviceWorker.requestSubscription({serverPublicKey}));
   }
 
-  private sendSubscriptionToBackend(subscription) {
+  private sendSubscriptionToBackend(subscription: PushSubscription) {
     const url = '/api/sfs/subscription';
-    return this.http.post(url, {subscription, userId: this.userId});
+    return this.http.post(url, {subscription: subscription.toJSON(), userId: this.userId});
   }
 
 }

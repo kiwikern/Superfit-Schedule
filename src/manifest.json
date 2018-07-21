@@ -1,17 +1,17 @@
 {
-  "dir": "ltr",
-  "lang": "de",
   "name": "SuperFit Kursplan",
-  "scope": "/",
-  "display": "standalone",
-  "start_url": "/",
   "short_name": "SuperFit",
   "theme_color": "#009688",
+  "background_color": "#009688",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
   "description": "Kursplan für Superfit",
   "orientation": "any",
-  "background_color": "#009688",
   "related_applications": [],
   "prefer_related_applications": false,
+  "dir": "ltr",
+  "lang": "de",
   "icons": [
     {
       "src": "assets/favicons/android-chrome-192x192.png",
