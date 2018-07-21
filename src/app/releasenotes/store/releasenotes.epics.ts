@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ReleasenotesActions } from './releasenotes.actions';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ReleasenotesComponent } from '../releasenotes/releasenotes.component';
 import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';

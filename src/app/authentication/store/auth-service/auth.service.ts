@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as jwtDecode from 'jwt-decode';
 import { Logger } from '../../../common/logger.service';
 

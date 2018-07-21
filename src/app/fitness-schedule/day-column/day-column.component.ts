@@ -3,8 +3,7 @@ import { MappingService } from '../../workout/mapping.service';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subscription ,  Observable } from 'rxjs';
 // import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({

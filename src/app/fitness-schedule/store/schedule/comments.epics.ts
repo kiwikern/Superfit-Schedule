@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { of } from 'rxjs/observable/of';
+import { of, Observable } from 'rxjs';
 import { ScheduleActions } from './schedule.actions';
-import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { ClassComment } from '../../../comment/class-comment';
 import { HttpClient } from '@angular/common/http';
@@ -20,20 +19,22 @@ export class CommentsEpics {
   userId$: Observable<string>;
   userId: string;
 
+  public epics;
+
   constructor(private actions: ScheduleActions,
               private http: HttpClient) {
     this.userName$.subscribe(userName => this.userName = userName);
     this.userId$.subscribe(userId => this.userId = userId);
+    this.epics = action$ => action$
+      .pipe(
+        ofType(ScheduleActions.COMMENT_ADDED_REQUEST),
+        switchMap((action: IPayloadAction<any>) => this.postComment(action.payload)
+          .pipe(
+            flatMap(scheduleJSON => of(this.actions.addCommentSuccess(), this.actions.loadSchedule())),
+            catchError(error => of(this.actions.addCommentFail(error)))
+          )));
   }
 
-  epics = action$ => action$
-    .pipe(
-      ofType(ScheduleActions.COMMENT_ADDED_REQUEST),
-      switchMap((action: IPayloadAction<any>) => this.postComment(action.payload)
-        .pipe(
-          flatMap(scheduleJSON => of(this.actions.addCommentSuccess(), this.actions.loadSchedule())),
-          catchError(error => of(this.actions.addCommentFail(error)))
-        )));
 
   private postComment(comment: ClassComment) {
     const url = '/api/sfs/schedule/comment';

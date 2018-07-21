@@ -1,12 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Highlight } from '../highlights.enum';
-import { Observable } from 'rxjs/Observable';
+import { Observable , Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ScheduleActions } from '../../fitness-schedule/store/schedule/schedule.actions';
 import { ClassComment } from '../class-comment';
 import { select } from '@angular-redux/store';
-import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../authentication/store/auth-service/auth.service';
 import { AuthenticationActions } from '../../authentication/store/authentication.actions';
 import { map, startWith } from 'rxjs/operators';

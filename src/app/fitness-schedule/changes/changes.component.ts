@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { select } from '@angular-redux/store';
 import { FitnessClass } from '../../workout/fitness-class';
 import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subscription } from 'rxjs';
 import { ScheduleChange } from '../store/changes/schedule-change.interface';
-import { Subscription } from 'rxjs/Subscription';
 import { FilterState } from '../store/filter/filter-state';
 
 @Component({

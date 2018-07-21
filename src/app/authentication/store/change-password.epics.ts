@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { catchError, delay, flatMap, map, switchMap } from 'rxjs/operators';
 import { IPayloadAction } from '../../store/payload-action.types';
@@ -13,27 +13,28 @@ export class ChangePasswordEpics {
   constructor(private http: HttpClient,
               private actions: AuthenticationActions,
               private snackBar: MatSnackBar) {
+    this.epics = action$ => action$.pipe(
+      ofType(AuthenticationActions.CHANGE_PASSWORD_REQUESTED),
+      map((action: IPayloadAction<any>) => action.payload),
+      switchMap((payload: any) => this.changePassword(payload.password, payload.token)
+        .pipe(
+          flatMap((response: any) => {
+            this.showSnackBar('Dein Passwort wurde geändert.');
+            if (response.token && response.userName) {
+              return of(this.actions.changePasswordSuccess(),
+                this.actions.loginSuccess(response.userName, response.token, response.userId))
+                .pipe(delay(2000));
+            } else {
+              return of(this.actions.changePasswordSuccess());
+            }
+          }),
+          catchError(error => {
+            this.showErrorMessage(error);
+            return of(this.actions.changePasswordFailed(error));
+          }))));
   }
 
-  epics = action$ => action$.pipe(
-    ofType(AuthenticationActions.CHANGE_PASSWORD_REQUESTED),
-    map((action: IPayloadAction<any>) => action.payload),
-    switchMap((payload: any) => this.changePassword(payload.password, payload.token)
-      .pipe(
-        flatMap((response: any) => {
-          this.showSnackBar('Dein Passwort wurde geändert.');
-          if (response.token && response.userName) {
-            return of(this.actions.changePasswordSuccess(),
-              this.actions.loginSuccess(response.userName, response.token, response.userId))
-              .pipe(delay(2000));
-          } else {
-            return of(this.actions.changePasswordSuccess());
-          }
-        }),
-        catchError(error => {
-          this.showErrorMessage(error);
-          return of(this.actions.changePasswordFailed(error));
-        }))));
+  public epics;
 
   private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;

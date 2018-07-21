@@ -19,6 +19,24 @@ import { OnboardingEpics } from '../onboarding/store/onboarding.epics';
 
 @Injectable()
 export class RootEpics {
+  createEpics() {
+    return combineEpics(
+      this.scheduleEpics.epics,
+      this.pushNotificationEpics.epics,
+      this.authenticationEpics.epics,
+      this.syncRequestedEpics.epics,
+      this.syncActivatedEpics.epics,
+      this.registrationEpics.epics,
+      this.changeEpics.epics,
+      this.resetPasswordEpics.epics,
+      this.commentsEpics.epics,
+      this.releasenotesEpics.epics,
+      this.feedbackEpics.epics,
+      this.changePasswordEpics.epics,
+      this.onboardingEpics.epics
+    );
+  }
+
   constructor(private scheduleEpics: ScheduleEpics,
               private pushNotificationEpics: PushNotificationEpics,
               private authenticationEpics: AuthenticationEpics,
@@ -32,23 +50,5 @@ export class RootEpics {
               private commentsEpics: CommentsEpics,
               private changeEpics: ChangesEpics,
               private onboardingEpics: OnboardingEpics) {
-  }
-
-  createEpics() {
-    return combineEpics(
-      // this.scheduleEpics.epics,
-      this.pushNotificationEpics.epics,
-      this.authenticationEpics.epics,
-      // this.syncRequestedEpics.epics,
-      // this.syncActivatedEpics.epics,
-      // this.registrationEpics.epics,
-      // this.changeEpics.epics,
-      // this.resetPasswordEpics.epics,
-      // this.commentsEpics.epics,
-      // this.releasenotesEpics.epics,
-      // this.feedbackEpics.epics,
-      // this.changePasswordEpics.epics,
-      // this.onboardingEpics.epics
-    );
   }
 }

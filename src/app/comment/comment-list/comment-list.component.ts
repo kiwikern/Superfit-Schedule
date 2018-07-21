@@ -1,15 +1,14 @@
+
+import {combineLatest as observableCombineLatest,  Subscription ,  Subject } from 'rxjs';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FitnessClass } from '../../workout/fitness-class';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
 import { FitnessClassesPerDay } from '../../fitness-schedule/interfaces/fitness-classes-per-day';
-import { Subscription } from 'rxjs/Subscription';
 import { ClassComment } from '../class-comment';
 import { MappingService } from '../../workout/mapping.service';
-import { Subject } from 'rxjs/Subject';
-import { takeUntil } from 'rxjs/operators';
-import 'rxjs/add/observable/combineLatest';
+import { map, takeUntil } from 'rxjs/operators';
+
 import Timer = NodeJS.Timer;
 
 
@@ -38,19 +37,23 @@ export class CommentListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = Observable.combineLatest(this.route.paramMap, this.schedulePerDay$, (paramMap: ParamMap, schedulePerDay: any) => {
-      this.id = paramMap.get('id');
-      this.fitnessClass = this.findFitnessClass(schedulePerDay);
-      this.comments = this.fitnessClass.comments;
-      this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
-      if (!this.comments || this.comments.length < 1) {
-        this.timeout = setTimeout(() => {
-          this.isOtherPanelExpanded = true;
+    this.subscription = observableCombineLatest(this.route.paramMap, this.schedulePerDay$)
+      .pipe(
+        map(([paramMap, schedulePerDay]) => {
+          this.id = paramMap.get('id');
+          this.fitnessClass = this.findFitnessClass(schedulePerDay);
+          this.comments = this.fitnessClass.comments;
+          this.otherClasses = this.findWorkoutsWithComments(schedulePerDay);
+          if (!this.comments || this.comments.length < 1) {
+            this.timeout = setTimeout(() => {
+              this.isOtherPanelExpanded = true;
+              this.cdRef.detectChanges();
+            }, 2000);
+          }
           this.cdRef.detectChanges();
-        }, 2000);
-      }
-      this.cdRef.detectChanges();
-    }).pipe(takeUntil(this.onDestroy))
+        }),
+        takeUntil(this.onDestroy)
+      )
       .subscribe();
   }
 

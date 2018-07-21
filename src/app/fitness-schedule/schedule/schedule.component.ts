@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@a
 import { select } from '@angular-redux/store';
 import { FilterState } from '../store/filter/filter-state';
 import { FitnessClass } from '../../workout/fitness-class';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { MatSnackBar } from '@angular/material';
 

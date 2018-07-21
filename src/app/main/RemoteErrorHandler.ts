@@ -1,7 +1,8 @@
-import { ErrorHandler, Injector } from '@angular/core';
+import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { Logger } from '../common/logger.service';
 import { LocationStrategy } from '@angular/common';
 
+@Injectable()
 export class RemoteErrorHandler implements ErrorHandler {
   private log: Logger;
   private location: LocationStrategy;

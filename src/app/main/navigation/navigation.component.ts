@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { NavigationConfigEntry } from './navigation-config-entry.interface';
 
 @Component({

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FeedbackActions } from './feedback.actions';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
-import { of } from 'rxjs/observable/of';
+import { of ,  Observable } from 'rxjs';
 import { FeedbackPayload } from './feedback-payload-interface';
 import { HttpClient } from '@angular/common/http';
 import { Feedback } from '../feedback-interface';
-import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap } from 'rxjs/operators';

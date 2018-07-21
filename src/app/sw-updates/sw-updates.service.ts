@@ -3,7 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { Logger } from '../common/logger.service';
 import { MatSnackBar } from '@angular/material';
 import { Angulartics2 } from 'angulartics2';
-import { interval } from 'rxjs/observable/interval';
+import { interval } from 'rxjs';
 
 
 /**

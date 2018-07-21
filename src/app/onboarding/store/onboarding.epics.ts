@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { OnboardingActions } from './onboarding.actions';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { select } from '@angular-redux/store';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -12,17 +12,18 @@ export class OnboardingEpics {
 
   @select(['onboarding', 'general']) readonly generalVersion$: Observable<number>;
   private generalVersion: number;
+  public epics;
 
   constructor(private actions: OnboardingActions,
               private router: Router) {
     this.generalVersion$.subscribe(generalVersion => this.generalVersion = generalVersion);
+    this.epics = action$ => action$
+      .pipe(
+        ofType(OnboardingActions.CHECK_GENERAL_ONBOARDING_VERSION),
+        map((action: Action) => this.checkGeneralVersion()),
+      );
   }
 
-  epics = action$ => action$
-    .pipe(
-      ofType(OnboardingActions.CHECK_GENERAL_ONBOARDING_VERSION),
-      map((action: Action) => this.checkGeneralVersion()),
-    );
 
   private checkGeneralVersion() {
     switch (this.generalVersion) {

@@ -74,6 +74,8 @@
     "karma-coverage-istanbul-reporter": "^2.0.1",
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^1.2.0",
+    "lite-server": "^2.4.0",
+    "liteserver": "^0.3.0",
     "protractor": "^5.4.0",
     "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-node-resolve": "^3.3.0",

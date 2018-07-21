@@ -5,7 +5,7 @@ import { FitnessClass } from '../fitness-class';
 import { IAppState } from '../../store/root-state.interface';
 import { FavoriteActions } from '../../fitness-schedule/store/favorites/favorite.actions';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'sfs-fitness-class',

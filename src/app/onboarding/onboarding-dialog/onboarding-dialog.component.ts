@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 

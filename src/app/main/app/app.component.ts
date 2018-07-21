@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Angulartics2 } from 'angulartics2';
 import { SwUpdatesService } from '../../sw-updates/sw-updates.service';
 import { ScrollService } from '../../common/scroll.service';

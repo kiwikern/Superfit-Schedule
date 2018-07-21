@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';
@@ -17,9 +17,7 @@ export class RegistrationEpics {
               private snackBar: MatSnackBar,
               private routerActions: RouterActions,
               private syncActions: SyncActions) {
-  }
-
-    epics = action$ => action$
+    this.epics = action$ => action$
       .pipe(
         ofType(AuthenticationActions.REGISTRATION_REQUESTED),
         map((action: IPayloadAction<any>) => action.payload),
@@ -36,6 +34,9 @@ export class RegistrationEpics {
               this.showErrorMessage(error);
               return of(this.actions.registerFailed());
             }))));
+  }
+
+  public epics;
 
   private showErrorMessage(error: HttpErrorResponse) {
     let errorInfo: string;

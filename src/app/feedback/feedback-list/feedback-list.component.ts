@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Feedback } from '../feedback-interface';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { select } from '@angular-redux/store';
 import { FeedbackActions } from '../store/feedback.actions';
 import { FeedbackService } from '../store/feedback.service';

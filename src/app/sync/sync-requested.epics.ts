@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SyncActions } from './sync.actions';
-import { of } from 'rxjs/observable/of';
+import { of ,  Observable } from 'rxjs';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
 import { FilterState } from '../fitness-schedule/store/filter/filter-state';
 import { SettingsState } from '../fitness-schedule/store/settings/settings-state';
 import { FavoriteState } from '../fitness-schedule/store/favorites/favorite-state';
@@ -27,6 +26,7 @@ export class SyncRequestedEpics {
   filter: FilterState;
   lastUpdate: string;
   userId: string;
+  public epics;
 
   constructor(private http: HttpClient,
               private actions: SyncActions,
@@ -38,16 +38,18 @@ export class SyncRequestedEpics {
     this.filter$.subscribe(filter => this.filter = filter);
     this.lastUpdate$.subscribe(lastUpdate => this.lastUpdate = lastUpdate);
     this.userId$.subscribe(userId => this.userId = userId);
+
+    this.epics = action$ => action$
+      .pipe(
+        ofType(SyncActions.SYNC_REQUESTED),
+        switchMap(credentials => this.postSyncState()
+          .pipe(
+            map(response => this.actions.syncSuccess(response.lastUpdate)),
+            catchError(error => this.handleError(error))
+          )));
   }
 
-  epics = action$ => action$
-    .pipe(
-      ofType(SyncActions.SYNC_REQUESTED),
-      switchMap(credentials => this.postSyncState()
-        .pipe(
-          map(response => this.actions.syncSuccess(response.lastUpdate)),
-          catchError(error => this.handleError(error))
-        )));
+
 
   private postSyncState(): Observable<any> {
     const url = '/api/sfs/sync';

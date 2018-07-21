@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationActions } from './authentication.actions';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { RouterActions } from '../../store/router.actions';
 import { SyncActions } from '../../sync/sync.actions';

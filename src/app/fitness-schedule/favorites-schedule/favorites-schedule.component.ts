@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subscription ,  combineLatest } from 'rxjs';
 import { ScheduleParserService } from '../store/schedule/schedule-parser.service';
 import { FitnessClass } from '../../workout/fitness-class';
 import { FitnessClassesPerDay } from '../interfaces/fitness-classes-per-day';
 import { MatSnackBar } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
 import { first } from 'rxjs/operators';
-import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @Component({
   selector: 'sfs-favorites-schedule',

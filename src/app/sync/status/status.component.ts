@@ -3,7 +3,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/root-state.interface';
 import { SyncActions } from '../sync.actions';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { SyncState } from '../sync-state.interface';
 import { debounceTime } from 'rxjs/operators';
 

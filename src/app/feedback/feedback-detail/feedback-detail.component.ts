@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Feedback } from '../feedback-interface';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subscription } from 'rxjs';
 import { select } from '@angular-redux/store';
 import { ActivatedRoute } from '@angular/router';
 import { FeedbackActions } from '../store/feedback.actions';
-import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../authentication/store/auth-service/auth.service';
 
 @Component({
