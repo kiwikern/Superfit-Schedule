@@ -5,13 +5,13 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run ng -- serve --proxy-config proxy.conf.local.json --aot",
-    "start:dist": "npm run serve -- --proxy-config proxy.conf.json",
-    "start:prod": "npm run start -- --prod -sm --watch=false --live-reload false",
+    "start:dist": "npm run start -- --proxy-config proxy.conf.json",
+    "start:prod": "npm run start -- --prod --source-map --watch=false --live-reload false",
     "start:sw": "npm run build && npm run start:liteserver",
     "start:liteserver": "lite-server -c liteserver_config.js",
     "build": "npm run ng -- build --prod",
     "test": "npm run ng -- test",
-    "build-sm": "npm run ng -- build --prod --vendor-chunk=false -sm --output-hashing=none",
+    "build-sm": "npm run ng -- build --prod --vendor-chunk=false --source-map --output-hashing=none",
     "explore-sm": "npm run build-sm && npm run source-map-explorer dist/main.bundle.js",
     "test:once": "npm run test -- --watch=false --code-coverage",
     "lint": "npm run ng -- lint",
@@ -54,7 +54,8 @@
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "@angular/cli": "^1.7.1",
+    "@angular-devkit/build-angular": "~0.6.8",
+    "@angular/cli": "^6.0.8",
     "@types/hammerjs": "^2.0.35",
     "@types/jasmine": "^2.8.6",
     "@types/jasminewd2": "^2.0.3",
