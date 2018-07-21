@@ -15,6 +15,9 @@ export class AuthService {
   }
 
   isLoggedIn() {
+    if (!this.token) {
+      return false;
+    }
     try {
       const decoded = jwtDecode(this.token);
       return decoded.exp > Date.now() / 1000;
@@ -25,6 +28,9 @@ export class AuthService {
   }
 
   isAdmin() {
+    if (!this.token) {
+      return false;
+    }
     try {
       const decoded = jwtDecode(this.token);
       return !!decoded.subject && decoded.subject.role === 'ADMIN';
