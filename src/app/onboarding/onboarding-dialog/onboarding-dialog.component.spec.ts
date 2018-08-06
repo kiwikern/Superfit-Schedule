@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SfsMaterialModule } from '../../material/sfs-material.module';
 import { Component, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
+import { EMPTY } from 'rxjs';
 
 describe('OnboardingDialogComponent', () => {
   let component: OnboardingDialogComponent;
@@ -51,6 +51,6 @@ class MockLinkDotsComponent {
 
 class MockMatDialogRef {
   afterClosed() {
-    return Observable.empty();
+    return EMPTY;
   }
 }
