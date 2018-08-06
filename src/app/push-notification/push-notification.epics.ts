@@ -24,12 +24,13 @@ export class PushNotificationEpics {
         ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED),
         switchMap(action => this.register()),
         switchMap((sub: PushSubscription) => {
-            console.log(sub);
             if (sub) {
               return this.sendSubscriptionToBackend(sub).pipe(
                 map(() => this.actions.subscriptionAdded()),
-                catchError(error => of(this.actions.subscriptionFailed()))
-              );
+                catchError(error => {
+                  console.error(error);
+                  return of(this.actions.subscriptionFailed());
+                }));
             } else {
               return of(this.actions.subscriptionFailed());
             }
@@ -47,7 +48,8 @@ export class PushNotificationEpics {
 
   private sendSubscriptionToBackend(subscription: PushSubscription) {
     const url = '/api/sfs/subscription';
-    return this.http.post(url, {subscription: subscription.toJSON(), userId: this.userId});
+    const body = {subscription: subscription.toJSON(), userId: this.userId};
+    return this.http.post(url, body, {responseType: 'text'});
   }
 
 }
