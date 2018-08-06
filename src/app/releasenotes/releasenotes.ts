@@ -3,6 +3,22 @@ import {ChangeType} from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.22',
+    date: new Date(2018, 7, 6),
+    entries: [
+      {
+        title: 'Neuer Kurs',
+        type: ChangeType.CHANGE,
+        description: `Neuer Kurse Barre in Neukölln women.`
+      },
+      {
+        title: 'Performanceverbesserung',
+        type: ChangeType.PERFORMANCE,
+        description: `Die Größe der App wurde reduziert.`
+      }
+    ]
+  },
+  {
     version: 'v2.21',
     date: new Date(2018, 4, 2),
     entries: [
