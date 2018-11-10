@@ -14,12 +14,14 @@ export class PushNotificationActions {
     };
   }
 
+  @dispatch()
   subscriptionAdded() {
     return {
       type: PushNotificationActions.PUSH_SUBSCRIPTION_ADDED
     };
   }
 
+  @dispatch()
   subscriptionFailed() {
     return {
       type: PushNotificationActions.PUSH_SUBSCRIPTION_FAILED

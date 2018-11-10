@@ -62,7 +62,6 @@ export class StoreModule {
     epicMiddleware.run(rootEpics.createEpics());
 
     onboardingActions.checkGeneralOnboardingVersion();
-    pushNotificationActions.addPushSubscription();
     store.dispatch(scheduleActions.loadSchedule());
     changesActions.loadChanges();
     releasenotesActions.checkVersion();

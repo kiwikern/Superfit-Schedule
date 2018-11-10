@@ -22,7 +22,6 @@ export class RootEpics {
   createEpics() {
     return combineEpics(
       this.scheduleEpics.epics,
-      this.pushNotificationEpics.epics,
       this.authenticationEpics.epics,
       this.syncRequestedEpics.epics,
       this.syncActivatedEpics.epics,

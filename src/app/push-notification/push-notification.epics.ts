@@ -4,42 +4,42 @@ import { SwPush } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
 import { from, Observable, of } from 'rxjs';
 import { select } from '@angular-redux/store';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { ofType } from 'redux-observable';
+import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+import { Logger } from '../common/logger.service';
+import { ShowPushnotificationsState } from '../fitness-schedule/store/settings/settings-state';
 
 @Injectable()
 export class PushNotificationEpics {
 
   @select(['authentication', 'userId']) userId$: Observable<string>;
+  @select(['settings', 'showPushNotifications']) showPushNotifications$: Observable<ShowPushnotificationsState>;
   private userId: string;
-
-  public epics;
 
   constructor(private serviceWorker: SwPush,
               private http: HttpClient,
+              private logger: Logger,
               private actions: PushNotificationActions) {
     this.userId$.subscribe(userId => this.userId = userId);
-    this.epics = action$ => action$
-      .pipe(
-        ofType(PushNotificationActions.PUSH_SUBSCRIPTION_REQUESTED),
-        switchMap(action => this.register()),
+    this.showPushNotifications$.pipe(
+      filter(shouldShowNotification => shouldShowNotification === ShowPushnotificationsState.ENABLED),
+      tap(() => this.actions.addPushSubscription()),
+      switchMap(() => this.register().pipe(
         switchMap((sub: PushSubscription) => {
             if (sub) {
               return this.sendSubscriptionToBackend(sub).pipe(
                 map(() => this.actions.subscriptionAdded()),
                 catchError(error => {
-                  console.error(error);
+                  this.logger.error(error);
                   return of(this.actions.subscriptionFailed());
                 }));
             } else {
               return of(this.actions.subscriptionFailed());
             }
           }
-        ),
-        catchError(error => of(this.actions.subscriptionFailed()))
-      );
+        )
+      )),
+    ).subscribe();
   }
-
 
   private register(): Observable<PushSubscription> {
     const serverPublicKey = 'BI8fL00tA1vjDQjbqKwh4B61gkRdifSc7tV82sUxmugcSENDYJXZjnvYi07NEugNnL7UAj2EZ0Qo5_oXs_JC-xs';
