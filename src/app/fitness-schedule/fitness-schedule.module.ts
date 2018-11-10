@@ -21,6 +21,8 @@ import { WorkoutModule } from '../workout/workout.module';
 import { BottomNavigationButtonComponent } from './bottom-navigation/bottom-navigation-button/bottom-navigation-button.component';
 import { BottomNavigationComponent } from './bottom-navigation/bottom-navigation.component';
 import { FilterModule } from '../filter/filter.module';
+import { PushNotificationModule } from '../push-notification/push-notification.module';
+import { PushNotificationRequestDialogComponent } from './push-notification-request-dialog/push-notification-request-dialog.component';
 
 const fitnessRoutes: Routes = [
   {
@@ -58,14 +60,16 @@ const fitnessRoutes: Routes = [
     ChangesComponent,
     ScheduleRouterComponent,
     BottomNavigationButtonComponent,
-    BottomNavigationComponent
+    BottomNavigationComponent,
+    PushNotificationRequestDialogComponent
   ],
   exports: [
     ScheduleComponent
   ],
   providers: [
     ScheduleParserService
-  ]
+  ],
+  entryComponents: [PushNotificationRequestDialogComponent]
 })
 export class FitnessScheduleModule {
 }

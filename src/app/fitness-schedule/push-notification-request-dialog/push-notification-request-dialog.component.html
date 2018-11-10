@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Push-Benachrichtigungen</h1>
+<mat-dialog-content>
+  Möchtest du Push-Benachrichtigungen erhalten, wenn sich der Kursplan ändert?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="decline()">Nein</button>
+  <button mat-raised-button mat-dialog-close cdkFocusInitial color="primary" (click)="enable()">Ja</button>
+</mat-dialog-actions>
