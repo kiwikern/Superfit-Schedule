@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # variables
-PATH="/package/host/localhost/nodejs-7/bin:$PATH"
+#PATH="/package/host/localhost/nodejs-8.9.1/bin:$PATH"
 deploy=~/bin/sfs-deploy
 www=/var/www/virtual/${USER}
 now=$(date)
@@ -14,10 +14,13 @@ log() {
 log "started deploying"
 
 # remove old repo files and clone master branch
-cd $deploy
-rm -rf $deploy/Superfit-Schedule
-git clone https://github.com/kiwikern/Superfit-Schedule.git
-cd $deploy/Superfit-Schedule
+#cd $deploy
+#rm -rf $deploy/Superfit-Schedule
+#git clone https://github.com/kiwikern/Superfit-Schedule.git
+#cd $deploy/Superfit-Schedule
+
+# get newest version
+git pull
 
 # install and build
 npm ci
