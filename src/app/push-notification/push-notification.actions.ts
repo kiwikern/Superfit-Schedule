@@ -22,9 +22,10 @@ export class PushNotificationActions {
   }
 
   @dispatch()
-  subscriptionFailed() {
+  subscriptionFailed(error: Error) {
     return {
-      type: PushNotificationActions.PUSH_SUBSCRIPTION_FAILED
+      type: PushNotificationActions.PUSH_SUBSCRIPTION_FAILED,
+      payload: {error}
     };
   }
 }

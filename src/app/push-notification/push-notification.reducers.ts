@@ -1,6 +1,7 @@
 import { PushNotificationState } from './push-notification-state.interface';
 import { IPayloadAction } from '../store/payload-action.types';
 import { PushNotificationActions } from './push-notification.actions';
+
 /**
  * Created by Kim on 21.05.2017.
  */
@@ -25,9 +26,14 @@ export function pushNotificationReducer(state: PushNotificationState = INITIAL_S
         isRequesting: false
       };
     case PushNotificationActions.PUSH_SUBSCRIPTION_FAILED: {
+      const error: Error | null = action.payload.error;
+      if (error && error.message) {
+        console.warn(error.message);
+      }
       return {
         enabled: false,
-        isRequesting: false
+        isRequesting: false,
+        error
       };
     }
   }

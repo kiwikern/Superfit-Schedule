@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { PushNotificationActions } from './push-notification.actions';
 import { SwPush } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
-import { from, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { select } from '@angular-redux/store';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 import { Logger } from '../common/logger.service';
 import { ShowPushnotificationsState } from '../fitness-schedule/store/settings/settings-state';
+import { fromPromise } from 'rxjs/internal-compatibility';
 
 @Injectable()
 export class PushNotificationEpics {
@@ -28,22 +29,25 @@ export class PushNotificationEpics {
             if (sub) {
               return this.sendSubscriptionToBackend(sub).pipe(
                 map(() => this.actions.subscriptionAdded()),
-                catchError(error => {
-                  this.logger.error(error);
-                  return of(this.actions.subscriptionFailed());
-                }));
+                catchError(error => of(this.actions.subscriptionFailed(error))));
             } else {
-              return of(this.actions.subscriptionFailed());
+              return of(this.actions.subscriptionFailed(new Error('Missing subscription.')));
             }
           }
-        )
-      )),
-    ).subscribe();
+        ),
+        catchError(error => of(this.actions.subscriptionFailed(error))
+        ))
+      )).subscribe();
+
+    // TODO: Remove subscription from database.
+    this.showPushNotifications$.pipe(
+      filter(shouldShowNotification => shouldShowNotification !== ShowPushnotificationsState.ENABLED)
+    ).subscribe(() => this.serviceWorker.unsubscribe());
   }
 
   private register(): Observable<PushSubscription> {
     const serverPublicKey = 'BI8fL00tA1vjDQjbqKwh4B61gkRdifSc7tV82sUxmugcSENDYJXZjnvYi07NEugNnL7UAj2EZ0Qo5_oXs_JC-xs';
-    return from(this.serviceWorker.requestSubscription({serverPublicKey}));
+    return fromPromise(this.serviceWorker.requestSubscription({serverPublicKey}));
   }
 
   private sendSubscriptionToBackend(subscription: PushSubscription) {
