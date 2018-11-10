@@ -6,10 +6,7 @@ import { ReleasenotesComponent } from '../releasenotes/releasenotes.component';
 import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { combineEpics, ofType } from 'redux-observable';
-
-declare function require(moduleName: string): any;
-
-const {version: appVersion} = require('../../../../package.json');
+import * as packageJson from '../../../../package.json';
 
 @Injectable()
 export class ReleasenotesEpics {
@@ -23,7 +20,7 @@ export class ReleasenotesEpics {
 
   constructor(private actions: ReleasenotesActions,
               private dialog: MatDialog) {
-    this.version = appVersion;
+    this.version = packageJson.version;
     this.seenVersion$.subscribe(seenVersion => this.seenVersion = seenVersion);
     this.hideReleasenotes$.subscribe(hideReleasenotes => this.hideReleasenotes = hideReleasenotes);
 
