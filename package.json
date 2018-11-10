@@ -38,7 +38,7 @@
     "@angular/platform-browser": "^7.0.3",
     "@angular/platform-browser-dynamic": "^7.0.3",
     "@angular/platform-server": "^7.0.3",
-    "@angular/pwa": "^0.7.2",
+    "@angular/pwa": "^0.10.5",
     "@angular/router": "^7.0.3",
     "@angular/service-worker": "^7.0.3",
     "angulartics2": "^7.1.0",
