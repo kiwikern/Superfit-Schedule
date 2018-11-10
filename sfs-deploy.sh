@@ -20,7 +20,7 @@ git clone https://github.com/kiwikern/Superfit-Schedule.git
 cd $deploy/Superfit-Schedule
 
 # install and build
-npm install
+npm ci
 error=$(npm run build 2>&1)
 rc=$?
 if [[ $rc != 0 ]]
