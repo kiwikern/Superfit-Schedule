@@ -44,7 +44,7 @@ export class ChangesComponent implements OnInit, OnDestroy, AfterContentInit {
   ngAfterContentInit() {
     this.subscriptions.push(
       this.showPushNotifications$.pipe(
-        filter(state => state === ShowPushnotificationsState.UNDECIDED)
+        filter(state => state === ShowPushnotificationsState.UNDECIDED || state === undefined)
         // TODO: setTimeout workaround, see https://github.com/angular/angular/issues/15634
       ).subscribe(() => setTimeout(
         () => this.matDialog.open(PushNotificationRequestDialogComponent, {autoFocus: false})
