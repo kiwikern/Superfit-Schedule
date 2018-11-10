@@ -47,10 +47,16 @@
     </mat-expansion-panel>
     <mat-expansion-panel>
       <mat-expansion-panel-header>Sonstiges</mat-expansion-panel-header>
-      <mat-checkbox [ngModel]="!(hideReleasenotes$ | async)"
-                   (change)="changeSetting('hideReleasenotes', !$event.checked)">
-        Zeige Änderungshistorie bei Update
-      </mat-checkbox>
+      <div fxLayout="column">
+        <mat-checkbox [ngModel]="!(hideReleasenotes$ | async)"
+                     (change)="changeSetting('hideReleasenotes', !$event.checked)">
+          Zeige Änderungshistorie bei Update
+        </mat-checkbox>
+        <mat-checkbox [ngModel]="!(showPushNotifications$ | async)"
+                     (change)="changeSetting('showPushNotifications', !$event.checked)">
+          Push-Mitteilungen bei Kursplanänderungen
+        </mat-checkbox>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

@@ -3,6 +3,7 @@ export interface SettingsState {
   showStudio: boolean;
   showTodayFirst: boolean;
   showWorkoutType: boolean;
+  showPushNotifications: boolean;
   daysLayout: string;
   hideReleasenotes: boolean;
 }

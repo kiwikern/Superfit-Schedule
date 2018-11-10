@@ -12,6 +12,7 @@ const INITIAL_STATE: SettingsState = {
   showStudio: true,
   showTodayFirst: true,
   showWorkoutType: false,
+  showPushNotifications: false,
   hideReleasenotes: false,
   daysLayout: ''
 };
