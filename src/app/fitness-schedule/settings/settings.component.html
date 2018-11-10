@@ -52,8 +52,8 @@
                      (change)="changeSetting('hideReleasenotes', !$event.checked)">
           Zeige Änderungshistorie bei Update
         </mat-checkbox>
-        <mat-checkbox [ngModel]="!(showPushNotifications$ | async)"
-                     (change)="changeSetting('showPushNotifications', !$event.checked)">
+        <mat-checkbox [ngModel]="(showPushNotifications$ | async) === 'ENABLED'"
+                     (change)="changeSetting('showPushNotifications', $event.checked ? 'ENABLED' : 'DISABLED')">
           Push-Mitteilungen bei Kursplanänderungen
         </mat-checkbox>
       </div>

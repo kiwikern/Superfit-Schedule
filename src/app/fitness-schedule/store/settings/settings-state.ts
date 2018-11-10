@@ -3,7 +3,13 @@ export interface SettingsState {
   showStudio: boolean;
   showTodayFirst: boolean;
   showWorkoutType: boolean;
-  showPushNotifications: boolean;
+  showPushNotifications: ShowPushnotificationsState;
   daysLayout: string;
   hideReleasenotes: boolean;
+}
+
+export enum ShowPushnotificationsState {
+  ENABLED = 'ENABLED',
+  DISABLED = 'DISABLED',
+  UNDECIDED = 'UNDECIDED',
 }

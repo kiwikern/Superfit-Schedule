@@ -1,6 +1,6 @@
 import { IPayloadAction } from '../../../store/payload-action.types';
 import { SettingsActions } from './settings.actions';
-import { SettingsState } from './settings-state';
+import { SettingsState, ShowPushnotificationsState } from './settings-state';
 import { SettingsPayload } from './settings-payload';
 
 /**
@@ -12,7 +12,7 @@ const INITIAL_STATE: SettingsState = {
   showStudio: true,
   showTodayFirst: true,
   showWorkoutType: false,
-  showPushNotifications: false,
+  showPushNotifications: ShowPushnotificationsState.UNDECIDED,
   hideReleasenotes: false,
   daysLayout: ''
 };
