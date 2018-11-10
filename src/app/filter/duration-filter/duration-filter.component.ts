@@ -37,4 +37,12 @@ export class DurationFilterComponent implements OnInit {
     this.onSelect.emit(change);
   }
 
+  formatThumbLabel(value: number | null): string {
+    if (!value || value === 0) {
+      return '';
+    } else {
+      return value + 'm';
+    }
+  }
+
 }

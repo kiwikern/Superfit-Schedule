@@ -1,12 +1,14 @@
 <div fxLayout="column">
-  <label>Kurs beginnt frühestens um {{getTimeText(minStartTime)}}</label>
+  <label>Kurs beginnt frühestens um {{ getTimeText(minStartTime) }}</label>
   <mat-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
+              thumbLabel [displayWith]="formatThumbLabel(MIN_TIME)"
               [(ngModel)]="minStartTime" (change)="onChange({filterName: 'minStartTime', value: minStartTime})">
   </mat-slider>
 </div>
 <div fxLayout="column">
-  <label>Kurs endet spätestens um {{getTimeText(maxEndTime)}}</label>
+  <label>Kurs endet spätestens um {{ getTimeText(maxEndTime) }}</label>
   <mat-slider [min]="MIN_TIME" [max]="MAX_TIME" step="1"
+              thumbLabel [displayWith]="formatThumbLabel(MIN_TIME)"
               [(ngModel)]="maxEndTime" (change)="onChange({filterName: 'maxEndTime', value: maxEndTime})">
   </mat-slider>
 </div>

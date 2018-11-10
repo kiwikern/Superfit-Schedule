@@ -56,4 +56,14 @@ export class TimeFilterComponent implements OnInit {
     }
     this.onSelect.emit(change);
   }
+
+  formatThumbLabel(nullValue: number): ((x: number | null) => string) {
+    return value => {
+      if (!value || value === nullValue) {
+        return '';
+      } else {
+        return value + 'h';
+      }
+    };
+  }
 }

@@ -4,7 +4,7 @@ import {ChangeType} from './entry/type.enum';
 export const releasenotes: Release[] = [
   {
     version: 'v2.23',
-    date: new Date(2018, 10, 10),
+    date: new Date(2018, 10, 11),
     entries: [
       {
         title: 'Neuer Kurse',
@@ -12,9 +12,9 @@ export const releasenotes: Release[] = [
         description: `Neue Kurse Defense und Fullbody Strength.`
       },
       {
-        title: 'Performanceverbesserung',
-        type: ChangeType.PERFORMANCE,
-        description: `Die Größe der App wurde reduziert.`
+        title: 'Kleinere Layoutverbesserungen',
+        type: ChangeType.CHANGE,
+        description: `Das Design wurde insgesamt aktualisert und kleinere Dinge angepasst, z. B. Zeitwahl.`
       }
     ]
   },

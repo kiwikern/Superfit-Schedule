@@ -1,12 +1,14 @@
 <div fxLayout="column">
-  <label>Kurs dauert mindestens {{minDuration ? minDuration + ' Minuten' : 'egal'}} </label>
+  <label>Kurs dauert mindestens {{ minDuration ? minDuration + ' Minuten' : 'egal' }} </label>
   <mat-slider [min]="0" [max]="MAX_DURATION" step="10"
+              thumbLabel [displayWith]="formatThumbLabel"
               [(ngModel)]="minDuration" (change)="onChange({filterName: 'minDuration', value: minDuration})">
   </mat-slider>
 </div>
 <div fxLayout="column">
-  <label>Kurs dauert maximal {{maxDuration ? maxDuration + ' Minuten' : 'egal'}}</label>
+  <label>Kurs dauert maximal {{ maxDuration ? maxDuration + ' Minuten' : 'egal' }}</label>
   <mat-slider [min]="0" [max]="MAX_DURATION" step="10"
+              thumbLabel [displayWith]="formatThumbLabel"
               [(ngModel)]="maxDuration" (change)="onChange({filterName: 'maxDuration', value: maxDuration})">
   </mat-slider>
 </div>
