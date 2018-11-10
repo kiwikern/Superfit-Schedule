@@ -29,7 +29,6 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    setTimeout(this.createSecondScrollbar, 100);
     const sub = this.showTodayFirst$.subscribe(show => this.showTodayFirst = show);
     this.subscriptions.push(sub);
     if (this.filter && this.filter.gyms) {
@@ -46,17 +45,6 @@ export class ScheduleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
-  }
-
-  private createSecondScrollbar() {
-    const scrollbar = document.getElementById('second-scrollbar');
-    const scrollbarContent = document.getElementById('second-scrollbar-content');
-    const classList = document.getElementById('schedule');
-    if (classList && scrollbar && scrollbarContent) {
-      setTimeout(() => scrollbarContent.style.width = classList.scrollWidth + 'px', 100);
-      classList.onscroll = () => scrollbar.scrollLeft = classList.scrollLeft;
-      scrollbar.onscroll = () => classList.scrollLeft = scrollbar.scrollLeft;
-    }
   }
 
   trackByIds(index: number, classesPerDay: FitnessClassesPerDay) {
