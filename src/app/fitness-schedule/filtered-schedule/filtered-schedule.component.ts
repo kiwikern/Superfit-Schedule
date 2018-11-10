@@ -21,7 +21,10 @@ export class FilteredScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.filter$.subscribe(f => this.filter = f);
-    this.filter$.subscribe(f => this.showSchedule = f.hasOwnProperty('gyms') || f.hasOwnProperty('workouts') || f.hasOwnProperty('teamTrainings'));
+    this.filter$.subscribe(f =>
+      this.showSchedule = f.hasOwnProperty('gyms')
+        || f.hasOwnProperty('workouts')
+        || f.hasOwnProperty('teamTrainings'));
   }
 
 }

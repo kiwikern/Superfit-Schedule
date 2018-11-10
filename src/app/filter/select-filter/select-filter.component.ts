@@ -41,7 +41,7 @@ export class SelectFilterComponent implements OnChanges, OnInit {
   ngOnInit() {
     this.allValues = Object.keys(this.nameMapping)
       .sort((a, b) => this.getName(a).localeCompare(this.getName(b)))
-      .map((v: any) => Number.parseInt(v) >= 0 ? Number.parseInt(v) : v);
+      .map((v: any) => Number.parseInt(v, 10) >= 0 ? Number.parseInt(v, 10) : v);
   }
 
   ngOnChanges() {

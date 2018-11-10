@@ -3,11 +3,11 @@
   <mat-card-subtitle>
     Version:
     <a (click)="openReleasenotes()" angulartics2On="click" angularticsAction="ManuallyOpenedReleasenotes">
-      {{version$ | async}}
+      {{ version$ | async }}
     </a>
   </mat-card-subtitle>
   <p>
-    Hallo<span *ngIf="(userName | async)">{{' ' + (userName | async)}}</span>, mein Name ist
+    Hallo<span *ngIf="(userName | async)">{{ ' ' + (userName | async) }}</span>, mein Name ist
     <a
       href="https://www.kimkern.de"
       target="_blank" angulartics2On="click"
@@ -28,7 +28,7 @@
     Ich freue mich jederzeit über Rückmeldungen und neue Ideen, gerne direkt über <a routerLink="/feedback">Feedback</a>,
     als E-Mail an <a [href]="'mailto:' + mailAddress"
                      angulartics2On="click"
-                     angularticsAction="ClickOnMailTo">{{mailAddress}}</a>
+                     angularticsAction="ClickOnMailTo">{{ mailAddress }}</a>
     oder als Issue auf <a href="https://github.com/kiwikern/Superfit-Schedule/issues"
                           target="_blank"
                           angulartics2On="click"

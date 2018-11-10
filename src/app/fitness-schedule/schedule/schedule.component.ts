@@ -34,7 +34,12 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     this.subscriptions.push(sub);
     if (this.filter && this.filter.gyms) {
       if (this.filter.gyms.includes(9)) {
-        return setTimeout(() => this.snackBar.open('Kursplan für Neukölln mixed ist wegen fehlender Zugriffsrechte leider nicht verfügbar. Um diese Meldung nicht mehr anzuzeigen, entferne Neukölln aus deiner Kurswahl.', 'OK', {duration: 10000}), 0);
+        // TODO: Remove setTimeout workaround
+        return setTimeout(() =>
+          this.snackBar.open(
+            'Kursplan für Neukölln mixed ist wegen fehlender Zugriffsrechte leider nicht verfügbar. ' +
+            'Um diese Meldung nicht mehr anzuzeigen, entferne Neukölln aus deiner Kurswahl.',
+            'OK', {duration: 10000}));
       }
     }
   }
