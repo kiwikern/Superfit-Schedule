@@ -42,7 +42,8 @@ export class PushNotificationEpics {
     // TODO: Remove subscription from database.
     this.showPushNotifications$.pipe(
       filter(shouldShowNotification => shouldShowNotification !== ShowPushnotificationsState.ENABLED)
-    ).subscribe(() => this.serviceWorker.unsubscribe());
+    ).subscribe(() => this.serviceWorker.unsubscribe()
+      .catch(e => e ? console.warn(e.message || e) : ''));
   }
 
   private register(): Observable<PushSubscription> {
