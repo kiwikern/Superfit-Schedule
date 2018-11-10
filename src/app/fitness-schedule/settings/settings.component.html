@@ -9,7 +9,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-radio-group fxLayout="column" [ngModel]="(showTodayFirst$ | async) + ''"
-                      (change)="changeSetting('showTodayFirst', $event.value === 'true')">
+                       (change)="changeSetting('showTodayFirst', $event.value === 'true')">
         <mat-radio-button value="true">Heutiger Tag</mat-radio-button>
         <mat-radio-button value="false">Montag</mat-radio-button>
       </mat-radio-group>
@@ -24,7 +24,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-radio-group fxLayout="column" [ngModel]="daysLayout$ | async"
-                      (change)="changeSetting('daysLayout', $event.value)">
+                       (change)="changeSetting('daysLayout', $event.value)">
         <mat-radio-button value="">automatisch</mat-radio-button>
         <mat-radio-button value="row">nebeneinander</mat-radio-button>
         <mat-radio-button value="column">untereinander</mat-radio-button>
@@ -37,7 +37,7 @@
           Studio anzeigen
         </mat-checkbox>
         <mat-checkbox [ngModel]="showDaysInClasses$ | async"
-                     (change)="changeSetting('showDaysInClasses', $event.checked)">
+                      (change)="changeSetting('showDaysInClasses', $event.checked)">
           Wochentag anzeigen
         </mat-checkbox>
         <mat-checkbox [ngModel]="showWorkoutType$ | async" (change)="changeSetting('showWorkoutType', $event.checked)">
@@ -49,13 +49,18 @@
       <mat-expansion-panel-header>Sonstiges</mat-expansion-panel-header>
       <div fxLayout="column">
         <mat-checkbox [ngModel]="!(hideReleasenotes$ | async)"
-                     (change)="changeSetting('hideReleasenotes', !$event.checked)">
+                      (change)="changeSetting('hideReleasenotes', !$event.checked)">
           Zeige Änderungshistorie bei Update
         </mat-checkbox>
         <mat-checkbox [ngModel]="(showPushNotifications$ | async) === 'ENABLED'"
-                     (change)="changeSetting('showPushNotifications', $event.checked ? 'ENABLED' : 'DISABLED')">
+                      (change)="changeSetting('showPushNotifications', $event.checked ? 'ENABLED' : 'DISABLED')">
           Push-Mitteilungen bei Kursplanänderungen
         </mat-checkbox>
+        <mat-hint *ngIf="(showPushNotifications$ | async) === 'ENABLED' && (pushError$ | async)">
+          Push-Mitteilungen sind in deinem Browser nicht möglich. Bitte prüfe deine
+          <a href="https://support.google.com/chrome/answer/3220216?co=GENIE.Platform%3DDesktop&hl=en-GB&oco=1">
+            Einstellungen</a>
+        </mat-hint>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

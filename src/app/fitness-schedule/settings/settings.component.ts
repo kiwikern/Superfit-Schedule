@@ -17,6 +17,7 @@ export class SettingsComponent {
   @select(['settings', 'showWorkoutType']) showWorkoutType$;
   @select(['settings', 'showPushNotifications']) showPushNotifications$;
   @select(['settings', 'hideReleasenotes']) hideReleasenotes$;
+  @select(['pushNotifications', 'error']) pushError$;
 
   constructor(private actions: SettingsActions) {
   }
