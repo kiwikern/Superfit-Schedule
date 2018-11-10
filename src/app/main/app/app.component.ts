@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
               private router: Router,
               googleAnalytics: Angulartics2GoogleAnalytics,
               piwik: Angulartics2Piwik) {
+    googleAnalytics.startTracking();
+    piwik.startTracking();
   }
 
   ngOnInit() {
