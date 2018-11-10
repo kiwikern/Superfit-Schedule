@@ -15,6 +15,11 @@ export const releasenotes: Release[] = [
         title: 'Kleinere Layoutverbesserungen',
         type: ChangeType.CHANGE,
         description: `Das Design wurde insgesamt aktualisert und kleinere Dinge angepasst, z. B. Zeitwahl.`
+      },
+      {
+        title: 'Pushbenachrichtigungen',
+        type: ChangeType.FEATURE,
+        description: `Push-Benachrichtigungen können nun über die Einstellungen ein- und ausgeschaltet werden.`
       }
     ]
   },
