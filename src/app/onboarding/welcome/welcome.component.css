@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graphic {
+  width: 80vw;
+  max-height: 35vh;
+}
+
+.already-member {
+  color: #a7a3a3;
+  font-size: smaller;
+  margin-top: 25px;
+}
