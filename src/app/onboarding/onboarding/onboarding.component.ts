@@ -21,6 +21,7 @@ export class OnboardingComponent implements OnInit, OnDestroy {
       maxWidth: '100vw',
       closeOnNavigation: false,
       disableClose: true,
+      autoFocus: false,
       data: {steps: ['start', 'gymselection', 'classselection', 'timeselection', 'registration']}
     });
     this.router.navigate(['/onboarding', {outlets: {onboarding: ['start']}}]);
