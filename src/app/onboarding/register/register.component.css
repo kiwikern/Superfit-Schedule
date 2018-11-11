@@ -1,7 +1,14 @@
-.centered {
+:host {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding-bottom: 5px;
+}
+
+.graphic {
+  width: 80vw;
+  max-height: 35vh;
+  margin: 20px 0;
 }
