@@ -131,6 +131,7 @@ export class MappingService {
       bodypumpxp: 'BodyPump Express',
       bodyvive: 'BodyVive',
       bodyvivexp: 'BodyVive Express',
+      'booty express': 'Booty Express',
       cycle: 'Cycle',
       'CXWORX': 'CXWORX',
       'Defense': 'Defense',
