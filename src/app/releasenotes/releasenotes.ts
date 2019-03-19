@@ -3,11 +3,28 @@ import {ChangeType} from './entry/type.enum';
 
 export const releasenotes: Release[] = [
   {
+    version: 'v2.24',
+    date: new Date(2019, 2, 20),
+    entries: [
+      {
+        title: 'Neuer Kurs',
+        type: ChangeType.CHANGE,
+        description: `Neuer Kurs Booty Express.`
+      },
+      {
+        title: 'Falsche Kurse angezeigt',
+        type: ChangeType.FIX,
+        description: `Aufgrund eines Fehler wurden Kurse angezeigt, die es nicht mehr gab.
+        Ich hoffe, du bist deshalb nicht einmal umsonst ins Studio gefahren. Sorry! :-(`
+      }
+    ]
+  },
+  {
     version: 'v2.23',
     date: new Date(2018, 10, 11),
     entries: [
       {
-        title: 'Neuer Kurse',
+        title: 'Neue Kurse',
         type: ChangeType.CHANGE,
         description: `Neue Kurse Defense und Fullbody Strength.`
       },
